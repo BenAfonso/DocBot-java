@@ -1,4 +1,4 @@
-package DAOPackage;
+package pg_dao;
 
 import java.sql.Connection;
 
@@ -40,5 +40,5 @@ public abstract class DAO<T> {
   */
   public abstract T find(int id);
 
-  public abstract T find(String username, String password);
+  public abstract T find(String username);
 }

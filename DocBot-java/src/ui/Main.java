@@ -1,4 +1,5 @@
-package DAOPackage;
+package ui;
+
 
 import java.io.IOException;
 
@@ -8,14 +9,14 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class MainLogin extends Application {
+public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 
 		
 		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(MainLogin.class.getResource("./loginView.fxml"));
+		loader.setLocation(Main.class.getResource("./loginView.fxml"));
 		AnchorPane loginView=(AnchorPane) loader.load();
 		Scene scene=new Scene(loginView);
 		primaryStage.setScene(scene);

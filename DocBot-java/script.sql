@@ -17,12 +17,13 @@ DROP TABLE IF EXISTS Policy;
 DROP TABLE IF EXISTS Person;
 
 CREATE TABLE Person (
-    id SERIAL,
-    firstName VARCHAR(30),
-    lastName VARCHAR(40),
+    id SERIAL UNIQUE NOT NULL,
+    firstName VARCHAR(30) NOT NULL,
+    lastName VARCHAR(40) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     birthday DATE,
     phone VARCHAR(15),
-    email VARCHAR(50),
+    email VARCHAR(50) UNIQUE NOT NULL,
     isValidated boolean,
     PRIMARY KEY (id)
 );
@@ -49,7 +50,6 @@ CREATE TABLE Patient (
     id integer REFERENCES Person (id),
     isBlocked boolean,
     doctor_id integer REFERENCES Doctor (id),
-    password VARCHAR(255),
     PRIMARY KEY (id)
 );
 
@@ -128,4 +128,4 @@ CREATE TABLE AnswerRequest (
 );
 
 
-INSERT INTO Person VALUES (0,'Benjamin','Afonso','09/27/1995','0667901111','benjamin.afonso@etu.umontpellier.fr',true);
+INSERT INTO Person VALUES (0,'Benjamin','Afonso','123456','09/27/1995','0667901111','benjamin.afonso@etu.umontpellier.fr',true);

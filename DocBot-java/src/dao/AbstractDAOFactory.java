@@ -1,6 +1,7 @@
-package DAOPackage;
+package dao;
 
-import DAOPackage.DAOFactory;
+import dao.DAOFactory;
+import pg_dao.DAO;
 public abstract class AbstractDAOFactory {
   public static final int DAO_FACTORY = 0;
   public static final int OTHER_DAO_FACTORY = 1;

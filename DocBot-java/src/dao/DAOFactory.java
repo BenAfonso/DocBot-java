@@ -1,6 +1,10 @@
-package DAOPackage;
+package dao;
 
 import java.sql.Connection;
+
+import pg_dao.DAO;
+import pg_dao.UserDAO;
+import pg_dao.connectDB;
 
 
 public class DAOFactory extends AbstractDAOFactory{
