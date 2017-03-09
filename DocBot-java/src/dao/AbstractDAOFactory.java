@@ -1,6 +1,7 @@
 package dao;
 
 import dao.DAOFactory;
+import models.User;
 import pg_dao.DAO;
 public abstract class AbstractDAOFactory {
   public static final int DAO_FACTORY = 0;
@@ -8,7 +9,7 @@ public abstract class AbstractDAOFactory {
 
 
   //Retourne un objet Classe interagissant avec la BDD
-  public abstract DAO getUserDAO();
+  public abstract DAO<User> getUserDAO();
 
    
   //Méthode permettant de récupérer les Factory 
