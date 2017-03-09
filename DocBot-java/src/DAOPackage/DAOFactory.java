@@ -2,6 +2,7 @@ package DAOPackage;
 
 import java.sql.Connection;
 
+
 public class DAOFactory extends AbstractDAOFactory{
 	
   protected static final Connection conn = connectDB.getInstance(); 
@@ -10,7 +11,9 @@ public class DAOFactory extends AbstractDAOFactory{
   * Retourne un objet User interagissant avec la BDD
   * @return DAO
   */
-  public DAO getUserDAO(){
+  public DAO<?> getUserDAO(){
+	  System.out.println("get User Dao ");
+
 	    return new UserDAO(conn);
   }
    

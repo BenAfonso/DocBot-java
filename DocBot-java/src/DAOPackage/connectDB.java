@@ -11,7 +11,7 @@ public class connectDB {
 	/**
 	  * URL de connection
 	  */
-	  private static String url = "jdbc:postgresql://localhost:5432/oosetest";
+	  private static String url = "jdbc:postgresql://localhost:5432/docBot";
 	 
 	  /**
 	  * Nom du user
@@ -21,7 +21,7 @@ public class connectDB {
 	  /**
 	  * Mot de passe du user
 	  */
-	  private static String passwd = "bastou30";
+	  private static String passwd = "padmin";
 	 
 	  /**
 	  * Objet Connection

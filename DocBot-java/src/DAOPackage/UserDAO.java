@@ -12,6 +12,8 @@ public class UserDAO extends DAO<User> {
 	
 		  public UserDAO(Connection conn) {
 		    super(conn);
+			  System.out.println("User Dao Created");
+
 		  }
 
 		  public boolean create(User obj) {
@@ -32,13 +34,27 @@ public class UserDAO extends DAO<User> {
 		    try {
 		      ResultSet result = this.connect.createStatement(
 		      ResultSet.TYPE_SCROLL_INSENSITIVE,
-		      ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM users WHERE id = " + id);
+		      ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM person WHERE id = " + id);
 		      if(result.first())
-		        user = new User(id,result.getString("fname"),result.getString("lname"),result.getString("mail"),result.getString("mdp"));         
+		        user = new User(id,result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"));         
 		    } catch (SQLException e) {
 		      e.printStackTrace();
 		    }
 		    return user;
 		  }
+		  public User find(String username, String password) {
+			    User user = new User();      
+			      System.out.println("blabala");
+			    try {
+			      ResultSet result = this.connect.createStatement(
+			      ResultSet.TYPE_SCROLL_INSENSITIVE,
+			      ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM person WHERE email='" + username+"' AND password ='"+password+"'");
+			      if(result.first())
+			        user = new User(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"));         
+			    } catch (SQLException e) {
+			      e.printStackTrace();
+			    }
+			    return user;
+			  }
 		
 }

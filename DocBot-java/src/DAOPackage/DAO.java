@@ -7,6 +7,8 @@ public abstract class DAO<T> {
   protected Connection connect = null;
    
   public DAO(Connection conn){
+	  System.out.println("User Dao Created");
+
     this.connect = conn;
   }
    
@@ -37,4 +39,6 @@ public abstract class DAO<T> {
   * @return T
   */
   public abstract T find(int id);
+
+  public abstract T find(String username, String password);
 }
