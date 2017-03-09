@@ -1,21 +1,20 @@
-# CREATE DATABASE docbot_dev;
+-- CREATE DATABASE docbot_dev;
+-- \c docbot_dev;
 
-# \c docbot_dev;
-
-DROP TABLE IF EXISTS Person;
-DROP TABLE IF EXISTS Patient;
-DROP TABLE IF EXISTS Administrator;
-DROP TABLE IF EXISTS Policy;
-DROP TABLE IF EXISTS Doctor;
-DROP TABLE IF EXISTS AnswerTemplate;
-DROP TABLE IF EXISTS Hour;
-DROP TABLE IF EXISTS Day;
-DROP TABLE IF EXISTS Schedule;
-DROP TABLE IF EXISTS Disponibility;
-DROP TABLE IF EXISTS RequestAppointment;
-DROP TABLE IF EXISTS Appointment;
-DROP TABLE IF EXISTS Comment;
 DROP TABLE IF EXISTS AnswerRequest;
+DROP TABLE IF EXISTS Comment;
+DROP TABLE IF EXISTS Appointment;
+DROP TABLE IF EXISTS RequestAppointment;
+DROP TABLE IF EXISTS Disponibility;
+DROP TABLE IF EXISTS Schedule;
+DROP TABLE IF EXISTS Day;
+DROP TABLE IF EXISTS Hour;
+DROP TABLE IF EXISTS AnswerTemplate;
+DROP TABLE IF EXISTS Administrator;
+DROP TABLE IF EXISTS Patient;
+DROP TABLE IF EXISTS Doctor;
+DROP TABLE IF EXISTS Policy;
+DROP TABLE IF EXISTS Person;
 
 CREATE TABLE Person (
     id SERIAL,
@@ -25,18 +24,6 @@ CREATE TABLE Person (
     phone VARCHAR(15),
     email VARCHAR(50),
     isValidated boolean,
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE Patient (
-    id integer REFERENCES Person (id),
-    isBlocked boolean,
-    doctor_id integer REFERENCES Doctor (id),
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE Administrator (
-    id integer REFERENCES Person (id),
     PRIMARY KEY (id)
 );
 
@@ -57,6 +44,22 @@ CREATE TABLE Doctor (
     policy_id integer REFERENCES Policy (id),
     PRIMARY KEY (id)
 );
+
+CREATE TABLE Patient (
+    id integer REFERENCES Person (id),
+    isBlocked boolean,
+    doctor_id integer REFERENCES Doctor (id),
+    password VARCHAR(255),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE Administrator (
+    id integer REFERENCES Person (id),
+    PRIMARY KEY (id)
+);
+
+
+
 
 CREATE TABLE AnswerTemplate (
     id integer,
@@ -124,3 +127,5 @@ CREATE TABLE AnswerRequest (
     PRIMARY KEY (id)
 );
 
+
+INSERT INTO Person VALUES (0,'Benjamin','Afonso','09/27/1995','0667901111','benjamin.afonso@etu.umontpellier.fr',true);
