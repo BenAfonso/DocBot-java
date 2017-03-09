@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import ModelPackage.User;
+
 
 
 public class UserDAO extends DAO<User> {

@@ -1,4 +1,4 @@
-package DAOPackage;
+package ModelPackage;
 
 public class User {
 	//ID

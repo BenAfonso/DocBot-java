@@ -1,5 +1,7 @@
 package DAOPackage;
 
+import ModelPackage.User;
+
 public class FirstTest { 
   public static void main(String[] args) {
       
