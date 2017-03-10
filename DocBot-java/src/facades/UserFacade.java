@@ -39,17 +39,8 @@ public class UserFacade {
 	 * 
 	 ********************************************************/
 	
+
 	
-
-	/**
-	 * Returns an user with username
-	 * @param username
-	 * @return User
-	 */
-	public User getUser(String username) {
-		return userDao.find(username);
-	}
-
 	/**
 	 * Checks the credentials for an email
 	 * @param email
@@ -57,7 +48,7 @@ public class UserFacade {
 	 * @return boolean
 	 */
 	public boolean checkCredentials(String email, String password) {
-		User user = getUser(email);
+		User user = userDao.find(email);
 		return (user.getPassword().equals(password));
 	}
 

@@ -49,8 +49,6 @@ public class LoginController implements javafx.fxml.Initializable {
 		String username = usernameField.getText();
 		String password = passwordField.getText();
 
-		user=userFacade.getUser(username);
-
 		// Check if the user can login (credentials)
 		boolean canLogin=userFacade.login(username, password);
 
