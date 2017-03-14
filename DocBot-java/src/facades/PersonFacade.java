@@ -39,6 +39,7 @@ public class PersonFacade {
 	 ********************************************************/
 	
 
+	
 	/**
 	 * Checks the credentials for an email
 	 * @param email
@@ -46,6 +47,7 @@ public class PersonFacade {
 	 * @return boolean
 	 * @throws Exception 
 	 */
+<<<<<<< HEAD:DocBot-java/src/facades/PersonFacade.java
 	public boolean checkCredentials(String email, String password) throws Exception {
 		Person user = userDao.find(email);
 		
@@ -53,6 +55,10 @@ public class PersonFacade {
 			throw new Exception("User doesn't exist");
 		} 
 		
+=======
+	public boolean checkCredentials(String email, String password) {
+		User user = userDao.find(email);
+>>>>>>> b970e77a309235fbe4acd1b850858eff54b4542a:DocBot-java/src/facades/UserFacade.java
 		return (user.getPassword().equals(password));
 	}
 
