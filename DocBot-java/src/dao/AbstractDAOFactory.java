@@ -1,6 +1,6 @@
 package dao;
 
-import dao.PG_DAOFactory;
+import dao.pg.PG_DAOFactory;
 import models.Person;
 public abstract class AbstractDAOFactory {
   public static final int PG_DAOFACTORY = 0;

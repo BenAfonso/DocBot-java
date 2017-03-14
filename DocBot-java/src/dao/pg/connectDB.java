@@ -1,4 +1,4 @@
-package pg_dao;
+package dao.pg;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
