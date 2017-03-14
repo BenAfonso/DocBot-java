@@ -4,27 +4,28 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import models.User;
+import dao.PersonDAO;
+import models.Person;
 
 
 
-public class UserDAO extends DAO<User> {
+public class PG_UserDAO extends PersonDAO {
 
-	public UserDAO(Connection conn) {
+	public PG_UserDAO(Connection conn) {
 		super(conn);
 		System.out.println("User Dao Created");
 	}
 
 	/**
 	 * Create an user
-	 * @param User
+	 * @param Person
 	 * @return boolean
 	 */
-	public boolean create(User obj) {
+	public boolean create(Person obj) {
 		try {
 			ResultSet result = this.connect.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeQuery("INSERT INTO Person (firstname, lastname, email, password) VALUES ('"+obj.getFname()+"','"+obj.getLname()+"','"+obj.getEmail()+"','"+obj.getPassword()+"') FROM Person WHERE id = '"+obj.getId()+"')");
+					ResultSet.CONCUR_READ_ONLY).executeQuery("INSERT INTO Person (firstname, lastname, email, password) VALUES ('"+obj.getFisrtName()+"','"+obj.getLastName()+"','"+obj.getEmail()+"','"+obj.getPassword()+"') FROM Person WHERE id = '"+obj.getId()+"')");
 			if(result.first())
 				return true;
 		} catch (SQLException e) {
@@ -36,10 +37,10 @@ public class UserDAO extends DAO<User> {
 
 	/**
 	 * Delete an user
-	 * @param User
+	 * @param Person
 	 * @return boolean
 	 */
-	public boolean delete(User obj) {
+	public boolean delete(Person obj) {
 		try {
 			ResultSet result = this.connect.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -55,17 +56,17 @@ public class UserDAO extends DAO<User> {
 
 	/**
 	 * Update an user
-	 * @param User
+	 * @param Person
 	 * @return boolean
 	 */
-	public boolean update(User obj) {
-		User user = null;
+	public boolean update(Person obj) {
+		Person user = null;
 		try {
 			ResultSet result = this.connect.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeQuery("UPDATE Person SET (firstname, lastname, email, password) = ('"+obj.getFname()+"','"+obj.getLname()+"','"+obj.getEmail()+"','"+obj.getPassword()+"')");
+					ResultSet.CONCUR_READ_ONLY).executeQuery("UPDATE Person SET (firstname, lastname, email, password) = ('"+obj.getFisrtName()+"','"+obj.getLastName()+"','"+obj.getEmail()+"','"+obj.getPassword()+"')");
 			if(result.first())
-				user  = new User(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"));         
+				user  = new Person(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"));         
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -82,15 +83,15 @@ public class UserDAO extends DAO<User> {
 	 * @param int
 	 * @return User
 	 */
-	public User find(int id) {
-		User user = new User();      
+	public Person find(int id) {
+		Person user = null;     
 
 		try {
 			ResultSet result = this.connect.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM person WHERE id = " + id);
 			if(result.first())
-				user = new User(id,result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"));         
+				user = new Person(id,result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"));         
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -103,14 +104,14 @@ public class UserDAO extends DAO<User> {
 	 * @param String
 	 * @return User
 	 */
-	public User find(String username) {
-		User user = new User();      
+	public Person find(String username) {
+		Person user = null;      
 		try {
 			ResultSet result = this.connect.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM person WHERE email='" + username + "'");
 			if(result.first())
-				user = new User(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"));         
+				user = new Person(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"));         
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -1,6 +1,6 @@
 package models;
 
-public class User {
+public class Person {
 
 	
 	/********************************************************
@@ -23,7 +23,7 @@ public class User {
 	 * 
 	 ********************************************************/
 
-	public User(int id, String fn, String ln, String email, String password) {
+	public Person(int id, String fn, String ln, String email, String password) {
 		this.id = id;
 		this.firstName = fn;
 		this.lastName = ln;
@@ -31,7 +31,7 @@ public class User {
 		this.password = password;
 	}
 
-	public User(){};
+	public Person(){};
 
 
 
@@ -45,21 +45,19 @@ public class User {
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public String getFname() {
+	public String getFisrtName() {
 		return firstName;
 	}
-	public void setFname(String fname) {
+	public void setFirstName(String fname) {
 		this.firstName = fname;
 	}
-	public String getLname() {
+	public String getLastName() {
 		return lastName;
 	}
-	public void setLname(String lname) {
+	public void setLastName(String lname) {
 		this.lastName = lname;
 	}
 	public String getEmail() {

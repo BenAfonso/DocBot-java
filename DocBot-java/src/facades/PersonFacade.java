@@ -1,10 +1,10 @@
 package facades;
 
 import dao.AbstractDAOFactory;
-import models.User;
-import pg_dao.DAO;
+import dao.PersonDAO;
+import models.Person;
 
-public class UserFacade {
+public class PersonFacade {
 	
 	
 	/********************************************************
@@ -14,9 +14,8 @@ public class UserFacade {
 	 ********************************************************/
 	
 	
-	DAO<User> userDao;
+	PersonDAO userDao;
 	AbstractDAOFactory adf;
-	@SuppressWarnings("unchecked")
 	
 	
 	/********************************************************
@@ -26,8 +25,8 @@ public class UserFacade {
 	 ********************************************************/
 	
 	
-	public UserFacade() {
-		adf = AbstractDAOFactory.getFactory(AbstractDAOFactory.DAO_FACTORY);
+	public PersonFacade() {
+		adf = AbstractDAOFactory.getFactory(AbstractDAOFactory.PG_DAOFACTORY);
 		// Fetching link between database and models
 		userDao = adf.getUserDAO();
 	}
@@ -39,25 +38,21 @@ public class UserFacade {
 	 * 
 	 ********************************************************/
 	
-	
-
-	/**
-	 * Returns an user with username
-	 * @param username
-	 * @return User
-	 */
-	public User getUser(String username) {
-		return userDao.find(username);
-	}
 
 	/**
 	 * Checks the credentials for an email
 	 * @param email
 	 * @param password
 	 * @return boolean
+	 * @throws Exception 
 	 */
-	public boolean checkCredentials(String email, String password) {
-		User user = getUser(email);
+	public boolean checkCredentials(String email, String password) throws Exception {
+		Person user = userDao.find(email);
+		
+		if (user == null) {
+			throw new Exception("User doesn't exist");
+		} 
+		
 		return (user.getPassword().equals(password));
 	}
 
@@ -68,7 +63,13 @@ public class UserFacade {
 	 * @return boolean
 	 */
 	public boolean login(String username, String password) {
-		return checkCredentials(username, password);
+		try {
+			return checkCredentials(username, password);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("An error occured while login");
+			return false;
+		}
 	}
 
 }

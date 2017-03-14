@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import facades.UserFacade;
+import facades.PersonFacade;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,7 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import models.User;
+import models.Person;
 
 
 public class LoginController implements javafx.fxml.Initializable {
@@ -24,9 +24,11 @@ public class LoginController implements javafx.fxml.Initializable {
 
 
 	@FXML private Button btnLogin;
-	private UserFacade userFacade;
-	private User user;
+	private PersonFacade userFacade;
+	private Person user;
 	private Stage prevStage;
+	private Main mainApp;
+	
 	@Override	
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -37,7 +39,7 @@ public class LoginController implements javafx.fxml.Initializable {
 	}
 	public LoginController(){
 		System.out.println("Je créé ma façade");
-		userFacade=new UserFacade();
+		userFacade=new PersonFacade();
 	}
 
 	public void setMainApp(Main main){
@@ -49,12 +51,11 @@ public class LoginController implements javafx.fxml.Initializable {
 		String username = usernameField.getText();
 		String password = passwordField.getText();
 
-		user=userFacade.getUser(username);
 
 		// Check if the user can login (credentials)
 		boolean canLogin=userFacade.login(username, password);
 
-		if (user != null && canLogin) {
+		if ( canLogin) {
 
 			Stage stage = new Stage();
 			stage.setTitle("Connected");

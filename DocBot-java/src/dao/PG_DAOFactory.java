@@ -2,13 +2,12 @@ package dao;
 
 import java.sql.Connection;
 
-import models.User;
-import pg_dao.DAO;
-import pg_dao.UserDAO;
+import models.Person;
+import pg_dao.PG_UserDAO;
 import pg_dao.connectDB;
 
 
-public class DAOFactory extends AbstractDAOFactory{
+public class PG_DAOFactory extends AbstractDAOFactory{
 	
   protected static final Connection conn = connectDB.getInstance(); 
    
@@ -16,9 +15,9 @@ public class DAOFactory extends AbstractDAOFactory{
   * Retourne un objet User interagissant avec la BDD
   * @return DAO
   */
-  public DAO<User> getUserDAO(){
+  public PersonDAO getUserDAO(){
 	  System.out.println("get User Dao ");
-	    return new UserDAO(conn);
+	    return new PG_UserDAO(conn);
   }
    
 }

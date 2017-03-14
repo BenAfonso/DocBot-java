@@ -1,15 +1,14 @@
 package dao;
 
-import dao.DAOFactory;
-import models.User;
-import pg_dao.DAO;
+import dao.PG_DAOFactory;
+import models.Person;
 public abstract class AbstractDAOFactory {
-  public static final int DAO_FACTORY = 0;
-  public static final int OTHER_DAO_FACTORY = 1;
+  public static final int PG_DAOFACTORY = 0;
+  public static final int OTHER_DAOFACTORY = 1;
 
 
   //Retourne un objet Classe interagissant avec la BDD
-  public abstract DAO<User> getUserDAO();
+  public abstract PersonDAO getUserDAO();
 
    
   //Méthode permettant de récupérer les Factory 
@@ -17,9 +16,9 @@ public abstract class AbstractDAOFactory {
 	  System.out.println("getFactory");
 
     switch(type){
-      case DAO_FACTORY:
-        return new DAOFactory();
-      case OTHER_DAO_FACTORY: 
+      case PG_DAOFACTORY:
+        return new PG_DAOFactory();
+      case OTHER_DAOFACTORY: 
         return new OtherDAOFactory();
       default:
         return null;

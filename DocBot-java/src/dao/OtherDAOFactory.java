@@ -1,10 +1,9 @@
 package dao;
 
-import models.User;
-import pg_dao.DAO;
+import models.Person;
 
 public class OtherDAOFactory extends AbstractDAOFactory{
-	 public DAO<User> getUserDAO() {      
+	 public PersonDAO getUserDAO() {      
 		    return null;
 	 }
 }
