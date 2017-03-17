@@ -69,5 +69,18 @@ public class AddDisponibilityController {
     public void createSchedule() {
         // TODO implement here
     }
+    /**
+     * 
+     */
+    public void displayValid() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void displayError() {
+        // TODO implement here
+    }
 
 }

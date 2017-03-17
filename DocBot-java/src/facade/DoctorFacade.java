@@ -61,5 +61,18 @@ public class DoctorFacade extends PersonFacade {
         // TODO implement here
         return null;
     }
+    /**
+     * @param doctor
+     */
+    public void registrer(Doctor doctor) {
+        // TODO implement here
+    }
+
+    /**
+     * @param doctor
+     */
+    public void reject(Doctor doctor) {
+        // TODO implement here
+    }
 
 }

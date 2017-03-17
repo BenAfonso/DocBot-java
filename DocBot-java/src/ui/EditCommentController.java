@@ -46,4 +46,18 @@ public class EditCommentController {
         // TODO implement here
     }
 
+    /**
+     * 
+     */
+    public void displayValid() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void displayError() {
+        // TODO implement here
+    }
+
 }

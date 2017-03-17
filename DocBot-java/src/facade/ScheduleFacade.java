@@ -43,5 +43,32 @@ public class ScheduleFacade {
         // TODO implement here
         return null;
     }
+    /**
+     * @param date 
+     * @return
+     */
+    public Schedule createSchedule(Date date) {
+        // TODO implement here
+        return null;
+    }
+
+    /**
+     * @param hour 
+     * @return
+     */
+    public Hour createHour(Hour hour) {
+        // TODO implement here
+        return null;
+    }
+
+    /**
+     * @param withSchedule 
+     * @param withHour 
+     * @return
+     */
+    public Disponibility createDisponibility(Schedule withSchedule, Hour withHour) {
+        // TODO implement here
+        return null;
+    }
 
 }
