@@ -37,7 +37,8 @@ public class ScheduleFacade {
 
 
     /**
-     * @return
+     * Return the disponibilities associated with the schedule
+     * @return the disponibilities associated with the schedule
      */
     public Disponibility getDisponibilities() {
         // TODO implement here

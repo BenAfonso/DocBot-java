@@ -32,8 +32,9 @@ public class CommentFacade {
 
 
     /**
-     * @param Comment 
-     * @return
+     * update a comment
+     * @param Comment the new comment
+     * @return the updated comment
      */
     public Comment updateComment(Comment comment) {
         // TODO implement here
@@ -41,8 +42,9 @@ public class CommentFacade {
     }
 
     /**
-     * @param Comment 
-     * @return
+     * Check if the comment is valid
+     * @param Comment the comment to check
+     * @return true if the comment is valide, false otherwise
      */
     public Boolean isCommentValide(Comment comment) {
         // TODO implement here
@@ -50,8 +52,9 @@ public class CommentFacade {
     }
 
     /**
-     * @param Comment 
-     * @return
+     * Add a comment 
+     * @param Comment the comment to add 
+     * @return the added comment
      */
     public Comment addComment(Comment comment) {
         // TODO implement here

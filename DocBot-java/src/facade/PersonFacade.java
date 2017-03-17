@@ -42,10 +42,10 @@ public class PersonFacade {
 	
 	/**
 	 * Checks the credentials for an email
-	 * @param email
-	 * @param password
-	 * @return boolean
-	 * @throws Exception 
+	 * @param email the user's email
+	 * @param password the user's password
+	 * @return boolean true if the user is real, false otherwise
+	 * @throws Exception the esxception is thrown when the user doesn't exist
 	 */
 	public boolean checkCredentials(String email, String password) throws Exception {
 		Person user = userDao.find(email);
@@ -58,10 +58,10 @@ public class PersonFacade {
 	}
 
 	/**
-	 * Login function
-	 * @param username
-	 * @param password
-	 * @return boolean
+	 * Log a user
+	 * @param username the user's username
+	 * @param password the user's password
+	 * @return boolean true if the user is logged, false otherwise
 	 */
 	public boolean login(String username, String password) {
 		try {

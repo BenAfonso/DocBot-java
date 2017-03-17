@@ -29,8 +29,9 @@ public class PatientFacade {
 
 
     /**
-     * @param id 
-     * @return
+     * load the information about the Person
+     * @param id the id associated with the user
+     * @return the Person linked to the id
      */
     public Person loadInfo(int id) {
         // TODO implement here
