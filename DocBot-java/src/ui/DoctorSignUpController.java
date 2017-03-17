@@ -31,14 +31,14 @@ public class DoctorSignUpController {
     }
 
     /**
-     * 
+     * Display an error message into the view
      */
     public void displayError() {
         // TODO implement here
     }
 
     /**
-     * 
+     * Display an success message into the view
      */
     public void displaySuccess() {
         // TODO implement here

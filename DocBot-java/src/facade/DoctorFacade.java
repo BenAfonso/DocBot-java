@@ -65,14 +65,16 @@ public class DoctorFacade extends PersonFacade {
         return null;
     }
     /**
-     * @param doctor
+     * Accept the registration of a doctor
+     * @param doctor a Doctor object who will be registered
      */
     public void registrer(Doctor doctor) {
         // TODO implement here
     }
 
     /**
-     * @param doctor
+     * Reject the registration of a doctor
+     * @param doctor a Doctor object who will be rejected
      */
     public void reject(Doctor doctor) {
         // TODO implement here
