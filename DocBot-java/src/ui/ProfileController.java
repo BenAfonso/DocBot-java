@@ -20,8 +20,9 @@ public class ProfileController {
 
 
     /**
-     * @param id 
-     * @return
+     * Load the information from an id
+     * @param id The id of the person we want to see 
+     * @return Person the person found
      */
     public Person loadInfo(int id) {
         // TODO implement here
@@ -29,21 +30,21 @@ public class ProfileController {
     }
 
     /**
-     * 
+     * Display an error on the view
      */
     public void displayError() {
         // TODO implement here
     }
 
-    /**
-     * @param person
+    /** Display the information about a specific person
+     * @param person The person we want to display
      */
     public void displayInfo(Person person) {
         // TODO implement here
     }
 
     /**
-     * 
+     * Display the comments witch belong to a doctor
      */
     public void displayComments() {
         // TODO implement here

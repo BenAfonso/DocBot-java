@@ -64,7 +64,7 @@ public class UpdateDisponibilityController {
 
 
     /**
-     * 
+     * Update the schedule
      */
     public void updateSchedule() {
         // TODO implement here
