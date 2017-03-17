@@ -1,5 +1,5 @@
-<center><img src="img/DocBot.png"></center>
-<center<h1>Design phase</h1></center>
+<center><img src="img/DocBot.png" height="200px"></center>
+<center><h1>Design phase</h1></center>
 <center><i>03/17/2017</i></center>
 ### Package structure diagram
 
