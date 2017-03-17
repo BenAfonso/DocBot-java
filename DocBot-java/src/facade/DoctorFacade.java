@@ -38,24 +38,27 @@ public class DoctorFacade extends PersonFacade {
 
 
     /**
-     * @return
+     * return the schedule of the  doctor
+     * @return the doctor's schedules
      */
-    public Schedule getSchedule() {
+    public Schedule[] getSchedule() {
         // TODO implement here
         return null;
     }
 
     /**
-     * @return
+     * return the doctor's comments
+     * @return the comment of the doctors
      */
-    public Comment getComments() {
+    public Comment[] getComments() {
         // TODO implement here
         return null;
     }
 
     /**
-     * @param id 
-     * @return
+     *  Load the information of the person
+     * @param id the id person's id
+     * @return the Person associated with the id
      */
     public Person loadInfo(int id) {
         // TODO implement here

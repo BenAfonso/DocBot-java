@@ -32,23 +32,25 @@ public class RequestAppointmentFacade {
 
 
     /**
-     * @param disponibility 
-     * @param person
+     * Create a new requestAppointment
+     * @param disponibility the disponibility of the requestAppointment
+     * @param person the person who asked for the appointment
      */
     public void createNewRequest(Disponibility disponibility, Person person) {
         // TODO implement here
     }
 
     /**
-     * @return
+     * Delete the disponibility
+     * @return true if it went right, false otherwise
      */
     public boolean delete() {
         // TODO implement here
         return false;
     }
 
-    /**
-     * @return
+    /**	Generate an appointment from the request
+     * @return the appointment generated
      */
     public AppointmentFacade generateAppointment() {
         // TODO implement here
@@ -56,7 +58,8 @@ public class RequestAppointmentFacade {
     }
 
     /**
-     * @return
+     * Check if the doctor is in auto accept policy
+     * @return true if the doctor is in auto accept mode, false otherwise
      */
     public Boolean checkIfDoctorIsInAutoAcceptPolicy() {
         // TODO implement here
@@ -64,7 +67,8 @@ public class RequestAppointmentFacade {
     }
 
     /**
-     * @return
+     * Get the disponibility associated with the requestAppointment
+     * @return the disponibility associated
      */
     public Disponibility getDisponibility() {
         // TODO implement here
@@ -72,7 +76,8 @@ public class RequestAppointmentFacade {
     }
 
     /**
-     * @return
+     * Return the patient associated with the requestAppointment
+     * @return the patient associated
      */
     public Patient getPatient() {
         // TODO implement here
@@ -80,7 +85,8 @@ public class RequestAppointmentFacade {
     }
 
     /**
-     * @return
+     * Get the doctor associated with the requestAppointment
+     * @return the doctor associated with the requestAppointment
      */
     public Doctor getDoctor() {
         // TODO implement here
