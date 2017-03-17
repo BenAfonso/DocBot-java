@@ -30,7 +30,8 @@ public class HisDisponibilitiesController {
 
 
     /**
-     * @return
+     * Get a schedule for the current doctor
+     * @return Schedule 
      */
     public Schedule getHisSchedule() {
         // TODO implement here
@@ -38,7 +39,7 @@ public class HisDisponibilitiesController {
     }
 
     /**
-     * 
+     * Delete a schedule (Event with button) documentation later
      */
     public void deleteSchedule() {
         // TODO implement here

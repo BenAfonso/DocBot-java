@@ -64,7 +64,7 @@ public class AddDisponibilityController {
 
 
     /**
-     * 
+     * Creates a new schedule
      */
     public void createSchedule() {
         // TODO implement here

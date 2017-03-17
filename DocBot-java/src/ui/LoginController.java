@@ -29,22 +29,41 @@ public class LoginController implements javafx.fxml.Initializable {
 	private Stage prevStage;
 	private Main mainApp;
 	
+	
+	/**
+	 * Inializer for the current view
+	 */
 	@Override	
 	public void initialize(URL location, ResourceBundle resources) {
-
-
 	}
+	
+	/**
+	 * Sets the previous stage
+	 * @param stage
+	 */
 	public void setPrevStage(Stage stage){
 		this.prevStage = stage;
 	}
+	
+	
 	public LoginController(){
-		System.out.println("Je créé ma façade");
 		userFacade=new PersonFacade();
 	}
 
+	/**
+	 * Set the main application
+	 * @param main
+	 */
 	public void setMainApp(Main main){
 	}
 
+	
+	/**
+	 * Checks if the fields are correctly set, displays an error message 
+	 * if invalid credentials.
+	 * 
+	 * @throws IOException
+	 */
 	public void login() throws IOException{
 
 		user=null;
