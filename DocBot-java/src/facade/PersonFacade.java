@@ -1,4 +1,4 @@
-package facades;
+package facade;
 
 import dao.AbstractDAOFactory;
 import dao.PersonDAO;
@@ -28,7 +28,7 @@ public class PersonFacade {
 	public PersonFacade() {
 		adf = AbstractDAOFactory.getFactory(AbstractDAOFactory.PG_DAOFACTORY);
 		// Fetching link between database and models
-		userDao = adf.getUserDAO();
+		userDao = adf.getPersonDAO();
 	}
 	
 	

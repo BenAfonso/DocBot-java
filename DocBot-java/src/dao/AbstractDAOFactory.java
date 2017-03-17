@@ -1,14 +1,52 @@
 package dao;
 
-import dao.pg.PG_DAOFactory;
+import dao.pg.PgDAOFactory;
 import models.Person;
 public abstract class AbstractDAOFactory {
   public static final int PG_DAOFACTORY = 0;
   public static final int OTHER_DAOFACTORY = 1;
 
+  /**
+   * @return
+   */
+  public abstract PersonDAO getPersonDAO();
 
-  //Retourne un objet Classe interagissant avec la BDD
-  public abstract PersonDAO getUserDAO();
+  /**
+   * @return
+   */
+  public abstract DoctorDAO getDoctorDAO();
+
+  /**
+   * @return
+   */
+  public abstract ScheduleDAO getScheduleDAO();
+  /**
+   * @return
+   */
+  public abstract HourDAO getHourDAO();
+
+  /**
+   * @return
+   */
+  public abstract DisponibilityDAO getDisponibilityDAO();
+
+  /**
+   * @return
+   */
+  public abstract RequestAppointmentDAO getRequestAppointmentDAO();
+  /**
+   * @return
+   */
+  public abstract AnswerRequestDAO getAnswerRequestDAO();
+  /**
+   * @return
+   */
+  public abstract AppointmentDAO getAppointmentDAO();
+  /**
+   * @return
+   */
+  public abstract CommentDAO getCommentDAO();
+
 
    
   //Méthode permettant de récupérer les Factory 
@@ -17,9 +55,9 @@ public abstract class AbstractDAOFactory {
 
     switch(type){
       case PG_DAOFACTORY:
-        return new PG_DAOFactory();
+        return new PgDAOFactory();
       case OTHER_DAOFACTORY: 
-        return new OtherDAOFactory();
+        return null;
       default:
         return null;
     }

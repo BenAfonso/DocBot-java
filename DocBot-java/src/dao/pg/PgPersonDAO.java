@@ -1,50 +1,120 @@
 package dao.pg;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import dao.PersonDAO;
 import models.Person;
-import java.sql.Connection;
 
-import java.util.*;
 
-/**
- * @author BenAfonso
- */
+
 public class PgPersonDAO extends PersonDAO {
 
-    /**
-     * Default constructor
-     */
-    public PgPersonDAO(Connection conn) {
-    	super(conn);
-    }
+	public PgPersonDAO(Connection conn) {
+		super(conn);
+	}
 
-	@Override
-	public boolean create(Person person) {
-		// TODO Auto-generated method stub
+	/**
+	 * Create an user
+	 * @param Person
+	 * @return boolean
+	 */
+	public boolean create(Person obj) {
+		try {
+			ResultSet result = this.connect.createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("INSERT INTO Person (firstname, lastname, email, password) VALUES ('"+obj.getFisrtName()+"','"+obj.getLastName()+"','"+obj.getEmail()+"','"+obj.getPassword()+"') FROM Person WHERE id = '"+obj.getId()+"')");
+			if(result.first())
+				return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 
-	@Override
-	public boolean delete(Person person) {
-		// TODO Auto-generated method stub
+
+	/**
+	 * Delete an user
+	 * @param Person
+	 * @return boolean
+	 */
+	public boolean delete(Person obj) {
+		try {
+			ResultSet result = this.connect.createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("DELETE FROM Person WHERE id = '"+obj.getId()+"')");
+			if(result.first())
+				return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 
-	@Override
-	public boolean update(Person person) {
-		// TODO Auto-generated method stub
-		return false;
+
+	/**
+	 * Update an user
+	 * @param Person
+	 * @return boolean
+	 */
+	public boolean update(Person obj) {
+		Person user = null;
+		try {
+			ResultSet result = this.connect.createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("UPDATE Person SET (firstname, lastname, email, password) = ('"+obj.getFisrtName()+"','"+obj.getLastName()+"','"+obj.getEmail()+"','"+obj.getPassword()+"')");
+			if(result.first())
+				user  = new Person(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"));         
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if (user != null) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
-	@Override
+
+	/**
+	 * Find an user with his id
+	 * @param int
+	 * @return User
+	 */
 	public Person find(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Person user = null;     
+
+		try {
+			ResultSet result = this.connect.createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM person WHERE id = " + id);
+			if(result.first())
+				user = new Person(id,result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"));         
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return user;
 	}
 
-	@Override
+
+	/**
+	 * Find an user with his username
+	 * @param String
+	 * @return User
+	 */
 	public Person find(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		Person user = null;      
+		try {
+			ResultSet result = this.connect.createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM person WHERE email='" + username + "'");
+			if(result.first())
+				user = new Person(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"));         
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return user;
 	}
 
 }
