@@ -16,13 +16,14 @@ public class DoctorSignUpController {
 
 
     /**
-     * 
+     * Register a new account triggered on a button click
      */
     public void register() {
         // TODO implement here
     }
 
     /**
+     * Displays an error message if the form isn't valid
      * 
      */
     public void formIsValid() {

@@ -58,15 +58,17 @@ public class MakeAnAppointmentController {
     }
 
     /**
-     * @param errorMessage
+     * Display an error message into the view
+     * @param errorMessage the error message to display
      */
     public void displayError(String errorMessage) {
         // TODO implement here
     }
 
     /**
-     * @param disponibility 
-     * @return
+     * Make a new request appointment with a disponibility.
+     * @param disponibility the disponibility he wants to had
+     * @return boolean true if the request is created false if not
      */
     public boolean makeARequestAppointment(Disponibility disponibility) {
         // TODO implement here
@@ -74,14 +76,15 @@ public class MakeAnAppointmentController {
     }
 
     /**
-     * @param message
+     * Display a message on the view
+     * @param message message to display
      */
     public void displayInformations(String message) {
         // TODO implement here
     }
 
     /**
-     * 
+     * Display the list of disponibilities
      */
     public void displayDisponibilities() {
         // TODO implement here
