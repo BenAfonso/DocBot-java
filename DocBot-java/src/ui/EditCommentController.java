@@ -40,7 +40,7 @@ public class EditCommentController {
 
 
     /**
-     * 
+     * Edit a comment (triggered on button click) documentation later
      */
     public void editComment() {
         // TODO implement here
