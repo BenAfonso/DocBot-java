@@ -10,7 +10,8 @@ public class Patient extends Person {
     /**
      * Default constructor
      */
-    public Patient() {
+    public Patient(String fname, String lname, String password, Date birthday, String phoneNumber, String mail) {
+    	super(fname,lname,password,birthday,phoneNumber,mail);
     }
 
     /**

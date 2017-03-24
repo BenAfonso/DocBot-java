@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import models.Person;
@@ -91,5 +92,22 @@ public class LoginController implements javafx.fxml.Initializable {
 		}
 
 	} // Login
+	
+	public void goToRegisterPatientPage(){
+		FXMLLoader loader=new FXMLLoader();
+		loader.setLocation(Main.class.getResource("./RegisterView.fxml"));
+		AnchorPane registerView;
+		try {
+			registerView = (AnchorPane) loader.load();
+			Scene scene=new Scene(registerView);
+			prevStage.setScene(scene);
+			prevStage.show();
+			RegisterPatientController controller=loader.getController();
+			controller.setPrevStage(prevStage);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }

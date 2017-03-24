@@ -24,6 +24,10 @@ public class PgDAOFactory extends AbstractDAOFactory {
         return new PgDoctorDAO(conn);
     }
 
+    public PatientDAO getPatientDAO() {
+        // TODO implement here
+        return new PgPatientDAO(conn);
+    }
 	@Override
 	public PersonDAO getPersonDAO() {
 		// TODO Auto-generated method stub

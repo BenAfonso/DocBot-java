@@ -22,10 +22,9 @@ public class PgPersonDAO extends PersonDAO {
 	 */
 	public boolean create(Person obj) {
 		try {
-			ResultSet result = this.connect.createStatement(
+			int result = this.connect.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeQuery("INSERT INTO Person (firstname, lastname, email, password) VALUES ('"+obj.getFisrtName()+"','"+obj.getLastName()+"','"+obj.getEmail()+"','"+obj.getPassword()+"') FROM Person WHERE id = '"+obj.getId()+"')");
-			if(result.first())
+					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Person (firstname, lastname, email, password,phone,birthday) VALUES ('"+obj.getFisrtName()+"','"+obj.getLastName()+"','"+obj.getEmail()+"','"+obj.getPassword()+"','"+obj.getPhoneNumber()+"','"+obj.getBirthday()+"')");
 				return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -109,6 +108,7 @@ public class PgPersonDAO extends PersonDAO {
 			ResultSet result = this.connect.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM person WHERE email='" + username + "'");
+
 			if(result.first())
 				user = new Person(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"));         
 		} catch (SQLException e) {

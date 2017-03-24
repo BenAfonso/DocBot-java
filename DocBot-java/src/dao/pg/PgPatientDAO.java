@@ -1,5 +1,7 @@
 package dao.pg;
 
+import java.sql.Connection;
+
 import dao.PatientDAO;
 import models.Patient;
 
@@ -11,7 +13,8 @@ public class PgPatientDAO extends PatientDAO {
     /**
      * Default constructor
      */
-    public PgPatientDAO() {
+    public PgPatientDAO(Connection conn) {
+		super(conn);
     }
 
 }

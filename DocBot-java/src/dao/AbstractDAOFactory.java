@@ -15,7 +15,10 @@ public abstract class AbstractDAOFactory {
    * @return
    */
   public abstract DoctorDAO getDoctorDAO();
-
+  /**
+   * @return
+   */
+  public abstract PatientDAO getPatientDAO();
   /**
    * @return
    */

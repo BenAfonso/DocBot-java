@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Date;
+
 public class Person {
 
 	
@@ -14,6 +16,8 @@ public class Person {
 	private String lastName = "";
 	private String email = "";
 	private String password = "";
+	private Date birthday;
+	private String phoneNumber;
 	
 	
 	
@@ -30,7 +34,14 @@ public class Person {
 		this.email = email;
 		this.password = password;
 	}
-
+	public Person(String fname, String lname, String password, Date birthday, String phoneNumber, String mail) {
+		this.firstName = fname;
+		this.lastName = lname;
+		this.email = mail;
+		this.password = password;
+		this.setBirthday(birthday);
+		this.setPhoneNumber(phoneNumber);
+	}
 	public Person(){};
 
 
@@ -71,6 +82,18 @@ public class Person {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	public Date getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
 	}
 
 

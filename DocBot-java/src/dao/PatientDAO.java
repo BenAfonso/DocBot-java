@@ -1,6 +1,9 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import models.Patient;
 import java.util.*;
 
@@ -8,12 +11,14 @@ import java.util.*;
  * @author BenAfonso
  */
 public abstract class PatientDAO {
-
+	
     /**
      * Default constructor
      */
-    public PatientDAO() {
-    }
+	public PatientDAO(Connection conn){
+		System.out.println("Person Dao Created");
+		this.connect = conn;
+	}
 
     /**
      * 
@@ -47,5 +52,21 @@ public abstract class PatientDAO {
     public void delete(Patient patient) {
         // TODO implement here
     }
+
+	public boolean create(int id) {
+		try {
+			int result = this.connect.createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Patient (id) VALUES ('"+id+"')");
+
+				return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+		
+	}
+
+
 
 }
