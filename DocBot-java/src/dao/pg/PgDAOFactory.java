@@ -19,6 +19,7 @@ public class PgDAOFactory extends AbstractDAOFactory {
     /**
      * @return
      */
+    @Override
     public DoctorDAO getDoctorDAO() {
         // TODO implement here
         return new PgDoctorDAO(conn);

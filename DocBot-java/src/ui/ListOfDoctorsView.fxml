@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="359.0" prefWidth="542.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="ui.ListOfDoctorsController">
+   <children>
+      <Pane prefHeight="359.0" prefWidth="542.0">
+         <children>
+            <TableView fx:id="doctorsTable" layoutY="54.0" prefHeight="307.0" prefWidth="542.0">
+              <columns>
+                <TableColumn fx:id="firstNameCol" prefWidth="75.0" text="Prénom" />
+                <TableColumn fx:id="lastNameCol" prefWidth="75.0" text="Nom" />
+                  <TableColumn fx:id="cityCol" prefWidth="75.0" text="Ville" />
+              </columns>
+            </TableView>
+            <Label layoutX="214.0" layoutY="24.0" prefHeight="16.0" prefWidth="114.0" text="Liste des docteurs" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

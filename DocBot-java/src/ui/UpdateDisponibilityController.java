@@ -1,7 +1,6 @@
 package ui;
 
 import java.util.*;
-
 import facade.DoctorFacade;
 import facade.ScheduleFacade;
 
@@ -14,6 +13,7 @@ public class UpdateDisponibilityController {
      * Default constructor
      */
     public UpdateDisponibilityController() {
+    	
     }
 
     /**
