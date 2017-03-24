@@ -15,28 +15,30 @@ public class NewDoctorsController {
     
 
     /**
-     * 
+     * Display an success message into the view
      */
     public void displayValid() {
         // TODO implement here
     }
 
     /**
-     * 
+     * Display an error message into the view
      */
     public void displayError() {
         // TODO implement here
     }
 
     /**
-     * @param id
+     * Accept the registration of a doctor
+     * @param id the id of the doctor who will be registered
      */
     public void acceptDoctor(int id) {
         // TODO implement here
     }
 
     /**
-     * @param id
+     * Reject the registration of a doctor
+     * @param id the id of the doctor who will be rejected
      */
     public void rejectDoctor(int id) {
         // TODO implement here

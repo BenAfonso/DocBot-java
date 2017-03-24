@@ -12,7 +12,14 @@ public class Doctor extends Person {
      */
     public Doctor() {
     }
+    
+    public Doctor(Person person, String siret, String adress) {
+    	this.person = person;
+    	this.siret = siret;
+    	this.adress = adress;
+    }
 
+    public Person person;
     /**
      * 
      */

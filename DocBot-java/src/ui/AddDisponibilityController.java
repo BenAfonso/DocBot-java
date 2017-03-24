@@ -69,15 +69,16 @@ public class AddDisponibilityController {
     public void createSchedule() {
         // TODO implement here
     }
+    
     /**
-     * 
+     * Display an success message into the view
      */
     public void displayValid() {
         // TODO implement here
     }
 
     /**
-     * 
+     * Display an error message into the view
      */
     public void displayError() {
         // TODO implement here

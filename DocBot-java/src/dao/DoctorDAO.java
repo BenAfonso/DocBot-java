@@ -15,6 +15,8 @@ public abstract class DoctorDAO extends PersonDAO {
      */
     public DoctorDAO(Connection connect) {
     	super(connect);
+    	this.connect = connect;
+
     }
 
     /**
@@ -42,6 +44,13 @@ public abstract class DoctorDAO extends PersonDAO {
     public void find(Doctor doctor) {
         // TODO implement here
     }
+    
+    public abstract ArrayList<Doctor> findAll();
+    
+    public abstract Doctor find(int id);
+    
+    public abstract Doctor find(String username);
+    
 
     /**
      * @param doctor

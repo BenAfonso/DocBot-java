@@ -78,9 +78,9 @@ public class LoginController implements javafx.fxml.Initializable {
 		if ( canLogin) {
 
 			Stage stage = new Stage();
-			stage.setTitle("Connected");
+			stage.setTitle("DocBot");
 			Pane myPane = null;
-			myPane = FXMLLoader.load(getClass().getResource("logged.fxml"));
+			myPane = FXMLLoader.load(getClass().getResource("ListOfDoctorsView.fxml"));
 			Scene scene = new Scene(myPane);
 			stage.setScene(scene);
 

@@ -13,6 +13,9 @@ public class DoctorFacade extends PersonFacade {
      * Default constructor
      */
     public DoctorFacade() {
+		adf = AbstractDAOFactory.getFactory(AbstractDAOFactory.PG_DAOFACTORY);
+		// Fetching link between database and models
+		dao = adf.getDoctorDAO();
     }
 
     /**
@@ -46,6 +49,10 @@ public class DoctorFacade extends PersonFacade {
         return null;
     }
 
+    public ArrayList<Doctor> getDoctors() {
+    	return dao.findAll();
+    }
+    
     /**
      * return the doctor's comments
      * @return the comment of the doctors
@@ -65,14 +72,16 @@ public class DoctorFacade extends PersonFacade {
         return null;
     }
     /**
-     * @param doctor
+     * Accept the registration of a doctor
+     * @param doctor a Doctor object who will be registered
      */
     public void registrer(Doctor doctor) {
         // TODO implement here
     }
 
     /**
-     * @param doctor
+     * Reject the registration of a doctor
+     * @param doctor a Doctor object who will be rejected
      */
     public void reject(Doctor doctor) {
         // TODO implement here

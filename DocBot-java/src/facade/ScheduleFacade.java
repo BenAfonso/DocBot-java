@@ -44,18 +44,20 @@ public class ScheduleFacade {
         // TODO implement here
         return null;
     }
-    /**
-     * @param date 
-     * @return
+    /** 
+     * Create a schedule with a date in parameter
+     * @param date the date of shedule that will be created
+     * @return the schedule added
      */
     public Schedule createSchedule(Date date) {
         // TODO implement here
         return null;
     }
 
-    /**
-     * @param hour 
-     * @return
+    /** 
+     * Create a hour 
+     * @param hour the hour of Hour object that will be created
+     * @return the hour added
      */
     public Hour createHour(Hour hour) {
         // TODO implement here
@@ -63,9 +65,10 @@ public class ScheduleFacade {
     }
 
     /**
+     * Create a disponibility with a hour and a schedule in parameter
      * @param withSchedule 
      * @param withHour 
-     * @return
+     * @return the disponibility added
      */
     public Disponibility createDisponibility(Schedule withSchedule, Hour withHour) {
         // TODO implement here
