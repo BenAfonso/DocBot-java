@@ -42,4 +42,11 @@ public class Authentification {
 	public static void connect(Person person){
 		Authentification.person = person;
 	}
+	
+	/**
+	 * Delete the user
+	 */
+	public static void disconnect(){
+		Authentification.person = null;
+	}
 }

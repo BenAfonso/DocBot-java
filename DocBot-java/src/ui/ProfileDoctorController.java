@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import models.Doctor;
 import services.Authentification;
+import services.NavigationService;
 
 public class ProfileDoctorController {
 	
@@ -21,6 +22,10 @@ public class ProfileDoctorController {
 	@FXML private Label label_adress;
 	@FXML private Label label_error;
 	
+	/**
+	 * Navigation tools
+	 */
+	NavigationService nav = new NavigationService();
 	private Stage prevStage;
 	
 	private DoctorFacade docf;
@@ -28,6 +33,13 @@ public class ProfileDoctorController {
 	 * Inializer for the current view
 	 */
 	public void initialize(URL location, ResourceBundle resources) {
+	}
+	
+	/**
+	 * Set the main application
+	 * @param main
+	 */
+	public void setMainApp(Main main){
 	}
 	
 	/**
@@ -79,5 +91,19 @@ public class ProfileDoctorController {
 	public void setPrevStage(Stage prevStage) {
 		this.prevStage=prevStage;
 		
+	}
+	
+	/********************************************************
+	 * 
+	 * 						Navigation
+	 * 
+	 ********************************************************/
+	
+	public void logout(){
+		nav.goLogout(prevStage);
+	}
+	
+	public void goToProfile(){
+		nav.goToProfileDoctor(prevStage);
 	}
 }

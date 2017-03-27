@@ -5,10 +5,11 @@ import java.util.*;
 
 import facade.PatientFacade;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import models.Patient;
-import services.Authentification;
+import services.NavigationService;
 
 public class ProfileController {
 	
@@ -19,7 +20,12 @@ public class ProfileController {
 	@FXML private Label label_phone;
 	@FXML private Label label_error;
 	
+	/**
+	 * Navigation tools
+	 */
+	NavigationService nav = new NavigationService();
 	private Stage prevStage;
+	
 	
 	private PatientFacade patf;
 	/**
@@ -28,6 +34,12 @@ public class ProfileController {
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 	
+	/**
+	 * Set the main application
+	 * @param main
+	 */
+	public void setMainApp(Main main){
+	}
 	/**
      * Default constructor
      */
@@ -74,5 +86,20 @@ public class ProfileController {
 	public void setPrevStage(Stage prevStage) {
 		this.prevStage=prevStage;
 		
+	}
+	
+	
+	/********************************************************
+	 * 
+	 * 						Navigation
+	 * 
+	 ********************************************************/
+	
+	public void logout(){
+		nav.goLogout(prevStage);
+	}
+	
+	public void goToProfile(){
+		nav.goToProfile(prevStage);
 	}
 }
