@@ -35,8 +35,6 @@ public class ProfileDoctorController {
      */
     public ProfileDoctorController() {
     	docf = new DoctorFacade();
-		System.out.println(Authentification.getUser().getEmail());
-
     }
     
 
