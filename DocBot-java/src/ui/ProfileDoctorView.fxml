@@ -26,7 +26,7 @@
             <Label fx:id="label_street" layoutX="211.0" layoutY="466.0" text="label_street" />
             <Label fx:id="label_zip" layoutX="289.0" layoutY="467.0" text="label_zip" />
             <Label fx:id="label_city" layoutX="350.0" layoutY="468.0" text="label_city" />
-            <Label fx:id="label_error" layoutX="247.0" layoutY="130.0" text="Error" />
+            <Label fx:id="label_error" layoutX="247.0" layoutY="130.0" />
          </children>
       </Pane>
    </children>

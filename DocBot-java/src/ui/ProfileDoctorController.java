@@ -6,6 +6,7 @@ import java.util.*;
 import facade.DoctorFacade;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 import models.Doctor;
 import services.Authentification;
 
@@ -23,15 +24,13 @@ public class ProfileDoctorController {
 	@FXML private Label label_city;
 	@FXML private Label label_error;
 	
-	
+	private Stage prevStage;
 	
 	private DoctorFacade docf;
 	/**
 	 * Inializer for the current view
 	 */
 	public void initialize(URL location, ResourceBundle resources) {
-		System.out.println(Authentification.getUser().getEmail());
-		
 	}
 	
 	/**
@@ -41,7 +40,8 @@ public class ProfileDoctorController {
     	docf = new DoctorFacade();
 		System.out.println(Authentification.getUser().getEmail());
 
-    	displayInfo(Authentification.getUser().getEmail());
+    	//displayInfo(Authentification.getUser().getEmail());
+
     }
     
 
@@ -85,4 +85,9 @@ public class ProfileDoctorController {
         	displayError(e.getMessage());
         }
     }
+
+	public void setPrevStage(Stage prevStage) {
+		this.prevStage=prevStage;
+		
+	}
 }
