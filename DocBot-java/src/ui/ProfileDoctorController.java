@@ -18,10 +18,7 @@ public class ProfileDoctorController {
 	@FXML private Label label_bd;
 	@FXML private Label label_phone;
 	@FXML private Label label_siret;
-	@FXML private Label label_num;
-	@FXML private Label label_street;
-	@FXML private Label label_zip;
-	@FXML private Label label_city;
+	@FXML private Label label_adress;
 	@FXML private Label label_error;
 	
 	private Stage prevStage;
@@ -39,8 +36,6 @@ public class ProfileDoctorController {
     public ProfileDoctorController() {
     	docf = new DoctorFacade();
 		System.out.println(Authentification.getUser().getEmail());
-
-    	//displayInfo(Authentification.getUser().getEmail());
 
     }
     
@@ -75,12 +70,9 @@ public class ProfileDoctorController {
         	label_bd.setText(doc.getBirthday().toString());
         	label_phone.setText(doc.getPhoneNumber());
         	label_siret.setText(doc.getSiret());
-        	label_num.setText(doc.getStreetNumber());
-        	label_street.setText(doc.getStreet());
-        	label_zip.setText(doc.getZipCode());
-        	label_city.setText(doc.getCity());
+        	String adress = ""+doc.getStreetNumber()+" "+doc.getStreet()+" "+doc.getZipCode()+" "+doc.getCity()+"";
+        	label_adress.setText(adress);
         	
-     
         }catch(Exception e){
         	displayError(e.getMessage());
         }

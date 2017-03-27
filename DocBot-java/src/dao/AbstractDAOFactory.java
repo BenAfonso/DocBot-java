@@ -54,7 +54,6 @@ public abstract class AbstractDAOFactory {
    
   //Méthode permettant de récupérer les Factory 
   public static AbstractDAOFactory getFactory(int type){
-	  System.out.println("getFactory");
 
     switch(type){
       case PG_DAOFACTORY:

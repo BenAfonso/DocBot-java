@@ -22,10 +22,7 @@
             <Label layoutX="124.0" layoutY="400.0" text="Siret :" />
             <Label fx:id="label_siret" layoutX="141.0" layoutY="417.0" text="label_siret" />
             <Label layoutX="124.0" layoutY="448.0" text="Adress :" />
-            <Label fx:id="label_num" layoutX="141.0" layoutY="466.0" text="label_num" />
-            <Label fx:id="label_street" layoutX="211.0" layoutY="466.0" text="label_street" />
-            <Label fx:id="label_zip" layoutX="289.0" layoutY="467.0" text="label_zip" />
-            <Label fx:id="label_city" layoutX="350.0" layoutY="468.0" text="label_city" />
+            <Label fx:id="label_adress" layoutX="141.0" layoutY="466.0" text="label_adress" />
             <Label fx:id="label_error" layoutX="247.0" layoutY="130.0" />
          </children>
       </Pane>
