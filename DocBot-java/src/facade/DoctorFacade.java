@@ -2,6 +2,8 @@ package facade;
 import models.*;
 import dao.*;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 
 /**
@@ -16,12 +18,15 @@ public class DoctorFacade extends PersonFacade {
 		adf = AbstractDAOFactory.getFactory(AbstractDAOFactory.PG_DAOFACTORY);
 		// Fetching link between database and models
 		dao = adf.getDoctorDAO();
+		daoPerson=adf.getPersonDAO();
     }
 
     /**
      * 
      */
     public DoctorDAO dao;
+    public PersonDAO daoPerson;
+
 
     /**
      * 
@@ -62,6 +67,7 @@ public class DoctorFacade extends PersonFacade {
         return null;
     }
 
+	
     /**
      *  Load the information of the person
      * @param id the id person's id
@@ -75,10 +81,19 @@ public class DoctorFacade extends PersonFacade {
      * Accept the registration of a doctor
      * @param doctor a Doctor object who will be registered
      */
-    public void registrer(Doctor doctor) {
-        // TODO implement here
-    }
-
+	public boolean register(String fname, String lname, String password, LocalDate birthday, String phoneNumber, String mail, String siret, String streetNumber, String street, String city, String zipCode ) {
+		boolean result=false;
+		Date date = Date.from(birthday.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Doctor doctorToRegister = new Doctor(fname,lname,password,date,phoneNumber,mail,siret,streetNumber,street,city,zipCode);
+		if(daoPerson.create(doctorToRegister)){
+			int id = daoPerson.find(mail).getId();
+			if(dao.create(id)){
+				result=true;
+			}
+		}
+		return result;
+		
+	}
     /**
      * Reject the registration of a doctor
      * @param doctor a Doctor object who will be rejected

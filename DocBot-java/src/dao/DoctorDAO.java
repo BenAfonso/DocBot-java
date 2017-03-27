@@ -1,6 +1,9 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import models.Doctor;
 import models.Patient;
 
@@ -58,5 +61,18 @@ public abstract class DoctorDAO extends PersonDAO {
     public void delete(Doctor doctor) {
         // TODO implement here
     }
+	public boolean create(int id) {
+		try {
+			int result = this.connect.createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Doctor (id) VALUES ('"+id+"')");
+
+				return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+		
+	}
 
 }

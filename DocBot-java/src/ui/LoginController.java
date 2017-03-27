@@ -109,5 +109,21 @@ public class LoginController implements javafx.fxml.Initializable {
 			e.printStackTrace();
 		}
 	}
+	public void goToRegisterDoctorPage(){
+		FXMLLoader loader=new FXMLLoader();
+		loader.setLocation(Main.class.getResource("./RegisterDoctorView.fxml"));
+		AnchorPane registerDoctorView;
+		try {
+			registerDoctorView = (AnchorPane) loader.load();
+			Scene scene=new Scene(registerDoctorView);
+			prevStage.setScene(scene);
+			prevStage.show();
+			RegisterDoctorController controller=loader.getController();
+			controller.setPrevStage(prevStage);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }
