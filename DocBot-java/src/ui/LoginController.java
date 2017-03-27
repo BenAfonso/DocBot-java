@@ -77,18 +77,18 @@ public class LoginController implements javafx.fxml.Initializable {
 		boolean canLogin=userFacade.login(username, password);
 
 		if ( canLogin) {
-			System.out.println(Authentification.isDoctor());
-			System.out.println(Authentification.isPatient());
-			Stage stage = new Stage();
-			stage.setTitle("DocBot");
-			Pane myPane = null;
-			myPane = FXMLLoader.load(getClass().getResource("ListOfDoctorsView.fxml"));
-			Scene scene = new Scene(myPane);
-			stage.setScene(scene);
+			if(Authentification.isDoctor()){
+				Stage stage = new Stage();
+				stage.setTitle("DocBot");
+				Pane myPane = null;
+				myPane = FXMLLoader.load(getClass().getResource("ProfileDoctorView.fxml"));
+				Scene scene = new Scene(myPane);
+				stage.setScene(scene);
 
-			prevStage.close();
+				prevStage.close();
 
-			stage.show();
+				stage.show();
+			}
 		} else {
 			invalidCredential.setText("Invalid credential");
 		}
