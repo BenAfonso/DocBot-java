@@ -33,5 +33,21 @@ public class PgPatientDAO extends PatientDAO {
 		}
 		return patient;
 	}
+	
+	@Override
+	public Patient find(String mail) {
+		Patient patient = null;      
+		try {
+			ResultSet result = this.connect.createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM patient pa, person p WHERE pa.id=p.id AND p.email='"+mail+"'");
+
+			if(result.first())
+				patient = new Patient(result.getString("firstname"),result.getString("lastname"),result.getString("password"),result.getDate("birthday"),result.getString("phone"),result.getString("email"));         
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return patient;
+	}
 
 }

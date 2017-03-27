@@ -93,6 +93,22 @@ public class LoginController implements javafx.fxml.Initializable {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				};
+			}else{
+				FXMLLoader loader=new FXMLLoader();
+				loader.setLocation(Main.class.getResource("./ProfileView.fxml"));
+				AnchorPane ProfileView;
+				try {
+					ProfileView = (AnchorPane) loader.load();
+					Scene scene=new Scene(ProfileView);
+					prevStage.setScene(scene);
+					prevStage.show();
+					ProfileController controller=loader.getController();
+					controller.displayInfo(Authentification.getUser().getEmail());
+					controller.setPrevStage(prevStage);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				};
 			}
 		} else {
 			invalidCredential.setText("Invalid credential");

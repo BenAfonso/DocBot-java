@@ -49,6 +49,8 @@ public abstract class PatientDAO {
     }
 
     public abstract Patient find(int id);
+    
+    public abstract Patient find(String mail);
 
     /**
      * @param patient
