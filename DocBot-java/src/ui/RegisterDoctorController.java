@@ -71,6 +71,23 @@ public class RegisterDoctorController {
     		}
     }
 
+	public void back(){
+		FXMLLoader loader=new FXMLLoader();
+		loader.setLocation(Main.class.getResource("./LoginView.fxml"));
+		AnchorPane loginView;
+		try {
+			loginView = (AnchorPane) loader.load();
+			Scene scene=new Scene(loginView);
+			prevStage.setScene(scene);
+			prevStage.show();
+			LoginController controller=loader.getController();
+			controller.setPrevStage(prevStage);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
     /**
      * Displays an error message if the form isn't valid
      * 

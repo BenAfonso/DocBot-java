@@ -35,6 +35,7 @@
             <TextField fx:id="zipCodeField" layoutX="214.0" layoutY="323.0" />
             <Button fx:id="btnValidate" layoutX="166.0" layoutY="440.0" mnemonicParsing="false" onAction="#register" text="Validate" />
             <Label layoutX="138.0" layoutY="25.0" text="Register as a doctor" />
+            <Button fx:id="btnBack" layoutX="24.0" layoutY="13.0" mnemonicParsing="false" onAction="#back" text="Back" />
          </children>
       </Pane>
    </children>

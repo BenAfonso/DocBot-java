@@ -29,62 +29,82 @@ public class RegisterPatientController {
 
 	PatientFacade patientFacade;
 	@FXML private Button btnValidate;
-    /**
-     * Default constructor
-     */
-    public RegisterPatientController() {
-    		patientFacade=new PatientFacade();
-    }
+	@FXML private Button btnBack;
+
+	/**
+	 * Default constructor
+	 */
+	public RegisterPatientController() {
+		patientFacade=new PatientFacade();
+	}
 	public void setPrevStage(Stage stage){
 		this.prevStage = stage;
 	}
 
-    /**
-     * Register a new account triggered on a button click
-     */
-    public void register() {
-    	boolean registerGood=false;
-    	registerGood=patientFacade.register(fnameField.getText(),lnameField.getText(),passwordField.getText(),birthdayField.getValue(),phoneField.getText(),mailField.getText());
-    		if(registerGood){
-    			FXMLLoader loader=new FXMLLoader();
-    			loader.setLocation(Main.class.getResource("./LoginView.fxml"));
-    			AnchorPane loginView;
-    			try {
-    				loginView = (AnchorPane) loader.load();
-    				Scene scene=new Scene(loginView);
-    				prevStage.setScene(scene);
-    				prevStage.show();
-    				LoginController controller=loader.getController();
-    				controller.setPrevStage(prevStage);
-    			} catch (IOException e) {
-    				// TODO Auto-generated catch block
-    				e.printStackTrace();
-    			}
-    		}else{
-    			errorField.setText("An error occurred please try again");
-    		}
-    }
+	/**
+	 * Register a new account triggered on a button click
+	 */
+	public void register() {
+		boolean registerGood=false;
+		registerGood=patientFacade.register(fnameField.getText(),lnameField.getText(),passwordField.getText(),birthdayField.getValue(),phoneField.getText(),mailField.getText());
+		if(registerGood){
+			FXMLLoader loader=new FXMLLoader();
+			loader.setLocation(Main.class.getResource("./LoginView.fxml"));
+			AnchorPane loginView;
+			try {
+				loginView = (AnchorPane) loader.load();
+				Scene scene=new Scene(loginView);
+				prevStage.setScene(scene);
+				prevStage.show();
+				LoginController controller=loader.getController();
+				controller.setPrevStage(prevStage);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else{
+			errorField.setText("An error occurred please try again");
+		}
+	}
 
-    /**
-     * Displays an error message if the form isn't valid
-     * 
-     */
-    public void formIsValid() {
-        // TODO implement here
-    }
+	public void back(){
+		FXMLLoader loader=new FXMLLoader();
+		loader.setLocation(Main.class.getResource("./LoginView.fxml"));
+		AnchorPane loginView;
+		try {
+			loginView = (AnchorPane) loader.load();
+			Scene scene=new Scene(loginView);
+			prevStage.setScene(scene);
+			prevStage.show();
+			LoginController controller=loader.getController();
+			controller.setPrevStage(prevStage);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-    /**
-     * 
-     */
-    public void displayError() {
-        // TODO implement here
-    }
+	}
 
-    /**
-     * 
-     */
-    public void displaySuccess() {
-        // TODO implement here
-    }
+	/**
+	 * Displays an error message if the form isn't valid
+	 * 
+	 */
+	public void formIsValid() {
+		// TODO implement here
+	}
+
+	/**
+	 * 
+	 */
+	public void displayError() {
+		// TODO implement here
+	}
+
+	/**
+	 * 
+	 */
+	public void displaySuccess() {
+		// TODO implement here
+	}
 
 }

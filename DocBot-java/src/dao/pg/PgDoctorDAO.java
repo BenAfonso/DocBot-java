@@ -89,7 +89,19 @@ public class PgDoctorDAO extends DoctorDAO {
 		
 		return doctors;
 	}
+	public boolean create(int id, String siret, String number, String street, String city, String zip_code) {
+		try {
+			int result = this.connect.createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Doctor (id,siret,number,street,city,zip_code) VALUES ('"+id+"','"+siret+"','"+number+"','"+street+"','"+city+"','"+zip_code+"')");
 
+				return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+		
+	}
 	@Override
 	public Person find(int id) {
 		// TODO Auto-generated method stub
