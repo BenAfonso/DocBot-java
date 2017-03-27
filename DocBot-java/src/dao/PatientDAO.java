@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import models.Patient;
+import models.Person;
+
 import java.util.*;
 
 /**
@@ -45,6 +47,8 @@ public abstract class PatientDAO {
     public void find(Patient patient) {
         // TODO implement here
     }
+
+    public abstract Patient find(int id);
 
     /**
      * @param patient

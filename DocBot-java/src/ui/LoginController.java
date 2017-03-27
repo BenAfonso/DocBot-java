@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import models.Person;
+import services.Authentification;
 
 
 public class LoginController implements javafx.fxml.Initializable {
@@ -76,7 +77,8 @@ public class LoginController implements javafx.fxml.Initializable {
 		boolean canLogin=userFacade.login(username, password);
 
 		if ( canLogin) {
-
+			System.out.println(Authentification.isDoctor());
+			System.out.println(Authentification.isPatient());
 			Stage stage = new Stage();
 			stage.setTitle("DocBot");
 			Pane myPane = null;
