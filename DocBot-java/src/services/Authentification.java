@@ -15,7 +15,7 @@ public class Authentification {
 	 *  return the connected user
 	 * @return person the person that is connected
 	 */
-	public Person getUser() {
+	public static Person getUser() {
 		return Authentification.person;
 	}
 	
@@ -23,7 +23,7 @@ public class Authentification {
 	 *  Check if the connected person is a doctor 
 	 * @return true if the person is a doctor, false ohterwise
 	 */
-	public boolean isDoctor(){
+	public static boolean isDoctor(){
 		return (getUser() instanceof Doctor);
 	}
 	
@@ -31,7 +31,7 @@ public class Authentification {
 	 *  Check if the connected person is a patient 
 	 * @return true if the person is a patient, false ohterwise
 	 */
-	public boolean isPatient(){
+	public static boolean isPatient(){
 		return (getUser() instanceof Patient);
 	}
 	
@@ -39,7 +39,7 @@ public class Authentification {
 	 * Store the connected user 
 	 * @param person the user to store as the connected user
 	 */
-	public void connect(Person person){
+	public static void connect(Person person){
 		Authentification.person = person;
 	}
 }
