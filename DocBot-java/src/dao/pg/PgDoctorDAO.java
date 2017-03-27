@@ -46,16 +46,21 @@ public class PgDoctorDAO extends DoctorDAO {
 		return false;
 	}
 
-	@Override
-	public Doctor find(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
-	public Doctor find(String username) {
-		// TODO Auto-generated method stub
-		return null;
+	public Doctor find(String mail) {
+		Doctor doctor = null;      
+		try {
+			ResultSet result = this.connect.createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM doctor d, person p WHERE d.id=p.id AND p.email='"+mail+"'");
+
+			if(result.first())
+				doctor = new Doctor(result.getString("firstname"),result.getString("lastname"),result.getString("password"),result.getDate("birthday"),result.getString("phone"),result.getString("email"),result.getString("siret"),result.getString("number"),result.getString("street"),result.getString("city"),result.getString("zip_code"));         
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return doctor;
 	}
 	
 	public ArrayList<Doctor> findAll() {
@@ -83,6 +88,12 @@ public class PgDoctorDAO extends DoctorDAO {
 		}
 		
 		return doctors;
+	}
+
+	@Override
+	public Person find(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -50,7 +50,6 @@ public abstract class DoctorDAO extends PersonDAO {
     
     public abstract ArrayList<Doctor> findAll();
     
-    public abstract Doctor find(int id);
     
     public abstract Doctor find(String username);
     
