@@ -65,7 +65,7 @@ public abstract class DoctorDAO extends PersonDAO {
 		try {
 			int result = this.connect.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Doctor (id) VALUES ('"+id+"')");
+					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Doctor (id,siret,number,street,city,zip_code) VALUES ('"+id+"''"+siret+"''")");
 
 				return true;
 		} catch (SQLException e) {
