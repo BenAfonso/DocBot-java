@@ -61,11 +61,11 @@ public abstract class DoctorDAO extends PersonDAO {
     public void delete(Doctor doctor) {
         // TODO implement here
     }
-	public boolean create(int id) {
+	public boolean create(int id, String siret, String number, String street, String city, String zip_code) {
 		try {
 			int result = this.connect.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Doctor (id,siret,number,street,city,zip_code) VALUES ('"+id+"''"+siret+"''")");
+					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Doctor (id,siret,number,street,city,zip_code) VALUES ('"+id+"','"+siret+"','"+number+"','"+street+"','"+city+"','"+zip_code+"')");
 
 				return true;
 		} catch (SQLException e) {

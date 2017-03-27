@@ -87,7 +87,7 @@ public class DoctorFacade extends PersonFacade {
 		Doctor doctorToRegister = new Doctor(fname,lname,password,date,phoneNumber,mail,siret,streetNumber,street,city,zipCode);
 		if(daoPerson.create(doctorToRegister)){
 			int id = daoPerson.find(mail).getId();
-			if(dao.create(id)){
+			if(dao.create(id,siret,streetNumber,street,city,zipCode)){
 				result=true;
 			}
 		}
