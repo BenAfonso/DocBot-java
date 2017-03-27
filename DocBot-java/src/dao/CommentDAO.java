@@ -11,12 +11,13 @@ import java.util.*;
 /**
  * @author BenAfonso
  */
-public class CommentDAO {
+public abstract class CommentDAO {
 
     /**
      * Default constructor
      */
-    public CommentDAO() {
+    public CommentDAO(Connection connect) {
+    	this.connect = connect;
     }
 
     /**
@@ -27,9 +28,7 @@ public class CommentDAO {
     /**
      * @param comment
      */
-    public void create(Comment comment ) {
-        // TODO implement here
-    }
+    public abstract boolean create(Comment comment );
 
     /**
      * @param comment

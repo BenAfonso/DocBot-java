@@ -74,7 +74,7 @@ public class PgDAOFactory extends AbstractDAOFactory {
 	@Override
 	public CommentDAO getCommentDAO() {
 		// TODO Auto-generated method stub
-		return new PgCommentDAO();
+		return new PgCommentDAO(conn);
 	}
 
 }

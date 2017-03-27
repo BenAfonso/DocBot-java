@@ -7,10 +7,20 @@ import java.util.*;
  */
 public class Comment {
 
+	private String content;
+	private String title;
+	private int rate;
+	private int appointment_id;
+	private Date datePost;
     /**
      * Default constructor
      */
-    public Comment() {
+    public Comment(String content, String title, int rate, Date datePost, int appointment_id) {
+    	this.content=content;
+    	this.title=title;
+    	this.rate=rate;
+    	this.datePost=datePost;
+    	this.appointment_id=appointment_id;
     }
 
     /**
@@ -21,22 +31,48 @@ public class Comment {
     /**
      * 
      */
-    public String datePost;
 
-    /**
-     * 
-     */
-    public String title;
+	public String getContent() {
+		return content;
+	}
 
-    /**
-     * 
-     */
-    public String content;
+	public void setContent(String comment) {
+		this.content = comment;
+	}
 
-    /**
-     * 
-     */
-    public String rate;
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public int getRate() {
+		return rate;
+	}
+
+	public void setRate(int rating) {
+		this.rate = rating;
+	}
+
+	public int getAppointment_id() {
+		return appointment_id;
+	}
+
+	public void setAppointment_id(int appointment_id) {
+		this.appointment_id = appointment_id;
+	}
+
+	public Date getDatePost() {
+		return datePost;
+	}
+
+	public void setDatePost(Date datepost) {
+		this.datePost = datepost;
+	}
+
+
 
 
 }
