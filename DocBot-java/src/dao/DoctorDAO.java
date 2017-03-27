@@ -52,7 +52,7 @@ public abstract class DoctorDAO extends PersonDAO {
     public abstract ArrayList<Doctor> findAll();
     
     
-    public abstract Doctor find(String username);
+    public abstract Doctor find(String mail);
     
 
     /**

@@ -69,14 +69,21 @@ public class DoctorFacade extends PersonFacade {
 
 	
     /**
-     *  Load the information of the person
-     * @param id the id person's id
-     * @return the Person associated with the id
+     *  Load the information of the doctor
+     * @param mail the person's mail
+     * @return the Doctor associated with the mail
      */
-    public Person loadInfo(int id) {
-        // TODO implement here
-        return null;
+    public Doctor loadInfo(String mail) {
+        Doctor doctor = null;
+        try{
+        	doctor = dao.find(mail);
+        }catch(Exception e){
+        	System.out.println(e.getMessage());
+        }
+    	
+        return doctor;
     }
+    
     /**
      * Accept the registration of a doctor
      * @param doctor a Doctor object who will be registered
