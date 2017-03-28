@@ -110,4 +110,5 @@ public class ProfileController {
 	public void goUpdateProfile(){
 		nav.goUpdateProfile(prevStage);
 	}
+	
 }

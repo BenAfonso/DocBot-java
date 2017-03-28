@@ -40,4 +40,6 @@ public abstract class PersonDAO {
   public abstract Person find(int id);
 
   public abstract Person find(String username);
+  
+  public abstract boolean updatePassword(String mail, String newPassword);
 }

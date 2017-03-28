@@ -110,5 +110,8 @@ public class UpdateProfileController {
 		nav.goToProfile(prevStage);
 	}
 	
+	public void goUpdatePassword(){
+		nav.goUpdatePassword(prevStage);
+	}
 	
 }

@@ -118,5 +118,9 @@ public class UpdateDoctorProfileController {
 		nav.goToProfile(prevStage);
 	}
 	
+	public void goUpdatePassword(){
+		nav.goUpdatePassword(prevStage);
+	}
+	
 	
 }

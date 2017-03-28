@@ -52,7 +52,8 @@
                   <Image url="@../img/logoDocbot.png" />
                </image>
             </ImageView>
-            <Label fx:id="errorField" layoutX="468.0" layoutY="163.0" text="ErrorLabel" />
+            <Label fx:id="errorField" layoutX="468.0" layoutY="163.0" text="" />
+            <Button layoutX="811.0" layoutY="113.0" mnemonicParsing="false" text="Update password" onAction="#goUpdatePassword"/>
          </children>
       </Pane>
    </children>

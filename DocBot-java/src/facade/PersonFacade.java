@@ -1,5 +1,9 @@
 package facade;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+
 import dao.AbstractDAOFactory;
 import dao.DoctorDAO;
 import dao.PatientDAO;
@@ -88,6 +92,18 @@ public class PersonFacade {
 			System.out.println("An error occured while login");
 			return false;
 		}
+	}
+	
+	/**
+     * Update a profile doctor
+     * @param doctor a Doctor object who will be updated
+     */
+	public boolean updatePassword(String mail, String newPassword){
+		boolean result=false;
+		if(userDao.updatePassword(mail, newPassword)){
+			result=true;
+		}
+		return result;
 	}
 
 }

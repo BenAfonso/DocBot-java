@@ -12,6 +12,7 @@ import ui.ProfileController;
 import ui.ProfileDoctorController;
 import ui.UpdateDoctorProfileController;
 import ui.UpdateProfileController;
+import ui.UpdatePasswordController;
 import ui.ValidateOrRejectDoctorRegistrationController;
 import ui.ListOfDoctors.ListOfDoctorsController;
 
@@ -62,6 +63,7 @@ public class NavigationService {
 			e.printStackTrace();
 		}
 	}
+	
 	public void goLogout(Stage prevStage){
 		try {
 		FXMLLoader loader=new FXMLLoader();
@@ -119,6 +121,28 @@ public class NavigationService {
 			e.printStackTrace();
 		}
 	}
+	
+	public void goUpdatePassword(Stage prevStage){
+		try {
+		FXMLLoader loader=new FXMLLoader();
+		loader.setLocation(Main.class.getResource("../ui/UpdatePasswordView.fxml"));
+		AnchorPane passwordView;
+		
+		passwordView = (AnchorPane) loader.load();
+		
+		Scene scene=new Scene(passwordView);
+		prevStage.setScene(scene);
+		prevStage.show();
+		UpdatePasswordController controller=loader.getController();
+		controller.setPrevStage(prevStage);
+		controller.setMainApp(mainApp);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
 	
 	public void goToProfile(Stage prevStage){
 		try {

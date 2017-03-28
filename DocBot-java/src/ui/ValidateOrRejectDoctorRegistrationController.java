@@ -199,7 +199,7 @@ public class ValidateOrRejectDoctorRegistrationController {
 	
 
 	public void goUpdateProfile(){
-		nav.goUpdateProfileDoctor(prevStage);
+		nav.goUpdateProfile(prevStage);
 	}
 	
 	public void goToListOfDoctors() {
