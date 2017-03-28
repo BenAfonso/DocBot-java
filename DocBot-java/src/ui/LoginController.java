@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import models.Person;
+import services.Authentification;
 
 
 public class LoginController implements javafx.fxml.Initializable {
@@ -76,17 +77,39 @@ public class LoginController implements javafx.fxml.Initializable {
 		boolean canLogin=userFacade.login(username, password);
 
 		if ( canLogin) {
-
-			Stage stage = new Stage();
-			stage.setTitle("DocBot");
-			Pane myPane = null;
-			myPane = FXMLLoader.load(getClass().getResource("ListOfDoctorsView.fxml"));
-			Scene scene = new Scene(myPane);
-			stage.setScene(scene);
-
-			prevStage.close();
-
-			stage.show();
+			if(Authentification.isDoctor()){
+				FXMLLoader loader=new FXMLLoader();
+				loader.setLocation(Main.class.getResource("./ProfileDoctorView.fxml"));
+				AnchorPane ProfileDoctorView;
+				try {
+					ProfileDoctorView = (AnchorPane) loader.load();
+					Scene scene=new Scene(ProfileDoctorView);
+					prevStage.setScene(scene);
+					prevStage.show();
+					ProfileDoctorController controller=loader.getController();
+					controller.displayInfo(Authentification.getUser().getEmail());
+					controller.setPrevStage(prevStage);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				};
+			}else{
+				FXMLLoader loader=new FXMLLoader();
+				loader.setLocation(Main.class.getResource("./ProfileView.fxml"));
+				AnchorPane ProfileView;
+				try {
+					ProfileView = (AnchorPane) loader.load();
+					Scene scene=new Scene(ProfileView);
+					prevStage.setScene(scene);
+					prevStage.show();
+					ProfileController controller=loader.getController();
+					controller.displayInfo(Authentification.getUser().getEmail());
+					controller.setPrevStage(prevStage);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				};
+			}
 		} else {
 			invalidCredential.setText("Invalid credential");
 		}

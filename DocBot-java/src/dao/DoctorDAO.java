@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import models.Doctor;
 import models.Patient;
+import models.Person;
 
 import java.util.*;
 
@@ -51,7 +52,7 @@ public abstract class DoctorDAO extends PersonDAO {
     public abstract ArrayList<Doctor> findAll();
     
     
-    public abstract Doctor find(String username);
+    public abstract Doctor find(String mail);
     
 
     /**
@@ -60,6 +61,8 @@ public abstract class DoctorDAO extends PersonDAO {
     public void delete(Doctor doctor) {
         // TODO implement here
     }
+    public abstract Doctor find(int id);
+
 	public abstract boolean create(int id, String siret, String number, String street, String city, String zip_code);
 
 }

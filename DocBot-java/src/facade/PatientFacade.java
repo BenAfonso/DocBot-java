@@ -37,13 +37,19 @@ public class PatientFacade {
 
 
     /**
-     * load the information about the Person
-     * @param id the id associated with the user
-     * @return the Person linked to the id
+     * load the information about the Patient
+     * @param mail the mail associated with the user
+     * @return the Patient linked to the mail
      */
-    public Person loadInfo(int id) {
-        // TODO implement here
-        return null;
+    public Patient loadInfo(String mail) {
+    	Patient patient = null;
+        try{
+        	patient = dao.find(mail);
+        }catch(Exception e){
+        	System.out.println(e.getMessage());
+        }
+    	
+        return patient;
     }
 
 	public boolean register(String fname, String lname, String password, LocalDate birthday, String phoneNumber, String mail) {

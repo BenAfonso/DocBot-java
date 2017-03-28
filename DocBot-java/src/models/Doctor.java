@@ -7,6 +7,12 @@ import java.util.*;
  */
 public class Doctor extends Person {
 
+	/********************************************************
+	 * 
+	 * 						Properties
+	 * 
+	 ********************************************************/
+	
     private String streetNumber;
 	private String street;
 	private String city;
@@ -15,9 +21,11 @@ public class Doctor extends Person {
 	private String siret;
 	private String adress;
 
-	/**
-     * Default constructor
-     */
+	/********************************************************
+	 * 
+	 * 						Constructors
+	 * 
+	 ********************************************************/
     public Doctor() {
     }
     
@@ -34,6 +42,14 @@ public class Doctor extends Person {
     	this.setCity(city);
     	this.setZipCode(zipcode);
     }
+    
+    
+    /********************************************************
+	 * 
+	 * 						Getters and setters
+	 * 
+	 ********************************************************/
+    
     public String getStreetNumber() {
 		return streetNumber;
 	}

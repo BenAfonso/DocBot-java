@@ -3,21 +3,23 @@ package ui;
 import java.net.URL;
 import java.util.*;
 
-import facade.PatientFacade;
+import facade.DoctorFacade;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import models.Patient;
+import models.Doctor;
+import services.Authentification;
 import services.NavigationService;
 
-public class ProfileController {
+public class ProfileDoctorController {
 	
 	@FXML private Label label_fn;
 	@FXML private Label label_ln;
 	@FXML private Label label_mail;
 	@FXML private Label label_bd;
 	@FXML private Label label_phone;
+	@FXML private Label label_siret;
+	@FXML private Label label_adress;
 	@FXML private Label label_error;
 	
 	/**
@@ -26,8 +28,7 @@ public class ProfileController {
 	NavigationService nav = new NavigationService();
 	private Stage prevStage;
 	
-	
-	private PatientFacade patf;
+	private DoctorFacade docf;
 	/**
 	 * Inializer for the current view
 	 */
@@ -40,11 +41,12 @@ public class ProfileController {
 	 */
 	public void setMainApp(Main main){
 	}
+	
 	/**
      * Default constructor
      */
-    public ProfileController() {
-    	patf = new PatientFacade();
+    public ProfileDoctorController() {
+    	docf = new DoctorFacade();
     }
     
 
@@ -53,9 +55,9 @@ public class ProfileController {
      * @param mail The mail of the person we want to see 
      * @return Doctor the person found
      */
-    public Patient loadInfo(String mail) {
-        Patient patient = patf.loadInfo(mail);
-        return patient;
+    public Doctor loadInfo(String mail) {
+        Doctor doctor = docf.loadInfo(mail);
+        return doctor;
     }
 
     /**
@@ -71,12 +73,15 @@ public class ProfileController {
      */
     public void displayInfo(String mail) {
         try{
-        	Patient pat = loadInfo(mail);
-        	label_fn.setText(pat.getFisrtName());
-        	label_ln.setText(pat.getLastName());
-        	label_mail.setText(pat.getEmail());
-        	label_bd.setText(pat.getBirthday().toString());
-        	label_phone.setText(pat.getPhoneNumber());
+        	Doctor doc = loadInfo(mail);
+        	label_fn.setText(doc.getFisrtName());
+        	label_ln.setText(doc.getLastName());
+        	label_mail.setText(doc.getEmail());
+        	label_bd.setText(doc.getBirthday().toString());
+        	label_phone.setText(doc.getPhoneNumber());
+        	label_siret.setText(doc.getSiret());
+        	String adress = ""+doc.getStreetNumber()+" "+doc.getStreet()+" "+doc.getZipCode()+" "+doc.getCity()+"";
+        	label_adress.setText(adress);
         	
         }catch(Exception e){
         	displayError(e.getMessage());
@@ -87,7 +92,6 @@ public class ProfileController {
 		this.prevStage=prevStage;
 		
 	}
-	
 	
 	/********************************************************
 	 * 

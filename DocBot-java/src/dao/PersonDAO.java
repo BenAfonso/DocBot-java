@@ -8,7 +8,6 @@ public abstract class PersonDAO {
 	protected Connection connect = null;
 
 	public PersonDAO(Connection conn){
-		System.out.println("Person Dao Created");
 		this.connect = conn;
 	}
    

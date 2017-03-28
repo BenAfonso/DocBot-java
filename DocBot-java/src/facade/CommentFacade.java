@@ -8,13 +8,6 @@ import java.util.*;
  * @author BenAfonso
  */
 public class CommentFacade {
-
-    /**
-     * Default constructor
-     */
-    public CommentFacade() {
-    }
-
     /**
      * 
      */
@@ -24,6 +17,16 @@ public class CommentFacade {
      * 
      */
     public CommentDAO dao;
+
+    /**
+     * Default constructor
+     */
+    public CommentFacade() {
+		adf = AbstractDAOFactory.getFactory(AbstractDAOFactory.PG_DAOFACTORY);
+    	dao=adf.getCommentDAO();
+    }
+
+
 
     /**
      * 
@@ -54,11 +57,11 @@ public class CommentFacade {
     /**
      * Add a comment 
      * @param Comment the comment to add 
-     * @return the added comment
+     * @return boolean
      */
-    public Comment addComment(Comment comment) {
-        // TODO implement here
-        return null;
+    public Boolean addComment(String content, String title, int rate, Date datePost, int appointment_id) {
+        Comment commentToPost=new Comment(content,title,rate,datePost,appointment_id);
+        return (dao.create(commentToPost));
     }
 
 }

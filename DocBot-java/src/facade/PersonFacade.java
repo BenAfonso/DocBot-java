@@ -1,8 +1,13 @@
 package facade;
 
 import dao.AbstractDAOFactory;
+import dao.DoctorDAO;
+import dao.PatientDAO;
 import dao.PersonDAO;
+import models.Doctor;
+import models.Patient;
 import models.Person;
+import services.Authentification;
 
 public class PersonFacade {
 	
@@ -15,6 +20,8 @@ public class PersonFacade {
 	
 	
 	PersonDAO userDao;
+	DoctorDAO docDao;
+	PatientDAO patientDao;
 	AbstractDAOFactory adf;
 	
 	
@@ -29,6 +36,8 @@ public class PersonFacade {
 		adf = AbstractDAOFactory.getFactory(AbstractDAOFactory.PG_DAOFACTORY);
 		// Fetching link between database and models
 		userDao = adf.getPersonDAO();
+		docDao = adf.getDoctorDAO();
+		patientDao = adf.getPatientDAO();
 	}
 	
 	
@@ -53,7 +62,15 @@ public class PersonFacade {
 		if (user == null) {
 			throw new Exception("User doesn't exist");
 		} 
-
+		Doctor doc = docDao.find(user.getId());
+		if(doc !=null){
+			Authentification.connect(doc);
+		}else{
+			Patient pat = patientDao.find(user.getId());
+			if(pat !=null){
+				Authentification.connect(pat);
+			}
+		}
 		return (user.getPassword().equals(password));
 	}
 
