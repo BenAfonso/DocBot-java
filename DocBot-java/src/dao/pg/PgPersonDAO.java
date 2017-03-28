@@ -117,4 +117,17 @@ public class PgPersonDAO extends PersonDAO {
 		return user;
 	}
 
+	@Override
+	public boolean updatePassword(String mail, String newPassword) {
+		try {
+			int result = this.connect.createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeUpdate("UPDATE person SET password='"+newPassword+"' WHERE email='"+mail+"'");
+				return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 }

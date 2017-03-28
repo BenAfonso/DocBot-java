@@ -120,4 +120,5 @@ public class ProfileDoctorController {
 	public void goToListOfWaitingDoctors() {
 		nav.goToListOfWaitingDoctors();
 	}
+	
 }

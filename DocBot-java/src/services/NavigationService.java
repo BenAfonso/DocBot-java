@@ -14,6 +14,7 @@ import ui.ProfileController;
 import ui.ProfileDoctorController;
 import ui.UpdateDoctorProfileController;
 import ui.UpdateProfileController;
+import ui.UpdatePasswordController;
 import ui.ValidateOrRejectDoctorRegistrationController;
 import ui.ListOfDoctors.ListOfDoctorsController;
 
@@ -125,6 +126,25 @@ public class NavigationService {
 			e.printStackTrace();
 		}
 	}
+	
+
+	public void goUpdatePassword(Stage prevStage){
+		try {
+		FXMLLoader loader=new FXMLLoader();
+		loader.setLocation(Main.class.getResource("../ui/UpdatePasswordView.fxml"));
+		AnchorPane passwordView;
+		
+		passwordView = (AnchorPane) loader.load();
+		
+		changeView(passwordView);
+		UpdatePasswordController controller=loader.getController();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
 	
 	public void goToProfile(){
 		try {

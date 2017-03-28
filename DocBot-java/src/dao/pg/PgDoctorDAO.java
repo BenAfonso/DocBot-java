@@ -239,6 +239,12 @@ public class PgDoctorDAO extends DoctorDAO {
 		
 		return doctors;
 	}
+
+	@Override
+	public boolean updatePassword(String mail, String newPassword) {
+		// TODO Auto-generated method stub
+		return true;
+	}
 	
 
 }
