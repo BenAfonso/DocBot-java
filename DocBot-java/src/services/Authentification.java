@@ -28,6 +28,14 @@ public class Authentification {
 	}
 	
 	/**
+	 *  Check if the connected person is an Admin 
+	 * @return true if the person is a doctor, false ohterwise
+	 */
+	public static boolean isAdministrator(){
+		return (getUser() instanceof Administrator);
+	}
+	
+	/**
 	 *  Check if the connected person is a patient 
 	 * @return true if the person is a patient, false ohterwise
 	 */

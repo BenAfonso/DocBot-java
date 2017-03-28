@@ -24,7 +24,7 @@ public class PgPersonDAO extends PersonDAO {
 		try {
 			int result = this.connect.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Person (firstname, lastname, email, password,phone,birthday) VALUES ('"+obj.getFisrtName()+"','"+obj.getLastName()+"','"+obj.getEmail()+"','"+obj.getPassword()+"','"+obj.getPhoneNumber()+"','"+obj.getBirthday()+"')");
+					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Person (firstname, lastname, email, password,phone,birthday) VALUES ('"+obj.getFirstName()+"','"+obj.getLastName()+"','"+obj.getEmail()+"','"+obj.getPassword()+"','"+obj.getPhoneNumber()+"','"+obj.getBirthday()+"')");
 				return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -62,7 +62,7 @@ public class PgPersonDAO extends PersonDAO {
 		try {
 			ResultSet result = this.connect.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeQuery("UPDATE Person SET (firstname, lastname, email, password) = ('"+obj.getFisrtName()+"','"+obj.getLastName()+"','"+obj.getEmail()+"','"+obj.getPassword()+"')");
+					ResultSet.CONCUR_READ_ONLY).executeQuery("UPDATE Person SET (firstname, lastname, email, password) = ('"+obj.getFirstName()+"','"+obj.getLastName()+"','"+obj.getEmail()+"','"+obj.getPassword()+"')");
 			if(result.first())
 				user  = new Person(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"));         
 		} catch (SQLException e) {

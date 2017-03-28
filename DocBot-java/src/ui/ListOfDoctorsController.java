@@ -5,22 +5,55 @@ import java.util.*;
 
 import facade.DoctorFacade;
 import models.Doctor;
+import models.Person;
+import services.NavigationService;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  * @author BenAfonso
  */
 public class ListOfDoctorsController implements javafx.fxml.Initializable {
 
-	
+    @FXML TableView<Doctor> doctorsTable;
+    @FXML TableColumn<Doctor, String> cityCol;
+    @FXML TableColumn<Doctor, String> firstNameCol;
+    @FXML TableColumn<Doctor, String> lastNameCol;
+    private DoctorFacade doctorFacade;
+    
+	NavigationService nav = new NavigationService();
+
+	private Stage prevStage;
+	private List<Doctor> list;
 	/**
 	 * Inializer for the current view
 	 */
 	public void initialize(URL location, ResourceBundle resources) {
+		
+    	this.displayDoctors();
+
 	}
+	
+	
+	/**
+	 * Set the main application
+	 * @param main
+	 */
+	public void setMainApp(Main main){
+	}
+	
+
+
+	public void setPrevStage(Stage prevStage) {
+		this.prevStage=prevStage;
+		
+	}
+
 	
     /**
      * Default constructor
@@ -30,12 +63,7 @@ public class ListOfDoctorsController implements javafx.fxml.Initializable {
     	this.getDoctors();
     }
     
-    @FXML TableView doctorsTable;
-    @FXML TableColumn cityCol;
-    @FXML TableColumn firstNameCol;
-    @FXML TableColumn lastNameCol;
-    private DoctorFacade doctorFacade;
-    
+
 
     /**
      * 
@@ -55,24 +83,27 @@ public class ListOfDoctorsController implements javafx.fxml.Initializable {
 
 
     /**
+     * @return 
      * 
      */
-    public void getDoctors() {
+    public List<Doctor> getDoctors() {
         // TODO implement here
-    	ArrayList<Doctor> list = this.doctorFacade.getDoctors();
+    	this.list = this.doctorFacade.getDoctors();
+    	return this.list;
+    	
     }
 
     /**
      * @param speciality
      */
-    public void getDoctorsSpeciality(String speciality) {
+    public void getDoctorsBySpeciality(String speciality) {
         // TODO implement here
     }
 
     /**
      * @param city
      */
-    public void getDoctorsCity(String city) {
+    public void getDoctorsByCity(String city) {
         // TODO implement here
     }
 
@@ -81,6 +112,29 @@ public class ListOfDoctorsController implements javafx.fxml.Initializable {
      */
     public void displayDoctors() {
         // TODO implement here
+    	
+    	
+    	firstNameCol.setCellValueFactory(new PropertyValueFactory<Doctor, String>("firstName"));
+        lastNameCol.setCellValueFactory(new PropertyValueFactory<Doctor, String>("lastName"));
+        cityCol.setCellValueFactory(new PropertyValueFactory<Doctor, String>("city"));
+		doctorsTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		doctorsTable.getColumns().get(0).prefWidthProperty().bind(doctorsTable.widthProperty().multiply(0.33));
+		doctorsTable.getColumns().get(1).prefWidthProperty().bind(doctorsTable.widthProperty().multiply(0.33));
+		doctorsTable.getColumns().get(2).prefWidthProperty().bind(doctorsTable.widthProperty().multiply(0.33));
+		doctorsTable.getItems().setAll(this.getDoctors());
+    	
+            
     }
+	public void logout(){
+		nav.goLogout(prevStage);
+	}
+	
+	public void goToProfile(){
+		nav.goToProfile(prevStage);
+	}
+	
+	public void goToListOfDoctors() {
+		nav.goToListOfDoctors(prevStage);
+	}
 
 }

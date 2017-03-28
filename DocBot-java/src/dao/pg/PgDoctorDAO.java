@@ -64,18 +64,18 @@ public class PgDoctorDAO extends DoctorDAO {
 		return doctor;
 	}
 	
-	public ArrayList<Doctor> findAll() {
-		ArrayList<Doctor> doctors = new ArrayList<Doctor>();
+	public List<Doctor> findAll() {
+		List<Doctor> doctors = new ArrayList<Doctor>();
 		try {
 
 			
 			ResultSet result = this.connect.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT p.id as id, firstname, lastname, password, email, siret FROM doctor d, person p WHERE d.id = p.id");
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT p.id as id, firstname, lastname, password, email, siret, number, street, city, zip_code, policy_id FROM doctor d, person p WHERE d.id = p.id");
 			
 			while (result.next()) {
 				Person person = new Person(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"));         
-				Doctor doc = new Doctor(person, result.getString("siret"), "");
+				Doctor doc = new Doctor(person, result.getString("siret"), result.getString("number"), result.getString("street"), result.getString("city"), result.getString("zip_code"), result.getInt("policy_id"));
 				
 				doctors.add(doc);
 			}
@@ -132,6 +132,78 @@ public class PgDoctorDAO extends DoctorDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	@Override
+	public Doctor[] getUncheckedDoctor() {
+		ArrayList<Doctor> doctors = new ArrayList<Doctor>();    
+		try {
+			ResultSet result = this.connect.createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM doctor d,person p WHERE isValidated = 0 ");
+
+			
+			while (result.next()) {
+				Person person = new Person(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"));         
+				Doctor doc = new Doctor(person, result.getString("siret"), result.getString("number"), result.getString("street"), result.getString("city"), result.getString("zip_code"), result.getInt("policy_id"));
+				
+				doctors.add(doc);
+			}       
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return (Doctor[]) doctors.toArray();
+	}
+
+	@Override
+	public void create(Doctor doctor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(Doctor doctor) {
+		
+	}
+
+	@Override
+	public void find(Doctor doctor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Doctor doctor) {
+		try {
+			ResultSet result = this.connect.createStatement(
+			ResultSet.TYPE_SCROLL_INSENSITIVE,
+			ResultSet.CONCUR_READ_ONLY).executeQuery("DELETE FROM person WHERE email ="+doctor.getEmail());
+			result = this.connect.createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("DELETE FROM doctor WHERE id ="+doctor.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void reject(Doctor doctor) {
+		Doctor docToReject = find(doctor.getEmail());
+		delete(docToReject);
+	}
+
+	@Override
+	public void accept(Doctor doctor) {
+		Doctor docToAccept = find(doctor.getEmail());
+		docToAccept.setValidated(true);
+		try {
+			ResultSet result = this.connect.createStatement(
+			ResultSet.TYPE_SCROLL_INSENSITIVE,
+			ResultSet.CONCUR_READ_ONLY).executeQuery("UPDATE person SET isValidated = 1 * WHERE email ="+doctor.getEmail());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

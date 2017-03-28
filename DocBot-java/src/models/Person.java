@@ -18,6 +18,7 @@ public class Person {
 	private String password = "";
 	private Date birthday;
 	private String phoneNumber;
+	private boolean isValidated = false;
 	
 	
 	
@@ -59,7 +60,7 @@ public class Person {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getFisrtName() {
+	public String getFirstName() {
 		return firstName;
 	}
 	public void setFirstName(String fname) {
@@ -94,6 +95,12 @@ public class Person {
 	}
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
+	}
+	public boolean isValidated() {
+		return isValidated;
+	}
+	public void setValidated(boolean isValidated) {
+		this.isValidated = isValidated;
 	}
 
 

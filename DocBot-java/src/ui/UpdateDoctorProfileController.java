@@ -91,7 +91,7 @@ public class UpdateDoctorProfileController {
      */
     public void displayInfo() {
         Doctor doc = doctorFacade.loadInfo(Authentification.getUser().getEmail());
-        fnameField.setText(doc.getFisrtName());
+        fnameField.setText(doc.getFirstName());
         lnameField.setText(doc.getLastName());
         
     }

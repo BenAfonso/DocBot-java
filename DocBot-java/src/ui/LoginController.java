@@ -132,6 +132,7 @@ public class LoginController implements javafx.fxml.Initializable {
 			e.printStackTrace();
 		}
 	}
+	
 	public void goToRegisterDoctorPage(){
 		FXMLLoader loader=new FXMLLoader();
 		loader.setLocation(Main.class.getResource("./RegisterDoctorView.fxml"));
@@ -148,5 +149,4 @@ public class LoginController implements javafx.fxml.Initializable {
 			e.printStackTrace();
 		}
 	}
-
 }

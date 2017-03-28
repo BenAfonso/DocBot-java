@@ -11,6 +11,7 @@ import ui.Main;
 import ui.ProfileController;
 import ui.ProfileDoctorController;
 import ui.UpdateDoctorProfileController;
+import ui.ListOfDoctorsController;
 
 public class NavigationService {
 
@@ -19,6 +20,28 @@ public class NavigationService {
 	public NavigationService(){
 		
 	}
+	
+	public void goToListOfDoctors(Stage prevStage) {
+		FXMLLoader loader=new FXMLLoader();
+		loader.setLocation(Main.class.getResource("../ui/ListOfDoctorsView.fxml"));
+		AnchorPane listOfDoctorsView;
+	
+		try {
+			listOfDoctorsView = (AnchorPane) loader.load();
+			Scene scene=new Scene(listOfDoctorsView);
+			prevStage.setScene(scene);
+			prevStage.show();
+			ListOfDoctorsController controller=loader.getController();
+			controller.setPrevStage(prevStage);
+			controller.setMainApp(mainApp);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		
+	}
+	
 	
 	public void goLogout(Stage prevStage){
 		try {

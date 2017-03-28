@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="627.0" prefWidth="1118.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ValidateOrRejectDoctorRegistrationController">
+   <children>
+      <ScrollPane layoutX="-1.0" layoutY="54.0" prefHeight="476.0" prefWidth="1119.0">
+         <content>
+            <TableView id="table" fx:id="table" prefHeight="490.0" prefWidth="1115.0">
+              <columns>
+                <TableColumn id="lastNameColumn" fx:id="lastNameColumn" prefWidth="235.0" text="Last Name" />
+                <TableColumn id="firstNameColumn" fx:id="firstNameColumn" prefWidth="258.0" text="First Name" />
+                  <TableColumn id="siretColumn" fx:id="siretColumn" minWidth="0.0" prefWidth="198.0" text="Siret" />
+                  <TableColumn id="cityColumn" fx:id="cityColumn" prefWidth="283.0" text="City" />
+                  <TableColumn id="zipColumn" fx:id="zipColumn" prefWidth="124.0" text="zip_code" />
+              </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
+      <Label layoutX="483.0" layoutY="14.0" prefHeight="21.0" prefWidth="181.0" text="Unechecked Doctors">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Button layoutX="664.0" layoutY="564.0" mnemonicParsing="false" onAction="#acceptDoctor" text="Accepter" />
+      <Button layoutX="284.0" layoutY="564.0" mnemonicParsing="false" onAction="#goToDoctorProfil" text="Voir le profil" textAlignment="CENTER" />
+      <Button layoutX="768.0" layoutY="564.0" mnemonicParsing="false" onAction="#rejectDoctor" text="Refuser" />
+   </children>
+</AnchorPane>
