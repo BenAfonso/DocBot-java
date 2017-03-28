@@ -103,7 +103,7 @@ public class UpdateDoctorProfileController {
         zipCodeField.setText(doc.getZipCode());
         phoneField.setText(doc.getPhoneNumber());
     
-        LocalDate date = doc.getBirthday().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate date = new java.sql.Date(doc.getBirthday().getTime() ).toLocalDate();
         birthdayField.setValue(date);
         
     }
