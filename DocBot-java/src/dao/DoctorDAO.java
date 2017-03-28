@@ -49,7 +49,7 @@ public abstract class DoctorDAO extends PersonDAO {
         // TODO implement here
     }
     
-    public abstract ArrayList<Doctor> findAll();
+    public abstract List<Doctor> findAll();
     
     
     public abstract Doctor find(String mail);

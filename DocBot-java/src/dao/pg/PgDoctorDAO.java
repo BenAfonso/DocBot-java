@@ -63,18 +63,18 @@ public class PgDoctorDAO extends DoctorDAO {
 		return doctor;
 	}
 	
-	public ArrayList<Doctor> findAll() {
-		ArrayList<Doctor> doctors = new ArrayList<Doctor>();
+	public List<Doctor> findAll() {
+		List<Doctor> doctors = new ArrayList<Doctor>();
 		try {
 
 			
 			ResultSet result = this.connect.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT p.id as id, firstname, lastname, password, email, siret FROM doctor d, person p WHERE d.id = p.id");
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT p.id as id, firstname, lastname, password, email, siret, number, street, city, zip_code, policy_id FROM doctor d, person p WHERE d.id = p.id");
 			
 			while (result.next()) {
 				Person person = new Person(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"));         
-				Doctor doc = new Doctor(person, result.getString("siret"), "");
+				Doctor doc = new Doctor(person, result.getString("siret"), result.getString("number"), result.getString("street"), result.getString("city"), result.getString("zip_code"), result.getInt("policy_id"));
 				
 				doctors.add(doc);
 			}

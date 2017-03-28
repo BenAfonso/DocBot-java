@@ -59,7 +59,7 @@ public class Person {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getFisrtName() {
+	public String getFirstName() {
 		return firstName;
 	}
 	public void setFirstName(String fname) {
