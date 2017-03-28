@@ -111,15 +111,14 @@ public class ListOfDoctorsController implements javafx.fxml.Initializable {
     public void displayDoctors() {
         // TODO implement here
     	
-    	
     	firstNameCol.setCellValueFactory(new PropertyValueFactory<Doctor, String>("firstName"));
         lastNameCol.setCellValueFactory(new PropertyValueFactory<Doctor, String>("lastName"));
-        cityCol.setCellValueFactory(new PropertyValueFactory<Doctor, String>("city"));
-		doctorsTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-		doctorsTable.getColumns().get(0).prefWidthProperty().bind(doctorsTable.widthProperty().multiply(0.33));
-		doctorsTable.getColumns().get(1).prefWidthProperty().bind(doctorsTable.widthProperty().multiply(0.33));
-		doctorsTable.getColumns().get(2).prefWidthProperty().bind(doctorsTable.widthProperty().multiply(0.33));
-		doctorsTable.getItems().setAll(this.getDoctors());
+	cityCol.setCellValueFactory(new PropertyValueFactory<Doctor, String>("city"));
+	doctorsTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+	doctorsTable.getColumns().get(0).prefWidthProperty().bind(doctorsTable.widthProperty().multiply(0.33));
+	doctorsTable.getColumns().get(1).prefWidthProperty().bind(doctorsTable.widthProperty().multiply(0.33));
+	doctorsTable.getColumns().get(2).prefWidthProperty().bind(doctorsTable.widthProperty().multiply(0.33));
+	doctorsTable.getItems().setAll(this.getDoctors());
     	
             
     }
