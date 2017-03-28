@@ -2,12 +2,14 @@ package services;
 
 import java.io.IOException;
 
+import application.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuBar;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import ui.LoginController;
-import ui.Main;
 import ui.ProfileController;
 import ui.ProfileDoctorController;
 import ui.UpdateDoctorProfileController;
@@ -18,23 +20,31 @@ import ui.ListOfDoctors.ListOfDoctorsController;
 public class NavigationService {
 
 	private Main mainApp;
-	
+	  private static BorderPane root = new BorderPane();
+	  private static Stage primaryStage;
+	  private static MenuBar menuView;
+
+	  /**
+	   * Just a root getter for the controller to use
+	   */
+	  public static BorderPane getRoot() {
+	    return root;
+	  }
 	public NavigationService(){
 		
 	}
 	
-	public void goToListOfDoctors(Stage prevStage) {
+	public void goToListOfDoctors() {
 		FXMLLoader loader=new FXMLLoader();
 		loader.setLocation(Main.class.getResource("../ui/ListOfDoctors/ListOfDoctorsView.fxml"));
 		AnchorPane listOfDoctorsView;
 	
 		try {
 			listOfDoctorsView = (AnchorPane) loader.load();
-			Scene scene=new Scene(listOfDoctorsView);
-			prevStage.setScene(scene);
-			prevStage.show();
+			
+			changeView(listOfDoctorsView);
+
 			ListOfDoctorsController controller=loader.getController();
-			controller.setPrevStage(prevStage);
 			controller.setMainApp(mainApp);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -44,25 +54,22 @@ public class NavigationService {
 	
 		
 	}
-	public void goToListOfWaitingDoctors(Stage prevStage) {
+	public void goToListOfWaitingDoctors() {
 		FXMLLoader loader=new FXMLLoader();
 		loader.setLocation(Main.class.getResource("../ui/ValidateOrRejectDoctorRegistration.fxml"));
 		AnchorPane listOfWaitingDoctorsView;
 	
 		try {
 			listOfWaitingDoctorsView = (AnchorPane) loader.load();
-			Scene scene=new Scene(listOfWaitingDoctorsView);
-			prevStage.setScene(scene);
-			prevStage.show();
+			changeView(listOfWaitingDoctorsView);
 			ValidateOrRejectDoctorRegistrationController controller=loader.getController();
-			controller.setPrevStage(prevStage);
 			controller.setMainApp(mainApp);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	public void goLogout(Stage prevStage){
+	public void goLogout(){
 		try {
 		FXMLLoader loader=new FXMLLoader();
 		loader.setLocation(Main.class.getResource("../ui/loginView.fxml"));
@@ -70,11 +77,14 @@ public class NavigationService {
 		
 			loginView = (AnchorPane) loader.load();
 		
-		Scene scene=new Scene(loginView);
-		prevStage.setScene(scene);
-		prevStage.show();
+			BorderPane rootTest = new BorderPane();
+			rootTest.setCenter(loginView);
+			
+			Scene scene = new Scene(rootTest, 1000, 600);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+			
 		LoginController controller=loader.getController();
-		controller.setPrevStage(prevStage);
 		controller.setMainApp(mainApp);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -83,7 +93,7 @@ public class NavigationService {
 		Authentification.disconnect();
 	}
 	
-	public void goUpdateProfile(Stage prevStage){
+	public void goUpdateProfile(){
 		try {
 			if(Authentification.isDoctor()){
 				FXMLLoader loader=new FXMLLoader();
@@ -92,11 +102,9 @@ public class NavigationService {
 		
 				updateDoctorView = (AnchorPane) loader.load();
 		
-				Scene scene=new Scene(updateDoctorView);
-				prevStage.setScene(scene);
-				prevStage.show();
+				changeView(updateDoctorView);
+
 				UpdateDoctorProfileController controller=loader.getController();
-				controller.setPrevStage(prevStage);
 				controller.setMainApp(mainApp);
 				controller.displayInfo();
 			}else{
@@ -105,12 +113,10 @@ public class NavigationService {
 				AnchorPane updateProfilView;
 		
 				updateProfilView = (AnchorPane) loader.load();
-		
-				Scene scene=new Scene(updateProfilView);
-				prevStage.setScene(scene);
-				prevStage.show();
+				
+				changeView(updateProfilView);
+				
 				UpdateProfileController controller=loader.getController();
-				controller.setPrevStage(prevStage);
 				controller.setMainApp(mainApp);
 				controller.displayInfo();
 			}
@@ -120,21 +126,18 @@ public class NavigationService {
 		}
 	}
 	
-	public void goToProfile(Stage prevStage){
+	public void goToProfile(){
 		try {
 			if(Authentification.isDoctor()){
 				FXMLLoader loader=new FXMLLoader();
 				loader.setLocation(Main.class.getResource("../ui/ProfileDoctorView.fxml"));
 				AnchorPane profileDocView;
 			
-				profileDocView = (AnchorPane) loader.load();
-			
-				Scene scene=new Scene(profileDocView);
-				prevStage.setScene(scene);
-				prevStage.show();
+				profileDocView = loader.load();
+				changeView(profileDocView);
+				
 				ProfileDoctorController controller=loader.getController();
 				controller.displayInfo(Authentification.getUser().getEmail());
-				controller.setPrevStage(prevStage);
 				controller.setMainApp(mainApp);
 			}
 			else{
@@ -143,13 +146,10 @@ public class NavigationService {
 				AnchorPane profileView;
 			
 				profileView = (AnchorPane) loader.load();
-			
-				Scene scene=new Scene(profileView);
-				prevStage.setScene(scene);
-				prevStage.show();
+				changeView(profileView);
 				ProfileController controller=loader.getController();
+				
 				controller.displayInfo(Authentification.getUser().getEmail());
-				controller.setPrevStage(prevStage);
 				controller.setMainApp(mainApp);
 			}
 		
@@ -158,4 +158,23 @@ public class NavigationService {
 			e.printStackTrace();
 		}
 	}
+	public static void changeView(AnchorPane pane){
+		BorderPane rootTest = new BorderPane();
+		rootTest.setTop(menuView);
+		rootTest.setCenter(pane);
+		
+		Scene scene = new Scene(rootTest, 1000, 600);
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+	public static void setPrimaryStage(Stage primaryStageToSet) {
+		primaryStage=primaryStageToSet;
+	}
+	public static MenuBar getMenuView() {
+		return menuView;
+	}
+	public static void setMenuView(MenuBar menuView) {
+		NavigationService.menuView = menuView;
+	}
+
 }

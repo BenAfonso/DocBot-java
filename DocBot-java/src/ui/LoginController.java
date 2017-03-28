@@ -5,18 +5,21 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.Main;
 import facade.PersonFacade;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import models.Person;
 import services.Authentification;
+import services.NavigationService;
 
 
 public class LoginController implements javafx.fxml.Initializable {
@@ -79,13 +82,15 @@ public class LoginController implements javafx.fxml.Initializable {
 		if ( canLogin) {
 			if(Authentification.isDoctor()){
 				FXMLLoader loader=new FXMLLoader();
-				loader.setLocation(Main.class.getResource("./ProfileDoctorView.fxml"));
+				loader.setLocation(Main.class.getResource("../ui/ProfileDoctorView.fxml"));
 				AnchorPane ProfileDoctorView;
+				FXMLLoader loaderMenu=new FXMLLoader();
+				loaderMenu.setLocation(Main.class.getResource("../services/DoctorMenu.fxml"));
+				MenuBar menuBar=loaderMenu.load();
+				NavigationService.setMenuView(menuBar);
 				try {
 					ProfileDoctorView = (AnchorPane) loader.load();
-					Scene scene=new Scene(ProfileDoctorView);
-					prevStage.setScene(scene);
-					prevStage.show();
+					NavigationService.changeView(ProfileDoctorView);
 					ProfileDoctorController controller=loader.getController();
 					controller.displayInfo(Authentification.getUser().getEmail());
 					controller.setPrevStage(prevStage);
@@ -94,8 +99,13 @@ public class LoginController implements javafx.fxml.Initializable {
 					e.printStackTrace();
 				};
 			}else{
+				FXMLLoader loaderMenu=new FXMLLoader();
+				loaderMenu.setLocation(Main.class.getResource("../services/PatientMenu.fxml"));
+				MenuBar menuBar=loaderMenu.load();
+				NavigationService.setMenuView(menuBar);
+				
 				FXMLLoader loader=new FXMLLoader();
-				loader.setLocation(Main.class.getResource("./ProfileView.fxml"));
+				loader.setLocation(Main.class.getResource("../ui/ProfileView.fxml"));
 				AnchorPane ProfileView;
 				try {
 					ProfileView = (AnchorPane) loader.load();

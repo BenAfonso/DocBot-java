@@ -8,6 +8,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ResourceBundle;
 
+import application.Main;
 import facade.DoctorFacade;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -115,7 +116,7 @@ public class UpdateDoctorProfileController {
 	 ********************************************************/
 	
 	public void goToProfile(){
-		nav.goToProfile(prevStage);
+		nav.goToProfile();
 	}
 	
 	

@@ -4,9 +4,9 @@ import java.net.URL;
 import java.util.*;
 import java.util.function.Predicate;
 
+import application.Main;
 import facade.DoctorFacade;
 import models.Doctor;
-import ui.Main;
 import ui.MenuController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

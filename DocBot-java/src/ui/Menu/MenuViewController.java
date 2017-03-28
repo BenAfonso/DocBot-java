@@ -5,10 +5,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import services.NavigationService;
-import ui.Main;
 
 import java.net.URL;
 import java.util.*;
+
+import application.Main;
 
 public class MenuViewController {
 

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
+import application.Main;
 import facade.*;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.*;
@@ -190,23 +191,23 @@ public class ValidateOrRejectDoctorRegistrationController {
 	 ********************************************************/
 	
 	public void logout(){
-		nav.goLogout(prevStage);
+		nav.goLogout();
 	}
 	
 	public void goToProfile(){
-		nav.goToProfile(prevStage);
+		nav.goToProfile();
 	}
 	
 
 	public void goUpdateProfile(){
-		nav.goUpdateProfileDoctor(prevStage);
+		nav.goUpdateProfile();
 	}
 	
 	public void goToListOfDoctors() {
-		nav.goToListOfDoctors(prevStage);
+		nav.goToListOfDoctors();
 
 	}
 	public void goToListOfWaitingDoctors() {
-		nav.goToListOfWaitingDoctors(prevStage);
+		nav.goToListOfWaitingDoctors();
 	}
 }
