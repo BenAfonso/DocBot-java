@@ -23,7 +23,7 @@ public class MenuController {
 	
 
 	public void goUpdateProfile(){
-		nav.goUpdateProfileDoctor(getPrevStage());
+		nav.goUpdateProfile(getPrevStage());
 	}
 	
 	public void goToListOfDoctors() {

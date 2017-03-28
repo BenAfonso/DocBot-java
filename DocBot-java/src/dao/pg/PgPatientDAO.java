@@ -3,6 +3,7 @@ package dao.pg;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 import dao.PatientDAO;
 import models.Doctor;
@@ -48,6 +49,19 @@ public class PgPatientDAO extends PatientDAO {
 			e.printStackTrace();
 		}
 		return patient;
+	}
+	
+	@Override
+	public boolean update(String mail,String fname, String lname, Date birthday, String phoneNumber){
+		try {
+			int result = this.connect.createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeUpdate("UPDATE person SET firstname='"+fname+"' ,lastname='"+lname+"' ,birthday='"+birthday+"' ,phone='"+phoneNumber+"' WHERE email='"+mail+"'");
+				return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

@@ -106,4 +106,8 @@ public class ProfileController {
 	public void goToListOfDoctors() {
 		nav.goToListOfDoctors(prevStage);
 	}
+	
+	public void goUpdateProfile(){
+		nav.goUpdateProfile(prevStage);
+	}
 }

@@ -119,6 +119,7 @@ public class PgDoctorDAO extends DoctorDAO {
 		return doctor;
 	}
 	
+	@Override
 	public boolean update(String mail,String fname, String lname, Date birthday, String phoneNumber, String streetNumber, String street, String city, String zipCode, int id){
 		try {
 			int result = this.connect.createStatement(

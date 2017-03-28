@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 import models.Patient;
 import models.Person;
@@ -51,6 +52,8 @@ public abstract class PatientDAO {
     public abstract Patient find(int id);
     
     public abstract Patient find(String mail);
+    
+    public abstract boolean update(String mail, String fname, String lname, Date birthday, String phoneNumber);
 
     /**
      * @param patient
