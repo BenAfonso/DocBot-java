@@ -43,7 +43,7 @@ public abstract class DoctorDAO extends PersonDAO {
      * get all the doctors that are unchecked
      * @return an array of unchecked doctors
      */
-    public  abstract Doctor[] getUncheckedDoctor() ;
+    public  abstract List<Doctor> getUncheckedDoctor() ;
     /**
      * @param doctor
      */
@@ -69,10 +69,12 @@ public abstract class DoctorDAO extends PersonDAO {
 	
 	public abstract boolean update(String mail,String fname, String lname, Date birthday, String phoneNumber, String streetNumber, String street, String city, String zipCode, int id);
 
-	public abstract void reject(Doctor doctor);
+	public abstract void reject(int idDoctor);
 	
 	public abstract void accept(Doctor doctor);
 
 	public abstract List<Doctor> findActive(boolean b);
+
+	public abstract void delete(int id);
 
 }

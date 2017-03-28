@@ -116,4 +116,7 @@ public class ProfileDoctorController {
 		nav.goToListOfDoctors(prevStage);
 
 	}
+	public void goToListOfWaitingDoctors() {
+		nav.goToListOfWaitingDoctors(prevStage);
+	}
 }

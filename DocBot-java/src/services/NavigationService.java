@@ -11,6 +11,7 @@ import ui.Main;
 import ui.ProfileController;
 import ui.ProfileDoctorController;
 import ui.UpdateDoctorProfileController;
+import ui.ValidateOrRejectDoctorRegistrationController;
 import ui.ListOfDoctors.ListOfDoctorsController;
 
 public class NavigationService {
@@ -42,6 +43,26 @@ public class NavigationService {
 		
 	}
 	
+	public void goToListOfWaitingDoctors(Stage prevStage) {
+		FXMLLoader loader=new FXMLLoader();
+		loader.setLocation(Main.class.getResource("./ValidateOrRejectDoctorRegistration.fxml"));
+		AnchorPane listOfWaitingDoctorsView;
+	
+		try {
+			listOfWaitingDoctorsView = (AnchorPane) loader.load();
+			Scene scene=new Scene(listOfWaitingDoctorsView);
+			prevStage.setScene(scene);
+			prevStage.show();
+			ValidateOrRejectDoctorRegistrationController controller=loader.getController();
+			controller.setPrevStage(prevStage);
+			controller.setMainApp(mainApp);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		
+	}
 	
 	public void goLogout(Stage prevStage){
 		try {

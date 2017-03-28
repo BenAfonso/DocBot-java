@@ -71,6 +71,11 @@
                   <Font size="18.0" />
                </font>
             </Button>
+            <Button layoutX="14.0" layoutY="376.0" mnemonicParsing="false" onAction="#goToListOfWaitingDoctors" text="List of waiting doctors">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>

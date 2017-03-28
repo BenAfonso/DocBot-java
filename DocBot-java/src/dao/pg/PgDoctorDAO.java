@@ -135,12 +135,12 @@ public class PgDoctorDAO extends DoctorDAO {
 	}
 
 	@Override
-	public Doctor[] getUncheckedDoctor() {
-		ArrayList<Doctor> doctors = new ArrayList<Doctor>();    
+	public List<Doctor> getUncheckedDoctor() {
+		List<Doctor> doctors = new ArrayList<Doctor>();    
 		try {
 			ResultSet result = this.connect.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM doctor d,person p WHERE isValidated = 0 ");
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM doctor d,person p WHERE isValidated = false ");
 
 			
 			while (result.next()) {
@@ -152,7 +152,7 @@ public class PgDoctorDAO extends DoctorDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return (Doctor[]) doctors.toArray();
+		return doctors;
 	}
 
 	@Override
@@ -175,21 +175,31 @@ public class PgDoctorDAO extends DoctorDAO {
 	@Override
 	public void delete(Doctor doctor) {
 		try {
-			ResultSet result = this.connect.createStatement(
+			int result = this.connect.createStatement(
 			ResultSet.TYPE_SCROLL_INSENSITIVE,
-			ResultSet.CONCUR_READ_ONLY).executeQuery("DELETE FROM person WHERE email ="+doctor.getEmail());
+			ResultSet.CONCUR_READ_ONLY).executeUpdate("DELETE FROM doctor WHERE id ='"+doctor.getId()+"'");
 			result = this.connect.createStatement(
-					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeQuery("DELETE FROM doctor WHERE id ="+doctor.getId());
+			ResultSet.TYPE_SCROLL_INSENSITIVE,
+			ResultSet.CONCUR_READ_ONLY).executeUpdate("DELETE FROM person WHERE email ='"+doctor.getEmail()+"'");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-
 	@Override
-	public void reject(Doctor doctor) {
-		Doctor docToReject = find(doctor.getEmail());
-		delete(docToReject);
+	public void delete(int id) {
+		try {
+			int result = this.connect.createStatement(
+			ResultSet.TYPE_SCROLL_INSENSITIVE,
+			ResultSet.CONCUR_READ_ONLY).executeUpdate("DELETE FROM doctor WHERE id ='"+id+"'");
+			result = this.connect.createStatement(
+			ResultSet.TYPE_SCROLL_INSENSITIVE,
+			ResultSet.CONCUR_READ_ONLY).executeUpdate("DELETE FROM person WHERE id ='"+id+"'");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public void reject(int idDoctor) {
+		delete(idDoctor);
 	}
 
 	@Override
@@ -197,9 +207,9 @@ public class PgDoctorDAO extends DoctorDAO {
 		Doctor docToAccept = find(doctor.getEmail());
 		docToAccept.setIsValidated(true);
 		try {
-			ResultSet result = this.connect.createStatement(
+			int result = this.connect.createStatement(
 			ResultSet.TYPE_SCROLL_INSENSITIVE,
-			ResultSet.CONCUR_READ_ONLY).executeQuery("UPDATE person SET isValidated = 1 * WHERE email ="+doctor.getEmail());
+			ResultSet.CONCUR_READ_ONLY).executeUpdate("UPDATE person SET isValidated = true WHERE email ='"+doctor.getEmail()+"'");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
