@@ -21,7 +21,7 @@ public class connectDB {
 	  /**
 	  * Mot de passe du user
 	  */
-	  private static String passwd = "bastou30";
+	  private static String passwd = "padmin";
 	 
 	  /**
 	  * Objet Connection

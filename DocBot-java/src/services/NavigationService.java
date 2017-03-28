@@ -11,7 +11,7 @@ import ui.Main;
 import ui.ProfileController;
 import ui.ProfileDoctorController;
 import ui.UpdateDoctorProfileController;
-import ui.ListOfDoctorsController;
+import ui.ListOfDoctors.ListOfDoctorsController;
 
 public class NavigationService {
 
@@ -23,7 +23,7 @@ public class NavigationService {
 	
 	public void goToListOfDoctors(Stage prevStage) {
 		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("../ui/ListOfDoctorsView.fxml"));
+		loader.setLocation(Main.class.getResource("../ui/ListOfDoctors/ListOfDoctorsView.fxml"));
 		AnchorPane listOfDoctorsView;
 	
 		try {

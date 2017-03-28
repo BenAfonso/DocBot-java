@@ -73,4 +73,6 @@ public abstract class DoctorDAO extends PersonDAO {
 	
 	public abstract void accept(Doctor doctor);
 
+	public abstract List<Doctor> findActive(boolean b);
+
 }

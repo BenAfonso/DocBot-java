@@ -41,6 +41,7 @@ public class Doctor extends Person {
     	this.setStreet(street);
     	this.setCity(city);
     	this.setZipCode(zip_code);
+    	this.setIsValidated(person.getIsValidated());
     }
     public Doctor(String fname, String lname, String password, Date birthday, String phoneNumber, String mail, String siret, String streetNumber, String street, String city, String zipcode) {
     	super(fname,lname,password,birthday,phoneNumber,mail);
@@ -51,6 +52,8 @@ public class Doctor extends Person {
     	this.setZipCode(zipcode);
     }
     
+    
+
     
     /********************************************************
 	 * 
@@ -111,6 +114,8 @@ public class Doctor extends Person {
 	public void setAdress(String adress) {
 		this.adress = adress;
 	}
+	
+	
 
 
 
