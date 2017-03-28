@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="359.0" prefWidth="542.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="ui.ListOfDoctorsController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ListOfDoctorsController">
    <children>
-      <Pane prefHeight="359.0" prefWidth="542.0">
+      <Pane prefHeight="700.0" prefWidth="1000.0">
          <children>
-            <TableView fx:id="doctorsTable" layoutY="54.0" prefHeight="307.0" prefWidth="542.0">
+            <TableView fx:id="doctorsTable" layoutX="216.0" layoutY="122.0" prefHeight="529.0" prefWidth="772.0">
               <columns>
                 <TableColumn fx:id="firstNameCol" prefWidth="75.0" text="Prénom" />
                 <TableColumn fx:id="lastNameCol" prefWidth="75.0" text="Nom" />
@@ -18,6 +21,43 @@
               </columns>
             </TableView>
             <Label layoutX="214.0" layoutY="24.0" prefHeight="16.0" prefWidth="114.0" text="Liste des docteurs" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#78909c" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1000.0" />
+            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="487.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logoDocbot.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="442.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOC">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="541.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOT">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#607d8b" height="620.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+            <Button layoutX="60.0" layoutY="130.0" mnemonicParsing="false" onAction="#goToProfile" text="Profile">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="49.0" layoutY="215.0" mnemonicParsing="false" text="Schedule">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="26.0" layoutY="300.0" mnemonicParsing="false" text="List of doctors">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="58.0" layoutY="651.0" mnemonicParsing="false" onAction="#logout" text="Logout">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>
