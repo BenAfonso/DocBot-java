@@ -8,7 +8,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ResourceBundle;
 
-import facade.DoctorFacade;
+import facade.PatientFacade;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,17 +17,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import models.Doctor;
+import models.Patient;
 import services.Authentification;
 import services.NavigationService;
 
-public class UpdateDoctorProfileController {
+public class UpdateProfileController {
 	@FXML private TextField fnameField;
 	@FXML private TextField lnameField;
-	@FXML private TextField streetNumberField;
-	@FXML private TextField streetField;
-	@FXML private TextField zipCodeField;
-	@FXML private TextField cityField;
 	@FXML private DatePicker birthdayField;
 	@FXML private Label errorField;
 	@FXML private TextField phoneField;
@@ -38,12 +34,12 @@ public class UpdateDoctorProfileController {
 	NavigationService nav = new NavigationService();
 	private Stage prevStage;
 
-	DoctorFacade doctorFacade;
+	PatientFacade patientFacade;
     /**
      * Default constructor
      */
-    public UpdateDoctorProfileController() {
-    		doctorFacade=new DoctorFacade();
+    public UpdateProfileController() {
+    	patientFacade=new PatientFacade();
     }
     /**
 	 * Inializer for the current view
@@ -66,7 +62,7 @@ public class UpdateDoctorProfileController {
      */
     public void updateProfile() {
     	boolean updateSuccessful=false;
-    	updateSuccessful=doctorFacade.update(Authentification.getUser().getEmail(),fnameField.getText(),lnameField.getText(),birthdayField.getValue(),phoneField.getText(),streetNumberField.getText(),streetField.getText(),cityField.getText(),zipCodeField.getText(),Authentification.getUser().getId());
+    	updateSuccessful=patientFacade.update(Authentification.getUser().getEmail(),fnameField.getText(),lnameField.getText(),birthdayField.getValue(),phoneField.getText());
     	if(updateSuccessful){
     		goToProfile();
     	}else{
@@ -94,13 +90,9 @@ public class UpdateDoctorProfileController {
      * 
      */
     public void displayInfo() {
-        Doctor doc = doctorFacade.loadInfo(Authentification.getUser().getEmail());
+        Patient doc = patientFacade.loadInfo(Authentification.getUser().getEmail());
         fnameField.setText(doc.getFirstName());
         lnameField.setText(doc.getLastName());
-        streetField.setText(doc.getStreet());
-        streetNumberField.setText(doc.getStreetNumber());
-        cityField.setText(doc.getCity());
-        zipCodeField.setText(doc.getZipCode());
         phoneField.setText(doc.getPhoneNumber());
    
         LocalDate date = new java.sql.Date(doc.getBirthday().getTime() ).toLocalDate();

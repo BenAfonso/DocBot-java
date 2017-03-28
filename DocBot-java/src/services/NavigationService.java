@@ -11,6 +11,7 @@ import ui.Main;
 import ui.ProfileController;
 import ui.ProfileDoctorController;
 import ui.UpdateDoctorProfileController;
+import ui.UpdateProfileController;
 import ui.ListOfDoctors.ListOfDoctorsController;
 
 public class NavigationService {
@@ -64,21 +65,37 @@ public class NavigationService {
 		Authentification.disconnect();
 	}
 	
-	public void goUpdateProfileDoctor(Stage prevStage){
+	public void goUpdateProfile(Stage prevStage){
 		try {
-		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("../ui/UpdateProfilDoctorView.fxml"));
-		AnchorPane updateDoctorView;
+			if(Authentification.isDoctor()){
+				FXMLLoader loader=new FXMLLoader();
+				loader.setLocation(Main.class.getResource("../ui/UpdateProfileDoctorView.fxml"));
+				AnchorPane updateDoctorView;
 		
-		updateDoctorView = (AnchorPane) loader.load();
+				updateDoctorView = (AnchorPane) loader.load();
 		
-		Scene scene=new Scene(updateDoctorView);
-		prevStage.setScene(scene);
-		prevStage.show();
-		UpdateDoctorProfileController controller=loader.getController();
-		controller.setPrevStage(prevStage);
-		controller.setMainApp(mainApp);
-		controller.displayInfo();
+				Scene scene=new Scene(updateDoctorView);
+				prevStage.setScene(scene);
+				prevStage.show();
+				UpdateDoctorProfileController controller=loader.getController();
+				controller.setPrevStage(prevStage);
+				controller.setMainApp(mainApp);
+				controller.displayInfo();
+			}else{
+				FXMLLoader loader=new FXMLLoader();
+				loader.setLocation(Main.class.getResource("../ui/UpdateProfileView.fxml"));
+				AnchorPane updateProfilView;
+		
+				updateProfilView = (AnchorPane) loader.load();
+		
+				Scene scene=new Scene(updateProfilView);
+				prevStage.setScene(scene);
+				prevStage.show();
+				UpdateProfileController controller=loader.getController();
+				controller.setPrevStage(prevStage);
+				controller.setMainApp(mainApp);
+				controller.displayInfo();
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

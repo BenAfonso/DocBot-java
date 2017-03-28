@@ -46,7 +46,7 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <Button layoutX="818.0" layoutY="157.0" mnemonicParsing="false" text="Update his profile" />
+            <Button layoutX="818.0" layoutY="157.0" mnemonicParsing="false" onAction="#goUpdateProfile" text="Update his profile" />
             <Button layoutX="60.0" layoutY="130.0" mnemonicParsing="false" onAction="#goToProfile" text="Profile">
                <font>
                   <Font size="18.0" />

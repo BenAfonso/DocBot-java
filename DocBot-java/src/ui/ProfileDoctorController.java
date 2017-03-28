@@ -109,7 +109,7 @@ public class ProfileDoctorController {
 	
 
 	public void goUpdateProfile(){
-		nav.goUpdateProfileDoctor(prevStage);
+		nav.goUpdateProfile(prevStage);
 	}
 	
 	public void goToListOfDoctors() {
