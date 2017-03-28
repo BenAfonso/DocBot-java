@@ -86,6 +86,17 @@ public class DoctorFacade extends PersonFacade {
     }
     
     /**
+     *  get all the doctor that are not checked yet
+     * @return an array of unchecked doctors
+     */
+    public Doctor[] getUncheckedDoctors() {
+    	
+        return dao.getUncheckedDoctor();
+    }
+    
+    
+    
+    /**
      * Accept the registration of a doctor
      * @param doctor a Doctor object who will be registered
      */
@@ -102,12 +113,37 @@ public class DoctorFacade extends PersonFacade {
 		return result;
 		
 	}
+	
+
+	/**
+     * Update a profile doctor
+     * @param doctor a Doctor object who will be updated
+     */
+	public boolean update(String mail, String fname, String lname, LocalDate birthday, String phoneNumber, String streetNumber, String street, String city, String zipCode, int id){
+		System.out.println("dans la facade");
+		boolean result=false;
+		Date date = Date.from(birthday.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		if(dao.update(mail, fname, lname, date, phoneNumber, streetNumber, street, city, zipCode,id)){
+			result=true;
+		}
+		return result;
+	}
+	
     /**
      * Reject the registration of a doctor
      * @param doctor a Doctor object who will be rejected
      */
     public void reject(Doctor doctor) {
-        // TODO implement here
+       dao.reject(doctor);
     }
+
+    /**
+     * Accept the registration of a doctor
+     * @param doctor a Doctor object who will be accepted
+     */
+	public void accept(Doctor doctor) {
+		// TODO Auto-generated method stub
+		dao.accept(doctor);
+	}
 
 }

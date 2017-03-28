@@ -2,18 +2,17 @@ package ui;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import facade.*;
 import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.collections.*;
 import javafx.fxml.*;
 import javafx.scene.*;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.*;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.*;
 import javafx.scene.layout.*;
 import javafx.stage.*;
 import models.*;
@@ -34,10 +33,10 @@ public class ValidateOrRejectDoctorRegistrationController {
 	private TableColumn<Doctor, String> cityColumn;
 	@FXML
 	private TableColumn<Doctor, String> zipColumn;
-	@FXML
-	private TableColumn<Doctor, String> validateColumn;
+
 
 	private Stage prevStage;
+
 
 	public ValidateOrRejectDoctorRegistrationController() {
 		// TODO Auto-generated constructor stub
@@ -47,17 +46,19 @@ public class ValidateOrRejectDoctorRegistrationController {
 	}
 	@FXML
 	private void initialize() {
+
 		//Filling up the data
-	
 		this.getUncheckedDoctors();
 		ObservableList<Doctor> data = FXCollections.observableArrayList();
 		for (Doctor doc: this.doc){
 			data.add(doc);
+			System.out.println(doc.getLastName());
+			System.out.println(doc.getFirstName());
 		}
-		
-		
+
+
 		table.setItems(data);
-		
+
 		firstNameColumn.setCellValueFactory( 
 				new PropertyValueFactory<Doctor,String>("firstName")
 				);
@@ -71,10 +72,7 @@ public class ValidateOrRejectDoctorRegistrationController {
 				new PropertyValueFactory<Doctor,String>("city")
 				);
 		zipColumn.setCellValueFactory( 
-				new PropertyValueFactory<Doctor,String>("zip_code")
-				);
-		validateColumn.setCellValueFactory( 
-				new PropertyValueFactory<Doctor,String>("firstName")
+				new PropertyValueFactory<Doctor,String>("zipCode")
 				);
 	}
 
@@ -84,6 +82,66 @@ public class ValidateOrRejectDoctorRegistrationController {
 	 */
 	public void setPrevStage(Stage stage){
 		this.prevStage = stage;
+	}
+
+	/**
+	 * Called when the user clicks the accept button. 
+	 * Accept the doctor registration
+	 */
+	@FXML
+	private void acceptDoctor() {
+		DoctorFacade docFacade = new DoctorFacade();
+		Doctor selectedDoctor = table.getSelectionModel().getSelectedItem();
+		if (selectedDoctor != null) {
+			docFacade.accept(selectedDoctor);
+		} else {
+			// Nothing selected.
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("No Selection");
+			alert.setHeaderText("No Doctor Selected");
+			alert.setContentText("Please select a doctor in the table.");
+
+			alert.showAndWait();
+		}
+	}
+
+	/**
+	 * Called when the user clicks the reject button.
+	 * Reject the doctor registration
+	 */
+	@FXML
+	private void rejectDoctor() {
+		DoctorFacade docFacade = new DoctorFacade();
+		Doctor selectedDoctor = table.getSelectionModel().getSelectedItem();
+		if (selectedDoctor != null) {
+			docFacade.reject(selectedDoctor);
+		} else {
+			// Nothing selected.
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("No Selection");
+			alert.setHeaderText("No Doctor Selected");
+			alert.setContentText("Please select a doctor in the table.");
+
+			alert.showAndWait();
+		}
+	}
+
+	/**
+	 * Called when the user clicks the see Profil button.
+	 */
+	@FXML
+	private void goToDoctorProfil() {
+		Doctor selectedDoctor = table.getSelectionModel().getSelectedItem();
+		if (selectedDoctor != null) {
+			//GO TO PROFIL
+		} else {
+			// Nothing selected.
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("No Selection");
+			alert.setHeaderText("No Doctor Selected");
+			alert.setContentText("Please select a doctor in the table.");
+			alert.showAndWait();
+		}
 	}
 
 
@@ -114,11 +172,15 @@ public class ValidateOrRejectDoctorRegistrationController {
 	}
 
 	public void getUncheckedDoctors(){
-		//DoctorFacade docFacade = new DoctorFacade();
+		// TEST WITH MOCK DATA
 		Doctor[] doc = new Doctor[2];
 		doc[0] = new Doctor("bob", "longchemp", "111", null, "0777777", null, "7777777", null, null, "Montpellier", "34000");
 		doc[1] = new Doctor("jaacques", "ruiz", null, null, null, "jac.ruiz@pasBon.fr", "111444", null, null,"Paris", "78000");
 		this.doc= doc;
+
+		//REAL DATA
+		//DoctorFacade docFacade = new DoctorFacade();
+		//this.doc = docFacade.getUncheckedDoctors();
 	}
 
 }

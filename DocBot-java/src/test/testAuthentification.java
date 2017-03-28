@@ -25,17 +25,30 @@ public class testAuthentification {
 	}
 	
 	@Test
-	public void testisDoctor() {
+	public void testIsDoctor() {
 		Person person = new Doctor();
 		Authentification.connect(person);
 		assertTrue(Authentification.isDoctor());
+		assertFalse(Authentification.isAdministrator());
+		assertFalse(Authentification.isPatient());
 	}
 	
 	@Test
-	public void testisPatient() {
+	public void testIsAdministrator() {
+		Person person = new Administrator();
+		Authentification.connect(person);
+		assertTrue(Authentification.isAdministrator());
+		assertFalse(Authentification.isDoctor());
+		assertFalse(Authentification.isPatient());
+	}
+	
+	@Test
+	public void testIsPatient() {
 		Person person = new Patient(null, null, null, null, null, null);
 		Authentification.connect(person);
 		assertTrue(Authentification.isPatient());
+		assertFalse(Authentification.isDoctor());
+		assertFalse(Authentification.isAdministrator());
 	}
 
 }

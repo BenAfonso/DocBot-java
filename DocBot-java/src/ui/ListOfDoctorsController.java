@@ -6,6 +6,7 @@ import java.util.*;
 import facade.DoctorFacade;
 import models.Doctor;
 import models.Person;
+import services.NavigationService;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.SelectionMode;
@@ -25,7 +26,8 @@ public class ListOfDoctorsController implements javafx.fxml.Initializable {
     @FXML TableColumn<Doctor, String> lastNameCol;
     private DoctorFacade doctorFacade;
     
-	
+	NavigationService nav = new NavigationService();
+
 	private Stage prevStage;
 	private List<Doctor> list;
 	/**
@@ -122,6 +124,16 @@ public class ListOfDoctorsController implements javafx.fxml.Initializable {
     	
             
     }
-    
+	public void logout(){
+		nav.goLogout(prevStage);
+	}
+	
+	public void goToProfile(){
+		nav.goToProfile(prevStage);
+	}
+	
+	public void goToListOfDoctors() {
+		nav.goToListOfDoctors(prevStage);
+	}
 
 }

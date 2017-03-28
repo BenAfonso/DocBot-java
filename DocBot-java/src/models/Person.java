@@ -18,6 +18,7 @@ public class Person {
 	private String password = "";
 	private Date birthday;
 	private String phoneNumber;
+	private boolean isValidated = false;
 	
 	
 	
@@ -94,6 +95,12 @@ public class Person {
 	}
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
+	}
+	public boolean isValidated() {
+		return isValidated;
+	}
+	public void setValidated(boolean isValidated) {
+		this.isValidated = isValidated;
 	}
 
 
