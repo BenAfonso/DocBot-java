@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 import models.Doctor;
 import models.Patient;
@@ -64,5 +65,7 @@ public abstract class DoctorDAO extends PersonDAO {
     public abstract Doctor find(int id);
 
 	public abstract boolean create(int id, String siret, String number, String street, String city, String zip_code);
+	
+	public abstract boolean update(String mail,String fname, String lname, Date birthday, String phoneNumber, String streetNumber, String street, String city, String zipCode, int id);
 
 }

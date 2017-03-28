@@ -10,6 +10,7 @@ import ui.LoginController;
 import ui.Main;
 import ui.ProfileController;
 import ui.ProfileDoctorController;
+import ui.UpdateDoctorProfileController;
 
 public class NavigationService {
 
@@ -38,6 +39,26 @@ public class NavigationService {
 			e.printStackTrace();
 		}
 		Authentification.disconnect();
+	}
+	
+	public void goUpdateProfileDoctor(Stage prevStage){
+		try {
+		FXMLLoader loader=new FXMLLoader();
+		loader.setLocation(Main.class.getResource("../ui/UpdateProfilDoctorView.fxml"));
+		AnchorPane updateDoctorView;
+		
+		updateDoctorView = (AnchorPane) loader.load();
+		
+		Scene scene=new Scene(updateDoctorView);
+		prevStage.setScene(scene);
+		prevStage.show();
+		UpdateDoctorProfileController controller=loader.getController();
+		controller.setPrevStage(prevStage);
+		controller.setMainApp(mainApp);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void goToProfile(Stage prevStage){
