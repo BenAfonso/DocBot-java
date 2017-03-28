@@ -27,8 +27,8 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Button layoutX="664.0" layoutY="564.0" mnemonicParsing="false" text="Accepter" />
-      <Button layoutX="284.0" layoutY="564.0" mnemonicParsing="false" text="Voir le profil" textAlignment="CENTER" />
-      <Button layoutX="768.0" layoutY="564.0" mnemonicParsing="false" text="Refuser" />
+      <Button layoutX="664.0" layoutY="564.0" mnemonicParsing="false" onAction="#acceptDoctor" text="Accepter" />
+      <Button layoutX="284.0" layoutY="564.0" mnemonicParsing="false" onAction="#goToDoctorProfil" text="Voir le profil" textAlignment="CENTER" />
+      <Button layoutX="768.0" layoutY="564.0" mnemonicParsing="false" onAction="#rejectDoctor" text="Refuser" />
    </children>
 </AnchorPane>

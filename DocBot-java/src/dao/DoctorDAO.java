@@ -66,4 +66,8 @@ public abstract class DoctorDAO extends PersonDAO {
 
 	public abstract boolean create(int id, String siret, String number, String street, String city, String zip_code);
 
+	public abstract void reject(Doctor doctor);
+	
+	public abstract void accept(Doctor doctor);
+
 }

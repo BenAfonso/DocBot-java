@@ -147,7 +147,6 @@ public class PgDoctorDAO extends DoctorDAO {
 
 	@Override
 	public void update(Doctor doctor) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -159,7 +158,35 @@ public class PgDoctorDAO extends DoctorDAO {
 
 	@Override
 	public void delete(Doctor doctor) {
-		// TODO Auto-generated method stub
+		try {
+			ResultSet result = this.connect.createStatement(
+			ResultSet.TYPE_SCROLL_INSENSITIVE,
+			ResultSet.CONCUR_READ_ONLY).executeQuery("DELETE FROM person WHERE email ="+doctor.getEmail());
+			result = this.connect.createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("DELETE FROM doctor WHERE id ="+doctor.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void reject(Doctor doctor) {
+		Doctor docToReject = find(doctor.getEmail());
+		delete(docToReject);
+	}
+
+	@Override
+	public void accept(Doctor doctor) {
+		Doctor docToAccept = find(doctor.getEmail());
+		docToAccept.setValidated(true);
+		try {
+			ResultSet result = this.connect.createStatement(
+			ResultSet.TYPE_SCROLL_INSENSITIVE,
+			ResultSet.CONCUR_READ_ONLY).executeQuery("UPDATE person SET isValidated = 1 * WHERE email ="+doctor.getEmail());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 

@@ -113,12 +113,22 @@ public class DoctorFacade extends PersonFacade {
 		return result;
 		
 	}
+	
     /**
      * Reject the registration of a doctor
      * @param doctor a Doctor object who will be rejected
      */
     public void reject(Doctor doctor) {
-        // TODO implement here
+       dao.reject(doctor);
     }
+
+    /**
+     * Accept the registration of a doctor
+     * @param doctor a Doctor object who will be accepted
+     */
+	public void accept(Doctor doctor) {
+		// TODO Auto-generated method stub
+		dao.accept(doctor);
+	}
 
 }
