@@ -29,10 +29,18 @@ public class Doctor extends Person {
     public Doctor() {
     }
     
-    public Doctor(Person person, String siret, String adress) {
+    public Doctor(Person person, String siret, String number, String street, String city, String zip_code, int policy_id) {
     	this.setPerson(person);
+    	this.setFirstName(person.getFirstName());
+    	this.setLastName(person.getLastName());
+    	this.setPassword(person.getPassword());
+    	this.setEmail(person.getEmail());
     	this.setSiret(siret);
     	this.setAdress(adress);
+    	this.setStreetNumber(number);
+    	this.setStreet(street);
+    	this.setCity(city);
+    	this.setZipCode(zip_code);
     }
     public Doctor(String fname, String lname, String password, Date birthday, String phoneNumber, String mail, String siret, String streetNumber, String street, String city, String zipcode) {
     	super(fname,lname,password,birthday,phoneNumber,mail);
@@ -54,6 +62,7 @@ public class Doctor extends Person {
 		return streetNumber;
 	}
 
+    
 	public void setStreetNumber(String streetNumber) {
 		this.streetNumber = streetNumber;
 	}

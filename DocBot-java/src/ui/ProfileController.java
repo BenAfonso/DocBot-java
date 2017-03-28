@@ -72,7 +72,7 @@ public class ProfileController {
     public void displayInfo(String mail) {
         try{
         	Patient pat = loadInfo(mail);
-        	label_fn.setText(pat.getFisrtName());
+        	label_fn.setText(pat.getFirstName());
         	label_ln.setText(pat.getLastName());
         	label_mail.setText(pat.getEmail());
         	label_bd.setText(pat.getBirthday().toString());
@@ -101,5 +101,9 @@ public class ProfileController {
 	
 	public void goToProfile(){
 		nav.goToProfile(prevStage);
+	}
+	
+	public void goToListOfDoctors() {
+		nav.goToListOfDoctors(prevStage);
 	}
 }

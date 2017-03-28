@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+
+
+<Pane fx:id="menuPane" prefHeight="364.0" prefWidth="106.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox fx:id="menuVBox">
+         <children>
+            <Button fx:id="profileButton" mnemonicParsing="false" onAction="#goToProfile" prefHeight="27.0" prefWidth="106.0" text="Profile" />
+            <Button fx:id="listOfDoctorsButton" mnemonicParsing="false" onAction="#goToListOfDoctors" prefHeight="27.0" prefWidth="106.0" text="Docteurs" />
+            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="106.0" text="Button" />
+            <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="106.0" text="Button" />
+         </children>
+      </VBox>
+   </children>
+</Pane>

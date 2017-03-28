@@ -74,7 +74,7 @@ public class ProfileDoctorController {
     public void displayInfo(String mail) {
         try{
         	Doctor doc = loadInfo(mail);
-        	label_fn.setText(doc.getFisrtName());
+        	label_fn.setText(doc.getFirstName());
         	label_ln.setText(doc.getLastName());
         	label_mail.setText(doc.getEmail());
         	label_bd.setText(doc.getBirthday().toString());
@@ -105,5 +105,9 @@ public class ProfileDoctorController {
 	
 	public void goToProfile(){
 		nav.goToProfile(prevStage);
+	}
+	
+	public void goToListOfDoctors() {
+		nav.goToListOfDoctors(prevStage);
 	}
 }

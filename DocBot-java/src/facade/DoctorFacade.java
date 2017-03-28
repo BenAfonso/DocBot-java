@@ -54,9 +54,10 @@ public class DoctorFacade extends PersonFacade {
         return null;
     }
 
-    public ArrayList<Doctor> getDoctors() {
+    public List<Doctor> getDoctors() {
     	return dao.findAll();
     }
+    
     
     /**
      * return the doctor's comments
