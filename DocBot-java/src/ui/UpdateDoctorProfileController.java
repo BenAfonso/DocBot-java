@@ -2,6 +2,10 @@ package ui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ResourceBundle;
 
 import facade.DoctorFacade;
@@ -93,6 +97,14 @@ public class UpdateDoctorProfileController {
         Doctor doc = doctorFacade.loadInfo(Authentification.getUser().getEmail());
         fnameField.setText(doc.getFirstName());
         lnameField.setText(doc.getLastName());
+        streetField.setText(doc.getStreet());
+        streetNumberField.setText(doc.getStreetNumber());
+        cityField.setText(doc.getCity());
+        zipCodeField.setText(doc.getZipCode());
+        phoneField.setText(doc.getPhoneNumber());
+    
+        LocalDate date = doc.getBirthday().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        birthdayField.setValue(date);
         
     }
     

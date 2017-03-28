@@ -78,6 +78,7 @@ public class NavigationService {
 		UpdateDoctorProfileController controller=loader.getController();
 		controller.setPrevStage(prevStage);
 		controller.setMainApp(mainApp);
+		controller.displayInfo();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

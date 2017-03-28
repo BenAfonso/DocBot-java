@@ -120,7 +120,6 @@ public class DoctorFacade extends PersonFacade {
      * @param doctor a Doctor object who will be updated
      */
 	public boolean update(String mail, String fname, String lname, LocalDate birthday, String phoneNumber, String streetNumber, String street, String city, String zipCode, int id){
-		System.out.println("dans la facade");
 		boolean result=false;
 		Date date = Date.from(birthday.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		if(dao.update(mail, fname, lname, date, phoneNumber, streetNumber, street, city, zipCode,id)){
