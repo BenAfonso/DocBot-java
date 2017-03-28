@@ -42,40 +42,37 @@ public class NavigationService {
 	
 	public void goToProfile(Stage prevStage){
 		try {
-		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("../ui/ProfileView.fxml"));
-		AnchorPane profileView;
+			if(Authentification.isDoctor()){
+				FXMLLoader loader=new FXMLLoader();
+				loader.setLocation(Main.class.getResource("../ui/ProfileDoctorView.fxml"));
+				AnchorPane profileDocView;
+			
+				profileDocView = (AnchorPane) loader.load();
+			
+				Scene scene=new Scene(profileDocView);
+				prevStage.setScene(scene);
+				prevStage.show();
+				ProfileDoctorController controller=loader.getController();
+				controller.displayInfo(Authentification.getUser().getEmail());
+				controller.setPrevStage(prevStage);
+				controller.setMainApp(mainApp);
+			}
+			else{
+				FXMLLoader loader=new FXMLLoader();
+				loader.setLocation(Main.class.getResource("../ui/ProfileView.fxml"));
+				AnchorPane profileView;
+			
+				profileView = (AnchorPane) loader.load();
+			
+				Scene scene=new Scene(profileView);
+				prevStage.setScene(scene);
+				prevStage.show();
+				ProfileController controller=loader.getController();
+				controller.displayInfo(Authentification.getUser().getEmail());
+				controller.setPrevStage(prevStage);
+				controller.setMainApp(mainApp);
+			}
 		
-		profileView = (AnchorPane) loader.load();
-		
-		Scene scene=new Scene(profileView);
-		prevStage.setScene(scene);
-		prevStage.show();
-		ProfileController controller=loader.getController();
-		controller.displayInfo(Authentification.getUser().getEmail());
-		controller.setPrevStage(prevStage);
-		controller.setMainApp(mainApp);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	public void goToProfileDoctor(Stage prevStage){
-		try {
-		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("../ui/ProfileDoctorView.fxml"));
-		AnchorPane profileDocView;
-		
-		profileDocView = (AnchorPane) loader.load();
-		
-		Scene scene=new Scene(profileDocView);
-		prevStage.setScene(scene);
-		prevStage.show();
-		ProfileDoctorController controller=loader.getController();
-		controller.displayInfo(Authentification.getUser().getEmail());
-		controller.setPrevStage(prevStage);
-		controller.setMainApp(mainApp);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
