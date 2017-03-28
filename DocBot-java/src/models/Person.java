@@ -1,6 +1,7 @@
  package models;
 
 import java.util.Date;
+import java.util.function.Predicate;
 
 public class Person {
 
@@ -35,6 +36,16 @@ public class Person {
 		this.email = email;
 		this.password = password;
 	}
+	
+	public Person(int id, String fn, String ln, String email, String password, boolean isValidated) {
+		this.id = id;
+		this.firstName = fn;
+		this.lastName = ln;
+		this.email = email;
+		this.password = password;
+		this.isValidated = isValidated;
+	}
+	
 	public Person(String fname, String lname, String password, Date birthday, String phoneNumber, String mail) {
 		this.firstName = fname;
 		this.lastName = lname;
@@ -44,6 +55,7 @@ public class Person {
 		this.setPhoneNumber(phoneNumber);
 	}
 	public Person(){};
+
 
 
 
@@ -96,10 +108,10 @@ public class Person {
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
-	public boolean isValidated() {
+	public boolean getIsValidated() {
 		return isValidated;
 	}
-	public void setValidated(boolean isValidated) {
+	public void setIsValidated(boolean isValidated) {
 		this.isValidated = isValidated;
 	}
 

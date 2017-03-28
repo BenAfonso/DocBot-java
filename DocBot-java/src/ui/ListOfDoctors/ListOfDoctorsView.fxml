@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ListOfDoctorsController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ListOfDoctors.ListOfDoctorsController">
    <children>
       <Pane prefHeight="700.0" prefWidth="1000.0">
          <children>
@@ -18,13 +18,14 @@
                 <TableColumn fx:id="firstNameCol" prefWidth="75.0" text="Prénom" />
                 <TableColumn fx:id="lastNameCol" prefWidth="75.0" text="Nom" />
                   <TableColumn fx:id="cityCol" prefWidth="75.0" text="Ville" />
+                  <TableColumn fx:id="activeCol" prefWidth="75.0" text="Active" />
               </columns>
             </TableView>
             <Label layoutX="214.0" layoutY="24.0" prefHeight="16.0" prefWidth="114.0" text="Liste des docteurs" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#78909c" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1000.0" />
             <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="487.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/logoDocbot.png" />
+                  <Image url="@../../img/logoDocbot.png" />
                </image>
             </ImageView>
             <Text layoutX="442.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOC">
@@ -58,6 +59,9 @@
                   <Font size="18.0" />
                </font>
             </Button>
+            <Button fx:id="pendingDoctorsButton" layoutX="310.0" layoutY="89.0" mnemonicParsing="false" onAction="#displayPendingDoctors" text="Pending doctors" />
+            <Button fx:id="allDoctorsButton" layoutX="216.0" layoutY="89.0" mnemonicParsing="false" onAction="#displayDoctors" text="All Doctors" />
+            <TextField fx:id="cityFilterTextField" layoutX="458.0" layoutY="89.0" promptText="Search by city" />
          </children>
       </Pane>
    </children>
