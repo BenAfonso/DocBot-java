@@ -31,24 +31,22 @@ public abstract class DoctorDAO extends PersonDAO {
     /**
      * @param doctor
      */
-    public void create(Doctor doctor) {
-        // TODO implement here
-    }
+    public abstract void create(Doctor doctor);
 
     /**
      * @param doctor
      */
-    public void update(Doctor doctor) {
-        // TODO implement here
-    }
-
-    /**
-     * @param doctor
-     */
-    public void find(Doctor doctor) {
-        // TODO implement here
-    }
+    public abstract void update(Doctor doctor) ;
     
+    /**
+     * get all the doctors that are unchecked
+     * @return an array of unchecked doctors
+     */
+    public  abstract Doctor[] getUncheckedDoctor() ;
+    /**
+     * @param doctor
+     */
+    public abstract void find(Doctor doctor) ;
     public abstract ArrayList<Doctor> findAll();
     
     
@@ -58,9 +56,8 @@ public abstract class DoctorDAO extends PersonDAO {
     /**
      * @param doctor
      */
-    public void delete(Doctor doctor) {
-        // TODO implement here
-    }
+    public abstract void delete(Doctor doctor);
+    
     public abstract Doctor find(int id);
 
 	public abstract boolean create(int id, String siret, String number, String street, String city, String zip_code);

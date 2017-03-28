@@ -85,6 +85,17 @@ public class DoctorFacade extends PersonFacade {
     }
     
     /**
+     *  get all the doctor that are not checked yet
+     * @return an array of unchecked doctors
+     */
+    public Doctor[] getUncheckedDoctors() {
+    	
+        return dao.getUncheckedDoctor();
+    }
+    
+    
+    
+    /**
      * Accept the registration of a doctor
      * @param doctor a Doctor object who will be registered
      */

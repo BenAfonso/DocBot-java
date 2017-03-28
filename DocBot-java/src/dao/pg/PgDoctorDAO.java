@@ -118,4 +118,49 @@ public class PgDoctorDAO extends DoctorDAO {
 		return doctor;
 	}
 
+	@Override
+	public Doctor[] getUncheckedDoctor() {
+		ArrayList<Doctor> doctors = new ArrayList<Doctor>();    
+		try {
+			ResultSet result = this.connect.createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM doctor d,person p WHERE isValidated = 0 ");
+
+			
+			while (result.next()) {
+				Person person = new Person(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"));         
+				Doctor doc = new Doctor(person, result.getString("siret"), "");
+				
+				doctors.add(doc);
+			}       
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return (Doctor[]) doctors.toArray();
+	}
+
+	@Override
+	public void create(Doctor doctor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(Doctor doctor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void find(Doctor doctor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Doctor doctor) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

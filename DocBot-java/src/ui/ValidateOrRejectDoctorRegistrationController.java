@@ -34,8 +34,7 @@ public class ValidateOrRejectDoctorRegistrationController {
 	private TableColumn<Doctor, String> cityColumn;
 	@FXML
 	private TableColumn<Doctor, String> zipColumn;
-	@FXML
-	private TableColumn<Doctor, String> validateColumn;
+
 
 	private Stage prevStage;
 
@@ -47,12 +46,14 @@ public class ValidateOrRejectDoctorRegistrationController {
 	}
 	@FXML
 	private void initialize() {
+		
 		//Filling up the data
-	
 		this.getUncheckedDoctors();
 		ObservableList<Doctor> data = FXCollections.observableArrayList();
 		for (Doctor doc: this.doc){
 			data.add(doc);
+			System.out.println(doc.getLastName());
+			System.out.println(doc.getFirstName());
 		}
 		
 		
@@ -71,10 +72,7 @@ public class ValidateOrRejectDoctorRegistrationController {
 				new PropertyValueFactory<Doctor,String>("city")
 				);
 		zipColumn.setCellValueFactory( 
-				new PropertyValueFactory<Doctor,String>("zip_code")
-				);
-		validateColumn.setCellValueFactory( 
-				new PropertyValueFactory<Doctor,String>("firstName")
+				new PropertyValueFactory<Doctor,String>("zipCode")
 				);
 	}
 
@@ -114,11 +112,15 @@ public class ValidateOrRejectDoctorRegistrationController {
 	}
 
 	public void getUncheckedDoctors(){
-		//DoctorFacade docFacade = new DoctorFacade();
-		Doctor[] doc = new Doctor[2];
+		// TEST WITH MOCK DATA
+		/*Doctor[] doc = new Doctor[2];
 		doc[0] = new Doctor("bob", "longchemp", "111", null, "0777777", null, "7777777", null, null, "Montpellier", "34000");
 		doc[1] = new Doctor("jaacques", "ruiz", null, null, null, "jac.ruiz@pasBon.fr", "111444", null, null,"Paris", "78000");
 		this.doc= doc;
+		*/
+		//REAL DATA
+		DoctorFacade docFacade = new DoctorFacade();
+		this.doc = docFacade.getUncheckedDoctors();
 	}
 
 }
