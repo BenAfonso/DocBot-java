@@ -1,7 +1,9 @@
 package dao.pg;
 
 
-import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import dao.RequestAppointmentDAO;
 import models.RequestAppointment;
 
@@ -27,8 +29,20 @@ public class PgRequestAppointmentDAO extends RequestAppointmentDAO {
 
 	@Override
 	public void create(RequestAppointment requestAppointment) {
-		// TODO Auto-generated method stub
 		
+		try {
+			ConnectDB.getInstance().createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO RequestAppointment "
+							+ "(patient_id, disponibility_id) VALUES "
+							+ "('"+requestAppointment.getPerson().getId()+"',"
+							+ "'"+requestAppointment.getDisponibility().getId()+"')");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+			
 	}
 
 	@Override

@@ -1,8 +1,8 @@
 package facade;
 import models.*;
 import dao.*;
-
-import java.util.*;
+import dao.pg.PgDisponibilityDAO;
+import dao.pg.PgRequestAppointmentDAO;
 
 /**
  * @author BenAfonso
@@ -13,12 +13,16 @@ public class RequestAppointmentFacade {
      * Default constructor
      */
     public RequestAppointmentFacade() {
+    	this.requestAppointmentDao = PgRequestAppointmentDAO.getPgRequestAppointmentDAO();
+    	this.disponibilityDao = PgDisponibilityDAO.getPgDisponibilityDAO();
     }
 
     /**
      * 
      */
-    public RequestAppointmentDAO dao;
+    public RequestAppointmentDAO requestAppointmentDao;
+    public DisponibilityDAO disponibilityDao;
+
 
     /**
      * 
@@ -36,8 +40,19 @@ public class RequestAppointmentFacade {
      * @param disponibility the disponibility of the requestAppointment
      * @param person the person who asked for the appointment
      */
-    public void createNewRequest(Disponibility disponibility, Person person) {
-        // TODO implement here
+    public boolean createNewRequest(Disponibility disponibility, Person person) {
+        if (requestAppointmentDao == null) {
+        	return false; // Raise error (dao not instancied)
+        } 
+        
+        if (disponibility.isBooked()) {
+        	//throw new Error("Disponibility already booked");
+        	return false; // Raise error (disponibility already booked)
+        }
+        
+        RequestAppointment requestAppointment = new RequestAppointment(disponibility, person);
+        requestAppointmentDao.create(requestAppointment);
+        return true;
     }
 
     /**
@@ -61,9 +76,9 @@ public class RequestAppointmentFacade {
      * Check if the doctor is in auto accept policy
      * @return true if the doctor is in auto accept mode, false otherwise
      */
-    public Boolean checkIfDoctorIsInAutoAcceptPolicy() {
+    public boolean checkIfDoctorIsInAutoAcceptPolicy() {
         // TODO implement here
-        return null;
+        return false;
     }
 
     /**
