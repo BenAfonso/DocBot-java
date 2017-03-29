@@ -13,12 +13,21 @@ import java.util.*;
  */
 public class PgDisponibilityDAO extends DisponibilityDAO {
 
+	private static PgDisponibilityDAO pgDisponibilityDAO;
     /**
      * Default constructor
      */
-    public PgDisponibilityDAO(Connection conn) {
-    	super(conn);
+    private PgDisponibilityDAO() {
     }
+    
+    public static PgDisponibilityDAO getPgDisponibilityDAO(){
+    	if( pgDisponibilityDAO == null ){
+    		pgDisponibilityDAO  = new PgDisponibilityDAO();
+    	}
+    	return pgDisponibilityDAO;
+    }
+    
+    
 	/**
 	 * Create an user
 	 * @param Person
@@ -26,12 +35,27 @@ public class PgDisponibilityDAO extends DisponibilityDAO {
 	 */
 	public void create(Disponibility obj) {
 		try {
-			int result = this.connect.createStatement(
+			int result = ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Disponibility (schedule_id, hourStart, minuteStart, hourEnd,minuteEnd,description,isBooked) VALUES ('"+obj.getScheduleId()+"','"+obj.getHourStart()+"','"+obj.getMinuteStart()+"','"+obj.getHourEnd()+"','"+obj.getMinuteEnd()+"','"+obj.getDescription()+"','"+obj.isBooked()+"')");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	@Override
+	public void update(Disponibility disponibility) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void find(Disponibility disponibility) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void delete(Disponibility disponibility) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

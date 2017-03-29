@@ -10,11 +10,6 @@ import java.util.*;
  */
 public abstract class RequestAppointmentDAO {
 
-    /**
-     * Default constructor
-     */
-    public RequestAppointmentDAO() {
-    }
 
     /**
      * 
@@ -24,29 +19,21 @@ public abstract class RequestAppointmentDAO {
     /**
      * @param requestAppointment
      */
-    public void create(RequestAppointment requestAppointment) {
-        // TODO implement here
-    }
+    public abstract void create(RequestAppointment requestAppointment);
 
     /**
      * @param requestAppointment
      */
-    public void update(RequestAppointment requestAppointment) {
-        // TODO implement here
-    }
+    public abstract void update(RequestAppointment requestAppointment);
 
     /**
      * @param requestAppointment
      */
-    public void find(RequestAppointment requestAppointment) {
-        // TODO implement here
-    }
+    public abstract void find(RequestAppointment requestAppointment) ;
 
     /**
      * @param requestAppointment
      */
-    public void delete(RequestAppointment requestAppointment) {
-        // TODO implement here
-    }
+    public abstract void delete(RequestAppointment requestAppointment) ;
 
 }

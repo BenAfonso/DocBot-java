@@ -14,16 +14,24 @@ import models.Patient;
  */
 public class PgPatientDAO extends PatientDAO {
 
+	private static PgPatientDAO pgPatientDAO;
     /**
      * Default constructor
      */
-    public PgPatientDAO(Connection conn) {
-		super(conn);
+    private PgPatientDAO() {
     }
+    
+	public static PgPatientDAO getPgPatientDAO(){
+		if( pgPatientDAO == null ){
+			pgPatientDAO  = new PgPatientDAO();
+		}
+		return pgPatientDAO;
+	}
+	
 	public Patient find(int id) {
 		Patient patient = null;      
 		try {
-			ResultSet result = this.connect.createStatement(
+			ResultSet result = ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM patient pa, person p WHERE pa.id=p.id AND p.id='"+id+"'");
 
@@ -39,7 +47,7 @@ public class PgPatientDAO extends PatientDAO {
 	public Patient find(String mail) {
 		Patient patient = null;      
 		try {
-			ResultSet result = this.connect.createStatement(
+			ResultSet result = ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM patient pa, person p WHERE pa.id=p.id AND p.email='"+mail+"'");
 
@@ -54,7 +62,7 @@ public class PgPatientDAO extends PatientDAO {
 	@Override
 	public boolean update(String mail,String fname, String lname, Date birthday, String phoneNumber){
 		try {
-			int result = this.connect.createStatement(
+			int result = ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeUpdate("UPDATE person SET firstname='"+fname+"' ,lastname='"+lname+"' ,birthday='"+birthday+"' ,phone='"+phoneNumber+"' WHERE email='"+mail+"'");
 				return true;
@@ -62,6 +70,35 @@ public class PgPatientDAO extends PatientDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public boolean create(int id) {
+		try {
+			int result = ConnectDB.getInstance().createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Patient (id) VALUES ('"+id+"')");
+
+				return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+		
+	}
+	@Override
+	public void create(Patient patient) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void update(Patient patient) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void find(Patient patient) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
