@@ -19,7 +19,6 @@ public abstract class PatientDAO {
      * Default constructor
      */
 	public PatientDAO(Connection conn){
-		System.out.println("Person Dao Created");
 		this.connect = conn;
 	}
 

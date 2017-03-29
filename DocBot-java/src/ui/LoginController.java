@@ -99,19 +99,18 @@ public class LoginController implements javafx.fxml.Initializable {
 					e.printStackTrace();
 				};
 			}else{
-				FXMLLoader loaderMenu=new FXMLLoader();
-				loaderMenu.setLocation(Main.class.getResource("../services/PatientMenu.fxml"));
-				MenuBar menuBar=loaderMenu.load();
-				NavigationService.setMenuView(menuBar);
 				
 				FXMLLoader loader=new FXMLLoader();
 				loader.setLocation(Main.class.getResource("../ui/ProfileView.fxml"));
 				AnchorPane ProfileView;
+				
+				FXMLLoader loaderMenu=new FXMLLoader();
+				loaderMenu.setLocation(Main.class.getResource("../services/PatientMenu.fxml"));
+				MenuBar menuBar=loaderMenu.load();
+				NavigationService.setMenuView(menuBar);
 				try {
 					ProfileView = (AnchorPane) loader.load();
-					Scene scene=new Scene(ProfileView);
-					prevStage.setScene(scene);
-					prevStage.show();
+					NavigationService.changeView(ProfileView);
 					ProfileController controller=loader.getController();
 					controller.displayInfo(Authentification.getUser().getEmail());
 					controller.setPrevStage(prevStage);

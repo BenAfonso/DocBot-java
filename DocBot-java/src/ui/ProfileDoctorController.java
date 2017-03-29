@@ -100,10 +100,6 @@ public class ProfileDoctorController {
 	 * 
 	 ********************************************************/
 	
-	public void logout(){
-		nav.goLogout();
-	}
-	
 	public void goToProfile(){
 		nav.goToProfile();
 	}
@@ -113,12 +109,5 @@ public class ProfileDoctorController {
 		nav.goUpdateProfile();
 	}
 	
-	public void goToListOfDoctors() {
-		nav.goToListOfDoctors();
-
-	}
-	public void goToListOfWaitingDoctors() {
-		nav.goToListOfWaitingDoctors();
-	}
 	
 }

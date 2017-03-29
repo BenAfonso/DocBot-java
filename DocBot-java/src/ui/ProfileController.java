@@ -96,16 +96,8 @@ public class ProfileController {
 	 * 
 	 ********************************************************/
 	
-	public void logout(){
-		nav.goLogout();
-	}
-	
 	public void goToProfile(){
 		nav.goToProfile();
-	}
-	
-	public void goToListOfDoctors() {
-		nav.goToListOfDoctors();
 	}
 	
 	public void goUpdateProfile(){
