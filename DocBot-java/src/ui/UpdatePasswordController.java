@@ -48,7 +48,7 @@ public class UpdatePasswordController {
     	boolean updateSuccessful=false;
     	try {
 			if(personFacade.checkCredentials(Authentification.getUser().getEmail(), oldPasswordField.getText())){
-				if(newPasswordField.getText()!=confirmPasswordField.getText()){
+				if(newPasswordField.getText().equals(confirmPasswordField.getText())){
 					updateSuccessful=personFacade.updatePassword(Authentification.getUser().getEmail(),newPasswordField.getText());
 			    	if(updateSuccessful){
 			    		goUpdateProfile();
