@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.DisponibilitiesController">
+   <children>
+      <Pane prefHeight="700.0" prefWidth="1000.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#78909c" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1000.0" />
+            <Label layoutX="340.0" layoutY="115.0" text="Disponibilities of" textFill="#78909c">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Text layoutX="531.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOT">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="432.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOC">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="477.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logoDocbot.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="doctorNameLabel" layoutX="535.0" layoutY="115.0" text="DoctorName" textFill="#78909c">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <TableView fx:id="disponibilitiesTable" layoutX="121.0" layoutY="182.0" prefHeight="462.0" prefWidth="758.0">
+              <columns>
+                <TableColumn fx:id="dayCol" prefWidth="91.88652801513672" text="Day" />
+                <TableColumn fx:id="hourStartCol" prefWidth="75.11346435546875" text="Start hour" />
+                  <TableColumn fx:id="hourEndCol" prefWidth="94.11349487304688" text="End hour" />
+                  <TableColumn fx:id="descriptionCol" prefWidth="496.5382995605469" text="Description" />
+              </columns>
+            </TableView>
+            <Label fx:id="errorLabel" layoutX="124.0" layoutY="154.0" text="ErrorLabel" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
