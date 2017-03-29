@@ -33,11 +33,6 @@ public class UpdateDoctorProfileController {
 	@FXML private Label errorField;
 	@FXML private TextField phoneField;
 	
-	/**
-	 * Navigation tools
-	 */
-	NavigationService nav = new NavigationService();
-	private Stage prevStage;
 
 	DoctorFacade doctorFacade;
     /**
@@ -46,21 +41,7 @@ public class UpdateDoctorProfileController {
     public UpdateDoctorProfileController() {
     		doctorFacade=new DoctorFacade();
     }
-    /**
-	 * Inializer for the current view
-	 */
-	public void initialize(URL location, ResourceBundle resources) {
-	}
-	
-	public void setPrevStage(Stage stage){
-		this.prevStage = stage;
-	}
-	/**
-	 * Set the main application
-	 * @param main
-	 */
-	public void setMainApp(Main main){
-	}
+
 
     /**
      * Update an account triggered on a button click
@@ -114,13 +95,14 @@ public class UpdateDoctorProfileController {
 	 * 						Navigation
 	 * 
 	 ********************************************************/
-	
+    NavigationService nav = new NavigationService();
+    
 	public void goToProfile(){
 		nav.goToProfile();
 	}
 	
 	public void goUpdatePassword(){
-		nav.goUpdatePassword(prevStage);
+		nav.goUpdatePassword();
 	}
 	
 	

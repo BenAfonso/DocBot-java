@@ -24,7 +24,7 @@ public class Main extends Application {
 
 		
 		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("../ui/loginView.fxml"));
+		loader.setLocation(Main.class.getResource("../ui/LoginView.fxml"));
 		AnchorPane loginView= loader.load();
 		
 		NavigationService.getRoot().setCenter(loginView);
@@ -32,9 +32,6 @@ public class Main extends Application {
 		Scene scene = new Scene(NavigationService.getRoot(), 1000, 600);
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		LoginController controller=loader.getController();
-		controller.setPrevStage(primaryStage);
-		controller.setMainApp(this);
 		
 	}
 

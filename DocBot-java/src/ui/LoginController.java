@@ -31,8 +31,7 @@ public class LoginController implements javafx.fxml.Initializable {
 	@FXML private Button btnLogin;
 	private PersonFacade userFacade;
 	private Person user;
-	private Stage prevStage;
-	private Main mainApp;
+
 	
 	
 	/**
@@ -42,13 +41,6 @@ public class LoginController implements javafx.fxml.Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 	
-	/**
-	 * Sets the previous stage
-	 * @param stage
-	 */
-	public void setPrevStage(Stage stage){
-		this.prevStage = stage;
-	}
 	
 	
 	public LoginController(){
@@ -80,45 +72,21 @@ public class LoginController implements javafx.fxml.Initializable {
 		boolean canLogin=userFacade.login(username, password);
 
 		if ( canLogin) {
-			System.out.println("lol");
 			if(Authentification.isDoctor()){
-				FXMLLoader loader=new FXMLLoader();
-				loader.setLocation(Main.class.getResource("../ui/ProfileDoctorView.fxml"));
-				AnchorPane ProfileDoctorView;
+			
 				FXMLLoader loaderMenu=new FXMLLoader();
 				loaderMenu.setLocation(Main.class.getResource("../services/DoctorMenu.fxml"));
 				MenuBar menuBar=loaderMenu.load();
 				NavigationService.setMenuView(menuBar);
-				try {
-					ProfileDoctorView = (AnchorPane) loader.load();
-					NavigationService.changeView(ProfileDoctorView);
-					ProfileDoctorController controller=loader.getController();
-					controller.displayInfo(Authentification.getUser().getEmail());
-					controller.setPrevStage(prevStage);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				};
+				goProfile();
 			}else{
 				
-				FXMLLoader loader=new FXMLLoader();
-				loader.setLocation(Main.class.getResource("../ui/ProfileView.fxml"));
-				AnchorPane ProfileView;
 				
 				FXMLLoader loaderMenu=new FXMLLoader();
 				loaderMenu.setLocation(Main.class.getResource("../services/PatientMenu.fxml"));
 				MenuBar menuBar=loaderMenu.load();
 				NavigationService.setMenuView(menuBar);
-				try {
-					ProfileView = (AnchorPane) loader.load();
-					NavigationService.changeView(ProfileView);
-					ProfileController controller=loader.getController();
-					controller.displayInfo(Authentification.getUser().getEmail());
-					controller.setPrevStage(prevStage);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				};
+				goProfile();
 			}
 		} else {
 			invalidCredential.setText("Invalid credential");
@@ -126,37 +94,18 @@ public class LoginController implements javafx.fxml.Initializable {
 
 	} // Login
 	
-	public void goToRegisterPatientPage(){
-		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("../ui/RegisterView.fxml"));
-		AnchorPane registerView;
-		try {
-			registerView = (AnchorPane) loader.load();
-			Scene scene=new Scene(registerView);
-			prevStage.setScene(scene);
-			prevStage.show();
-			RegisterPatientController controller=loader.getController();
-			controller.setPrevStage(prevStage);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
+	NavigationService nav = new NavigationService();
+	public void goRegisterDoctor(){
+		nav.goToRegisterDoctorPage();
 	}
 	
-	public void goToRegisterDoctorPage(){
-		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("../ui/RegisterDoctorView.fxml"));
-		AnchorPane registerDoctorView;
-		try {
-			registerDoctorView = (AnchorPane) loader.load();
-			Scene scene=new Scene(registerDoctorView);
-			prevStage.setScene(scene);
-			prevStage.show();
-			RegisterDoctorController controller=loader.getController();
-			controller.setPrevStage(prevStage);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void goRegisterPatient(){
+		nav.goToRegisterPatientPage();
 	}
+	
+	public void goProfile(){
+		nav.goToProfile();
+	}
+	
 }

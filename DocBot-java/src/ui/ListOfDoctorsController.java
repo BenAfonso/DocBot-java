@@ -1,11 +1,10 @@
-package ui.ListOfDoctors;
+package ui;
 
 import java.net.URL;
 import java.util.*;
 import application.Main;
 import facade.DoctorFacade;
 import models.Doctor;
-import ui.MenuController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -21,7 +20,7 @@ import services.NavigationService;
 /**
  * @author BenAfonso
  */
-public class ListOfDoctorsController extends MenuController implements javafx.fxml.Initializable {
+public class ListOfDoctorsController implements javafx.fxml.Initializable {
 
     @FXML TableView<Doctor> doctorsTable;
     @FXML TableColumn<Doctor, String> cityCol;

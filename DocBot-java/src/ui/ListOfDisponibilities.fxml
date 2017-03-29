@@ -47,7 +47,8 @@
                   <TableColumn fx:id="makeAnAppointmentCol" prefWidth="94.11349487304688" />
               </columns>
             </TableView>
-            <Label fx:id="errorLabel" layoutX="124.0" layoutY="154.0" text="ErrorLabel" />
+            <Label fx:id="errorLabel" layoutX="124.0" layoutY="154.0" text="" />
+            <Button layoutX="758.0" layoutY="116.0" mnemonicParsing="false" onAction="#goAddDisponibility" text="Add disponibility" />
          </children>
       </Pane>
    </children>

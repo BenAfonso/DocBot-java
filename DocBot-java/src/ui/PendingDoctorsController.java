@@ -1,11 +1,10 @@
-package ui.pending;
+package ui;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import ui.MenuController;
 
-public class PendingDoctorsController extends MenuController {
+public class PendingDoctorsController {
 
 	public PendingDoctorsController() {
 		// TODO Auto-generated constructor stub

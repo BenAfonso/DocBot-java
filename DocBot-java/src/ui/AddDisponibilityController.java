@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import services.Authentification;
+import services.NavigationService;
 
 /**
  * @author BenAfonso
@@ -70,6 +71,20 @@ public class AddDisponibilityController {
      */
     public void displayError() {
         // TODO implement here
+    }
+    
+    public void back(){
+    	goDisponibilities();
+    }
+    
+    /********************************************************
+	 * 
+	 * 						Navigation
+	 * 
+	 ********************************************************/
+    NavigationService nav = new NavigationService();
+    public void goDisponibilities(){
+    	nav.goToMyDisponibilities();
     }
 
 }

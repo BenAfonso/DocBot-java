@@ -35,10 +35,9 @@ public class ValidateOrRejectDoctorRegistrationController {
 	private TableColumn<Doctor, String> cityColumn;
 	@FXML
 	private TableColumn<Doctor, String> zipColumn;
-	NavigationService nav = new NavigationService();
 
 
-	private Stage prevStage;
+
 
 
 	public ValidateOrRejectDoctorRegistrationController() {
@@ -51,13 +50,7 @@ public class ValidateOrRejectDoctorRegistrationController {
 		loadDoctor();
 	}
 
-	/**
-	 * Sets the previous stage
-	 * @param stage
-	 */
-	public void setPrevStage(Stage stage){
-		this.prevStage = stage;
-	}
+	
 
 	/**
 	 * Called when the user clicks the accept button. 
@@ -124,13 +117,6 @@ public class ValidateOrRejectDoctorRegistrationController {
 	}
 
 
-	/**
-	 * Set the main application
-	 * @param main
-	 */
-	public void setMainApp(Main main){
-	}
-
 
 	public void start(Stage primaryStage) {
 		//Initilisation of the view
@@ -184,30 +170,5 @@ public class ValidateOrRejectDoctorRegistrationController {
 		DoctorFacade docFacade = new DoctorFacade();
 		this.doc = docFacade.getPendingDoctors();
 	}
-	/********************************************************
-	 * 
-	 * 						Navigation
-	 * 
-	 ********************************************************/
 	
-	public void logout(){
-		nav.goLogout();
-	}
-	
-	public void goToProfile(){
-		nav.goToProfile();
-	}
-	
-
-	public void goUpdateProfile(){
-		nav.goUpdateProfile();
-	}
-	
-	public void goToListOfDoctors() {
-		nav.goToListOfDoctors();
-
-	}
-	public void goToListOfWaitingDoctors() {
-		nav.goToListOfWaitingDoctors();
-	}
 }

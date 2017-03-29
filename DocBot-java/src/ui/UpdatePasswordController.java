@@ -19,12 +19,7 @@ public class UpdatePasswordController {
 	@FXML private TextField newPasswordField;
 	@FXML private TextField confirmPasswordField;
 	@FXML private Label errorField;
-	
-	/**
-	 * Navigation tools
-	 */
-	NavigationService nav = new NavigationService();
-	private Stage prevStage;
+
 
 	PersonFacade personFacade;
     /**
@@ -33,11 +28,7 @@ public class UpdatePasswordController {
     public UpdatePasswordController() {
     	personFacade=new PersonFacade();
     }
-    /**
-	 * Inializer for the current view
-	 */
-	public void initialize(URL location, ResourceBundle resources) {
-	}
+    
 	
 
 
@@ -90,7 +81,7 @@ public class UpdatePasswordController {
 	 * 						Navigation
 	 * 
 	 ********************************************************/
-	
+    NavigationService nav = new NavigationService();
     public void goUpdateProfile(){
 		nav.goUpdateProfile();
 	}

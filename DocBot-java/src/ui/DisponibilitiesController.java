@@ -19,6 +19,7 @@ import models.Disponibility;
 import models.Doctor;
 import models.Person;
 import models.Schedule;
+import services.NavigationService;
 
 
 /**
@@ -115,6 +116,16 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
     public void displayDisponibilities(Doctor doctor) {
     	doctorNameLabel.setText(doctor.getLastName());
     	disponibilitiesTable.getItems().setAll(this.getDisponibilities(doctor));
+    }
+    
+    /********************************************************
+	 * 
+	 * 						Navigation
+	 * 
+	 ********************************************************/
+    NavigationService nav = new NavigationService();
+    public void goAddDisponibility(){
+    	nav.goToAddDisponibility();
     }
 
 }

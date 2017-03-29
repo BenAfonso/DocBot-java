@@ -21,26 +21,11 @@ public class ProfileController {
 	@FXML private Label label_phone;
 	@FXML private Label label_error;
 	
-	/**
-	 * Navigation tools
-	 */
-	NavigationService nav = new NavigationService();
-	private Stage prevStage;
 	
 	
 	private PatientFacade patf;
-	/**
-	 * Inializer for the current view
-	 */
-	public void initialize(URL location, ResourceBundle resources) {
-	}
 	
-	/**
-	 * Set the main application
-	 * @param main
-	 */
-	public void setMainApp(Main main){
-	}
+	
 	/**
      * Default constructor
      */
@@ -84,18 +69,14 @@ public class ProfileController {
         }
     }
 
-	public void setPrevStage(Stage prevStage) {
-		this.prevStage=prevStage;
-		
-	}
-	
+
 	
 	/********************************************************
 	 * 
 	 * 						Navigation
 	 * 
 	 ********************************************************/
-	
+    NavigationService nav = new NavigationService();
 	public void goToProfile(){
 		nav.goToProfile();
 	}

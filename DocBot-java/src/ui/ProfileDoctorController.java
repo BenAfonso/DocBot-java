@@ -27,21 +27,9 @@ public class ProfileDoctorController {
 	 * Navigation tools
 	 */
 	NavigationService nav = new NavigationService();
-	private Stage prevStage;
+
 	
 	private DoctorFacade docf;
-	/**
-	 * Inializer for the current view
-	 */
-	public void initialize(URL location, ResourceBundle resources) {
-	}
-	
-	/**
-	 * Set the main application
-	 * @param main
-	 */
-	public void setMainApp(Main main){
-	}
 	
 	/**
      * Default constructor
@@ -89,10 +77,6 @@ public class ProfileDoctorController {
         }
     }
 
-	public void setPrevStage(Stage prevStage) {
-		this.prevStage=prevStage;
-		
-	}
 	
 	/********************************************************
 	 * 
