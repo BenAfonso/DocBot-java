@@ -34,9 +34,7 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
 		dayCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("date"));
 		hourEndCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("hourEndFull"));
 		hourStartCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("hourStartFull"));
-		descriptionCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("description"));
-		this.displayDisponibilities();
-				
+		descriptionCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("description"));				
 	}
     /**
      * Default constructor
@@ -47,13 +45,8 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
 
   
     public ScheduleFacade scheduleFa;
-    public int doctorId;
-
-    public void setViewDoctor(int id) {
-    	this.doctorId = id;
-    }
     
-    public List<Disponibility> getDisponibilities() {
+    public List<Disponibility> getDisponibilities(int doctorId) {
     	
     	return scheduleFa.getDoctorDisponibilities(doctorId);
     	
@@ -75,8 +68,8 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
         // TODO implement here
     }
     
-    public void displayDisponibilities() {
-    	disponibilitiesTable.getItems().setAll(this.getDisponibilities());
+    public void displayDisponibilities(int doctorId) {
+    	disponibilitiesTable.getItems().setAll(this.getDisponibilities(doctorId));
     }
 
 }

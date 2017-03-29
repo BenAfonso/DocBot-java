@@ -159,8 +159,7 @@ public class NavigationService {
 		
 		listOfDisponibilitiesView = (AnchorPane) loader.load();
 		DisponibilitiesController listController = loader.getController();
-
-		listController.setViewDoctor(Authentification.getUser().getId());
+		listController.displayDisponibilities(Authentification.getUser().getId());
 
 		changeView(listOfDisponibilitiesView);
 		} catch (IOException e) {
