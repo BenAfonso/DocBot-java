@@ -37,7 +37,6 @@ public class ListOfDoctorsController implements javafx.fxml.Initializable {
     
 
 	private List<Doctor> list;
-	private NavigationService nav;
 	/**
 	 * Inializer for the current view
 	 */
@@ -75,7 +74,6 @@ public class ListOfDoctorsController implements javafx.fxml.Initializable {
                                             {
                                             	Doctor doctor = getTableView().getItems().get( getIndex() );
                                             	System.out.println(doctor.getId());
-                                            	nav.goToDisponibilitiesOf(doctor); // TEMPORARY
                                             	
                                     } );
                                     setGraphic( btn );
@@ -134,7 +132,6 @@ public class ListOfDoctorsController implements javafx.fxml.Initializable {
         NavigationService nav = new NavigationService();
 
     	this.doctorFacade = new DoctorFacade();
-    	this.nav = new NavigationService();
     	this.getDoctors();
     }
     
@@ -197,14 +194,5 @@ public class ListOfDoctorsController implements javafx.fxml.Initializable {
 		doctorsTable.getItems().setAll(this.getPendingDoctors());
     }
     
-    /********************************************************
-	 * 
-	 * 						Navigation
-	 * 
-	 ********************************************************/
-    
-	public void goToProfile(){
-		nav.goToProfile();
-	}
 
 }

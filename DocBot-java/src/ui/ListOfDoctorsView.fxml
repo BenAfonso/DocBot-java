@@ -13,7 +13,7 @@
    <children>
       <Pane prefHeight="700.0" prefWidth="1000.0">
          <children>
-            <TableView fx:id="doctorsTable" layoutX="216.0" layoutY="122.0" prefHeight="529.0" prefWidth="772.0">
+            <TableView fx:id="doctorsTable" layoutX="120.0" layoutY="123.0" prefHeight="529.0" prefWidth="772.0">
               <columns>
                 <TableColumn fx:id="firstNameCol" prefWidth="75.0" text="Prénom" />
                 <TableColumn fx:id="lastNameCol" prefWidth="75.0" text="Nom" />
@@ -26,7 +26,7 @@
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#78909c" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1000.0" />
             <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="487.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../img/logoDocbot.png" />
+                  <Image url="@../img/logoDocbot.png" />
                </image>
             </ImageView>
             <Text layoutX="442.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOC">
@@ -39,30 +39,9 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#607d8b" height="620.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-            <Button layoutX="60.0" layoutY="130.0" mnemonicParsing="false" onAction="#goToProfile" text="Profile">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button layoutX="49.0" layoutY="215.0" mnemonicParsing="false" text="Schedule">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button layoutX="26.0" layoutY="300.0" mnemonicParsing="false" text="List of doctors">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button layoutX="58.0" layoutY="651.0" mnemonicParsing="false" onAction="#logout" text="Logout">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="pendingDoctorsButton" layoutX="310.0" layoutY="89.0" mnemonicParsing="false" onAction="#displayPendingDoctors" text="Pending doctors" />
-            <Button fx:id="allDoctorsButton" layoutX="216.0" layoutY="89.0" mnemonicParsing="false" onAction="#displayDoctors" text="All Doctors" />
-            <TextField fx:id="cityFilterTextField" layoutX="458.0" layoutY="89.0" promptText="Search by city" />
+            <Button fx:id="pendingDoctorsButton" layoutX="214.0" layoutY="90.0" mnemonicParsing="false" onAction="#displayPendingDoctors" text="Pending doctors" />
+            <Button fx:id="allDoctorsButton" layoutX="120.0" layoutY="90.0" mnemonicParsing="false" onAction="#displayDoctors" text="All Doctors" />
+            <TextField fx:id="cityFilterTextField" layoutX="362.0" layoutY="90.0" promptText="Search by city" />
          </children>
       </Pane>
    </children>
