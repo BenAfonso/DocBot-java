@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.*;
 
 import facade.DoctorFacade;
+import facade.RequestAppointmentFacade;
 import facade.ScheduleFacade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,6 +36,18 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
 	@FXML TableColumn<Disponibility, String> descriptionCol;
 	@FXML TableColumn<Disponibility, Disponibility> makeAnAppointmentCol;
 	
+	/**
+     * Default constructor
+     */
+    public DisponibilitiesController() {
+    	scheduleFa = new ScheduleFacade(); // To refactor 
+    	requestAppointmentFacade = new RequestAppointmentFacade();
+    }
+
+  
+    public ScheduleFacade scheduleFa;
+    public RequestAppointmentFacade requestAppointmentFacade;
+    
 	public void initialize(URL location, ResourceBundle resources) {
 		dayCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("date"));
 		hourEndCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("hourEndFull"));
@@ -67,6 +80,8 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
                                             	System.out.println(disp.getId());
                                             	// IMPLEMENT HERE
                                             	
+                                            	makeRequestAppointment(disp);
+                                            	
                                     } );
                                     setGraphic( btn );
                                     setText( null );
@@ -80,15 +95,7 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
         makeAnAppointmentCol.setCellFactory(cellFactory);
 	
 	}
-    /**
-     * Default constructor
-     */
-    public DisponibilitiesController() {
-    	scheduleFa = new ScheduleFacade(); // To refactor 
-    }
-
-  
-    public ScheduleFacade scheduleFa;
+    
     
     public List<Disponibility> getDisponibilities(Doctor doctor) {
     	
@@ -103,6 +110,12 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
         // TODO implement here
     	
         return null;
+    }
+    
+    public boolean makeRequestAppointment(Disponibility disp) {
+    	//this.requestAppointmentFacade.
+		return false;
+    	
     }
 
     /**

@@ -18,7 +18,9 @@ public class RequestAppointmentFacade {
     /**
      * 
      */
-    public RequestAppointmentDAO dao;
+    public RequestAppointmentDAO requestAppointmentDao;
+    public DisponibilityDAO disponibilityDao;
+
 
     /**
      * 
@@ -37,7 +39,19 @@ public class RequestAppointmentFacade {
      * @param person the person who asked for the appointment
      */
     public void createNewRequest(Disponibility disponibility, Person person) {
-        // TODO implement here
+        if (requestAppointmentDao == null) {
+        	return; // Raise error (dao not instancied)
+        } 
+        
+        if (disponibility.isBooked()) {
+        	return; // Raise error (disponibility already booked)
+        }
+        
+        RequestAppointment requestAppointment = new RequestAppointment(disponibility, person);
+        //disponibilityDao.update(disponibility);
+        requestAppointmentDao.create(requestAppointment);
+        
+        
     }
 
     /**
@@ -61,9 +75,9 @@ public class RequestAppointmentFacade {
      * Check if the doctor is in auto accept policy
      * @return true if the doctor is in auto accept mode, false otherwise
      */
-    public Boolean checkIfDoctorIsInAutoAcceptPolicy() {
+    public boolean checkIfDoctorIsInAutoAcceptPolicy() {
         // TODO implement here
-        return null;
+        return false;
     }
 
     /**
