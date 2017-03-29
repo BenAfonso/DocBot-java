@@ -131,6 +131,8 @@ public class ListOfDoctorsController implements javafx.fxml.Initializable {
      * Default constructor
      */
     public ListOfDoctorsController() {
+        NavigationService nav = new NavigationService();
+
     	this.doctorFacade = new DoctorFacade();
     	this.nav = new NavigationService();
     	this.getDoctors();
@@ -194,5 +196,15 @@ public class ListOfDoctorsController implements javafx.fxml.Initializable {
     public void displayPendingDoctors() {
 		doctorsTable.getItems().setAll(this.getPendingDoctors());
     }
+    
+    /********************************************************
+	 * 
+	 * 						Navigation
+	 * 
+	 ********************************************************/
+    
+	public void goToProfile(){
+		nav.goToProfile();
+	}
 
 }
