@@ -50,12 +50,16 @@ public class ScheduleFacade {
     }
     /** 
      * Create a schedule with a date in parameter
-     * @param date the date of shedule that will be created
+     * @param date the date of schedule that will be created
      * @return the schedule added
      */
     public Schedule createSchedule(int doctor_id,Date date) {
-       Schedule scheduleToInsert = new Schedule (doctor_id,date); 
-       dao.create(scheduleToInsert);
+    	Schedule scheduleToInsert=dao.find(doctor_id, date);
+    	if(dao.find(doctor_id, date)==null){
+    		scheduleToInsert = new Schedule (doctor_id,date); 
+    		dao.create(scheduleToInsert);
+    		scheduleToInsert = dao.find(doctor_id, date);
+    	}
         return scheduleToInsert;
     }
 
@@ -67,8 +71,9 @@ public class ScheduleFacade {
      * @param withHour 
      * @return the disponibility added
      */
-    public Disponibility createDisponibility(Schedule withSchedule, int hourStart,int minuteStart, int hourEnd,int minuteEnd, String description) {
-        Disponibility dispoToInsert = new Disponibility(withSchedule.getId(),hourStart,minuteStart,hourEnd,minuteEnd,description,false);
+    public Disponibility createDisponibility(int doctor_id,Date date, int hourStart,int minuteStart, int hourEnd,int minuteEnd, String description) {
+    	Schedule sched=createSchedule(doctor_id,date);
+        Disponibility dispoToInsert = new Disponibility(sched.getId(),hourStart,minuteStart,hourEnd,minuteEnd,description,false);
         dispoDao.create(dispoToInsert);
         return null;
     }

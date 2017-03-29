@@ -49,4 +49,8 @@ public abstract class ScheduleDAO {
         // TODO implement here
     }
 
+
+	public abstract Schedule find(int doctor_id, Date date);
+
+
 }
