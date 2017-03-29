@@ -14,20 +14,20 @@ public class MenuController {
 	}
 	
 	public void logout(){
-		nav.goLogout(getPrevStage());
+		nav.goLogout();
 	}
 	
 	public void goToProfile(){
-		nav.goToProfile(getPrevStage());
+		nav.goToProfile();
 	}
 	
 
 	public void goUpdateProfile(){
-		nav.goUpdateProfileDoctor(getPrevStage());
+		nav.goUpdateProfile();
 	}
 	
 	public void goToListOfDoctors() {
-		nav.goToListOfDoctors(getPrevStage());
+		nav.goToListOfDoctors();
 
 	}
 

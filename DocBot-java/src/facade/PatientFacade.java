@@ -55,7 +55,7 @@ public class PatientFacade {
 	public boolean register(String fname, String lname, String password, LocalDate birthday, String phoneNumber, String mail) {
 		boolean result=false;
 		Date date = Date.from(birthday.atStartOfDay(ZoneId.systemDefault()).toInstant());
-		Patient patientToRegister = new Patient(fname,lname,password,date,phoneNumber,mail);
+		Patient patientToRegister = new Patient(fname,lname,password,date,phoneNumber,mail,true);
 		if(daoPerson.create(patientToRegister)){
 			int id = daoPerson.find(mail).getId();
 			if(dao.create(id)){
@@ -64,6 +64,19 @@ public class PatientFacade {
 		}
 		return result;
 		
+	}
+	
+	/**
+     * Update a profile patient
+     * @param patient a Patient object who will be updated
+     */
+	public boolean update(String mail, String fname, String lname, LocalDate birthday, String phoneNumber){
+		boolean result=false;
+		Date date = Date.from(birthday.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		if(dao.update(mail, fname, lname, date, phoneNumber)){
+			result=true;
+		}
+		return result;
 	}
 
 }

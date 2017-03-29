@@ -3,6 +3,7 @@ package ui;
 import java.net.URL;
 import java.util.*;
 
+import application.Main;
 import facade.PatientFacade;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -96,14 +97,19 @@ public class ProfileController {
 	 ********************************************************/
 	
 	public void logout(){
-		nav.goLogout(prevStage);
+		nav.goLogout();
 	}
 	
 	public void goToProfile(){
-		nav.goToProfile(prevStage);
+		nav.goToProfile();
 	}
 	
 	public void goToListOfDoctors() {
-		nav.goToListOfDoctors(prevStage);
+		nav.goToListOfDoctors();
 	}
+	
+	public void goUpdateProfile(){
+		nav.goUpdateProfile();
+	}
+	
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.MenuBar?>
+
+<MenuBar xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="services.NavigationService">
+  <menus>
+    <Menu mnemonicParsing="false" text="Profile">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#goToProfile" text="Go to Profile" />
+         </items></Menu>
+    <Menu mnemonicParsing="false" text="List of Doctors">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#goToListOfDoctors" text="Go to list of Doctors" />
+         </items></Menu>
+      <Menu mnemonicParsing="false" text="Logout">
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#goLogout" text="Disconnect" />
+        </items>
+      </Menu>
+  </menus>
+</MenuBar>

@@ -54,6 +54,15 @@ public class Person {
 		this.setBirthday(birthday);
 		this.setPhoneNumber(phoneNumber);
 	}
+	public Person(String fname, String lname, String password, Date birthday, String phoneNumber, String mail,boolean isValidated) {
+		this.firstName = fname;
+		this.lastName = lname;
+		this.email = mail;
+		this.password = password;
+		this.setBirthday(birthday);
+		this.setPhoneNumber(phoneNumber);
+		this.setIsValidated(isValidated);
+	}
 	public Person(){};
 
 

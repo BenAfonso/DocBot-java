@@ -9,29 +9,21 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.UpdateDoctorProfileController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.UpdateProfileController">
    <children>
       <Pane prefHeight="700.0" prefWidth="1000.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#78909c" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1000.0" />
             <Label layoutX="305.0" layoutY="205.0" text="First name" />
             <Label layoutX="305.0" layoutY="256.0" text="Last name" />
-            <Label layoutX="305.0" layoutY="358.0" text="Phone number" />
-            <Label layoutX="529.0" layoutY="202.0" text="Street's number" />
-            <Label layoutX="531.0" layoutY="254.0" text="Street" />
-            <Label layoutX="530.0" layoutY="304.0" text="City" />
-            <Label layoutX="533.0" layoutY="362.0" text="Zip Code" />
+            <Label layoutX="517.0" layoutY="256.0" text="Phone number" />
             
-            <Label layoutX="305.0" layoutY="308.0" text="Birthday" />
-            <DatePicker fx:id="birthdayField" layoutX="303.0" layoutY="325.0" />
+            <Label layoutX="517.0" layoutY="205.0" text="Birthday" />
+            <DatePicker fx:id="birthdayField" layoutX="517.0" layoutY="222.0" />
             <TextField fx:id="fnameField" layoutX="303.0" layoutY="222.0" />
             <TextField fx:id="lnameField" layoutX="303.0" layoutY="273.0" />
-            <TextField fx:id="phoneField" layoutX="303.0" layoutY="376.0" />
-            <TextField fx:id="streetNumberField" layoutX="529.0" layoutY="219.0" />
-            <TextField fx:id="streetField" layoutX="531.0" layoutY="271.0" />
-            <TextField fx:id="cityField" layoutX="531.0" layoutY="321.0" />
-            <TextField fx:id="zipCodeField" layoutX="531.0" layoutY="379.0" />
-            <Button fx:id="btnUpdate" layoutX="465.0" layoutY="498.0" mnemonicParsing="false" onAction="#updateProfile" text="Update" />
+            <TextField fx:id="phoneField" layoutX="517.0" layoutY="273.0" />
+            <Button fx:id="btnUpdate" layoutX="464.0" layoutY="391.0" mnemonicParsing="false" onAction="#updateProfile" text="Update" />
             <Label layoutX="402.0" layoutY="112.0" text="Update his profil" textFill="#78909c">
                <font>
                   <Font size="24.0" />
@@ -52,7 +44,8 @@
                   <Image url="@../img/logoDocbot.png" />
                </image>
             </ImageView>
-            <Label fx:id="errorField" layoutX="468.0" layoutY="163.0" text="ErrorLabel" />
+            <Label fx:id="errorField" layoutX="468.0" layoutY="163.0" text="" />
+            <Button layoutX="784.0" layoutY="113.0" mnemonicParsing="false" onAction="#goUpdatePassword" text="Update Password" />
          </children>
       </Pane>
    </children>

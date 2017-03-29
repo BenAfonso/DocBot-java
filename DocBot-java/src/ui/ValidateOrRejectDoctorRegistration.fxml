@@ -1,34 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
-<?import java.lang.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
+<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="627.0" prefWidth="1118.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ValidateOrRejectDoctorRegistrationController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ValidateOrRejectDoctorRegistrationController">
    <children>
-      <ScrollPane layoutX="-1.0" layoutY="54.0" prefHeight="476.0" prefWidth="1119.0">
-         <content>
-            <TableView id="table" fx:id="table" prefHeight="490.0" prefWidth="1115.0">
-              <columns>
-                <TableColumn id="lastNameColumn" fx:id="lastNameColumn" prefWidth="235.0" text="Last Name" />
-                <TableColumn id="firstNameColumn" fx:id="firstNameColumn" prefWidth="258.0" text="First Name" />
-                  <TableColumn id="siretColumn" fx:id="siretColumn" minWidth="0.0" prefWidth="198.0" text="Siret" />
-                  <TableColumn id="cityColumn" fx:id="cityColumn" prefWidth="283.0" text="City" />
-                  <TableColumn id="zipColumn" fx:id="zipColumn" prefWidth="124.0" text="zip_code" />
-              </columns>
-            </TableView>
-         </content>
-      </ScrollPane>
-      <Label layoutX="483.0" layoutY="14.0" prefHeight="21.0" prefWidth="181.0" text="Unechecked Doctors">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
+      <TableView id="table" fx:id="table" layoutX="272.0" layoutY="153.0" prefHeight="386.0" prefWidth="672.0">
+        <columns>
+          <TableColumn id="lastNameColumn" fx:id="lastNameColumn" prefWidth="75.0" text="Last Name" />
+          <TableColumn id="firstNameColumn" fx:id="firstNameColumn" prefWidth="75.0" text="First Name" />
+            <TableColumn id="siretColumn" fx:id="siretColumn" prefWidth="75.0" text="Siret" />
+            <TableColumn id="cityColumn" fx:id="cityColumn" prefWidth="75.0" text="City" />
+            <TableColumn id="zipColumn" fx:id="zipColumn" prefWidth="75.0" text="zip_code" />
+        </columns>
+      </TableView>
       <Button layoutX="664.0" layoutY="564.0" mnemonicParsing="false" onAction="#acceptDoctor" text="Accepter" />
       <Button layoutX="284.0" layoutY="564.0" mnemonicParsing="false" onAction="#goToDoctorProfil" text="Voir le profil" textAlignment="CENTER" />
       <Button layoutX="768.0" layoutY="564.0" mnemonicParsing="false" onAction="#rejectDoctor" text="Refuser" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#607d8b" height="620.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#78909c" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1000.0" />
+            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="487.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logoDocbot.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="442.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOC">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="541.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOT">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#78909c" layoutX="453.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unechecked Doctors">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Button layoutX="60.0" layoutY="130.0" mnemonicParsing="false" onAction="#goToProfile" text="Profile">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="49.0" layoutY="215.0" mnemonicParsing="false" text="Schedule">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="26.0" layoutY="300.0" mnemonicParsing="false" text="List of doctors">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="58.0" layoutY="651.0" mnemonicParsing="false" onAction="#logout" text="Logout">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="14.0" layoutY="376.0" mnemonicParsing="false" onAction="#goToListOfWaitingDoctors" text="List of waiting doctors">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
    </children>
 </AnchorPane>

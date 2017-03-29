@@ -3,6 +3,7 @@ package ui;
 import java.io.IOException;
 import java.util.*;
 
+import application.Main;
 import facade.PatientFacade;
 import facade.PersonFacade;
 import javafx.fxml.FXML;

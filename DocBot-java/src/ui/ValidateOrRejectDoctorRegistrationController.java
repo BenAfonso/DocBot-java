@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
+import application.Main;
 import facade.*;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.*;
@@ -16,10 +17,11 @@ import javafx.scene.control.cell.*;
 import javafx.scene.layout.*;
 import javafx.stage.*;
 import models.*;
+import services.NavigationService;
 
 public class ValidateOrRejectDoctorRegistrationController {
 
-	private Doctor[] doc;
+	private List<Doctor> doc;
 
 	@FXML
 	private TableView<Doctor> table;
@@ -33,6 +35,7 @@ public class ValidateOrRejectDoctorRegistrationController {
 	private TableColumn<Doctor, String> cityColumn;
 	@FXML
 	private TableColumn<Doctor, String> zipColumn;
+	NavigationService nav = new NavigationService();
 
 
 	private Stage prevStage;
@@ -41,39 +44,11 @@ public class ValidateOrRejectDoctorRegistrationController {
 	public ValidateOrRejectDoctorRegistrationController() {
 		// TODO Auto-generated constructor stub
 		super();
-		this.doc = new Doctor[2];
 
 	}
 	@FXML
 	private void initialize() {
-
-		//Filling up the data
-		this.getUncheckedDoctors();
-		ObservableList<Doctor> data = FXCollections.observableArrayList();
-		for (Doctor doc: this.doc){
-			data.add(doc);
-			System.out.println(doc.getLastName());
-			System.out.println(doc.getFirstName());
-		}
-
-
-		table.setItems(data);
-
-		firstNameColumn.setCellValueFactory( 
-				new PropertyValueFactory<Doctor,String>("firstName")
-				);
-		lastNameColumn.setCellValueFactory( 
-				new PropertyValueFactory<Doctor,String>("lastName")
-				);
-		siretColumn.setCellValueFactory( 
-				new PropertyValueFactory<Doctor,String>("siret")
-				);
-		cityColumn.setCellValueFactory( 
-				new PropertyValueFactory<Doctor,String>("city")
-				);
-		zipColumn.setCellValueFactory( 
-				new PropertyValueFactory<Doctor,String>("zipCode")
-				);
+		loadDoctor();
 	}
 
 	/**
@@ -94,6 +69,7 @@ public class ValidateOrRejectDoctorRegistrationController {
 		Doctor selectedDoctor = table.getSelectionModel().getSelectedItem();
 		if (selectedDoctor != null) {
 			docFacade.accept(selectedDoctor);
+			loadDoctor();
 		} else {
 			// Nothing selected.
 			Alert alert = new Alert(AlertType.WARNING);
@@ -113,8 +89,11 @@ public class ValidateOrRejectDoctorRegistrationController {
 	private void rejectDoctor() {
 		DoctorFacade docFacade = new DoctorFacade();
 		Doctor selectedDoctor = table.getSelectionModel().getSelectedItem();
+		System.out.println(selectedDoctor.getId());
+
 		if (selectedDoctor != null) {
 			docFacade.reject(selectedDoctor);
+			loadDoctor();
 		} else {
 			// Nothing selected.
 			Alert alert = new Alert(AlertType.WARNING);
@@ -171,16 +150,64 @@ public class ValidateOrRejectDoctorRegistrationController {
 
 	}
 
+	public void loadDoctor(){
+		//Filling up the data
+		this.getUncheckedDoctors();
+		ObservableList<Doctor> data = FXCollections.observableArrayList();
+		for (Doctor doc: this.doc){
+			data.add(doc);
+		}
+
+
+		table.setItems(data);
+
+		firstNameColumn.setCellValueFactory( 
+				new PropertyValueFactory<Doctor,String>("firstName")
+				);
+		lastNameColumn.setCellValueFactory( 
+				new PropertyValueFactory<Doctor,String>("lastName")
+				);
+		siretColumn.setCellValueFactory( 
+				new PropertyValueFactory<Doctor,String>("siret")
+				);
+		cityColumn.setCellValueFactory( 
+				new PropertyValueFactory<Doctor,String>("city")
+				);
+		zipColumn.setCellValueFactory( 
+				new PropertyValueFactory<Doctor,String>("zipCode")
+				);
+		
+	}
 	public void getUncheckedDoctors(){
-		// TEST WITH MOCK DATA
-		Doctor[] doc = new Doctor[2];
-		doc[0] = new Doctor("bob", "longchemp", "111", null, "0777777", null, "7777777", null, null, "Montpellier", "34000");
-		doc[1] = new Doctor("jaacques", "ruiz", null, null, null, "jac.ruiz@pasBon.fr", "111444", null, null,"Paris", "78000");
-		this.doc= doc;
 
 		//REAL DATA
-		//DoctorFacade docFacade = new DoctorFacade();
-		//this.doc = docFacade.getUncheckedDoctors();
+		DoctorFacade docFacade = new DoctorFacade();
+		this.doc = docFacade.getPendingDoctors();
 	}
+	/********************************************************
+	 * 
+	 * 						Navigation
+	 * 
+	 ********************************************************/
+	
+	public void logout(){
+		nav.goLogout();
+	}
+	
+	public void goToProfile(){
+		nav.goToProfile();
+	}
+	
 
+	public void goUpdateProfile(){
+		nav.goUpdateProfile();
+	}
+	
+	public void goToListOfDoctors() {
+		nav.goToListOfDoctors();
+
+	}
+	public void goToListOfWaitingDoctors() {
+		nav.goToListOfWaitingDoctors();
+	}
 }

@@ -89,7 +89,7 @@ public class DoctorFacade extends PersonFacade {
      *  get all the doctor that are not checked yet
      * @return an array of unchecked doctors
      */
-    public Doctor[] getUncheckedDoctors() {
+    public List<Doctor> getUncheckedDoctors() {
     	
         return dao.getUncheckedDoctor();
     }
@@ -103,7 +103,7 @@ public class DoctorFacade extends PersonFacade {
 	public boolean register(String fname, String lname, String password, LocalDate birthday, String phoneNumber, String mail, String siret, String streetNumber, String street, String city, String zipCode ) {
 		boolean result=false;
 		Date date = Date.from(birthday.atStartOfDay(ZoneId.systemDefault()).toInstant());
-		Doctor doctorToRegister = new Doctor(fname,lname,password,date,phoneNumber,mail,siret,streetNumber,street,city,zipCode);
+		Doctor doctorToRegister = new Doctor(fname,lname,password,date,phoneNumber,mail,siret,streetNumber,street,city,zipCode,false);
 		if(daoPerson.create(doctorToRegister)){
 			int id = daoPerson.find(mail).getId();
 			if(dao.create(id,siret,streetNumber,street,city,zipCode)){
@@ -133,7 +133,7 @@ public class DoctorFacade extends PersonFacade {
      * @param doctor a Doctor object who will be rejected
      */
     public void reject(Doctor doctor) {
-       dao.reject(doctor);
+       dao.reject(daoPerson.find(doctor.getEmail()).getId());
     }
 
     /**
