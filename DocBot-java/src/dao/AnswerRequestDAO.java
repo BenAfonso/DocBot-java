@@ -9,43 +9,24 @@ import java.util.*;
  */
 public abstract class AnswerRequestDAO {
 
-    /**
-     * Default constructor
-     */
-    public AnswerRequestDAO() {
-    }
-
-    /**
-     * 
-     */
-    public Connection connect;
 
     /**
      * @param answerRequest
      */
-    public void create(AnswerRequest answerRequest) {
-        // TODO implement here
-    }
+    public abstract void create(AnswerRequest answerRequest);
 
     /**
      * @param answerRequest
      */
-    public void update(AnswerRequest answerRequest) {
-        // TODO implement here
-    }
+    public abstract void update(AnswerRequest answerRequest) ;
 
     /**
      * @param answerRequest
      */
-    public void find(AnswerRequest answerRequest) {
-        // TODO implement here
-    }
+    public abstract void find(AnswerRequest answerRequest);
 
     /**
      * @param answerRequest
      */
-    public void delete(AnswerRequest answerRequest) {
-        // TODO implement here
-    }
-
+    public abstract void delete(AnswerRequest answerRequest);
 }

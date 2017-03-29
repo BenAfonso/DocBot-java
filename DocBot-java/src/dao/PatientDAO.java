@@ -15,38 +15,23 @@ import java.util.*;
  */
 public abstract class PatientDAO {
 	
-    /**
-     * Default constructor
-     */
-	public PatientDAO(Connection conn){
-		this.connect = conn;
-	}
 
-    /**
-     * 
-     */
-    public Connection connect;
+
 
     /**
      * @param patient
      */
-    public void create(Patient patient) {
-        // TODO implement here
-    }
+    public abstract void create(Patient patient) ;
 
     /**
      * @param patient
      */
-    public void update(Patient patient) {
-        // TODO implement here
-    }
+    public abstract void update(Patient patient);
 
     /**
      * @param patient
      */
-    public void find(Patient patient) {
-        // TODO implement here
-    }
+    public abstract void find(Patient patient) ;
 
     public abstract Patient find(int id);
     
@@ -61,19 +46,7 @@ public abstract class PatientDAO {
         // TODO implement here
     }
 
-	public boolean create(int id) {
-		try {
-			int result = this.connect.createStatement(
-					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Patient (id) VALUES ('"+id+"')");
-
-				return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
-		
-	}
+	public abstract boolean create(int id) ;
 
 
 

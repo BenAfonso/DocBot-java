@@ -13,17 +13,6 @@ import java.util.*;
  */
 public abstract class CommentDAO {
 
-    /**
-     * Default constructor
-     */
-    public CommentDAO(Connection connect) {
-    	this.connect = connect;
-    }
-
-    /**
-     * 
-     */
-    public Connection connect;
 
     /**
      * @param comment
@@ -33,22 +22,15 @@ public abstract class CommentDAO {
     /**
      * @param comment
      */
-    public void update(Comment comment) {
-        // TODO implement here
-    }
-
+    public abstract void update(Comment comment) ;
     /**
      * @param comment
      */
-    public void delete(Comment comment) {
-        // TODO implement here
-    }
+    public abstract void delete(Comment comment);
 
     /**
      * @param id
      */
-    public void find(int id) {
-        // TODO implement here
-    }
+    public abstract void find(int id) ;
 
 }

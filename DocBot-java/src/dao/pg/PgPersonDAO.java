@@ -10,9 +10,17 @@ import models.Person;
 
 
 public class PgPersonDAO extends PersonDAO {
-
-	public PgPersonDAO(Connection conn) {
-		super(conn);
+	
+	private static PgPersonDAO pgPersonDAO;
+	
+	private PgPersonDAO() {
+	}
+	
+	public static PgPersonDAO getPgPersonDAO(){
+		if( pgPersonDAO == null ){
+			pgPersonDAO = new PgPersonDAO();
+		}
+		return pgPersonDAO;
 	}
 
 	/**
@@ -22,7 +30,7 @@ public class PgPersonDAO extends PersonDAO {
 	 */
 	public boolean create(Person obj) {
 		try {
-			int result = this.connect.createStatement(
+			int result = ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Person (firstname, lastname, email, password,phone,birthday,isvalidated) VALUES ('"+obj.getFirstName()+"','"+obj.getLastName()+"','"+obj.getEmail()+"','"+obj.getPassword()+"','"+obj.getPhoneNumber()+"','"+obj.getBirthday()+"','"+obj.getIsValidated()+"')");
 				return true;
@@ -40,7 +48,7 @@ public class PgPersonDAO extends PersonDAO {
 	 */
 	public boolean delete(Person obj) {
 		try {
-			ResultSet result = this.connect.createStatement(
+			ResultSet result = ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeQuery("DELETE FROM Person WHERE id = '"+obj.getId()+"')");
 			if(result.first())
@@ -60,7 +68,7 @@ public class PgPersonDAO extends PersonDAO {
 	public boolean update(Person obj) {
 		Person user = null;
 		try {
-			ResultSet result = this.connect.createStatement(
+			ResultSet result = ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeQuery("UPDATE Person SET (firstname, lastname, email, password) = ('"+obj.getFirstName()+"','"+obj.getLastName()+"','"+obj.getEmail()+"','"+obj.getPassword()+"')");
 			if(result.first())
@@ -85,7 +93,7 @@ public class PgPersonDAO extends PersonDAO {
 		Person user = null;     
 
 		try {
-			ResultSet result = this.connect.createStatement(
+			ResultSet result = ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM person WHERE id = " + id);
 			if(result.first())
@@ -105,7 +113,7 @@ public class PgPersonDAO extends PersonDAO {
 	public Person find(String username) {
 		Person user = null;      
 		try {
-			ResultSet result = this.connect.createStatement(
+			ResultSet result = ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM person WHERE email='" + username + "'");
 
@@ -120,7 +128,7 @@ public class PgPersonDAO extends PersonDAO {
 	@Override
 	public boolean updatePassword(String mail, String newPassword) {
 		try {
-			int result = this.connect.createStatement(
+			int result = ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeUpdate("UPDATE person SET password='"+newPassword+"' WHERE email='"+mail+"'");
 				return true;

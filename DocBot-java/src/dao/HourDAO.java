@@ -23,29 +23,21 @@ public abstract class HourDAO {
     /**
      * @param hour
      */
-    public void create(Hour hour) {
-        // TODO implement here
-    }
+    public abstract void create(Hour hour) ;
 
     /**
      * @param hour
      */
-    public void update(Hour hour) {
-        // TODO implement here
-    }
+    public abstract void update(Hour hour);
 
     /**
      * @param hour
      */
-    public void find(Hour hour) {
-        // TODO implement here
-    }
+    public abstract void find(Hour hour);
 
     /**
      * @param hour
      */
-    public void delete(Hour hour) {
-        // TODO implement here
-    }
+    public abstract void delete(Hour hour);
 
 }
