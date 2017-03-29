@@ -168,6 +168,23 @@ public class NavigationService {
 		}
 	}
 	
+	public void goToDisponibilitiesOf(Doctor doctor){
+		try {
+		FXMLLoader loader=new FXMLLoader();
+		loader.setLocation(Main.class.getResource("../ui/ListOfDisponibilities.fxml"));
+		AnchorPane listOfDisponibilitiesView;
+		
+		listOfDisponibilitiesView = (AnchorPane) loader.load();
+		DisponibilitiesController listController = loader.getController();
+		listController.displayDisponibilities(doctor.getId());
+
+		changeView(listOfDisponibilitiesView);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	
 	public void goToProfile(){
 		try {
