@@ -23,11 +23,11 @@ public class DisponibilitiesController {
 
 	@FXML Label doctorNameLabel;
 	@FXML Label errorLabel;
-	@FXML TableView disponibilitiesTable;
-	@FXML TableColumn dayCol;
-	@FXML TableColumn hourEndCol;
-	@FXML TableColumn hourStartCol;
-	@FXML TableColumn descriptionCol;
+	@FXML TableView<Disponibility> disponibilitiesTable;
+	@FXML TableColumn<Disponibility, String> dayCol;
+	@FXML TableColumn<Disponibility, String> hourEndCol;
+	@FXML TableColumn<Disponibility, String> hourStartCol;
+	@FXML TableColumn<Disponibility, String> descriptionCol;
 	
 	public void initialize(URL location, ResourceBundle resources) {
 		dayCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("date"));
