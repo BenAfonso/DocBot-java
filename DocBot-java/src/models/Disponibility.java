@@ -103,6 +103,13 @@ public class Disponibility {
 	public Date getDate(){
 		return schedule.getDate();
 	}
+	
+	public String getHourStartFull(){
+		return this.getHourStart()+":"+this.getMinuteStart();
+	}
+	public String getHourEndFull(){
+		return this.getHourEnd()+":"+this.getMinuteEnd();
+	}
 	/**
      * 
      */
