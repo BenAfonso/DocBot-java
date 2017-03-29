@@ -65,15 +65,15 @@ public class MenuViewController {
 	 ********************************************************/
 	
 	public void logout(){
-		nav.goLogout(prevStage);
+		nav.goLogout();
 	}
 	
 	public void goToProfile(){
-		nav.goToProfile(prevStage);
+		nav.goToProfile();
 	}
 	
 	public void goToListOfDoctors() {
-		nav.goToListOfDoctors(prevStage);
+		nav.goToListOfDoctors();
 	}
 	
 
