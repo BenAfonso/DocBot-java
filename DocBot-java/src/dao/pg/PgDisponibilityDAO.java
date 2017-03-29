@@ -39,7 +39,7 @@ public class PgDisponibilityDAO extends DisponibilityDAO {
 		
 		List<Disponibility> Disponibilities = new ArrayList<Disponibility>();
 		
-		String query = "SELECT * FROM schedule s, disponibility d WHERE s.id = d.schedule_id AND s.doctor_i = "+id;
+		String query = "SELECT * FROM schedule s, disponibility d WHERE s.id = d.schedule_id AND s.doctor_id = "+id;
 		try {
 			ResultSet result = this.connect.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,

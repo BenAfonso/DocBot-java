@@ -13,13 +13,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import models.Disponibility;
 import models.Doctor;
+import models.Person;
 import models.Schedule;
 
 
 /**
  * @author BenAfonso
  */
-public class DisponibilitiesController {
+public class DisponibilitiesController implements javafx.fxml.Initializable {
 
 	@FXML Label doctorNameLabel;
 	@FXML Label errorLabel;
@@ -31,21 +32,32 @@ public class DisponibilitiesController {
 	
 	public void initialize(URL location, ResourceBundle resources) {
 		dayCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("date"));
-		hourEndCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("hourEnd"));
-		hourStartCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("hourStart"));
+		hourEndCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("hourEndFull"));
+		hourStartCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("hourStartFull"));
 		descriptionCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("description"));
+		this.displayDisponibilities();
+				
 	}
     /**
      * Default constructor
      */
     public DisponibilitiesController() {
+    	scheduleFa = new ScheduleFacade(); // To refactor 
     }
 
   
     public ScheduleFacade scheduleFa;
+    public int doctorId;
 
-
-
+    public void setViewDoctor(int id) {
+    	this.doctorId = id;
+    }
+    
+    public List<Disponibility> getDisponibilities() {
+    	
+    	return scheduleFa.getDoctorDisponibilities(doctorId);
+    	
+    }
     /**
      * Get a schedule for the current doctor
      * @return Schedule 
@@ -64,7 +76,7 @@ public class DisponibilitiesController {
     }
     
     public void displayDisponibilities() {
-    	//disponibilities.getItems().setAll(this.getDoctors());
+    	disponibilitiesTable.getItems().setAll(this.getDisponibilities());
     }
 
 }
