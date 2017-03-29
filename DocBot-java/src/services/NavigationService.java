@@ -159,7 +159,7 @@ public class NavigationService {
 		
 		listOfDisponibilitiesView = (AnchorPane) loader.load();
 		DisponibilitiesController listController = loader.getController();
-		listController.displayDisponibilities(Authentification.getUser().getId());
+		listController.displayDisponibilities((Doctor) Authentification.getUser());
 
 		changeView(listOfDisponibilitiesView);
 		} catch (IOException e) {
@@ -176,7 +176,7 @@ public class NavigationService {
 		
 		listOfDisponibilitiesView = (AnchorPane) loader.load();
 		DisponibilitiesController listController = loader.getController();
-		listController.displayDisponibilities(doctor.getId());
+		listController.displayDisponibilities(doctor);
 
 		changeView(listOfDisponibilitiesView);
 		} catch (IOException e) {

@@ -53,6 +53,7 @@ public class Doctor extends Person {
     	this.setCity(city);
     	this.setZipCode(zipcode);
     }
+    
     public Doctor(String fname, String lname, String password, Date birthday, String phoneNumber, String mail, String siret, String streetNumber, String street, String city, String zipcode,boolean isValidated) {
     	super(fname,lname,password,birthday,phoneNumber,mail,isValidated);
     	this.setSiret(siret);
@@ -61,6 +62,7 @@ public class Doctor extends Person {
     	this.setCity(city);
     	this.setZipCode(zipcode);
     }
+    
     public Doctor(int id,String fname, String lname, String password, Date birthday, String phoneNumber, String mail, String siret, String streetNumber, String street, String city, String zipcode,boolean isValidated) {
     	super(id,fname,lname,password,birthday,phoneNumber,mail,isValidated);
     	this.setSiret(siret);

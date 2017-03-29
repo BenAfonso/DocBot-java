@@ -46,9 +46,9 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
   
     public ScheduleFacade scheduleFa;
     
-    public List<Disponibility> getDisponibilities(int doctorId) {
+    public List<Disponibility> getDisponibilities(Doctor doctor) {
     	
-    	return scheduleFa.getDoctorDisponibilities(doctorId);
+    	return scheduleFa.getDoctorDisponibilities(doctor);
     	
     }
     /**
@@ -68,8 +68,9 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
         // TODO implement here
     }
     
-    public void displayDisponibilities(int doctorId) {
-    	disponibilitiesTable.getItems().setAll(this.getDisponibilities(doctorId));
+    public void displayDisponibilities(Doctor doctor) {
+    	doctorNameLabel.setText(doctor.getLastName());
+    	disponibilitiesTable.getItems().setAll(this.getDisponibilities(doctor));
     }
 
 }
