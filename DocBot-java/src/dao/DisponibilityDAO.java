@@ -49,5 +49,6 @@ public abstract class DisponibilityDAO {
     public void delete(Disponibility disponibility) {
         // TODO implement here
     }
+    public abstract List<Disponibility> findDoctorDisponibilities(int id);
 
 }
