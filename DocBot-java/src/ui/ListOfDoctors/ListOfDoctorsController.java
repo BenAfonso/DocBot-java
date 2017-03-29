@@ -2,8 +2,6 @@ package ui.ListOfDoctors;
 
 import java.net.URL;
 import java.util.*;
-import java.util.function.Predicate;
-
 import application.Main;
 import facade.DoctorFacade;
 import models.Doctor;
@@ -57,7 +55,7 @@ public class ListOfDoctorsController extends MenuController implements javafx.fx
                 new Callback<TableColumn<Doctor, Doctor>, TableCell<Doctor, Doctor>>()
                 {
                     @Override
-                    public TableCell call( final TableColumn<Doctor, Doctor> param )
+                    public TableCell<Doctor, Doctor> call( final TableColumn<Doctor, Doctor> param )
                     {
                         final TableCell<Doctor, Doctor> cell = new TableCell<Doctor, Doctor>()
                         {
