@@ -47,7 +47,7 @@
             <TextField fx:id="hourEndField" layoutX="410.0" layoutY="278.0" prefHeight="27.0" prefWidth="87.0" />
             <TextField fx:id="descriptionField" layoutX="409.0" layoutY="330.0" prefHeight="27.0" prefWidth="194.0" />
             <Label layoutX="411.0" layoutY="313.0" text="Description :" />
-            <Button layoutX="477.0" layoutY="389.0" mnemonicParsing="false" text="Valide" />
+            <Button layoutX="477.0" layoutY="389.0" mnemonicParsing="false" onAction="#createDisponibility" text="Valide" />
          </children>
       </Pane>
    </children>
