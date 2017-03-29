@@ -3,14 +3,12 @@ package ui;
 import java.net.URL;
 import java.util.*;
 
-import facade.DoctorFacade;
 import facade.RequestAppointmentFacade;
 import facade.ScheduleFacade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -18,8 +16,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 import models.Disponibility;
 import models.Doctor;
-import models.Person;
 import models.Schedule;
+import services.Authentification;
 
 
 /**
@@ -77,9 +75,7 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
                                     btn.setOnAction( ( ActionEvent event ) ->
                                             {
                                             	Disponibility disp = getTableView().getItems().get( getIndex() );
-                                            	System.out.println(disp.getId());
-                                            	// IMPLEMENT HERE
-                                            	
+                                            	System.out.println(disp.getId());                                            	
                                             	makeRequestAppointment(disp);
                                             	
                                     } );
@@ -112,10 +108,11 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
         return null;
     }
     
-    public boolean makeRequestAppointment(Disponibility disp) {
-    	//this.requestAppointmentFacade.
-		return false;
-    	
+    public void makeRequestAppointment(Disponibility disp) {
+    	boolean result = this.requestAppointmentFacade.createNewRequest(disp, Authentification.getUser());    	
+    	if (!result) {
+    		throw new Error("Request appointment failed");
+    	}
     }
 
     /**

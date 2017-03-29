@@ -1,8 +1,8 @@
 package facade;
 import models.*;
 import dao.*;
-
-import java.util.*;
+import dao.pg.PgDisponibilityDAO;
+import dao.pg.PgRequestAppointmentDAO;
 
 /**
  * @author BenAfonso
@@ -13,6 +13,8 @@ public class RequestAppointmentFacade {
      * Default constructor
      */
     public RequestAppointmentFacade() {
+    	this.requestAppointmentDao = PgRequestAppointmentDAO.getPgRequestAppointmentDAO();
+    	this.disponibilityDao = PgDisponibilityDAO.getPgDisponibilityDAO();
     }
 
     /**
@@ -38,20 +40,19 @@ public class RequestAppointmentFacade {
      * @param disponibility the disponibility of the requestAppointment
      * @param person the person who asked for the appointment
      */
-    public void createNewRequest(Disponibility disponibility, Person person) {
+    public boolean createNewRequest(Disponibility disponibility, Person person) {
         if (requestAppointmentDao == null) {
-        	return; // Raise error (dao not instancied)
+        	return false; // Raise error (dao not instancied)
         } 
         
         if (disponibility.isBooked()) {
-        	return; // Raise error (disponibility already booked)
+        	//throw new Error("Disponibility already booked");
+        	return false; // Raise error (disponibility already booked)
         }
         
         RequestAppointment requestAppointment = new RequestAppointment(disponibility, person);
-        //disponibilityDao.update(disponibility);
         requestAppointmentDao.create(requestAppointment);
-        
-        
+        return true;
     }
 
     /**
