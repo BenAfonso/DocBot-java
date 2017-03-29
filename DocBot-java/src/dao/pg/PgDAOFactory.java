@@ -38,7 +38,7 @@ public class PgDAOFactory extends AbstractDAOFactory {
 	@Override
 	public ScheduleDAO getScheduleDAO() {
 		// TODO Auto-generated method stub
-		return new PgScheduleDAO();
+		return new PgScheduleDAO(conn);
 	}
 
 	@Override

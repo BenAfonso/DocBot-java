@@ -13,13 +13,17 @@ public class ScheduleFacade {
      * Default constructor
      */
     public ScheduleFacade() {
+		adf = AbstractDAOFactory.getFactory(AbstractDAOFactory.PG_DAOFACTORY);
+		// Fetching link between database and models
+		dao = adf.getScheduleDAO();
+		dispoDao = adf.getDisponibilityDAO();
     }
 
     /**
      * 
      */
     public ScheduleDAO dao;
-
+    public DisponibilityDAO dispoDao;
     /**
      * 
      */
@@ -49,20 +53,13 @@ public class ScheduleFacade {
      * @param date the date of shedule that will be created
      * @return the schedule added
      */
-    public Schedule createSchedule(Date date) {
-        // TODO implement here
-        return null;
+    public Schedule createSchedule(int doctor_id,Date date) {
+       Schedule scheduleToInsert = new Schedule (doctor_id,date); 
+       dao.create(scheduleToInsert);
+        return scheduleToInsert;
     }
 
-    /** 
-     * Create a hour 
-     * @param hour the hour of Hour object that will be created
-     * @return the hour added
-     */
-    public Hour createHour(Hour hour) {
-        // TODO implement here
-        return null;
-    }
+
 
     /**
      * Create a disponibility with a hour and a schedule in parameter
@@ -70,8 +67,9 @@ public class ScheduleFacade {
      * @param withHour 
      * @return the disponibility added
      */
-    public Disponibility createDisponibility(Schedule withSchedule, Hour withHour) {
-        // TODO implement here
+    public Disponibility createDisponibility(Schedule withSchedule, int hourStart,int minuteStart, int hourEnd,int minuteEnd, String description) {
+        Disponibility dispoToInsert = new Disponibility(withSchedule.getId(),hourStart,minuteStart,hourEnd,minuteEnd,description,false);
+        dispoDao.create(dispoToInsert);
         return null;
     }
 

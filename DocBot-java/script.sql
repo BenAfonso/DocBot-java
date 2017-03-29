@@ -33,7 +33,7 @@ CREATE TABLE Policy (
     name VARCHAR(60),
     description VARCHAR(255),
     PRIMARY KEY (id)
-); 
+);
 
 CREATE TABLE Doctor (
     id integer REFERENCES Person (id),
@@ -69,31 +69,25 @@ CREATE TABLE AnswerTemplate (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE Hour (
-    time time,
-    PRIMARY KEY (time)
-);
-
-CREATE TABLE Day (
-    date date,
-    PRIMARY KEY (date)
-);
 
 CREATE TABLE Schedule (
     id SERIAL UNIQUE,
     doctor_id integer REFERENCES Person (id),
-    date date REFERENCES Day (date), 
-    PRIMARY KEY (doctor_id, date)    
+    date date,
+    PRIMARY KEY (doctor_id, date)
 );
 
 
 CREATE TABLE Disponibility (
     id SERIAL UNIQUE,
     schedule_id integer REFERENCES Schedule (id),
-    hourStart time REFERENCES Hour (time),
-    hourEnd time,
+    hourStart int,
+    minuteStart int,
+    hourEnd int,
+    minuteEnd int,
     description VARCHAR(255),
-    PRIMARY KEY (hourStart, schedule_id)
+    isBooked boolean,
+    PRIMARY KEY (hourStart,minuteStart, schedule_id)
 );
 
 CREATE TABLE RequestAppointment (
@@ -111,7 +105,7 @@ CREATE TABLE Appointment (
 
 CREATE TABLE Comment (
     id SERIAL UNIQUE,
-    requestAppointment_id integer REFERENCES RequestAppointment (id), 
+    requestAppointment_id integer REFERENCES RequestAppointment (id),
     datePost timestamp,
     title VARCHAR(90),
     content VARCHAR(255),
@@ -120,7 +114,7 @@ CREATE TABLE Comment (
 );
 
 CREATE TABLE AnswerRequest (
-    id SERIAL UNIQUE,  
+    id SERIAL UNIQUE,
     title VARCHAR(90),
     content VARCHAR(255),
     requestAppointment_id integer REFERENCES RequestAppointment (id),

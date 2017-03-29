@@ -8,6 +8,7 @@ import java.util.*;
  * @author BenAfonso
  */
 public abstract class ScheduleDAO {
+	protected Connection connect = null;
 
     /**
      * Default constructor
@@ -15,10 +16,10 @@ public abstract class ScheduleDAO {
     public ScheduleDAO() {
     }
 
-    /**
-     * 
-     */
-    public Connection connect;
+
+	public ScheduleDAO(Connection conn){
+		this.connect = conn;
+	}
 
     /**
      * @param schedule
