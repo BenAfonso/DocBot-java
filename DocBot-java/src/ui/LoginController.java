@@ -128,7 +128,7 @@ public class LoginController implements javafx.fxml.Initializable {
 	
 	public void goToRegisterPatientPage(){
 		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("./RegisterView.fxml"));
+		loader.setLocation(Main.class.getResource("../ui/RegisterView.fxml"));
 		AnchorPane registerView;
 		try {
 			registerView = (AnchorPane) loader.load();
@@ -145,7 +145,7 @@ public class LoginController implements javafx.fxml.Initializable {
 	
 	public void goToRegisterDoctorPage(){
 		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("./RegisterDoctorView.fxml"));
+		loader.setLocation(Main.class.getResource("../ui/RegisterDoctorView.fxml"));
 		AnchorPane registerDoctorView;
 		try {
 			registerDoctorView = (AnchorPane) loader.load();

@@ -50,7 +50,7 @@ public class RegisterPatientController {
 		registerGood=patientFacade.register(fnameField.getText(),lnameField.getText(),passwordField.getText(),birthdayField.getValue(),phoneField.getText(),mailField.getText());
 		if(registerGood){
 			FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(Main.class.getResource("./LoginView.fxml"));
+			loader.setLocation(Main.class.getResource("../ui/LoginView.fxml"));
 			AnchorPane loginView;
 			try {
 				loginView = (AnchorPane) loader.load();
@@ -70,7 +70,7 @@ public class RegisterPatientController {
 
 	public void back(){
 		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("./LoginView.fxml"));
+		loader.setLocation(Main.class.getResource("../ui/LoginView.fxml"));
 		AnchorPane loginView;
 		try {
 			loginView = (AnchorPane) loader.load();
