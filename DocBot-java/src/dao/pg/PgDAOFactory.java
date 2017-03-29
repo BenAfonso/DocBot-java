@@ -50,7 +50,7 @@ public class PgDAOFactory extends AbstractDAOFactory {
 	@Override
 	public DisponibilityDAO getDisponibilityDAO() {
 		// TODO Auto-generated method stub
-		return new PgDisponibilityDAO();
+		return new PgDisponibilityDAO(conn);
 	}
 
 	@Override

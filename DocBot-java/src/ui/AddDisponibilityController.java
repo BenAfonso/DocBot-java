@@ -1,45 +1,36 @@
 package ui;
 
+import java.time.ZoneId;
 import java.util.*;
 
 import facade.DoctorFacade;
 import facade.ScheduleFacade;
+import javafx.fxml.FXML;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import services.Authentification;
 
 /**
  * @author BenAfonso
  */
 public class AddDisponibilityController {
 
+	@FXML private TextField hourStartField;
+	@FXML private TextField minStartField;
+	@FXML private TextField hourEndField;
+	@FXML private TextField minEndField;
+	@FXML private TextField descriptionField;
+	@FXML private Label errorField;
+
+	@FXML private DatePicker dateField;
     /**
      * Default constructor
      */
     public AddDisponibilityController() {
+    	scheduleFa=new ScheduleFacade();
     }
-
-    /**
-     * 
-     */
-   // public void dateField;
-
-    /**
-     * 
-     */
- //   public void hourStartField;
-
-    /**
-     * 
-     */
-//    public void hourEndField;
-
-    /**
-     * 
-     */
-//    public void descriptionField;
-
-    /**
-     * 
-     */
-  //  public void invalidCredentialLabel;
 
     /**
      * 
@@ -51,23 +42,20 @@ public class AddDisponibilityController {
      */
     public ScheduleFacade scheduleFa;
 
-    /**
-     * 
-     */
- //   public void valideButton;
-
-    /**
-     * 
-     */
- //   public void cancelButton;
-
-
 
     /**
      * Creates a new schedule
      */
     public void createSchedule() {
         // TODO implement here
+    }
+    
+    /**
+     * Creates a new Disponibility
+     */
+    public void createDisponibility() {
+		Date date = Date.from(dateField.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        scheduleFa.createDisponibility(Authentification.getUser().getId(), date, Integer.parseInt(hourStartField.getText()), Integer.parseInt(minStartField.getText()), Integer.parseInt(hourEndField.getText()), Integer.parseInt(minEndField.getText()), descriptionField.getText());
     }
     
     /**

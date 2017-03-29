@@ -9,6 +9,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import ui.AddDisponibilityController;
 import ui.LoginController;
 import ui.ProfileController;
 import ui.ProfileDoctorController;
@@ -45,8 +46,6 @@ public class NavigationService {
 			
 			changeView(listOfDoctorsView);
 
-			ListOfDoctorsController controller=loader.getController();
-			controller.setMainApp(mainApp);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -63,8 +62,20 @@ public class NavigationService {
 		try {
 			listOfWaitingDoctorsView = (AnchorPane) loader.load();
 			changeView(listOfWaitingDoctorsView);
-			ValidateOrRejectDoctorRegistrationController controller=loader.getController();
-			controller.setMainApp(mainApp);
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void goToAddDisponibility() {
+		FXMLLoader loader=new FXMLLoader();
+		loader.setLocation(Main.class.getResource("../ui/AddDisponibilityView.fxml"));
+		AnchorPane AddDisponibilityView;
+	
+		try {
+			AddDisponibilityView = (AnchorPane) loader.load();
+			changeView(AddDisponibilityView);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -85,8 +96,7 @@ public class NavigationService {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
-		LoginController controller=loader.getController();
-		controller.setMainApp(mainApp);
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -105,9 +115,7 @@ public class NavigationService {
 		
 				changeView(updateDoctorView);
 
-				UpdateDoctorProfileController controller=loader.getController();
-				controller.setMainApp(mainApp);
-				controller.displayInfo();
+
 			}else{
 				FXMLLoader loader=new FXMLLoader();
 				loader.setLocation(Main.class.getResource("../ui/UpdateProfileView.fxml"));
@@ -117,9 +125,7 @@ public class NavigationService {
 				
 				changeView(updateProfilView);
 				
-				UpdateProfileController controller=loader.getController();
-				controller.setMainApp(mainApp);
-				controller.displayInfo();
+
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -137,7 +143,6 @@ public class NavigationService {
 		passwordView = (AnchorPane) loader.load();
 		
 		changeView(passwordView);
-		UpdatePasswordController controller=loader.getController();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -156,9 +161,7 @@ public class NavigationService {
 				profileDocView = loader.load();
 				changeView(profileDocView);
 				
-				ProfileDoctorController controller=loader.getController();
-				controller.displayInfo(Authentification.getUser().getEmail());
-				controller.setMainApp(mainApp);
+
 			}
 			else{
 				FXMLLoader loader=new FXMLLoader();
@@ -167,10 +170,7 @@ public class NavigationService {
 			
 				profileView = (AnchorPane) loader.load();
 				changeView(profileView);
-				ProfileController controller=loader.getController();
-				
-				controller.displayInfo(Authentification.getUser().getEmail());
-				controller.setMainApp(mainApp);
+
 			}
 		
 		} catch (IOException e) {

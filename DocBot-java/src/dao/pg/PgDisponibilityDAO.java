@@ -16,7 +16,8 @@ public class PgDisponibilityDAO extends DisponibilityDAO {
     /**
      * Default constructor
      */
-    public PgDisponibilityDAO() {
+    public PgDisponibilityDAO(Connection conn) {
+    	super(conn);
     }
 	/**
 	 * Create an user

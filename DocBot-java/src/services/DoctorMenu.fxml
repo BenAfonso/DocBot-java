@@ -9,6 +9,8 @@
     <Menu mnemonicParsing="false" text="Profile">
          <items>
             <MenuItem mnemonicParsing="false" onAction="#goToProfile" text="Go to Profile" />
+            <MenuItem mnemonicParsing="false" onAction="#goToAddDisponibility" text="Go to add Disponibility" />
+            
          </items></Menu>
     <Menu mnemonicParsing="false" text="List of Doctors">
          <items>

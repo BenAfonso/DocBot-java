@@ -11,8 +11,10 @@ public abstract class DisponibilityDAO {
 
     /**
      * Default constructor
+     * @param conn 
      */
-    public DisponibilityDAO() {
+    public DisponibilityDAO(Connection conn) {
+    	this.connect=conn;
     }
 
     /**
