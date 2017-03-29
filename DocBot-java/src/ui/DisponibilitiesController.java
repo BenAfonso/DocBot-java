@@ -9,22 +9,15 @@ import models.Schedule;
 /**
  * @author BenAfonso
  */
-public class HisDisponibilitiesController {
+public class DisponibilitiesController {
 
     /**
      * Default constructor
      */
-    public HisDisponibilitiesController() {
+    public DisponibilitiesController() {
     }
 
-    /**
-     * 
-     */
-    public DoctorFacade doctorFa;
-
-    /**
-     * 
-     */
+  
     public ScheduleFacade scheduleFa;
 
 
