@@ -43,7 +43,8 @@
                 <TableColumn fx:id="dayCol" prefWidth="91.88652801513672" text="Day" />
                 <TableColumn fx:id="hourStartCol" prefWidth="75.11346435546875" text="Start hour" />
                   <TableColumn fx:id="hourEndCol" prefWidth="94.11349487304688" text="End hour" />
-                  <TableColumn fx:id="descriptionCol" prefWidth="496.5382995605469" text="Description" />
+                  <TableColumn fx:id="descriptionCol" prefWidth="405.7055358886719" text="Description" />
+                  <TableColumn fx:id="makeAnAppointmentCol" prefWidth="94.11349487304688" />
               </columns>
             </TableView>
             <Label fx:id="errorLabel" layoutX="124.0" layoutY="154.0" text="ErrorLabel" />
