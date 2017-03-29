@@ -13,11 +13,17 @@ import java.util.*;
  */
 public class PgCommentDAO extends CommentDAO {
 
+	private static PgCommentDAO pgCommentDAO;
     /**
      * Default constructor
      */
-	public PgCommentDAO(Connection conn) {
-		super(conn);
+	private PgCommentDAO() {}
+	
+	public static PgCommentDAO getPgCommentDAO(){
+		if(pgCommentDAO == null ){
+			pgCommentDAO = new PgCommentDAO();
+		}
+		return pgCommentDAO;
 	}
 
 	
@@ -28,7 +34,7 @@ public class PgCommentDAO extends CommentDAO {
 	 */
 	public boolean create(Comment obj) {
 		try {
-			int result = this.connect.createStatement(
+			int result = ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Comment (requestappointment_id, datepost, title, content,rate) VALUES ('"+obj.getAppointment_id()+"','"+obj.getDatePost()+"','"+obj.getTitle()+"','"+obj.getContent()+"','"+obj.getRate()+"')");
 				return true;
@@ -36,5 +42,26 @@ public class PgCommentDAO extends CommentDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+
+	@Override
+	public void update(Comment comment) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void delete(Comment comment) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void find(int id) {
+		// TODO Auto-generated method stub
+		
 	}
 }

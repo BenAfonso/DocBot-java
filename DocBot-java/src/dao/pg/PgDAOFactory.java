@@ -8,12 +8,20 @@ import dao.*;
  * @author BenAfonso
  */
 public class PgDAOFactory extends AbstractDAOFactory {
-	 protected static final Connection conn = connectDB.getInstance(); 
-
+	 
+	private static PgDAOFactory pgDaoFactory;
+	 
     /**
      * Default constructor
      */
-    public PgDAOFactory() {
+    private PgDAOFactory() {
+    }
+    
+    public static PgDAOFactory getPgDAOFactory(){
+    	if(pgDaoFactory == null ){
+    		pgDaoFactory = new PgDAOFactory();
+    	}
+    	return pgDaoFactory;
     }
 
     /**
@@ -21,60 +29,59 @@ public class PgDAOFactory extends AbstractDAOFactory {
      */
     @Override
     public DoctorDAO getDoctorDAO() {
-        // TODO implement here
-        return new PgDoctorDAO(conn);
+       
+        return PgDoctorDAO.getPgDoctorDAO();
     }
 
     public PatientDAO getPatientDAO() {
-        // TODO implement here
-        return new PgPatientDAO(conn);
+        return PgPatientDAO.getPgPatientDAO();
     }
 	@Override
 	public PersonDAO getPersonDAO() {
 		// TODO Auto-generated method stub
-		return new PgPersonDAO(conn);
+		return PgPersonDAO.getPgPersonDAO();
 	}
 
 	@Override
 	public ScheduleDAO getScheduleDAO() {
 		// TODO Auto-generated method stub
-		return new PgScheduleDAO(conn);
+		return PgScheduleDAO.getPgScheduleDAO();
 	}
 
 	@Override
 	public HourDAO getHourDAO() {
 		// TODO Auto-generated method stub
-		return new PgHourDAO();
+		return PgHourDAO.getPgHourDAO();
 	}
 
 	@Override
 	public DisponibilityDAO getDisponibilityDAO() {
 		// TODO Auto-generated method stub
-		return new PgDisponibilityDAO(conn);
+		return PgDisponibilityDAO.getPgDisponibilityDAO();
 	}
 
 	@Override
 	public RequestAppointmentDAO getRequestAppointmentDAO() {
 		// TODO Auto-generated method stub
-		return new PgRequestAppointmentDAO();
+		return  PgRequestAppointmentDAO.getPgRequestAppointmentDAO();
 	}
 
 	@Override
 	public AnswerRequestDAO getAnswerRequestDAO() {
 		// TODO Auto-generated method stub
-		return new PgAnswerRequestDAO();
+		return PgAnswerRequestDAO.getPgAnswerRequestDAO();
 	}
 
 	@Override
 	public AppointmentDAO getAppointmentDAO() {
 		// TODO Auto-generated method stub
-		return new PgAppointmentDAO();
+		return PgAppointmentDAO.getPgAppointmentDAO();
 	}
 
 	@Override
 	public CommentDAO getCommentDAO() {
 		// TODO Auto-generated method stub
-		return new PgCommentDAO(conn);
+		return PgCommentDAO.getPgCommentDAO();
 	}
 
 }

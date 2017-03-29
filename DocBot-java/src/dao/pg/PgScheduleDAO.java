@@ -14,11 +14,17 @@ import java.util.*;
  */
 public class PgScheduleDAO extends ScheduleDAO {
 
+	private static PgScheduleDAO pgScheduleDAO;
 	/**
 	 * Default constructor
 	 */
-	public PgScheduleDAO(Connection conn) {
-		super(conn);
+	private PgScheduleDAO() {}
+	
+	public static PgScheduleDAO getPgScheduleDAO(){
+		if(pgScheduleDAO == null ){
+			pgScheduleDAO = new PgScheduleDAO();
+		}
+		return pgScheduleDAO;
 	}
 
 	/**
@@ -28,7 +34,7 @@ public class PgScheduleDAO extends ScheduleDAO {
 	 */
 	public void create(Schedule obj) {
 		try {
-			int result = this.connect.createStatement(
+			int result = ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Schedule (doctor_id, date) VALUES ('"+obj.getDoctor_id()+"','"+obj.getDate()+"')");
 		} catch (SQLException e) {
@@ -39,7 +45,7 @@ public class PgScheduleDAO extends ScheduleDAO {
 	public Schedule find(int doctor_id,Date date) {
 		Schedule schedule = null;      
 		try {
-			ResultSet result = this.connect.createStatement(
+			ResultSet result = ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Schedule WHERE doctor_id='"+doctor_id+"' AND date='"+date+"'");
 
@@ -49,6 +55,24 @@ public class PgScheduleDAO extends ScheduleDAO {
 			e.printStackTrace();
 		}
 		return schedule;
+	}
+
+	@Override
+	public void update(Schedule schedule) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void find(Schedule schedule) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Schedule schedule) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

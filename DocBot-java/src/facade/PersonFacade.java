@@ -89,6 +89,7 @@ public class PersonFacade {
 			return checkCredentials(username, password);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
 			System.out.println("An error occured while login");
 			return false;
 		}

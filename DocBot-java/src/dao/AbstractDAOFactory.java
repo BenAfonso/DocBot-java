@@ -3,6 +3,7 @@ package dao;
 import dao.pg.PgDAOFactory;
 import models.Person;
 public abstract class AbstractDAOFactory {
+	
   public static final int PG_DAOFACTORY = 0;
   public static final int OTHER_DAOFACTORY = 1;
 
@@ -57,7 +58,7 @@ public abstract class AbstractDAOFactory {
 
     switch(type){
       case PG_DAOFACTORY:
-        return new PgDAOFactory();
+        return PgDAOFactory.getPgDAOFactory();
       case OTHER_DAOFACTORY: 
         return null;
       default:

@@ -5,12 +5,8 @@ import models.Person;
 
 
 public abstract class PersonDAO {
-	protected Connection connect = null;
 
-	public PersonDAO(Connection conn){
-		this.connect = conn;
-	}
-   
+	
   /**
   * Méthode de création
   * @param Person

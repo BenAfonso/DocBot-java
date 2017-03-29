@@ -9,43 +9,25 @@ import java.util.*;
  */
 public abstract class AppointmentDAO {
 
-    /**
-     * Default constructor
-     */
-    public AppointmentDAO() {
-    }
-
-    /**
-     * 
-     */
-    public Connection connect;
 
     /**
      * @param appointment
      */
-    public void create(Appointment appointment) {
-        // TODO implement here
-    }
+    public abstract void create(Appointment appointment);
 
     /**
      * @param appointment
      */
-    public void update(Appointment appointment) {
-        // TODO implement here
-    }
+    public abstract void update(Appointment appointment) ;
 
     /**
      * @param appointment
      */
-    public void find(Appointment appointment) {
-        // TODO implement here
-    }
+    public abstract void find(Appointment appointment);
 
     /**
      * @param appointment
      */
-    public void delete(Appointment appointment) {
-        // TODO implement here
-    }
+    public abstract void delete(Appointment appointment);
 
 }

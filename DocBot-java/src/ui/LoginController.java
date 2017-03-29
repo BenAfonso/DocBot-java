@@ -80,6 +80,7 @@ public class LoginController implements javafx.fxml.Initializable {
 		boolean canLogin=userFacade.login(username, password);
 
 		if ( canLogin) {
+			System.out.println("lol");
 			if(Authentification.isDoctor()){
 				FXMLLoader loader=new FXMLLoader();
 				loader.setLocation(Main.class.getResource("../ui/ProfileDoctorView.fxml"));

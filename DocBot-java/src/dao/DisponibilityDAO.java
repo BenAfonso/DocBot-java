@@ -10,45 +10,26 @@ import java.util.*;
 public abstract class DisponibilityDAO {
 
     /**
-     * Default constructor
-     * @param conn 
+     * @param disponibility
      */
-    public DisponibilityDAO(Connection conn) {
-    	this.connect=conn;
-    }
-
-    /**
-     * 
-     */
-    public Connection connect;
+    public abstract void create(Disponibility disponibility) ;
 
     /**
      * @param disponibility
      */
-    public void create(Disponibility disponibility) {
-        // TODO implement here
-    }
+    public abstract void update(Disponibility disponibility);
 
     /**
      * @param disponibility
      */
-    public void update(Disponibility disponibility) {
-        // TODO implement here
-    }
+    public abstract void find(Disponibility disponibility);
 
     /**
      * @param disponibility
      */
-    public void find(Disponibility disponibility) {
-        // TODO implement here
-    }
 
-    /**
-     * @param disponibility
-     */
-    public void delete(Disponibility disponibility) {
-        // TODO implement here
-    }
+    public abstract void delete(Disponibility disponibility);
+
     public abstract List<Disponibility> findDoctorDisponibilities(int id);
 
 }
