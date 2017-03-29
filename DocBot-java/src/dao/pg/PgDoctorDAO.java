@@ -57,7 +57,7 @@ public class PgDoctorDAO extends DoctorDAO {
 					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM doctor d, person p WHERE d.id=p.id AND p.email='"+mail+"'");
 
 			if(result.first())
-				doctor = new Doctor(result.getString("firstname"),result.getString("lastname"),result.getString("password"),result.getDate("birthday"),result.getString("phone"),result.getString("email"),result.getString("siret"),result.getString("number"),result.getString("street"),result.getString("city"),result.getString("zip_code"));         
+				doctor = new Doctor(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("password"),result.getDate("birthday"),result.getString("phone"),result.getString("email"),result.getString("siret"),result.getString("number"),result.getString("street"),result.getString("city"),result.getString("zip_code"),result.getBoolean("isvalidated"));         
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
