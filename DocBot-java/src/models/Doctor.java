@@ -31,6 +31,7 @@ public class Doctor extends Person {
     
     public Doctor(Person person, String siret, String number, String street, String city, String zip_code, int policy_id) {
     	this.setPerson(person);
+    	this.setId(person.getId());
     	this.setFirstName(person.getFirstName());
     	this.setLastName(person.getLastName());
     	this.setPassword(person.getPassword());
