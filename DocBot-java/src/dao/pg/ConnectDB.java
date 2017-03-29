@@ -36,7 +36,7 @@ public class ConnectDB {
 	  public static Connection getInstance(){
 	    if(connect == null){
 	      try {
-	    	 Class.forName("org.postgresql.Driver");
+	    	Class.forName("org.postgresql.Driver");
 	        connect = DriverManager.getConnection(url, user, passwd);
 	      } catch (SQLException | ClassNotFoundException e) {
 	        JOptionPane.showMessageDialog(null, e.getMessage(), "ERREUR DE CONNEXION ! ", JOptionPane.ERROR_MESSAGE);
