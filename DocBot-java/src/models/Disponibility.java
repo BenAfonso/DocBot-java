@@ -100,6 +100,9 @@ public class Disponibility {
 	public void setSchedule(Schedule schedule) {
 		this.schedule = schedule;
 	}
+	public Date getDate(){
+		return schedule.getDate();
+	}
 	/**
      * 
      */
