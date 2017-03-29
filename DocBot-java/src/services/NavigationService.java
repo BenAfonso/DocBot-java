@@ -5,11 +5,13 @@ import java.io.IOException;
 import application.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import models.Doctor;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import ui.AddDisponibilityController;
+import ui.DisponibilitiesController;
 import ui.LoginController;
 import ui.ProfileController;
 import ui.ProfileDoctorController;
@@ -149,6 +151,22 @@ public class NavigationService {
 		}
 	}
 	
+	public void goToMyDisponibilities(){
+		try {
+		FXMLLoader loader=new FXMLLoader();
+		loader.setLocation(Main.class.getResource("../ui/ListOfDisponibilities.fxml"));
+		AnchorPane listOfDisponibilitiesView;
+		
+		listOfDisponibilitiesView = (AnchorPane) loader.load();
+		DisponibilitiesController listController = loader.getController();
+		listController.displayDisponibilities(Authentification.getUser().getId());
+
+		changeView(listOfDisponibilitiesView);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	
 	public void goToProfile(){

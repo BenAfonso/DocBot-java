@@ -27,5 +27,9 @@ public abstract class DisponibilityDAO {
     /**
      * @param disponibility
      */
+
     public abstract void delete(Disponibility disponibility);
+
+    public abstract List<Disponibility> findDoctorDisponibilities(int id);
+
 }

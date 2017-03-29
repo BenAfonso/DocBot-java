@@ -14,7 +14,7 @@
          </items></Menu>
     <Menu mnemonicParsing="false" text="List of Doctors">
          <items>
-            <MenuItem mnemonicParsing="false" onAction="#goToListOfDoctors" text="Go to list of Doctors" />
+            <MenuItem mnemonicParsing="false" onAction="#goToMyDisponibilities" text="Go to my schedule" />
          </items></Menu>
       <Menu mnemonicParsing="false" text="Logout">
         <items>

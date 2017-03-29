@@ -77,5 +77,9 @@ public class ScheduleFacade {
         dispoDao.create(dispoToInsert);
         return null;
     }
+	public List<Disponibility> getDoctorDisponibilities(int id) {
+		// TODO Auto-generated method stub
+		return dispoDao.findDoctorDisponibilities(id);
+	}
 
 }

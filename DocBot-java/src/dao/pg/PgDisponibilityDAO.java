@@ -1,7 +1,9 @@
 package dao.pg;
 import dao.DisponibilityDAO;
 import models.Disponibility;
+import models.Doctor;
 import models.Person;
+import models.Schedule;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -42,6 +44,7 @@ public class PgDisponibilityDAO extends DisponibilityDAO {
 			e.printStackTrace();
 		}
 	}
+
 	@Override
 	public void update(Disponibility disponibility) {
 		// TODO Auto-generated method stub
@@ -55,7 +58,29 @@ public class PgDisponibilityDAO extends DisponibilityDAO {
 	@Override
 	public void delete(Disponibility disponibility) {
 		// TODO Auto-generated method stub
+	}
 		
+
+	public List<Disponibility> findDoctorDisponibilities(int id) {
+		
+		List<Disponibility> disponibilities = new ArrayList<Disponibility>();
+		
+		String query = "SELECT * FROM schedule s, disponibility d WHERE s.id = d.schedule_id AND s.doctor_id = "+id;
+		try {
+			ResultSet result = ConnectDB.getInstance().createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery(query);
+			
+			while (result.next()) {
+				Schedule sche=new Schedule(result.getInt("doctor_id"),result.getDate("date"));
+				Disponibility disp = new Disponibility(sche,result.getInt("hourStart"),result.getInt("minuteStart"),result.getInt("hourEnd"),result.getInt("minuteEnd"),result.getString("description"),result.getBoolean("isBooked"));
+				disponibilities.add(disp);
+			}		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return disponibilities;
 	}
 
 }

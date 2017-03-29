@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 
-public class connectDB {
+public class ConnectDB {
 	/**
 	  * URL de connection
 	  */

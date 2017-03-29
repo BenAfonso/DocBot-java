@@ -20,7 +20,15 @@ public class Disponibility {
     this.setMinuteEnd(minuteEnd);;
     this.setDescription(description);
     }
-
+    public Disponibility(Schedule schedule, int hourStart, int minuteStart, int hourEnd, int minuteEnd, String description, boolean isBooked) {
+    this.setSchedule(schedule);
+    this.setHourStart(hourStart);
+    this.setMinuteStart(minuteStart);
+    this.setHourEnd(hourEnd);
+    this.setMinuteEnd(minuteEnd);;
+    this.setDescription(description);
+    }
+    private Schedule schedule;
 	public boolean isBooked() {
 		return isBooked;
 	}
@@ -85,6 +93,23 @@ public class Disponibility {
 		this.scheduleId = scheduleId;
 	}
 
+	public Schedule getSchedule() {
+		return schedule;
+	}
+
+	public void setSchedule(Schedule schedule) {
+		this.schedule = schedule;
+	}
+	public Date getDate(){
+		return schedule.getDate();
+	}
+	
+	public String getHourStartFull(){
+		return this.getHourStart()+":"+this.getMinuteStart();
+	}
+	public String getHourEndFull(){
+		return this.getHourEnd()+":"+this.getMinuteEnd();
+	}
 	/**
      * 
      */
