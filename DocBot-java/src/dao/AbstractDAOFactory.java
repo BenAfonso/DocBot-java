@@ -24,10 +24,7 @@ public abstract class AbstractDAOFactory {
    * @return
    */
   public abstract ScheduleDAO getScheduleDAO();
-  /**
-   * @return
-   */
-  public abstract HourDAO getHourDAO();
+
 
   /**
    * @return

@@ -29,7 +29,7 @@ public class Doctor extends Person {
     public Doctor() {
     }
     
-    public Doctor(Person person, String siret, String number, String street, String city, String zip_code, int policy_id) {
+    public Doctor(Person person, String siret, String number, String street, String city, String zip_code) {
     	this.setPerson(person);
     	this.setId(person.getId());
     	this.setFirstName(person.getFirstName());

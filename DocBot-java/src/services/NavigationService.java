@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 import ui.DisponibilitiesController;
 import ui.ProfileController;
 import ui.ProfileDoctorController;
+import ui.UpdateDoctorProfileController;
+import ui.UpdateProfileController;
 
 
 public class NavigationService {
@@ -51,8 +53,13 @@ public class NavigationService {
 		AnchorPane registerView;
 		try {
 			registerView = (AnchorPane) loader.load();
-			changeView(registerView);
-		} catch (IOException e) {
+			BorderPane rootTest = new BorderPane();
+			rootTest.setCenter(registerView);
+			
+			Scene scene = new Scene(rootTest, 1000, 600);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+			} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -64,7 +71,12 @@ public class NavigationService {
 		AnchorPane registerDoctorView;
 		try {
 			registerDoctorView = (AnchorPane) loader.load();
-			changeView(registerDoctorView);
+			BorderPane rootTest = new BorderPane();
+			rootTest.setCenter(registerDoctorView);
+			
+			Scene scene = new Scene(rootTest, 1000, 600);
+			primaryStage.setScene(scene);
+			primaryStage.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -146,7 +158,10 @@ public class NavigationService {
 				loader.setLocation(Main.class.getResource("../ui/UpdateProfileDoctorView.fxml"));
 				AnchorPane updateDoctorView;
 				updateDoctorView = (AnchorPane) loader.load();
+				UpdateDoctorProfileController docController = loader.getController();
+				docController.displayInfo();
 				changeView(updateDoctorView);
+				
 
 
 			}else{
@@ -155,7 +170,8 @@ public class NavigationService {
 				AnchorPane updateProfilView;
 		
 				updateProfilView = (AnchorPane) loader.load();
-				
+				UpdateProfileController patientController = loader.getController();
+				patientController.displayInfo();
 				changeView(updateProfilView);
 				
 

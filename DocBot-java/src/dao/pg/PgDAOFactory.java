@@ -8,7 +8,7 @@ import dao.*;
  * @author BenAfonso
  */
 public class PgDAOFactory extends AbstractDAOFactory {
-	 
+	protected static final Connection conn = ConnectDB.getInstance(); 
 	private static PgDAOFactory pgDaoFactory;
 	 
     /**
@@ -48,11 +48,7 @@ public class PgDAOFactory extends AbstractDAOFactory {
 		return PgScheduleDAO.getPgScheduleDAO();
 	}
 
-	@Override
-	public HourDAO getHourDAO() {
-		// TODO Auto-generated method stub
-		return PgHourDAO.getPgHourDAO();
-	}
+
 
 	@Override
 	public DisponibilityDAO getDisponibilityDAO() {

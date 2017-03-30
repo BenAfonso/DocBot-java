@@ -34,10 +34,6 @@ public class ScheduleFacade {
      */
     public DisponibilityDAO dispoDAO;
 
-    /**
-     * 
-     */
-    public HourDAO hourDAO;
 
 
     /**
