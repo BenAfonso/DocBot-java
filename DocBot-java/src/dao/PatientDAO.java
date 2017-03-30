@@ -38,6 +38,8 @@ public abstract class PatientDAO {
     public abstract Patient find(String mail);
     
     public abstract boolean update(String mail, String fname, String lname, Date birthday, String phoneNumber);
+    
+    public abstract boolean isBlocked(int id);
 
     /**
      * @param patient

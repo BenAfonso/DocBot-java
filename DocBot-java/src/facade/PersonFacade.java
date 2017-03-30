@@ -124,5 +124,13 @@ public class PersonFacade {
 		}
 		return result;
 	}
+	
+	public boolean isBlocked(Person person){
+		boolean result=false;
+		if(!patientDao.isBlocked(person.getId())){
+			result=true;
+		}
+		return result;
+	}
 
 }

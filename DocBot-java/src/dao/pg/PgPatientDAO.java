@@ -101,4 +101,20 @@ public class PgPatientDAO extends PatientDAO {
 		
 	}
 
+	@Override
+	public boolean isBlocked(int id) {
+		boolean blocked = false;      
+		try {
+			ResultSet result = ConnectDB.getInstance().createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT isblocked FROM patient pa, person p WHERE pa.id=p.id AND p.id='"+id+"'");
+
+			if(result.first())
+				blocked = result.getBoolean("isblocked");   
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return blocked;
+	}
+
 }

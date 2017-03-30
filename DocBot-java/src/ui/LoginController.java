@@ -80,7 +80,7 @@ public class LoginController implements javafx.fxml.Initializable {
 					NavigationService.setMenuView(menuBar);
 					goProfile();
 				}else{
-					displayError("Account not validated");
+					displayError("Account is not validated");
 				}
 				
 			}else if(Authentification.isAdministrator()){
@@ -90,13 +90,18 @@ public class LoginController implements javafx.fxml.Initializable {
 				MenuBar menuBar=loaderMenu.load();
 				NavigationService.setMenuView(menuBar);
 				goListDoctorWaiting();
+				
 			}else{
-
-				FXMLLoader loaderMenu=new FXMLLoader();
-				loaderMenu.setLocation(Main.class.getResource("../services/PatientMenu.fxml"));
-				MenuBar menuBar=loaderMenu.load();
-				NavigationService.setMenuView(menuBar);
-				goProfile();
+				if(userFacade.isBlocked(Authentification.getUser())){
+					FXMLLoader loaderMenu=new FXMLLoader();
+					loaderMenu.setLocation(Main.class.getResource("../services/PatientMenu.fxml"));
+					MenuBar menuBar=loaderMenu.load();
+					NavigationService.setMenuView(menuBar);
+					goProfile();
+				}else{
+					displayError("Account is blocked");
+				}
+				
 			}
 		} else {
 			displayError("Invalid credential");
