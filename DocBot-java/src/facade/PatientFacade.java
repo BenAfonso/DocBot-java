@@ -55,7 +55,7 @@ public class PatientFacade {
 	public boolean register(String fname, String lname, String password, LocalDate birthday, String phoneNumber, String mail) {
 		boolean result=false;
 		Date date = Date.from(birthday.atStartOfDay(ZoneId.systemDefault()).toInstant());
-		Patient patientToRegister = new Patient(fname,lname,password,date,phoneNumber,mail,true);
+		Patient patientToRegister = new Patient(fname,lname,password,date,phoneNumber,mail);
 		if(daoPerson.create(patientToRegister)){
 			int id = daoPerson.find(mail).getId();
 			if(dao.create(id)){

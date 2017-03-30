@@ -80,4 +80,9 @@ public class PgDAOFactory extends AbstractDAOFactory {
 		return PgCommentDAO.getPgCommentDAO();
 	}
 
+	@Override
+	public AdministratorDAO getAdministratorDAO() {
+		return PgAdministratorDAO.getPgAdministratorDAO();
+	}
+
 }

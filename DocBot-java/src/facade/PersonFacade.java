@@ -5,9 +5,11 @@ import java.time.ZoneId;
 import java.util.Date;
 
 import dao.AbstractDAOFactory;
+import dao.AdministratorDAO;
 import dao.DoctorDAO;
 import dao.PatientDAO;
 import dao.PersonDAO;
+import models.Administrator;
 import models.Doctor;
 import models.Patient;
 import models.Person;
@@ -26,6 +28,7 @@ public class PersonFacade {
 	PersonDAO userDao;
 	DoctorDAO docDao;
 	PatientDAO patientDao;
+	AdministratorDAO adminDao;
 	AbstractDAOFactory adf;
 	
 	
@@ -42,6 +45,7 @@ public class PersonFacade {
 		userDao = adf.getPersonDAO();
 		docDao = adf.getDoctorDAO();
 		patientDao = adf.getPatientDAO();
+		adminDao = adf.getAdministratorDAO();
 	}
 	
 	
@@ -73,6 +77,12 @@ public class PersonFacade {
 			Patient pat = patientDao.find(user.getId());
 			if(pat !=null){
 				Authentification.connect(pat);
+			}
+			else{
+				Administrator admin = adminDao.find(user.getId());
+				if (admin != null){
+					Authentification.connect(admin);
+				}
 			}
 		}
 		return (user.getPassword().equals(password));

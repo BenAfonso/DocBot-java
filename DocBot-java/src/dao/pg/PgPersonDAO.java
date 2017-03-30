@@ -32,7 +32,7 @@ public class PgPersonDAO extends PersonDAO {
 		try {
 			int result = ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Person (firstname, lastname, email, password,phone,birthday,isvalidated) VALUES ('"+obj.getFirstName()+"','"+obj.getLastName()+"','"+obj.getEmail()+"','"+obj.getPassword()+"','"+obj.getPhoneNumber()+"','"+obj.getBirthday()+"','"+obj.getIsValidated()+"')");
+					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Person (firstname, lastname, email, password,phone,birthday) VALUES ('"+obj.getFirstName()+"','"+obj.getLastName()+"','"+obj.getEmail()+"','"+obj.getPassword()+"','"+obj.getPhoneNumber()+"','"+obj.getBirthday()+"')");
 				return true;
 		} catch (SQLException e) {
 			e.printStackTrace();

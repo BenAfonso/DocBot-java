@@ -73,6 +73,16 @@ public class Person {
 		this.setPhoneNumber(phoneNumber);
 		this.setIsValidated(isValidated);
 	}
+	public Person(int id,String fname, String lname, String password, Date birthday, String phoneNumber, String mail) {
+		this.id=id;
+		this.firstName = fname;
+		this.lastName = lname;
+		this.email = mail;
+		this.password = password;
+		this.setBirthday(birthday);
+		this.setPhoneNumber(phoneNumber);
+	}
+	
 	public Person(){};
 
 
