@@ -67,11 +67,32 @@ public class PgDisponibilityDAO extends DisponibilityDAO {
     }
 
 
-    public List<Disponibility> findDoctorDisponibilities(int id) {
+    public List<Disponibility> findAllDoctorDisponibilities(int id) {
 
         List<Disponibility> disponibilities = new ArrayList<Disponibility>();
 
         String query = "SELECT * FROM schedule s, disponibility d WHERE s.id = d.schedule_id AND s.doctor_id = " + id;
+        try {
+            ResultSet result = ConnectDB.getInstance().createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY).executeQuery(query);
+
+            while (result.next()) {
+                Schedule sche = new Schedule(result.getInt("doctor_id"), result.getDate("date"));
+                Disponibility disp = new Disponibility(sche, result.getInt("id"), result.getInt("hourStart"), result.getInt("minuteStart"), result.getInt("hourEnd"), result.getInt("minuteEnd"), result.getString("description"), result.getBoolean("isBooked"));
+                disponibilities.add(disp);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return disponibilities;
+    }
+    public List<Disponibility> findDoctorDisponibilitiesAvailable(int id) {
+
+        List<Disponibility> disponibilities = new ArrayList<Disponibility>();
+
+        String query = "SELECT * FROM schedule s, disponibility d WHERE s.id = d.schedule_id AND d.isbooked!=true AND s.doctor_id = " + id;
         try {
             ResultSet result = ConnectDB.getInstance().createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -108,5 +129,17 @@ public class PgDisponibilityDAO extends DisponibilityDAO {
         return can;
 
     }
+
+	@Override
+	public void setBooked(int dispoId) {
+		String query = "UPDATE Disponibility SET isbooked = true WHERE id="+dispoId;
+		try {
+			int result = ConnectDB.getInstance().createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeUpdate(query);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
+	}
 
 }

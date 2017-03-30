@@ -85,10 +85,11 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
                                         Disponibility disp = getTableView().getItems().get(getIndex());
                                         System.out.println(disp.getId());
                                         makeRequestAppointment(disp);
+                                        displayDisponibilities(doc);
 
                                     });
                                     setGraphic(btn);
-                                    if (Authentification.isDoctor() || scheduleFa.canMakeRequest(getTableView().getItems().get(getIndex()).getId(), Authentification.getUser().getId())) {
+                                    if (Authentification.isDoctor() || getTableView().getItems().get(getIndex()).isBooked() || scheduleFa.canMakeRequest(getTableView().getItems().get(getIndex()).getId(), Authentification.getUser().getId())) {
                                         btn.setVisible(false);
                                     }
                                     setText(null);
@@ -104,8 +105,11 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
     }
 
     public List<Disponibility> getDisponibilities(Doctor doctor) {
-
-        return scheduleFa.getDoctorDisponibilities(doctor);
+    	if(Authentification.isPatient()){
+            return scheduleFa.getDoctorDisponibilitiesAvalaible(doctor);
+    	}else{
+            return scheduleFa.getAllDoctorDisponibilities(doctor);
+    	}
 
     }
 
@@ -133,8 +137,9 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
     public void deleteSchedule() {
         // TODO implement here
     }
-
+    public Doctor doc;
     public void displayDisponibilities(Doctor doctor) {
+    	doc = doctor;
         doctorNameLabel.setText(doctor.getLastName());
         disponibilitiesTable.getItems().setAll(this.getDisponibilities(doctor));
     }

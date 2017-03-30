@@ -30,8 +30,11 @@ public abstract class DisponibilityDAO {
 
     public abstract void delete(Disponibility disponibility);
 
-    public abstract List<Disponibility> findDoctorDisponibilities(int id);
+    public abstract List<Disponibility> findDoctorDisponibilitiesAvailable(int id);
+    public abstract List<Disponibility> findAllDoctorDisponibilities(int id);
 
     public abstract boolean canMakeRequest(int dispo_id, int patient_id);
+
+	public abstract void setBooked(int dispoId);
 
 }

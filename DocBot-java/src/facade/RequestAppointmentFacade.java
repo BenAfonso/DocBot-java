@@ -84,6 +84,7 @@ public class RequestAppointmentFacade {
     	System.out.println(appointment.getRequest_appointmentId());
     	appointmentDao.create(appointment);
     	requestAppointmentDao.reject(request_appointment.getDispoId(),request_appointment.getPersonid());
+    	disponibilityDao.setBooked(request_appointment.getDispoId());
     	return true;
     	
     }

@@ -83,9 +83,13 @@ public class ScheduleFacade {
         return dispoDao.canMakeRequest(disponibilities_id, patient_id);
     }
 
-    public List<Disponibility> getDoctorDisponibilities(Doctor doctor) {
+    public List<Disponibility> getAllDoctorDisponibilities(Doctor doctor) {
         // TODO Auto-generated method stub
-        return dispoDao.findDoctorDisponibilities(doctor.getId());
+        return dispoDao.findAllDoctorDisponibilities(doctor.getId());
+    }
+    public List<Disponibility> getDoctorDisponibilitiesAvalaible(Doctor doctor) {
+        // TODO Auto-generated method stub
+        return dispoDao.findDoctorDisponibilitiesAvailable(doctor.getId());
     }
 
 }
