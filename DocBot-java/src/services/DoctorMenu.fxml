@@ -12,6 +12,11 @@
             <MenuItem mnemonicParsing="false" onAction="#goToMyDisponibilities" text="Go to my disponibility" />
             
          </items></Menu>
+    <Menu mnemonicParsing="false" text="Appointment">
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#goToDoctorRequestAppointment" text="Request Appointment" />
+        </items>
+      </Menu>
       <Menu mnemonicParsing="false" text="Logout">
         <items>
           <MenuItem mnemonicParsing="false" onAction="#goLogout" text="Disconnect" />

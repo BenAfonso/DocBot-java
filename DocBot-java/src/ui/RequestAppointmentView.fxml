@@ -35,10 +35,12 @@
             <TableView fx:id="requestTableView" layoutX="93.0" layoutY="164.0" prefHeight="427.0" prefWidth="815.0">
               <columns>
                 <TableColumn fx:id="dateColumn" prefWidth="114.0" text="Date" />
-                <TableColumn fx:id="hourStartColumn" prefWidth="112.0" text="HourStart" />
-                  <TableColumn fx:id="hourEndColumn" prefWidth="140.0" text="HourEnd" />
-                  <TableColumn fx:id="fnameColumn" minWidth="8.0" prefWidth="231.0" text="First Name" />
-                  <TableColumn fx:id="lnameColumn" minWidth="0.0" prefWidth="215.0" text="Last Name" />
+                <TableColumn fx:id="hourStartColumn" prefWidth="76.0" text="HourStart" />
+                  <TableColumn fx:id="hourEndColumn" prefWidth="90.0" text="HourEnd" />
+                  <TableColumn fx:id="fnameColumn" minWidth="8.0" prefWidth="222.0" text="First Name" />
+                  <TableColumn fx:id="lnameColumn" minWidth="0.0" prefWidth="153.0" text="Last Name" />
+                  <TableColumn fx:id="lnameColumn1" minWidth="0.0" text="Accept" />
+                  <TableColumn fx:id="lnameColumn11" minWidth="0.0" prefWidth="79.0" text="Reject" />
               </columns>
             </TableView>
             <Label layoutX="362.0" layoutY="114.0" text="My request appointment" textFill="#78909c">

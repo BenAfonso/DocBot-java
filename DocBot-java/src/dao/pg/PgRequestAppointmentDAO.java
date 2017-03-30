@@ -65,8 +65,8 @@ public class PgRequestAppointmentDAO extends RequestAppointmentDAO {
 		
 		List<RequestAppointment> requestAppointments = new ArrayList<RequestAppointment>();
 		
-		String query = "SELECT r.id as id, s.date as date,d.hourStart as hourStart,d.minuteStart as minuteStart,d.hourEnd as hourEnd,d.minuteEnd as minuteEnd,p.lastName as lastName, p.firstName as firstName, p.id as personId FROM requestappointment r, disponibility d, schedule s, personne p WHERE r.disponibility_id = d.id AND d.schedule_id=s.id AND r.patient_id = p.id AND r.rejected=false AND s.doctor_id = "+id
-				+"MINUS SELECT r.id as id, s.date as date,d.hourStart as hourStart,d.minuteStart as minuteStart,d.hourEnd as hourEnd,d.minuteEnd as minuteEnd,p.lastName as lastName, p.firstName as firstName, p.id as personId FROM requestappointment r, disponibility d, schedule s, personne p WHERE r.disponibility_id = d.id AND d.schedule_id=s.id AND r.patient_id = p.id AND a.requestAppointment_id=r.id AND s.doctor_id = "+id;
+		String query = "SELECT r.id as id, s.date as date,d.hourStart as hourStart,d.minuteStart as minuteStart,d.hourEnd as hourEnd,d.minuteEnd as minuteEnd,p.lastName as lastName, p.firstName as firstName, p.id as personId FROM requestappointment r, disponibility d, schedule s, person p WHERE r.disponibility_id = d.id AND d.schedule_id=s.id AND r.patient_id = p.id AND r.rejected=false AND s.doctor_id = "+id
+				+"EXCEPT SELECT r.id as id, s.date as date,d.hourStart as hourStart,d.minuteStart as minuteStart,d.hourEnd as hourEnd,d.minuteEnd as minuteEnd,p.lastName as lastName, p.firstName as firstName, p.id as personId FROM requestappointment r,appointment a, disponibility d, schedule s, person p WHERE r.disponibility_id = d.id AND d.schedule_id=s.id AND r.patient_id = p.id AND a.requestAppointment_id=r.id AND s.doctor_id = "+id;
 		try {
 			ResultSet result = ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
