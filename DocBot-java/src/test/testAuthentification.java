@@ -48,7 +48,7 @@ public class testAuthentification {
 
     @Test
     public void testIsPatient() {
-        Person person = new Patient(null, null, null, null, null, null);
+        Person person = new Patient(null, null, null, null, "02332", "aa@b.cd", "121", "AZE", "azea", null, null);
         Authentification.connect(person);
         assertTrue(Authentification.isPatient());
         assertFalse(Authentification.isDoctor());

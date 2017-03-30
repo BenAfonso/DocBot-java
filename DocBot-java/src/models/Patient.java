@@ -12,7 +12,7 @@ public class Patient extends Person {
     /**
      * Default constructor
      */
-    public Patient(String fname, String lname, String password, Date birthday, String phoneNumber, String mail) {
+    public Patient(String fname, String lname, String password, Date birthday, String s2, String s1, String s, String aze, String azea, String phoneNumber, String mail) {
         super(fname, lname, password, birthday, phoneNumber, mail);
     }
 
