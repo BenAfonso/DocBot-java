@@ -73,33 +73,45 @@ public class LoginController implements javafx.fxml.Initializable {
 
 		if ( canLogin) {
 			if(Authentification.isDoctor()){
-			
-				FXMLLoader loaderMenu=new FXMLLoader();
-				loaderMenu.setLocation(Main.class.getResource("../services/DoctorMenu.fxml"));
-				MenuBar menuBar=loaderMenu.load();
-				NavigationService.setMenuView(menuBar);
-				goProfile();
+				if(userFacade.isValidated(Authentification.getUser())){
+					FXMLLoader loaderMenu=new FXMLLoader();
+					loaderMenu.setLocation(Main.class.getResource("../services/DoctorMenu.fxml"));
+					MenuBar menuBar=loaderMenu.load();
+					NavigationService.setMenuView(menuBar);
+					goProfile();
+				}else{
+					displayError("Account is not validated");
+				}
+				
 			}else if(Authentification.isAdministrator()){
+				
 				FXMLLoader loaderMenu=new FXMLLoader();
 				loaderMenu.setLocation(Main.class.getResource("../services/AdministratorMenu.fxml"));
 				MenuBar menuBar=loaderMenu.load();
 				NavigationService.setMenuView(menuBar);
 				goListDoctorWaiting();
+				
 			}else{
+				if(userFacade.isBlocked(Authentification.getUser())){
+					FXMLLoader loaderMenu=new FXMLLoader();
+					loaderMenu.setLocation(Main.class.getResource("../services/PatientMenu.fxml"));
+					MenuBar menuBar=loaderMenu.load();
+					NavigationService.setMenuView(menuBar);
+					goProfile();
+				}else{
+					displayError("Account is blocked");
+				}
 				
-				
-				FXMLLoader loaderMenu=new FXMLLoader();
-				loaderMenu.setLocation(Main.class.getResource("../services/PatientMenu.fxml"));
-				MenuBar menuBar=loaderMenu.load();
-				NavigationService.setMenuView(menuBar);
-				goProfile();
 			}
 		} else {
-			invalidCredential.setText("Invalid credential");
+			displayError("Invalid credential");
 		}
 
 	} // Login
 	
+	public void displayError(String message){
+		invalidCredential.setText(message);
+	}
 	
 	NavigationService nav = new NavigationService();
 	public void goRegisterDoctor(){
