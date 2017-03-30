@@ -58,6 +58,7 @@
                   <Image url="@../img/logoDocbot.png" />
                </image>
             </ImageView>
+            <Label fx:id="errorField" layoutX="154.0" layoutY="227.0" text="Label" />
          </children>
       </Pane>
    </children>
