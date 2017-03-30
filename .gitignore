@@ -1,1 +1,5 @@
 /bin/
+.idea/
+Desktop_DocBot-java.iml
+DocBot-java/DocBot-java.iml
+DocBot-java/.settings/org.eclipse.jdt.core.prefs
