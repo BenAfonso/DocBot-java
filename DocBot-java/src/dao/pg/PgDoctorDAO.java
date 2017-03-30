@@ -71,11 +71,11 @@ public class PgDoctorDAO extends DoctorDAO {
 		try {
 			ResultSet result = ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT p.id as id, firstname, lastname, password, email, siret, number, street, city, zip_code, policy_id, isvalidated FROM doctor d, person p WHERE d.id = p.id");
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT p.id as id, firstname, lastname, password, email, siret, number, street, city, zip_code, isvalidated FROM doctor d, person p WHERE d.id = p.id");
 
 			while (result.next()) {
 				Person person = new Person(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"),result.getBoolean("isvalidated"));         
-				Doctor doc = new Doctor(person, result.getString("siret"), result.getString("number"), result.getString("street"), result.getString("city"), result.getString("zip_code"), result.getInt("policy_id"));
+				Doctor doc = new Doctor(person, result.getString("siret"), result.getString("number"), result.getString("street"), result.getString("city"), result.getString("zip_code"));
 
 				doctors.add(doc);
 			}
@@ -146,7 +146,7 @@ public class PgDoctorDAO extends DoctorDAO {
 
 			while (result.next()) {
 				Person person = new Person(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"));         
-				Doctor doc = new Doctor(person, result.getString("siret"), result.getString("number"), result.getString("street"), result.getString("city"), result.getString("zip_code"), result.getInt("policy_id"));
+				Doctor doc = new Doctor(person, result.getString("siret"), result.getString("number"), result.getString("street"), result.getString("city"), result.getString("zip_code"));
 
 				doctors.add(doc);
 			}       
@@ -221,7 +221,7 @@ public class PgDoctorDAO extends DoctorDAO {
 
 		List<Doctor> doctors = new ArrayList<Doctor>();
 
-		String query = "SELECT p.id as id, firstname, lastname, password, email, siret, number, street, city, zip_code, policy_id, isvalidated FROM doctor d, person p WHERE d.id = p.id AND isvalidated = "+t;
+		String query = "SELECT p.id as id, firstname, lastname, password, email, siret, number, street, city, zip_code, isvalidated FROM doctor d, person p WHERE d.id = p.id AND isvalidated = "+t;
 		try {
 			ResultSet result = ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -229,7 +229,7 @@ public class PgDoctorDAO extends DoctorDAO {
 
 			while (result.next()) {
 				Person person = new Person(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"),result.getBoolean("isvalidated"));         
-				Doctor doc = new Doctor(person, result.getString("siret"), result.getString("number"), result.getString("street"), result.getString("city"), result.getString("zip_code"), result.getInt("policy_id"));
+				Doctor doc = new Doctor(person, result.getString("siret"), result.getString("number"), result.getString("street"), result.getString("city"), result.getString("zip_code"));
 
 				doctors.add(doc);
 			}		

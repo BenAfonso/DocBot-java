@@ -24,16 +24,9 @@ CREATE TABLE Person (
     birthday DATE,
     phone VARCHAR(15),
     email VARCHAR(50) UNIQUE NOT NULL,
-    isValidated boolean,
     PRIMARY KEY (id)
 );
 
-CREATE TABLE Policy (
-    id integer,
-    name VARCHAR(60),
-    description VARCHAR(255),
-    PRIMARY KEY (id)
-);
 
 CREATE TABLE Doctor (
     id integer REFERENCES Person (id),
@@ -42,13 +35,13 @@ CREATE TABLE Doctor (
     street VARCHAR(120),
     city VARCHAR(40),
     zip_code VARCHAR(8),
-    policy_id integer REFERENCES Policy (id),
+    isValidated boolean DEFAULT false,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE Patient (
     id integer REFERENCES Person (id),
-    isBlocked boolean,
+    isBlocked boolean DEFAULT false,
     doctor_id integer REFERENCES Doctor (id),
     PRIMARY KEY (id)
 );
@@ -121,5 +114,11 @@ CREATE TABLE AnswerRequest (
     PRIMARY KEY (id)
 );
 
+INSERT INTO Person VALUES (1,'Admin','Admin','admin','06/13/1995','0667901111','admin@mail.fr');
+INSERT INTO Administrator VALUES (1);
 
-INSERT INTO Person VALUES (0,'Benjamin','Afonso','123456','09/27/1995','0667901111','benjamin.afonso@etu.umontpellier.fr',true);
+INSERT INTO Person VALUES (2,'Nicolas','Zambrano','123','06/13/1995','0667901111','nico@mail.fr');
+INSERT INTO Doctor VALUES (2,'104I19491419','239','chemin de la coccinelle','Sète','34200',true);
+
+INSERT INTO Person VALUES (3,'Bastien','Ricoeur','123','06/13/1995','0667901111','bastien@mail.fr');
+INSERT INTO Patient VALUES (3,false);

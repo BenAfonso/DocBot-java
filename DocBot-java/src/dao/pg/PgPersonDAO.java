@@ -111,7 +111,8 @@ public class PgPersonDAO extends PersonDAO {
 	 * @return User
 	 */
 	public Person find(String username) {
-		Person user = null;      
+		Person user = null;  
+		System.out.println(ConnectDB.getInstance());
 		try {
 			ResultSet result = ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
