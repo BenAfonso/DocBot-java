@@ -1,48 +1,47 @@
 package dao.pg;
+
 import dao.AnswerRequestDAO;
 import models.AnswerRequest;
-import java.sql.Connection;
-
-import java.util.*;
 
 /**
  * @author BenAfonso
  */
 public class PgAnswerRequestDAO extends AnswerRequestDAO {
-	
-	private static PgAnswerRequestDAO pgAnswerRequestDAO;
-	
-	private PgAnswerRequestDAO(){};
-	
-	public static PgAnswerRequestDAO getPgAnswerRequestDAO(){
-		if (pgAnswerRequestDAO == null){
-			pgAnswerRequestDAO = new PgAnswerRequestDAO();
-		}
-		return pgAnswerRequestDAO;
-	}
 
-	@Override
-	public void create(AnswerRequest answerRequest) {
-		// TODO Auto-generated method stub
-		
-	}
+    private static PgAnswerRequestDAO pgAnswerRequestDAO;
 
-	@Override
-	public void update(AnswerRequest answerRequest) {
-		// TODO Auto-generated method stub
-		
-	}
+    private PgAnswerRequestDAO() {
+    }
 
-	@Override
-	public void find(AnswerRequest answerRequest) {
-		// TODO Auto-generated method stub
-		
-	}
+    public static PgAnswerRequestDAO getPgAnswerRequestDAO() {
+        if (pgAnswerRequestDAO == null) {
+            pgAnswerRequestDAO = new PgAnswerRequestDAO();
+        }
+        return pgAnswerRequestDAO;
+    }
 
-	@Override
-	public void delete(AnswerRequest answerRequest) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void create(AnswerRequest answerRequest) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void update(AnswerRequest answerRequest) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void find(AnswerRequest answerRequest) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void delete(AnswerRequest answerRequest) {
+        // TODO Auto-generated method stub
+
+    }
 
 }

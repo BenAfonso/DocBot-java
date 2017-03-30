@@ -1,8 +1,8 @@
 package dao;
 
-import java.sql.Connection;
 import models.Disponibility;
-import java.util.*;
+
+import java.util.List;
 
 /**
  * @author BenAfonso
@@ -12,7 +12,7 @@ public abstract class DisponibilityDAO {
     /**
      * @param disponibility
      */
-    public abstract boolean create(Disponibility disponibility) ;
+    public abstract boolean create(Disponibility disponibility);
 
     /**
      * @param disponibility
@@ -31,6 +31,7 @@ public abstract class DisponibilityDAO {
     public abstract void delete(Disponibility disponibility);
 
     public abstract List<Disponibility> findDoctorDisponibilities(int id);
-    public abstract boolean canMakeRequest(int dispo_id,int patient_id);
+
+    public abstract boolean canMakeRequest(int dispo_id, int patient_id);
 
 }

@@ -1,6 +1,5 @@
 package ui;
 
-import java.util.*;
 import facade.DoctorFacade;
 import facade.ScheduleFacade;
 
@@ -10,58 +9,55 @@ import facade.ScheduleFacade;
 public class UpdateDisponibilityController {
 
     /**
-     * Default constructor
-     */
-    public UpdateDisponibilityController() {
-    	
-    }
-
-    /**
-     * 
-     */
-//    public void dateField;
-
-    /**
-     * 
-     */
-  //  public void hourStartField;
-
-    /**
-     * 
-     */
- //   public void hourEndField;
-
-    /**
-     * 
-     */
-//    public void descriptionField;
-
-    /**
-     * 
-     */
-//    public void invalidCredentialLabel;
-
-    /**
-     * 
+     *
      */
     public DoctorFacade doctorFa;
 
     /**
-     * 
+     *
+     */
+//    public void dateField;
+
+    /**
+     *
+     */
+    //  public void hourStartField;
+
+    /**
+     *
+     */
+    //   public void hourEndField;
+
+    /**
+     *
+     */
+//    public void descriptionField;
+
+    /**
+     *
+     */
+//    public void invalidCredentialLabel;
+    /**
+     *
      */
     public ScheduleFacade scheduleFa;
 
     /**
-     * 
+     * Default constructor
+     */
+    public UpdateDisponibilityController() {
+
+    }
+
+    /**
+     *
      */
 //    public void valideButton;
 
     /**
-     * 
+     *
      */
 //    public void cancelButton;
-
-
 
     /**
      * Update the schedule

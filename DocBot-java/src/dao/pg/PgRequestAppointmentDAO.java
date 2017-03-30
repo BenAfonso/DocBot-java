@@ -1,65 +1,66 @@
 package dao.pg;
 
 
+import dao.RequestAppointmentDAO;
+import models.RequestAppointment;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import dao.RequestAppointmentDAO;
-import models.Disponibility;
-import models.RequestAppointment;
-import models.Schedule;
 
 /**
  * @author BenAfonso
  */
 public class PgRequestAppointmentDAO extends RequestAppointmentDAO {
 
-	private static PgRequestAppointmentDAO pgRequestAppointmentDAO;
+    private static PgRequestAppointmentDAO pgRequestAppointmentDAO;
+
     /**
      * Default constructor
      */
     private PgRequestAppointmentDAO() {
     }
-    
-    public static PgRequestAppointmentDAO getPgRequestAppointmentDAO(){
-    	if ( pgRequestAppointmentDAO == null ){
-    		pgRequestAppointmentDAO = new PgRequestAppointmentDAO();
-    	}
-    	return pgRequestAppointmentDAO;
+
+    public static PgRequestAppointmentDAO getPgRequestAppointmentDAO() {
+        if (pgRequestAppointmentDAO == null) {
+            pgRequestAppointmentDAO = new PgRequestAppointmentDAO();
+        }
+        return pgRequestAppointmentDAO;
     }
-    
 
-	@Override
-	public void create(RequestAppointment requestAppointment) {
-		
-		try {
-			ConnectDB.getInstance().createStatement(
-					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO RequestAppointment "
-							+ "(patient_id, disponibility_id) VALUES "
-							+ "('"+requestAppointment.getPerson().getId()+"',"
-							+ "'"+requestAppointment.getDisponibility().getId()+"')");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
-			
-	}
+    @Override
+    public void create(RequestAppointment requestAppointment) {
 
-	@Override
-	public void update(RequestAppointment requestAppointment) {
-		// TODO Auto-generated method stub
-		
-	}
+        try {
+            ConnectDB.getInstance().createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO RequestAppointment "
+                    + "(patient_id, disponibility_id) VALUES "
+                    + "('" + requestAppointment.getPerson().getId() + "',"
+                    + "'" + requestAppointment.getDisponibility().getId() + "')");
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
-	@Override
-	public void find(RequestAppointment requestAppointment) {
-		// TODO Auto-generated method stub
-		
-	}
+
+
+    }
+
+    @Override
+    public void update(RequestAppointment requestAppointment) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void find(RequestAppointment requestAppointment) {
+        // TODO Auto-generated method stub
+
+    }
+
 	@Override
 	public List<RequestAppointment> findAll(int id) {
 		
@@ -71,23 +72,23 @@ public class PgRequestAppointmentDAO extends RequestAppointmentDAO {
 			ResultSet result = ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeQuery(query);
-			
-			while (result.next()) {
+	
+            while (result.next()) {
 
-				RequestAppointment req = new RequestAppointment(result.getInt("id"),result.getDate("date"),result.getInt("hourStart"),result.getInt("minuteStart"),result.getInt("hourEnd"),result.getInt("minuteEnd"),result.getString("lastName"),result.getString("firstName"),result.getInt("personId"));
-				requestAppointments.add(req);
-			}		
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return requestAppointments;
-	}
+                RequestAppointment req = new RequestAppointment(result.getInt("id"), result.getDate("date"), result.getInt("hourStart"), result.getInt("minuteStart"), result.getInt("hourEnd"), result.getInt("minuteEnd"), result.getString("lastName"), result.getString("firstName"), result.getInt("personId"));
+                requestAppointments.add(req);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-	@Override
-	public void delete(RequestAppointment requestAppointment) {
-		// TODO Auto-generated method stub
-		
-	}
+        return requestAppointments;
+    }
+
+    @Override
+    public void delete(RequestAppointment requestAppointment) {
+        // TODO Auto-generated method stub
+
+    }
 
 }

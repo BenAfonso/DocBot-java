@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,47 +7,51 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
+            fx:controller="ui.ListOfCommentsController">
+    <children>
+        <Pane prefHeight="700.0" prefWidth="1000.0">
+            <children>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#78909c" height="80.0" stroke="BLACK"
+                           strokeType="INSIDE" strokeWidth="0.0" width="1000.0"/>
+                <Label layoutX="340.0" layoutY="115.0" text="Comments of" textFill="#78909c">
+                    <font>
+                        <Font size="24.0"/>
+                    </font>
+                </Label>
+                <Text layoutX="531.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOT">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Text>
+                <Text layoutX="432.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOC">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Text>
+                <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="477.0" layoutY="5.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@../img/logoDocbot.png"/>
+                    </image>
+                </ImageView>
+                <Label fx:id="doctorNameLabel" layoutX="501.0" layoutY="114.0" text="DoctorName" textFill="#78909c">
+                    <font>
+                        <Font size="24.0"/>
+                    </font>
+                </Label>
+                <TableView fx:id="commentsTable" layoutX="121.0" layoutY="182.0" prefHeight="462.0" prefWidth="758.0">
+                    <columns>
+                        <TableColumn fx:id="dateCol" prefWidth="91.88652801513672" text="Date"/>
+                        <TableColumn fx:id="titleCol" prefWidth="198.0" text="Title"/>
+                        <TableColumn fx:id="contentCol" prefWidth="320.0" text="Content"/>
+                    </columns>
+                </TableView>
+                <Label fx:id="errorLabel" layoutX="124.0" layoutY="154.0" text=""/>
+                <Button fx:id="addCommentButton" layoutX="835.0" layoutY="135.0" mnemonicParsing="false"
+                        onAction="#goToAddComment" text="Add comments"/>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ListOfCommentsController">
-   <children>
-      <Pane prefHeight="700.0" prefWidth="1000.0">
-         <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#78909c" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1000.0" />
-            <Label layoutX="340.0" layoutY="115.0" text="Comments of" textFill="#78909c">
-               <font>
-                  <Font size="24.0" />
-               </font></Label>
-            <Text layoutX="531.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOT">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text layoutX="432.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOC">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="477.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/logoDocbot.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="doctorNameLabel" layoutX="501.0" layoutY="114.0" text="DoctorName" textFill="#78909c">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <TableView fx:id="commentsTable" layoutX="121.0" layoutY="182.0" prefHeight="462.0" prefWidth="758.0">
-              <columns>
-                <TableColumn fx:id="dateCol" prefWidth="91.88652801513672" text="Date" />
-                <TableColumn fx:id="titleCol" prefWidth="198.0" text="Title" />
-                  <TableColumn fx:id="contentCol" prefWidth="320.0" text="Content" />
-              </columns>
-            </TableView>
-            <Label fx:id="errorLabel" layoutX="124.0" layoutY="154.0" text="" />
-            <Button fx:id="addCommentButton" layoutX="835.0" layoutY="135.0" mnemonicParsing="false" onAction="#goToAddComment" text="Add comments" />
-            
-         </children>
-      </Pane>
-   </children>
+            </children>
+        </Pane>
+    </children>
 </AnchorPane>

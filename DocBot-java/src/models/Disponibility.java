@@ -1,10 +1,42 @@
 package models;
-import java.util.*;
+
+import java.util.Date;
 
 /**
  * @author BenAfonso
  */
 public class Disponibility {
+
+    private Schedule schedule;
+    /**
+     *
+     */
+    private int id;
+    private int scheduleId;
+    /**
+     *
+     */
+    private int hourStart;
+    /**
+     *
+     */
+    private int hourEnd;
+    /**
+     *
+     */
+    private int minuteEnd;
+    /**
+     *
+     */
+    private int minuteStart;
+    /**
+     *
+     */
+    private String description;
+    /**
+     *
+     */
+    private boolean isBooked;
 
     /**
      * Default constructor
@@ -13,24 +45,25 @@ public class Disponibility {
     }
 
     public Disponibility(int scheduleId, int hourStart, int minuteStart, int hourEnd, int minuteEnd, String description, boolean isBooked) {
-    this.setScheduleId(scheduleId);
-    this.setHourStart(hourStart);
-    this.setMinuteStart(minuteStart);
-    this.setHourEnd(hourEnd);
-    this.setMinuteEnd(minuteEnd);;
-    this.setDescription(description);
+		this.setScheduleId(scheduleId);
+		this.setHourStart(hourStart);
+		this.setMinuteStart(minuteStart);
+		this.setHourEnd(hourEnd);
+		this.setMinuteEnd(minuteEnd);
+        this.setDescription(description);
     }
-    public Disponibility(Schedule schedule,int id, int hourStart, int minuteStart, int hourEnd, int minuteEnd, String description, boolean isBooked) {
-    this.setSchedule(schedule);
-    this.setId(id);
-    this.setHourStart(hourStart);
-    this.setMinuteStart(minuteStart);
-    this.setHourEnd(hourEnd);
-    this.setMinuteEnd(minuteEnd);;
-    this.setDescription(description);
+
+	public Disponibility(Schedule schedule, int id, int hourStart, int minuteStart, int hourEnd, int minuteEnd, String description, boolean isBooked) {
+		this.setSchedule(schedule);
+		this.setId(id);
+		this.setHourStart(hourStart);
+		this.setMinuteStart(minuteStart);
+		this.setHourEnd(hourEnd);
+		this.setMinuteEnd(minuteEnd);
+        this.setDescription(description);
     }
-    private Schedule schedule;
-	public boolean isBooked() {
+
+    public boolean isBooked() {
 		return isBooked;
 	}
 
@@ -74,7 +107,7 @@ public class Disponibility {
 		return hourStart;
 	}
 
-	public void setHourStart(int hourStart) {
+    public void setHourStart(int hourStart) {
 		this.hourStart = hourStart;
 	}
 
@@ -101,51 +134,18 @@ public class Disponibility {
 	public void setSchedule(Schedule schedule) {
 		this.schedule = schedule;
 	}
-	public Date getDate(){
+
+	public Date getDate() {
 		return schedule.getDate();
 	}
-	
-	public String getHourStartFull(){
-		return this.getHourStart()+":"+this.getMinuteStart();
+
+	public String getHourStartFull() {
+		return this.getHourStart() + ":" + this.getMinuteStart();
 	}
-	public String getHourEndFull(){
-		return this.getHourEnd()+":"+this.getMinuteEnd();
+
+	public String getHourEndFull() {
+		return this.getHourEnd() + ":" + this.getMinuteEnd();
 	}
-	/**
-     * 
-     */
-    private int id;
-
-    private int scheduleId;
-    /**
-     * 
-     */
-    private int hourStart;
-
-    /**
-     * 
-     */
-    private int hourEnd;
-    /**
-     * 
-     */
-    private int minuteEnd;
-
-    /**
-     * 
-     */
-    private int minuteStart;
-
-
-    /**
-     * 
-     */
-    private String description;
-
-    /**
-     * 
-     */
-    private boolean isBooked;
 
 
 }

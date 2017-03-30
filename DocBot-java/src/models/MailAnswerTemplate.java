@@ -1,32 +1,28 @@
 package models;
 
-import java.util.*;
-
 /**
  * @author BenAfonso
  */
 public class MailAnswerTemplate {
 
     /**
+     *
+     */
+    public int id;
+    /**
+     *
+     */
+    public String name;
+    /**
+     *
+     */
+    public String content;
+
+    /**
      * Default constructor
      */
     public MailAnswerTemplate() {
     }
-
-    /**
-     * 
-     */
-    public int id;
-
-    /**
-     * 
-     */
-    public String name;
-
-    /**
-     * 
-     */
-    public String content;
 
 
 }
