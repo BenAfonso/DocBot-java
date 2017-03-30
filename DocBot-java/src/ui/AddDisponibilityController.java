@@ -56,7 +56,9 @@ public class AddDisponibilityController {
      */
     public void createDisponibility() {
 		Date date = Date.from(dateField.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-        scheduleFa.createDisponibility(Authentification.getUser().getId(), date, Integer.parseInt(hourStartField.getText()), Integer.parseInt(minStartField.getText()), Integer.parseInt(hourEndField.getText()), Integer.parseInt(minEndField.getText()), descriptionField.getText());
+        if(scheduleFa.createDisponibility(Authentification.getUser().getId(), date, Integer.parseInt(hourStartField.getText()), Integer.parseInt(minStartField.getText()), Integer.parseInt(hourEndField.getText()), Integer.parseInt(minEndField.getText()), descriptionField.getText())){
+        	goDisponibilities();
+        }
     }
     
     /**

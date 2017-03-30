@@ -63,6 +63,7 @@ public class CommentFacade {
         Comment commentToPost=new Comment(0,content,title,rate,datePost,doctor_id,patient_id);
         return (dao.create(commentToPost));
     }
+    
     public Boolean canAddComment(int doctor_id, int patient_id) {
         return (dao.canAddAComment(doctor_id,patient_id));
     }

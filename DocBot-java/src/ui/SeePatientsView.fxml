@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
+            fx:controller="ui.SeePatientsController">
+   <children>
+      <Pane prefHeight="700.0" prefWidth="1000.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#78909c" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1000.0" />
+            <Text layoutX="531.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOT">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="432.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOC">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="477.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logoDocbot.png" />
+               </image>
+            </ImageView>
+            <TableView fx:id="patientsTable" layoutX="345.0" layoutY="157.0" prefHeight="420.0" prefWidth="297.0">
+               <columns>
+                  <TableColumn fx:id="firstNameCol" prefWidth="85.49282836914062" text="First name"/>
+                  <TableColumn fx:id="lastNameCol" prefWidth="106.50717163085938" text="Last name"/>
+                  <TableColumn fx:id="actionCol" prefWidth="134.00006103515625"/>
+               </columns>
+            </TableView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

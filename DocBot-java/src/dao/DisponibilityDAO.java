@@ -12,7 +12,7 @@ public abstract class DisponibilityDAO {
     /**
      * @param disponibility
      */
-    public abstract void create(Disponibility disponibility) ;
+    public abstract boolean create(Disponibility disponibility) ;
 
     /**
      * @param disponibility
