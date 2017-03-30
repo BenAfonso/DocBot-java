@@ -10,6 +10,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import ui.AddCommentController;
 import ui.DisponibilitiesController;
 import ui.ListOfCommentsController;
 import ui.ProfileController;
@@ -310,6 +311,22 @@ public class NavigationService {
 		listController.displayComments(doctor);
 
 		changeView(listOfCommentsView);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void goToAddComments(Doctor doctor){
+		try {
+		FXMLLoader loader=new FXMLLoader();
+		loader.setLocation(Main.class.getResource("../ui/AddCommentsView.fxml"));
+		AnchorPane addCommentsView;
+		
+		addCommentsView = (AnchorPane) loader.load();
+		AddCommentController addCommentsController = loader.getController();
+		addCommentsController.setDoctor(doctor);
+
+		changeView(addCommentsView);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

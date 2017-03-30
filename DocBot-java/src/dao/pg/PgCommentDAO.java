@@ -34,7 +34,7 @@ public class PgCommentDAO extends CommentDAO {
 		try {
 			ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Comment (requestappointment_id, datepost, title, content,rate) VALUES ('"+obj.getAppointment_id()+"','"+obj.getDatePost()+"','"+obj.getTitle()+"','"+obj.getContent()+"','"+obj.getRate()+"')");
+					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Comment (doctor_id,patient_id,datepost, title, content,rate) VALUES ('"+obj.getDoctor_id()+"','"+obj.getPatient_id()+"','"+obj.getDatePost()+"','"+obj.getTitle()+"','"+obj.getContent()+"','"+obj.getRate()+"')");
 				return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -62,6 +62,25 @@ public class PgCommentDAO extends CommentDAO {
 		// TODO Auto-generated method stub
 		
 	}
+	public boolean canAddAComment(int doctor_id, int patient_id){
+		boolean getARequest=false;
+		try {
+			ResultSet result = ConnectDB.getInstance().createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT r.id "
+							+ "FROM requestappointment r, disponibility d, schedule s WHERE "
+							+ "r.disponibility_id = d.id AND d.schedule_id = s.id "
+							+ "AND s.doctor_id = "+doctor_id+" AND r.patient_id ="+patient_id);
+
+			while (result.next()) {
+				getARequest = true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return getARequest;
+	}
 	
 	public List<Comment> findAll(Doctor doctor) {
 		System.out.println(doctor.getId());
@@ -70,14 +89,12 @@ public class PgCommentDAO extends CommentDAO {
 		try {
 			ResultSet result = ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT c.id as id, datepost, title, "
-							+ "content, rate, r.id as r_id FROM comment c, requestappointment r, "
-							+ "disponibility d, schedule s  WHERE c.requestappointment_id = r.id "
-							+ "AND r.disponibility_id = d.id AND d.schedule_id = s.id "
-							+ "AND s.doctor_id = "+doctor.getId());
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * "
+							+ "FROM comment c "
+							+ "WHERE c.doctor_id = "+doctor.getId());
 
 			while (result.next()) {
-				Comment comment = new Comment(result.getInt("id"), result.getString("content"), result.getString("title"), result.getInt("rate"), result.getDate("datepost"), result.getInt("r_id"));
+				Comment comment = new Comment(result.getInt("id"), result.getString("content"), result.getString("title"), result.getInt("rate"), result.getDate("datepost"), result.getInt("doctor_id"),result.getInt("patient_id"));
 
 				comments.add(comment);
 			}

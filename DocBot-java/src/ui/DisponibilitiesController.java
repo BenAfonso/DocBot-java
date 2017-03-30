@@ -84,7 +84,7 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
                                             	
                                     } );
                                     setGraphic( btn );
-                                    if (Authentification.isDoctor()){
+                                    if (Authentification.isDoctor() || scheduleFa.canMakeRequest(getTableView().getItems().get( getIndex() ).getId(),Authentification.getUser().getId())){
                                     	btn.setVisible(false);
                                     }
                                     setText( null );
