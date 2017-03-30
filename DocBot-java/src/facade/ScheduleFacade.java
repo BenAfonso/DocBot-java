@@ -67,11 +67,10 @@ public class ScheduleFacade {
      * @param withHour 
      * @return the disponibility added
      */
-    public Disponibility createDisponibility(int doctor_id,Date date, int hourStart,int minuteStart, int hourEnd,int minuteEnd, String description) {
+    public boolean createDisponibility(int doctor_id,Date date, int hourStart,int minuteStart, int hourEnd,int minuteEnd, String description) {
     	Schedule sched=createSchedule(doctor_id,date);
         Disponibility dispoToInsert = new Disponibility(sched.getId(),hourStart,minuteStart,hourEnd,minuteEnd,description,false);
-        dispoDao.create(dispoToInsert);
-        return null;
+        return dispoDao.create(dispoToInsert);
     }
     public boolean canMakeRequest(int disponibilities_id, int patient_id){
     	return dispoDao.canMakeRequest(disponibilities_id,patient_id);

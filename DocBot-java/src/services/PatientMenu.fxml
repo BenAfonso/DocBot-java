@@ -15,10 +15,6 @@
             <MenuItem mnemonicParsing="false" onAction="#goToListOfDoctors" text="Go to list of Doctors" />
          </items>
          </Menu>
-    <Menu mnemonicParsing="false" text="Appointments">
-         <items>
-            <MenuItem mnemonicParsing="false" onAction="#goToSeePatients" text="See my appointments" />
-         </items></Menu>
     <Menu mnemonicParsing="false" text="Logout">
         <items>
           <MenuItem mnemonicParsing="false" onAction="#goLogout" text="Disconnect" />

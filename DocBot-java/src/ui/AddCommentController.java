@@ -57,7 +57,9 @@ public class AddCommentController {
      */
     public void addComment() {
 		Date date = new Date();
-		commentFacade.addComment(contentField.getText(), titleField.getText(), 5, date, doc.getId(),Authentification.getUser().getId());
+		if(commentFacade.addComment(contentField.getText(), titleField.getText(), 5, date, getDoctor().getId(), Authentification.getUser().getId())){
+			goComments(getDoctor());
+		}
     }
     
     /**
@@ -70,6 +72,10 @@ public class AddCommentController {
     public void setDoctor(Doctor doc){
     	this.doc=doc;
     }
+    
+    public Doctor getDoctor(){
+    	return this.doc;
+    }
     /**
      * Display an error message into the view
      */
@@ -77,5 +83,15 @@ public class AddCommentController {
         // TODO implement here
     }
     
+    
+    /********************************************************
+	 * 
+	 * 						Navigation
+	 * 
+	 ********************************************************/
+    NavigationService nav = new NavigationService();
+    public void goComments(Doctor doctor){
+    	nav.goToCommentsOf(doctor);
+    }
 
 }

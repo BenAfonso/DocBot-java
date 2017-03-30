@@ -35,14 +35,17 @@ public class PgDisponibilityDAO extends DisponibilityDAO {
 	 * @param Person
 	 * @return boolean
 	 */
-	public void create(Disponibility obj) {
+	public boolean create(Disponibility obj) {
+		boolean done=false;
 		try {
 			int result = ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Disponibility (schedule_id, hourStart, minuteStart, hourEnd,minuteEnd,description,isBooked) VALUES ('"+obj.getScheduleId()+"','"+obj.getHourStart()+"','"+obj.getMinuteStart()+"','"+obj.getHourEnd()+"','"+obj.getMinuteEnd()+"','"+obj.getDescription()+"','"+obj.isBooked()+"')");
+			done=true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return done;
 	}
 
 	@Override
