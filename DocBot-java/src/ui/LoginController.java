@@ -79,6 +79,12 @@ public class LoginController implements javafx.fxml.Initializable {
 				MenuBar menuBar=loaderMenu.load();
 				NavigationService.setMenuView(menuBar);
 				goProfile();
+			}else if(Authentification.isAdministrator()){
+				FXMLLoader loaderMenu=new FXMLLoader();
+				loaderMenu.setLocation(Main.class.getResource("../services/AdministratorMenu.fxml"));
+				MenuBar menuBar=loaderMenu.load();
+				NavigationService.setMenuView(menuBar);
+				goProfile();
 			}else{
 				
 				

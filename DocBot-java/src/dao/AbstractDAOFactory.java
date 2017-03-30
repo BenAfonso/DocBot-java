@@ -23,6 +23,10 @@ public abstract class AbstractDAOFactory {
   /**
    * @return
    */
+  public abstract AdministratorDAO getAdministratorDAO();
+  /**
+   * @return
+   */
   public abstract ScheduleDAO getScheduleDAO();
 
 
