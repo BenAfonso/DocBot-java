@@ -122,7 +122,7 @@ public class NavigationService {
     public void goToSeePatients() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("../ui/SeePatients.fxml"));
+            loader.setLocation(Main.class.getResource("../ui/SeePatientsView.fxml"));
             AnchorPane seePatientsView;
 
             seePatientsView = loader.load();

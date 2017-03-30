@@ -9,6 +9,11 @@
                 <MenuItem mnemonicParsing="false" onAction="#goToSeePatients" text="See all patients"/>
             </items>
         </Menu>
+        <Menu mnemonicParsing="false" text="Doctors">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#goToListOfWaitingDoctors" text="See pending doctors"/>
+            </items>
+        </Menu>
         <Menu mnemonicParsing="false" text="Logout">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#goLogout" text="Disconnect"/>
