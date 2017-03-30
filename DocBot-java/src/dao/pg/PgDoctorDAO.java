@@ -206,7 +206,7 @@ public class PgDoctorDAO extends DoctorDAO {
 		try {
 			ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeUpdate("UPDATE person SET isValidated = true WHERE email ='"+doctor.getEmail()+"'");
+					ResultSet.CONCUR_READ_ONLY).executeUpdate("UPDATE doctor SET isValidated = true WHERE email ='"+doctor.getEmail()+"'");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
