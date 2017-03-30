@@ -59,9 +59,12 @@ public class CommentFacade {
      * @param Comment the comment to add 
      * @return boolean
      */
-    public Boolean addComment(String content, String title, int rate, Date datePost, int appointment_id) {
-        Comment commentToPost=new Comment(0,content,title,rate,datePost,appointment_id);
+    public Boolean addComment(String content, String title, int rate, Date datePost, int doctor_id, int patient_id) {
+        Comment commentToPost=new Comment(0,content,title,rate,datePost,doctor_id,patient_id);
         return (dao.create(commentToPost));
+    }
+    public Boolean canAddComment(int doctor_id, int patient_id) {
+        return (dao.canAddAComment(doctor_id,patient_id));
     }
 
 	public List<Comment> getCommentsOf(Doctor doctor) {

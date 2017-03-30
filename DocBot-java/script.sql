@@ -87,6 +87,7 @@ CREATE TABLE RequestAppointment (
     id SERIAL UNIQUE,
     patient_id integer REFERENCES Patient (id),
     disponibility_id integer REFERENCES Disponibility (id),
+    accept boolean DEFAULT false,
     PRIMARY KEY (patient_id, disponibility_id)
 );
 
@@ -98,7 +99,8 @@ CREATE TABLE Appointment (
 
 CREATE TABLE Comment (
     id SERIAL UNIQUE,
-    requestAppointment_id integer REFERENCES RequestAppointment (id),
+    doctor_id integer REFERENCES Doctor (id),
+    patient_id integer REFERENCES Patient (id),
     datePost timestamp,
     title VARCHAR(90),
     content VARCHAR(255),
@@ -120,5 +122,8 @@ INSERT INTO Administrator VALUES (1);
 INSERT INTO Person VALUES (2,'Nicolas','Zambrano','123','06/13/1995','0667901111','nico@mail.fr');
 INSERT INTO Doctor VALUES (2,'104I19491419','239','chemin de la coccinelle','Sète','34200',true);
 
-INSERT INTO Person VALUES (3,'Bastien','Ricoeur','123','06/13/1995','0667901111','bastien@mail.fr');
-INSERT INTO Patient VALUES (3,false);
+INSERT INTO Person VALUES (3,'Yoann','Masson','123','06/13/1995','0667901111','yoann@mail.fr');
+INSERT INTO Doctor VALUES (3,'14Y18Y4U1H8624','12','rue de polytech','Montpellier','34090',false);
+
+INSERT INTO Person VALUES (4,'Bastien','Ricoeur','123','06/13/1995','0667901111','bastien@mail.fr');
+INSERT INTO Patient VALUES (4,false);

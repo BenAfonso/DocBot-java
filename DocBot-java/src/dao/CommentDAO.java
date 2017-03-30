@@ -29,5 +29,7 @@ public abstract class CommentDAO {
     public abstract void find(int id) ;
 
 	public abstract List<Comment> findAll(Doctor doctor);
+	
+	public abstract boolean canAddAComment(int doctor_id, int patient_id);
 
 }
