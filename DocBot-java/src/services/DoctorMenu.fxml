@@ -14,6 +14,9 @@
         <items>
           <MenuItem mnemonicParsing="false" onAction="#goToDoctorRequestAppointment" text="Request Appointment" />
         </items>
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#goToDoctorAppointment" text="My Appointments" />
+        </items>
       </Menu>
       <Menu mnemonicParsing="false" text="Logout">
         <items>

@@ -362,6 +362,23 @@ public class NavigationService {
 			e.printStackTrace();
 		}
 	}
+	
+	public void goToDoctorAppointment(){
+		try {
+		FXMLLoader loader=new FXMLLoader();
+		loader.setLocation(Main.class.getResource("../ui/AppointmentDoctorView.fxml"));
+		AnchorPane listOfAppointmentView;
+
+		listOfAppointmentView = loader.load();
+		AppointmentDoctorController appointmentController = loader.getController();
+		appointmentController.displayAppointments();
+
+		changeView(listOfAppointmentView);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
     public void goToAddComments(Doctor doctor) {
         try {

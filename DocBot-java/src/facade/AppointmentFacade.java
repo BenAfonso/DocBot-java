@@ -4,7 +4,7 @@ import dao.AppointmentDAO;
 import dao.pg.PgAppointmentDAO;
 import models.AnswerRequest;
 import models.Appointment;
-import models.Doctor;
+import models.Person;
 import models.RequestAppointment;
 
 import java.util.List;
@@ -79,7 +79,7 @@ public class AppointmentFacade {
         // TODO implement here
     }
 
-    public List<Appointment> getAppointment(Doctor doctor) {
+    public List<Appointment> getAppointment(Person doctor) {
         // TODO Auto-generated method stub
         return appointmentDao.findDoctorAppointment(doctor.getId());
     }

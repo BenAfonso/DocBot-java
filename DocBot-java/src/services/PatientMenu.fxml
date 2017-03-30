@@ -15,15 +15,15 @@
                 <MenuItem mnemonicParsing="false" onAction="#goToListOfDoctors" text="Go to list of Doctors" />
             </items>
         </Menu>
+        <Menu mnemonicParsing="false" text="See Your Appointment">
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#goToSeeHisAppointments" text="See Your Appointment" />
+        </items>
+      </Menu>
         <Menu mnemonicParsing="false" text="Logout">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#goLogout" text="Disconnect" />
             </items>
         </Menu>
-      <Menu mnemonicParsing="false" text="See Your Appointment">
-        <items>
-          <MenuItem mnemonicParsing="false" onAction="#goToSeeHisAppointments" text="See Your Appointment" />
-        </items>
-      </Menu>
     </menus>
 </MenuBar>

@@ -50,7 +50,7 @@ public class PgAppointmentDAO extends AppointmentDAO {
 
     @Override
     public List<Appointment> findDoctorAppointment(int idDoctor) {
-        String query = "SELECT a.id as id, s.date as date,d.hourStart as hourStart,d.minuteStart as minuteStart,d.hourEnd as hourEnd,d.minuteEnd as minuteEnd,p.lastName as lastName, p.firstName as firstName, p.id as personId FROM appointment a,requestappointment r, disponibility d, schedule s, personne p WHERE a.requestAppointment_id=r.id AND r.disponibility_id = d.id AND d.schedule_id=s.id AND r.patient_id = p.id AND r.rejected=false AND s.doctor_id = " + idDoctor;
+        String query = "SELECT a.id as id, s.date as date,d.hourStart as hourStart,d.minuteStart as minuteStart,d.hourEnd as hourEnd,d.minuteEnd as minuteEnd,p.lastName as lastName, p.firstName as firstName, p.id as personId FROM appointment a,requestappointment r, disponibility d, schedule s, person p WHERE a.requestAppointment_id=r.id AND r.disponibility_id = d.id AND d.schedule_id=s.id AND r.patient_id = p.id AND r.rejected=false AND s.doctor_id = " + idDoctor;
         List<Appointment> appointments = new ArrayList<Appointment>();
         try {
             ResultSet result = ConnectDB.getInstance().createStatement(
