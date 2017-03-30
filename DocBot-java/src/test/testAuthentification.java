@@ -33,7 +33,8 @@ public class testAuthentification {
 		assertFalse(Authentification.isAdministrator());
 		assertFalse(Authentification.isPatient());
 	}
-	
+
+
 	@Test
 	public void testIsAdministrator() {
 		Person person = new Administrator();

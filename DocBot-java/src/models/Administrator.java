@@ -14,4 +14,7 @@ public class Administrator extends Person {
     	super(id,fname,lname,password,birthday,phoneNumber,mail);
     }
 
+    public Administrator() {
+
+    }
 }
