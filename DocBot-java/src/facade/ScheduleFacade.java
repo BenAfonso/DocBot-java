@@ -73,6 +73,9 @@ public class ScheduleFacade {
         dispoDao.create(dispoToInsert);
         return null;
     }
+    public boolean canMakeRequest(int disponibilities_id, int patient_id){
+    	return dispoDao.canMakeRequest(disponibilities_id,patient_id);
+    }
 	public List<Disponibility> getDoctorDisponibilities(Doctor doctor) {
 		// TODO Auto-generated method stub
 		return dispoDao.findDoctorDisponibilities(doctor.getId());

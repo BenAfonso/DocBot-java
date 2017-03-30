@@ -82,5 +82,24 @@ public class PgDisponibilityDAO extends DisponibilityDAO {
 		
 		return disponibilities;
 	}
+	public boolean canMakeRequest(int dispo_id,int patient_id){
+		boolean can = false;
+		try {
+			ResultSet result = ConnectDB.getInstance().createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT r.id "
+							+ "FROM requestappointment r WHERE "
+							+ " r.disponibility_id = "+dispo_id+" AND r.patient_id ="+patient_id);
+
+			while (result.next()) {
+				can = true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return can;
+		
+	}
 
 }
