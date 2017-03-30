@@ -132,8 +132,6 @@ public class ValidateOrRejectDoctorRegistrationController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("ici");
-
 	}
 
 	public void loadDoctor(){

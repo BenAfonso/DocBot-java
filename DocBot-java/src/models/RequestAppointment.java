@@ -2,6 +2,8 @@ package models;
 
 import java.sql.Date;
 
+import facade.RequestAppointmentFacade;
+
 /**
  * @author BenAfonso
  */
@@ -18,7 +20,9 @@ public class RequestAppointment {
 	private String firstName;
 	private String lastName;
 	private Date date;
-
+	private String status;
+	private String hourMinuteStart;
+	private String hourMinuteEnd;
 
 	/**
      * Default constructor
@@ -38,6 +42,31 @@ public class RequestAppointment {
     	this.setMinuteStart(minuteStart);
     	this.setFirstName(firstName);
     	this.setLastName(lastName);
+	}
+    
+	public RequestAppointment(int requestAppointmentId,String firstName, String lastName, Date date, int hourStart, int hourEnd, int minuteStart, int minuteEnd,
+			boolean rejected) {
+		
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.date = date;
+		this.hourMinuteStart = hourStart+" : "+minuteStart;
+		this.hourMinuteEnd  = hourEnd+" : "+minuteEnd;
+		this.hourEnd = hourEnd;
+		this.minuteStart = minuteStart;
+		this.minuteEnd = minuteEnd;
+		if(rejected){
+			this.status = "Refusé";
+		}else{
+			RequestAppointmentFacade raFacade = new RequestAppointmentFacade();
+			if (raFacade.hasAnAppointment(this)){
+				this.status = "Accepté";
+			}else{
+				this.status = "En attente de confirmation";
+			}
+			
+		}
+		
 	}
 
 	public Disponibility getDisponibility() {
@@ -124,7 +153,17 @@ public class RequestAppointment {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
-
+	
+	public String getHourMinuteStart(){
+		return this.hourMinuteStart;
+	}
+	
+	public String getHourMinuteEnd(){
+		return this.hourMinuteEnd;
+	}
+	
+	public String getStatus(){
+		return this.status;
+	}
 
 }

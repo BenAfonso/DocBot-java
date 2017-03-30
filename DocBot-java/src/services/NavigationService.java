@@ -101,6 +101,23 @@ public class NavigationService {
 		}
 	}
 
+	public void goToSeeHisAppointment(){
+		FXMLLoader loader=new FXMLLoader();
+		loader.setLocation(Main.class.getResource("../ui/SeeHisAppointments.fxml"));
+		AnchorPane listOfDoctorsView;
+
+		try {
+			listOfDoctorsView = loader.load();
+
+			changeView(listOfDoctorsView);
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
 	public void goToListOfDoctors() {
 		FXMLLoader loader=new FXMLLoader();
 		loader.setLocation(Main.class.getResource("../ui/ListOfDoctorsView.fxml"));

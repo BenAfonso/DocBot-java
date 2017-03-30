@@ -1,5 +1,6 @@
 package facade;
 import models.*;
+import services.Authentification;
 
 import java.util.List;
 
@@ -113,6 +114,14 @@ public class RequestAppointmentFacade {
 	public List<RequestAppointment> getRequestAppointment(Doctor doctor) {
 		// TODO Auto-generated method stub
 		return requestAppointmentDao.findAll(doctor.getId());
+	}
+
+	public List<RequestAppointment> getAppointmentsFrom(Patient user) {
+		return requestAppointmentDao.getAppointmentsFrom(user);
+	}
+
+	public boolean hasAnAppointment(RequestAppointment requestAppointment) {
+		return requestAppointmentDao.hasAnAppointment(requestAppointment);
 	}
 
 }

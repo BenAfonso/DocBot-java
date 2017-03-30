@@ -20,5 +20,10 @@
           <MenuItem mnemonicParsing="false" onAction="#goLogout" text="Disconnect" />
         </items>
       </Menu>
+      <Menu mnemonicParsing="false" text="See your appointments">
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#goToSeeHisAppointment" text="See your appointments" />
+        </items>
+      </Menu>
   </menus>
 </MenuBar>
