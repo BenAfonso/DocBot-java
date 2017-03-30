@@ -2,5 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="DocBot-java/src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/Travail/javaWorkspace/DocBot-java/DocBot-java/lib/postgresql-42.0.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
