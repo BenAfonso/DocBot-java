@@ -15,355 +15,369 @@ import java.io.IOException;
 
 public class NavigationService {
 
-	  private static BorderPane root = new BorderPane();
-	  private static Stage primaryStage;
-	  private static MenuBar menuView;
+    private static BorderPane root = new BorderPane();
+    private static Stage primaryStage;
+    private static MenuBar menuView;
 
-	public NavigationService() {
+    public NavigationService() {
 
-	}
+    }
 
-	  /**
-	   * Just a root getter for the controller to use
-	   */
-	  public static BorderPane getRoot() {
-	    return root;
-	  }
+    /**
+     * Just a root getter for the controller to use
+     */
+    public static BorderPane getRoot() {
+        return root;
+    }
 
-	public static void changeView(AnchorPane pane) {
-		BorderPane rootTest = new BorderPane();
-		rootTest.setTop(menuView);
-		rootTest.setCenter(pane);
+    public static void changeView(AnchorPane pane) {
+        BorderPane rootTest = new BorderPane();
+        rootTest.setTop(menuView);
+        rootTest.setCenter(pane);
 
-		Scene scene = new Scene(rootTest, 1000, 600);
-		primaryStage.setScene(scene);
-		primaryStage.show();
-	}
+        Scene scene = new Scene(rootTest, 1000, 600);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
 
-	public static void setPrimaryStage(Stage primaryStageToSet) {
-		primaryStage = primaryStageToSet;
-	}
+    public static void setPrimaryStage(Stage primaryStageToSet) {
+        primaryStage = primaryStageToSet;
+    }
 
-	public static MenuBar getMenuView() {
-		return menuView;
-	}
+    public static MenuBar getMenuView() {
+        return menuView;
+    }
 
-	public static void setMenuView(MenuBar menuView) {
-		NavigationService.menuView = menuView;
-	}
-	
-	public void goToLogin(){
-		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("../ui/LoginView.fxml"));
-		AnchorPane loginView;
-		try {
-			loginView = loader.load();
-			changeView(loginView);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	public void goToRegisterPatientPage(){
-		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("../ui/RegisterView.fxml"));
-		AnchorPane registerView;
-		try {
-			registerView = loader.load();
-			BorderPane rootTest = new BorderPane();
-			rootTest.setCenter(registerView);
+    public static void setMenuView(MenuBar menuView) {
+        NavigationService.menuView = menuView;
+    }
 
-			Scene scene = new Scene(rootTest, 1000, 600);
-			primaryStage.setScene(scene);
-			primaryStage.show();
-			} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	public void goToRegisterDoctorPage(){
-		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("../ui/RegisterDoctorView.fxml"));
-		AnchorPane registerDoctorView;
-		try {
-			registerDoctorView = loader.load();
-			BorderPane rootTest = new BorderPane();
-			rootTest.setCenter(registerDoctorView);
+    public void goToLogin() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("../ui/LoginView.fxml"));
+        AnchorPane loginView;
+        try {
+            loginView = loader.load();
+            changeView(loginView);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
-			Scene scene = new Scene(rootTest, 1000, 600);
-			primaryStage.setScene(scene);
-			primaryStage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+    public void goToRegisterPatientPage() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("../ui/RegisterView.fxml"));
+        AnchorPane registerView;
+        try {
+            registerView = loader.load();
+            BorderPane rootTest = new BorderPane();
+            rootTest.setCenter(registerView);
 
-	public void goToSeeHisAppointment(){
-		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("../ui/SeeHisAppointments.fxml"));
-		AnchorPane listOfDoctorsView;
+            Scene scene = new Scene(rootTest, 1000, 600);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
-		try {
-			listOfDoctorsView = loader.load();
+    public void goToRegisterDoctorPage() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("../ui/RegisterDoctorView.fxml"));
+        AnchorPane registerDoctorView;
+        try {
+            registerDoctorView = loader.load();
+            BorderPane rootTest = new BorderPane();
+            rootTest.setCenter(registerDoctorView);
 
-			changeView(listOfDoctorsView);
+            Scene scene = new Scene(rootTest, 1000, 600);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    public void goToListOfDoctors() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("../ui/ListOfDoctorsView.fxml"));
+        AnchorPane listOfDoctorsView;
 
-	}
-	
-	public void goToListOfDoctors() {
-		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("../ui/ListOfDoctorsView.fxml"));
-		AnchorPane listOfDoctorsView;
+        try {
+            listOfDoctorsView = loader.load();
 
-		try {
-			listOfDoctorsView = loader.load();
+            changeView(listOfDoctorsView);
 
-			changeView(listOfDoctorsView);
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
 
-	}
-	
-	public void goToSeePatients(){
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("../ui/SeePatients.fxml"));
-			AnchorPane seePatientsView;
+    }
+    
+    public void goToSeeHisAppointments() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("../ui/SeeHisAppointments.fxml"));
+        AnchorPane hisAppointments;
 
-			seePatientsView = loader.load();
-			SeePatientsController listController = loader.getController();
-			listController.displayPatients();
+        try {
+        	hisAppointments = loader.load();
 
-			changeView(seePatientsView);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	public void goToListOfWaitingDoctors() {
-		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("../ui/ValidateOrRejectDoctorRegistration.fxml"));
-		AnchorPane listOfWaitingDoctorsView;
+            changeView(hisAppointments);
 
-		try {
-			listOfWaitingDoctorsView = loader.load();
-			changeView(listOfWaitingDoctorsView);
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	public void goToAddDisponibility() {
-		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("../ui/AddDisponibilityView.fxml"));
-		AnchorPane AddDisponibilityView;
-
-		try {
-			AddDisponibilityView = loader.load();
-			changeView(AddDisponibilityView);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	public void goLogout(){
-		try {
-		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("../ui/LoginView.fxml"));
-		AnchorPane loginView;
-
-			loginView = loader.load();
-
-			BorderPane rootTest = new BorderPane();
-			rootTest.setCenter(loginView);
-
-			Scene scene = new Scene(rootTest, 1000, 600);
-			primaryStage.setScene(scene);
-			primaryStage.show();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Authentification.disconnect();
-	}
-	
-	public void goUpdateProfile(){
-		try {
-			if(Authentification.isDoctor()){
-				FXMLLoader loader=new FXMLLoader();
-				loader.setLocation(Main.class.getResource("../ui/UpdateProfileDoctorView.fxml"));
-				AnchorPane updateDoctorView;
-				updateDoctorView = loader.load();
-				UpdateDoctorProfileController docController = loader.getController();
-				docController.displayInfo();
-				changeView(updateDoctorView);
+    }
+    public void goToSeePatients() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("../ui/SeePatientsView.fxml"));
+            AnchorPane seePatientsView;
+
+            seePatientsView = loader.load();
+            SeePatientsController listController = loader.getController();
+            listController.displayPatients();
+
+            changeView(seePatientsView);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void goToListOfWaitingDoctors() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("../ui/ValidateOrRejectDoctorRegistration.fxml"));
+        AnchorPane listOfWaitingDoctorsView;
+
+        try {
+            listOfWaitingDoctorsView = loader.load();
+            changeView(listOfWaitingDoctorsView);
+
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void goToAddDisponibility() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("../ui/AddDisponibilityView.fxml"));
+        AnchorPane AddDisponibilityView;
+
+        try {
+            AddDisponibilityView = loader.load();
+            changeView(AddDisponibilityView);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void goLogout() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("../ui/LoginView.fxml"));
+            AnchorPane loginView;
+
+            loginView = loader.load();
+
+            BorderPane rootTest = new BorderPane();
+            rootTest.setCenter(loginView);
+
+            Scene scene = new Scene(rootTest, 1000, 600);
+            primaryStage.setScene(scene);
+            primaryStage.show();
 
 
-			}else{
-				FXMLLoader loader=new FXMLLoader();
-				loader.setLocation(Main.class.getResource("../ui/UpdateProfileView.fxml"));
-				AnchorPane updateProfilView;
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        Authentification.disconnect();
+    }
 
-				updateProfilView = loader.load();
-				UpdateProfileController patientController = loader.getController();
-				patientController.displayInfo();
-				changeView(updateProfilView);
-
-
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	public void goUpdatePassword(){
-		try {
-		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("../ui/UpdatePasswordView.fxml"));
-		AnchorPane passwordView;
-
-			passwordView = loader.load();
-
-		changeView(passwordView);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	public void goToMyDisponibilities(){
-		try {
-		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("../ui/ListOfDisponibilities.fxml"));
-		AnchorPane listOfDisponibilitiesView;
-
-			listOfDisponibilitiesView = loader.load();
-		DisponibilitiesController listController = loader.getController();
-		listController.displayDisponibilities((Doctor) Authentification.getUser());
-
-		changeView(listOfDisponibilitiesView);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	public void goToDisponibilitiesOf(Doctor doctor){
-		try {
-		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("../ui/ListOfDisponibilities.fxml"));
-		AnchorPane listOfDisponibilitiesView;
-
-			listOfDisponibilitiesView = loader.load();
-		DisponibilitiesController listController = loader.getController();
-		listController.displayDisponibilities(doctor);
-
-		changeView(listOfDisponibilitiesView);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	public void goToProfile(){
-		try {
-			if(Authentification.isDoctor()){
-				FXMLLoader loader=new FXMLLoader();
-				loader.setLocation(Main.class.getResource("../ui/ProfileDoctorView.fxml"));
-				AnchorPane profileDocView;
-
-				profileDocView = loader.load();
-				ProfileDoctorController docController = loader.getController();
-				docController.displayInfo(Authentification.getUser().getEmail());
-				changeView(profileDocView);
+    public void goUpdateProfile() {
+        try {
+            if (Authentification.isDoctor()) {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(Main.class.getResource("../ui/UpdateProfileDoctorView.fxml"));
+                AnchorPane updateDoctorView;
+                updateDoctorView = loader.load();
+                UpdateDoctorProfileController docController = loader.getController();
+                docController.displayInfo();
+                changeView(updateDoctorView);
 
 
-			}
-			else{
-				FXMLLoader loader=new FXMLLoader();
-				loader.setLocation(Main.class.getResource("../ui/ProfileView.fxml"));
-				AnchorPane profileView;
+            } else {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(Main.class.getResource("../ui/UpdateProfileView.fxml"));
+                AnchorPane updateProfilView;
 
-				profileView = loader.load();
-				ProfileController patientController = loader.getController();
-				patientController.displayInfo(Authentification.getUser().getEmail());
-				changeView(profileView);
+                updateProfilView = loader.load();
+                UpdateProfileController patientController = loader.getController();
+                patientController.displayInfo();
+                changeView(updateProfilView);
 
-			}
 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+            }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
-	public void goToProfileOf(Doctor doctor){
-		try {
-			FXMLLoader loader=new FXMLLoader();
-			loader.setLocation(Main.class.getResource("../ui/ProfileDoctorView.fxml"));
-			AnchorPane profileDocView;
-			profileDocView = loader.load();
-			ProfileDoctorController docController = loader.getController();
-			docController.displayInfo(doctor.getEmail());
-			changeView(profileDocView);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    public void goUpdatePassword() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("../ui/UpdatePasswordView.fxml"));
+            AnchorPane passwordView;
 
-	}
+            passwordView = loader.load();
 
-	public void goToCommentsOf(Doctor doctor){
-		try {
-		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("../ui/ListOfComments.fxml"));
-		AnchorPane listOfCommentsView;
+            changeView(passwordView);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
-			listOfCommentsView = loader.load();
-		ListOfCommentsController listController = loader.getController();
-		listController.displayComments(doctor);
+    public void goToMyDisponibilities() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("../ui/ListOfDisponibilities.fxml"));
+            AnchorPane listOfDisponibilitiesView;
 
+            listOfDisponibilitiesView = loader.load();
+            DisponibilitiesController listController = loader.getController();
+            listController.displayDisponibilities((Doctor) Authentification.getUser());
+
+            changeView(listOfDisponibilitiesView);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void goToDisponibilitiesOf(Doctor doctor) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("../ui/ListOfDisponibilities.fxml"));
+            AnchorPane listOfDisponibilitiesView;
+
+            listOfDisponibilitiesView = loader.load();
+            DisponibilitiesController listController = loader.getController();
+            listController.displayDisponibilities(doctor);
+
+            changeView(listOfDisponibilitiesView);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void goToProfile() {
+        try {
+            if (Authentification.isDoctor()) {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(Main.class.getResource("../ui/ProfileDoctorView.fxml"));
+                AnchorPane profileDocView;
+
+                profileDocView = loader.load();
+                ProfileDoctorController docController = loader.getController();
+                docController.displayInfo(Authentification.getUser().getEmail());
+                changeView(profileDocView);
+
+
+            } else {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(Main.class.getResource("../ui/ProfileView.fxml"));
+                AnchorPane profileView;
+
+                profileView = loader.load();
+                ProfileController patientController = loader.getController();
+                patientController.displayInfo(Authentification.getUser().getEmail());
+                changeView(profileView);
+
+            }
+
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void goToProfileOf(Doctor doctor) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("../ui/ProfileDoctorView.fxml"));
+            AnchorPane profileDocView;
+            profileDocView = loader.load();
+            ProfileDoctorController docController = loader.getController();
+            docController.displayInfo(doctor.getEmail());
+            changeView(profileDocView);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+    public void goToCommentsOf(Doctor doctor) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("../ui/ListOfComments.fxml"));
+            AnchorPane listOfCommentsView;
+
+            listOfCommentsView = loader.load();
+            ListOfCommentsController listController = loader.getController();
+            listController.displayComments(doctor);
 		changeView(listOfCommentsView);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
-	public void goToAddComments(Doctor doctor){
+	public void goToDoctorRequestAppointment(){
 		try {
 		FXMLLoader loader=new FXMLLoader();
-		loader.setLocation(Main.class.getResource("../ui/AddCommentsView.fxml"));
-		AnchorPane addCommentsView;
+		loader.setLocation(Main.class.getResource("../ui/RequestAppointmentView.fxml"));
+		AnchorPane listOfRequestView;
 
-			addCommentsView = loader.load();
-		AddCommentController addCommentsController = loader.getController();
-		addCommentsController.setDoctor(doctor);
+		listOfRequestView = loader.load();
+		RequestAppointmentController requestController = loader.getController();
+		requestController.displayRequests();
 
-		changeView(addCommentsView);
+		changeView(listOfRequestView);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+
+    public void goToAddComments(Doctor doctor) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("../ui/AddCommentsView.fxml"));
+            AnchorPane addCommentsView;
+
+            addCommentsView = loader.load();
+            AddCommentController addCommentsController = loader.getController();
+            addCommentsController.setDoctor(doctor);
+
+            changeView(addCommentsView);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
 }

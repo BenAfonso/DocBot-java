@@ -1,24 +1,21 @@
 package ui;
 
-import java.net.URL;
-import java.util.*;
-
 import facade.RequestAppointmentFacade;
 import facade.ScheduleFacade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 import models.Disponibility;
 import models.Doctor;
 import models.Schedule;
-import services.NavigationService;
 import services.Authentification;
+import services.NavigationService;
+
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
 
 /**
@@ -26,100 +23,112 @@ import services.Authentification;
  */
 public class DisponibilitiesController implements javafx.fxml.Initializable {
 
-	@FXML Label doctorNameLabel;
-	@FXML Label errorLabel;
-	@FXML TableView<Disponibility> disponibilitiesTable;
-	@FXML TableColumn<Disponibility, String> dayCol;
-	@FXML TableColumn<Disponibility, String> hourEndCol;
-	@FXML TableColumn<Disponibility, String> hourStartCol;
-	@FXML TableColumn<Disponibility, String> descriptionCol;
-	@FXML TableColumn<Disponibility, Disponibility> makeAnAppointmentCol;
-	@FXML Button addDisponibility;
-	/**
+    public ScheduleFacade scheduleFa;
+    public RequestAppointmentFacade requestAppointmentFacade;
+    @FXML
+    Label doctorNameLabel;
+    @FXML
+    Label errorLabel;
+    @FXML
+    TableView<Disponibility> disponibilitiesTable;
+    @FXML
+    TableColumn<Disponibility, String> dayCol;
+    @FXML
+    TableColumn<Disponibility, String> hourEndCol;
+    @FXML
+    TableColumn<Disponibility, String> hourStartCol;
+    @FXML
+    TableColumn<Disponibility, String> descriptionCol;
+    @FXML
+    TableColumn<Disponibility, Disponibility> makeAnAppointmentCol;
+    @FXML
+    Button addDisponibility;
+    /********************************************************
+     *
+     * 						Navigation
+     *
+     ********************************************************/
+    NavigationService nav = new NavigationService();
+
+    /**
      * Default constructor
      */
     public DisponibilitiesController() {
-    	scheduleFa = new ScheduleFacade(); // To refactor 
-    	requestAppointmentFacade = new RequestAppointmentFacade();
+        scheduleFa = new ScheduleFacade(); // To refactor
+        requestAppointmentFacade = new RequestAppointmentFacade();
     }
 
-  
-    public ScheduleFacade scheduleFa;
-    public RequestAppointmentFacade requestAppointmentFacade;
-    
-	public void initialize(URL location, ResourceBundle resources) {
-		if(!Authentification.isDoctor()){
-			addDisponibility.setVisible(false);
-		}
-		dayCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("date"));
-		hourEndCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("hourEndFull"));
-		hourStartCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("hourStartFull"));
-		descriptionCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("description"));				
-		
-		Callback<TableColumn<Disponibility, Disponibility>, TableCell<Disponibility, Disponibility>> cellFactory = //
-                new Callback<TableColumn<Disponibility, Disponibility>, TableCell<Disponibility, Disponibility>>()
-                {
+    public void initialize(URL location, ResourceBundle resources) {
+        if (!Authentification.isDoctor()) {
+            addDisponibility.setVisible(false);
+        }
+        dayCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("date"));
+        hourEndCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("hourEndFull"));
+        hourStartCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("hourStartFull"));
+        descriptionCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("description"));
+
+        Callback<TableColumn<Disponibility, Disponibility>, TableCell<Disponibility, Disponibility>> cellFactory = //
+                new Callback<TableColumn<Disponibility, Disponibility>, TableCell<Disponibility, Disponibility>>() {
                     @Override
-                    public TableCell<Disponibility, Disponibility> call( final TableColumn<Disponibility, Disponibility> param )
-                    {
-                        final TableCell<Disponibility, Disponibility> cell = new TableCell<Disponibility, Disponibility>()
-                        {
+                    public TableCell<Disponibility, Disponibility> call(final TableColumn<Disponibility, Disponibility> param) {
+                        final TableCell<Disponibility, Disponibility> cell = new TableCell<Disponibility, Disponibility>() {
 
-                            final Button btn = new Button( "Make appointment !" );
+                            final Button btn = new Button("Make appointment !");
 
-                            public void updateItem( Disponibility disponibility, boolean empty )
-                            {
-                                if ( empty )
-                                {
-                                    setGraphic( null );
-                                    setText( null );
-                                }
-                                else
-                                {
-                                    btn.setOnAction( ( ActionEvent event ) ->
-                                            {
-                                            	Disponibility disp = getTableView().getItems().get( getIndex() );
-                                            	System.out.println(disp.getId());                                            	
-                                            	makeRequestAppointment(disp);
-                                            	
-                                    } );
-                                    setGraphic( btn );
-                                    if (Authentification.isDoctor() || scheduleFa.canMakeRequest(getTableView().getItems().get( getIndex() ).getId(),Authentification.getUser().getId())){
-                                    	btn.setVisible(false);
+                            public void updateItem(Disponibility disponibility, boolean empty) {
+                                if (empty) {
+                                    setGraphic(null);
+                                    setText(null);
+                                } else {
+                                    btn.setOnAction((ActionEvent event) ->
+                                    {
+                                        Disponibility disp = getTableView().getItems().get(getIndex());
+                                        System.out.println(disp.getId());
+                                        makeRequestAppointment(disp);
+                                        displayDisponibilities(doc);
+
+                                    });
+                                    setGraphic(btn);
+                                    if (Authentification.isDoctor() || getTableView().getItems().get(getIndex()).isBooked() || scheduleFa.canMakeRequest(getTableView().getItems().get(getIndex()).getId(), Authentification.getUser().getId())) {
+                                        btn.setVisible(false);
                                     }
-                                    setText( null );
+                                    setText(null);
                                 }
                             }
                         };
                         return cell;
                     }
                 };
-                
+
         makeAnAppointmentCol.setCellFactory(cellFactory);
-	
-	}
-    
-    
-    public List<Disponibility> getDisponibilities(Doctor doctor) {
-    	
-    	return scheduleFa.getDoctorDisponibilities(doctor);
-    	
+
     }
+
+    public List<Disponibility> getDisponibilities(Doctor doctor) {
+    	if(Authentification.isPatient()){
+            return scheduleFa.getDoctorDisponibilitiesAvalaible(doctor);
+    	}else{
+            return scheduleFa.getAllDoctorDisponibilities(doctor);
+    	}
+
+    }
+
     /**
      * Get a schedule for the current doctor
-     * @return Schedule 
+     *
+     * @return Schedule
      */
     public Schedule getHisSchedule() {
         // TODO implement here
-    	
+
         return null;
     }
-    
+
     public void makeRequestAppointment(Disponibility disp) {
-    	boolean result = this.requestAppointmentFacade.createNewRequest(disp, Authentification.getUser());    	
-    	if (!result) {
-    		throw new Error("Request appointment failed");
-    	}
+        boolean result = this.requestAppointmentFacade.createNewRequest(disp, Authentification.getUser());
+        if (!result) {
+            throw new Error("Request appointment failed");
+        }
     }
 
     /**
@@ -128,20 +137,15 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
     public void deleteSchedule() {
         // TODO implement here
     }
-    
+    public Doctor doc;
     public void displayDisponibilities(Doctor doctor) {
-    	doctorNameLabel.setText(doctor.getLastName());
-    	disponibilitiesTable.getItems().setAll(this.getDisponibilities(doctor));
+    	doc = doctor;
+        doctorNameLabel.setText(doctor.getLastName());
+        disponibilitiesTable.getItems().setAll(this.getDisponibilities(doctor));
     }
-    
-    /********************************************************
-	 * 
-	 * 						Navigation
-	 * 
-	 ********************************************************/
-    NavigationService nav = new NavigationService();
-    public void goAddDisponibility(){
-    	nav.goToAddDisponibility();
+
+    public void goAddDisponibility() {
+        nav.goToAddDisponibility();
     }
 
 }

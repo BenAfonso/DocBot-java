@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.control.MenuBar?>
-
-<MenuBar xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="services.NavigationService">
-  <menus>
-   	  <Menu mnemonicParsing="false" text="Patients">
-         <items>
-            <MenuItem mnemonicParsing="false" onAction="#goToSeePatients" text="See all patients" />
-         </items></Menu>
-      <Menu mnemonicParsing="false" text="Logout">
-        <items>
-          <MenuItem mnemonicParsing="false" onAction="#goLogout" text="Disconnect" />
-        </items>
-      </Menu>
-  </menus>
+<MenuBar xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
+         fx:controller="services.NavigationService">
+    <menus>
+        <Menu mnemonicParsing="false" text="Patients">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#goToSeePatients" text="See all patients"/>
+            </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Doctors">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#goToListOfWaitingDoctors" text="See pending doctors"/>
+            </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Logout">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#goLogout" text="Disconnect"/>
+            </items>
+        </Menu>
+    </menus>
 </MenuBar>

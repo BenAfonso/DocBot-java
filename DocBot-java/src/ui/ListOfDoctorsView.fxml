@@ -1,48 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ListOfDoctorsController">
-   <children>
-      <Pane prefHeight="700.0" prefWidth="1000.0">
-         <children>
-            <TableView fx:id="doctorsTable" layoutX="120.0" layoutY="123.0" prefHeight="529.0" prefWidth="772.0">
-              <columns>
-                <TableColumn fx:id="firstNameCol" prefWidth="75.0" text="Prénom" />
-                <TableColumn fx:id="lastNameCol" prefWidth="75.0" text="Nom" />
-                  <TableColumn fx:id="cityCol" prefWidth="75.0" text="Ville" />
-                  <TableColumn fx:id="activeCol" prefWidth="75.0" text="Active" />
-                  <TableColumn fx:id="actionCol" prefWidth="75.0" />
-              </columns>
-            </TableView>
-            <Label layoutX="214.0" layoutY="24.0" prefHeight="16.0" prefWidth="114.0" text="Liste des docteurs" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#78909c" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1000.0" />
-            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="487.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/logoDocbot.png" />
-               </image>
-            </ImageView>
-            <Text layoutX="442.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOC">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text layoutX="541.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOT">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Button fx:id="pendingDoctorsButton" layoutX="214.0" layoutY="90.0" mnemonicParsing="false" onAction="#displayPendingDoctors" text="Pending doctors" />
-            <Button fx:id="allDoctorsButton" layoutX="120.0" layoutY="90.0" mnemonicParsing="false" onAction="#displayDoctors" text="All Doctors" />
-            <TextField fx:id="cityFilterTextField" layoutX="362.0" layoutY="90.0" promptText="Search by city" />
-         </children>
-      </Pane>
-   </children>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8"
+            fx:controller="ui.ListOfDoctorsController">
+    <children>
+        <Pane prefHeight="700.0" prefWidth="1000.0">
+            <children>
+                <TableView fx:id="doctorsTable" layoutX="120.0" layoutY="123.0" prefHeight="529.0" prefWidth="772.0">
+                    <columns>
+                        <TableColumn fx:id="firstNameCol" prefWidth="75.0" text="Prénom"/>
+                        <TableColumn fx:id="lastNameCol" prefWidth="75.0" text="Nom"/>
+                        <TableColumn fx:id="cityCol" prefWidth="75.0" text="Ville"/>
+                        <TableColumn fx:id="activeCol" prefWidth="75.0" text="Active"/>
+                        <TableColumn fx:id="actionCol" prefWidth="75.0"/>
+                    </columns>
+                </TableView>
+                <Label layoutX="214.0" layoutY="24.0" prefHeight="16.0" prefWidth="114.0" text="Liste des docteurs"/>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#78909c" height="80.0" stroke="BLACK"
+                           strokeType="INSIDE" strokeWidth="0.0" width="1000.0"/>
+                <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="487.0" layoutY="5.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@../img/logoDocbot.png"/>
+                    </image>
+                </ImageView>
+                <Text layoutX="442.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOC">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Text>
+                <Text layoutX="541.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOT">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Text>
+                <Button fx:id="pendingDoctorsButton" layoutX="214.0" layoutY="90.0" mnemonicParsing="false"
+                        onAction="#displayPendingDoctors" text="Pending doctors"/>
+                <Button fx:id="allDoctorsButton" layoutX="120.0" layoutY="90.0" mnemonicParsing="false"
+                        onAction="#displayDoctors" text="All Doctors"/>
+                <TextField fx:id="cityFilterTextField" layoutX="362.0" layoutY="90.0" promptText="Search by city"/>
+            </children>
+        </Pane>
+    </children>
 </AnchorPane>

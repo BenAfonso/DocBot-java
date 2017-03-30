@@ -11,11 +11,11 @@ public class RequestAppointment {
 
 	private Disponibility disponibility;
 	private Person person;
-    private int id;
-    private int hourStart;
-    private int hourEnd;
-    private int minuteEnd;
-    private int minuteStart;
+	private int id;
+	private int hourStart;
+	private int hourEnd;
+	private int minuteEnd;
+	private int minuteStart;
 	private int personid;
 	private String firstName;
 	private String lastName;
@@ -23,30 +23,33 @@ public class RequestAppointment {
 	private String status;
 	private String hourMinuteStart;
 	private String hourMinuteEnd;
+	private int dispoId;
+
 
 	/**
-     * Default constructor
-     */
-    public RequestAppointment(Disponibility d, Person p) {
-    	this.setDisponibility(d);
-    	this.setPerson(p);
-    }
-    
-    public RequestAppointment(int id, Date date, int hourStart, int minuteStart, int hourEnd, int minuteEnd, String firstName,
-			String lastName, int personId) {
-    	this.setId(id);
-    	this.setDate(date);
-    	this.setHourStart(hourStart);
-    	this.setMinuteStart(minuteStart);
-    	this.setHourEnd(hourEnd);
-    	this.setMinuteStart(minuteStart);
-    	this.setFirstName(firstName);
-    	this.setLastName(lastName);
+	 * Default constructor
+	 */
+	public RequestAppointment(Disponibility d, Person p) {
+
+		this.setDisponibility(d);
+		this.setPerson(p);
 	}
-    
+
+	public RequestAppointment(int id, Date date, int hourStart, int minuteStart, int hourEnd, int minuteEnd, String firstName,
+			String lastName, int personId) {
+		this.setId(id);
+		this.setDate(date);
+		this.setHourStart(hourStart);
+		this.setMinuteStart(minuteStart);
+		this.setHourEnd(hourEnd);
+		this.setMinuteStart(minuteStart);
+		this.setFirstName(firstName);
+		this.setLastName(lastName);
+	}
+
 	public RequestAppointment(int requestAppointmentId,String firstName, String lastName, Date date, int hourStart, int hourEnd, int minuteStart, int minuteEnd,
 			boolean rejected) {
-		
+
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.date = date;
@@ -64,20 +67,38 @@ public class RequestAppointment {
 			}else{
 				this.status = "En attente de confirmation";
 			}
-			
+
 		}
-		
+
+	}
+
+
+	public RequestAppointment(int id, int dispoId, Date date, int hourStart, int minuteStart, int hourEnd, int minuteEnd, String firstName,
+			String lastName, int personId) {
+		this.setId(id);
+		this.setDate(date);
+		this.setHourStart(hourStart);
+		this.setMinuteStart(minuteStart);
+		this.setHourEnd(hourEnd);
+		this.setMinuteStart(minuteStart);
+		this.setFirstName(firstName);
+		this.setLastName(lastName);
+		this.setPersonid(personId);
+		this.setDispoId(dispoId);
 	}
 
 	public Disponibility getDisponibility() {
 		return disponibility;
 	}
+
 	public void setDisponibility(Disponibility disponibility) {
 		this.disponibility = disponibility;
 	}
+
 	public Person getPerson() {
 		return person;
 	}
+
 	public void setPerson(Person person) {
 		this.person = person;
 	}
@@ -146,24 +167,44 @@ public class RequestAppointment {
 		this.lastName = lastName;
 	}
 
-	public Date getDate() {
-		return date;
+	public String getDate() {
+		return date.toString();
 	}
 
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
+
+	public String getHourStartFull() {
+		return this.getHourStart() + ":" + this.getMinuteStart();
+	}
+
+	public String getHourEndFull() {
+		return this.getHourEnd() + ":" + this.getMinuteEnd();
+	}
+
+	public int getDispoId() {
+		return dispoId;
+	}
+
+
 	public String getHourMinuteStart(){
 		return this.hourMinuteStart;
 	}
-	
+
 	public String getHourMinuteEnd(){
 		return this.hourMinuteEnd;
 	}
-	
+
 	public String getStatus(){
 		return this.status;
 	}
+
+
+	public void setDispoId(int dispoId) {
+		this.dispoId = dispoId;
+	}
+
+
 
 }

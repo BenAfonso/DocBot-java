@@ -10,14 +10,12 @@ import java.util.List;
  * @author BenAfonso
  */
 public abstract class PatientDAO {
-	
-
 
 
     /**
      * @param patient
      */
-    public abstract void create(Patient patient) ;
+    public abstract void create(Patient patient);
 
     /**
      * @param patient
@@ -27,14 +25,14 @@ public abstract class PatientDAO {
     /**
      * @param patient
      */
-    public abstract void find(Patient patient) ;
+    public abstract void find(Patient patient);
 
     public abstract Patient find(int id);
-    
+
     public abstract Patient find(String mail);
-    
+
     public abstract boolean update(String mail, String fname, String lname, Date birthday, String phoneNumber);
-    
+
     public abstract boolean isBlocked(int id);
 
     /**
@@ -44,7 +42,7 @@ public abstract class PatientDAO {
         // TODO implement here
     }
 
-	public abstract boolean create(int id) ;
+    public abstract boolean create(int id);
 
 
     public abstract List<Person> getAllPatients();

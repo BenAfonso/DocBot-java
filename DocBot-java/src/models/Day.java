@@ -1,23 +1,20 @@
 package models;
 
-import java.util.*;
-
 /**
  * @author BenAfonso
  */
 public class Day {
 
     /**
+     *
+     */
+    public String date;
+
+    /**
      * Default constructor
      */
     public Day() {
     }
-
-    /**
-     * 
-     */
-    public String date;
-
 
     /**
      * @author BenAfonso
