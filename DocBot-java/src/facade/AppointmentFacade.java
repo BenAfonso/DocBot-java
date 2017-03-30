@@ -1,12 +1,13 @@
 package facade;
-import models.*;
-
-import java.util.*;
 
 import dao.AppointmentDAO;
-import dao.RequestAppointmentDAO;
 import dao.pg.PgAppointmentDAO;
-import dao.pg.PgRequestAppointmentDAO;
+import models.AnswerRequest;
+import models.Appointment;
+import models.Doctor;
+import models.RequestAppointment;
+
+import java.util.List;
 
 /**
  * @author BenAfonso
@@ -19,13 +20,14 @@ public class AppointmentFacade {
      * Default constructor
      */
     public AppointmentFacade() {
-    	this.appointmentDao = PgAppointmentDAO.getPgAppointmentDAO();
+        this.appointmentDao = PgAppointmentDAO.getPgAppointmentDAO();
 
     }
 
 
-    /** 
+    /**
      * create an appointment from a requestAppointment
+     *
      * @param request the request to be accepted
      * @return true if the process worked without failure, else otherwise
      */
@@ -36,6 +38,7 @@ public class AppointmentFacade {
 
     /**
      * Create a new Appointment
+     *
      * @param appointment the Appointment to create
      * @return true if the process worked without failure, else otherwise
      */
@@ -46,6 +49,7 @@ public class AppointmentFacade {
 
     /**
      * Remove an appointment
+     *
      * @param request the request to be removed
      * @return true if the process worked without failure, else otherwise
      */
@@ -55,9 +59,10 @@ public class AppointmentFacade {
     }
 
     /**
-     *  Reject an appointment with the answer request associated
+     * Reject an appointment with the answer request associated
+     *
      * @param request request to reject
-     * @param answer reason why the request is rejected
+     * @param answer  reason why the request is rejected
      * @return true if the process worked without failure, else otherwise
      */
     public boolean reject(RequestAppointment request, AnswerRequest answer) {
@@ -67,14 +72,16 @@ public class AppointmentFacade {
 
     /**
      * Create an answer
+     *
      * @param answer answer to be created
      */
     public void createAnswer(AnswerRequest answer) {
         // TODO implement here
     }
-	public List<Appointment> getAppointment(Doctor doctor) {
-		// TODO Auto-generated method stub
-		return appointmentDao.findDoctorAppointment(doctor.getId());
-	}
+
+    public List<Appointment> getAppointment(Doctor doctor) {
+        // TODO Auto-generated method stub
+        return appointmentDao.findDoctorAppointment(doctor.getId());
+    }
 
 }

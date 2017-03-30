@@ -1,8 +1,8 @@
 package dao;
 
 import models.Schedule;
-import java.sql.Connection;
-import java.util.*;
+
+import java.util.Date;
 
 /**
  * @author BenAfonso
@@ -23,7 +23,7 @@ public abstract class ScheduleDAO {
     /**
      * @param schedule
      */
-    public abstract void find(Schedule schedule) ;
+    public abstract void find(Schedule schedule);
 
     /**
      * @param schedule
@@ -31,5 +31,5 @@ public abstract class ScheduleDAO {
     public abstract void delete(Schedule schedule);
 
 
-	public abstract Schedule find(int doctor_id, Date date);
+    public abstract Schedule find(int doctor_id, Date date);
 }

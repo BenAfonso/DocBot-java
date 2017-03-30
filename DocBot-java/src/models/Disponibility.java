@@ -45,21 +45,21 @@ public class Disponibility {
     }
 
     public Disponibility(int scheduleId, int hourStart, int minuteStart, int hourEnd, int minuteEnd, String description, boolean isBooked) {
-    this.setScheduleId(scheduleId);
-    this.setHourStart(hourStart);
-    this.setMinuteStart(minuteStart);
-    this.setHourEnd(hourEnd);
-        this.setMinuteEnd(minuteEnd);
+		this.setScheduleId(scheduleId);
+		this.setHourStart(hourStart);
+		this.setMinuteStart(minuteStart);
+		this.setHourEnd(hourEnd);
+		this.setMinuteEnd(minuteEnd);
         this.setDescription(description);
     }
 
-    public Disponibility(Schedule schedule,int id, int hourStart, int minuteStart, int hourEnd, int minuteEnd, String description, boolean isBooked) {
-    this.setSchedule(schedule);
-    this.setId(id);
-    this.setHourStart(hourStart);
-    this.setMinuteStart(minuteStart);
-    this.setHourEnd(hourEnd);
-        this.setMinuteEnd(minuteEnd);
+	public Disponibility(Schedule schedule, int id, int hourStart, int minuteStart, int hourEnd, int minuteEnd, String description, boolean isBooked) {
+		this.setSchedule(schedule);
+		this.setId(id);
+		this.setHourStart(hourStart);
+		this.setMinuteStart(minuteStart);
+		this.setHourEnd(hourEnd);
+		this.setMinuteEnd(minuteEnd);
         this.setDescription(description);
     }
 
@@ -135,16 +135,16 @@ public class Disponibility {
 		this.schedule = schedule;
 	}
 
-    public Date getDate(){
+	public Date getDate() {
 		return schedule.getDate();
 	}
 
-    public String getHourStartFull(){
-		return this.getHourStart()+":"+this.getMinuteStart();
+	public String getHourStartFull() {
+		return this.getHourStart() + ":" + this.getMinuteStart();
 	}
 
-    public String getHourEndFull(){
-		return this.getHourEnd()+":"+this.getMinuteEnd();
+	public String getHourEndFull() {
+		return this.getHourEnd() + ":" + this.getMinuteEnd();
 	}
 
 

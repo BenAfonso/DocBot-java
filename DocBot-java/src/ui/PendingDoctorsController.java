@@ -6,11 +6,11 @@ import java.util.ResourceBundle;
 
 public class PendingDoctorsController {
 
-	public PendingDoctorsController() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	public void initialize(URL location, ResourceBundle resources) {
-	}
+    public PendingDoctorsController() {
+        // TODO Auto-generated constructor stub
+    }
+
+    public void initialize(URL location, ResourceBundle resources) {
+    }
 
 }

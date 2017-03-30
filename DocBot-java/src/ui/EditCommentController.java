@@ -1,7 +1,5 @@
 package ui;
 
-import java.util.*;
-
 /**
  * @author BenAfonso
  */
@@ -14,29 +12,29 @@ public class EditCommentController {
     }
 
     /**
-     * 
+     *
      */
 //    public void commentField;
 
     /**
-     * 
+     *
      */
 //    public void rateField;
 
     /**
-     * 
+     *
      */
 //    public void cancelButton;
 
     /**
-     * 
+     *
      */
 //    public void validateButton;
 
     /**
-     * 
+     *
      */
- //   public void invalidCredentialLabel;
+    //   public void invalidCredentialLabel;
 
 
     /**

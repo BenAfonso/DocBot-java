@@ -7,131 +7,135 @@ import java.sql.Date;
  */
 public class RequestAppointment {
 
-	private Disponibility disponibility;
-	private Person person;
+    private Disponibility disponibility;
+    private Person person;
     private int id;
     private int hourStart;
     private int hourEnd;
     private int minuteEnd;
     private int minuteStart;
-	private int personid;
-	private String firstName;
-	private String lastName;
-	private Date date;
+    private int personid;
+    private String firstName;
+    private String lastName;
+    private Date date;
 
 
-	/**
+    /**
      * Default constructor
      */
     public RequestAppointment(Disponibility d, Person p) {
-    	this.setDisponibility(d);
-    	this.setPerson(p);
+        this.setDisponibility(d);
+        this.setPerson(p);
     }
-    
+
     public RequestAppointment(int id, Date date, int hourStart, int minuteStart, int hourEnd, int minuteEnd, String firstName,
-			String lastName, int personId) {
-    	this.setId(id);
-    	this.setDate(date);
-    	this.setHourStart(hourStart);
-    	this.setMinuteStart(minuteStart);
-    	this.setHourEnd(hourEnd);
-    	this.setMinuteStart(minuteStart);
-    	this.setFirstName(firstName);
-    	this.setLastName(lastName);
-    	this.setPersonid(personId);
-	}
+                              String lastName, int personId) {
+        this.setId(id);
+        this.setDate(date);
+        this.setHourStart(hourStart);
+        this.setMinuteStart(minuteStart);
+        this.setHourEnd(hourEnd);
+        this.setMinuteStart(minuteStart);
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
+        this.setPersonid(personId);
+    }
 
-	public Disponibility getDisponibility() {
-		return disponibility;
-	}
-	public void setDisponibility(Disponibility disponibility) {
-		this.disponibility = disponibility;
-	}
-	public Person getPerson() {
-		return person;
-	}
-	public void setPerson(Person person) {
-		this.person = person;
-	}
+    public Disponibility getDisponibility() {
+        return disponibility;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public void setDisponibility(Disponibility disponibility) {
+        this.disponibility = disponibility;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public Person getPerson() {
+        return person;
+    }
 
-	public int getHourStart() {
-		return hourStart;
-	}
+    public void setPerson(Person person) {
+        this.person = person;
+    }
 
-	public void setHourStart(int hourStart) {
-		this.hourStart = hourStart;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public int getHourEnd() {
-		return hourEnd;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setHourEnd(int hourEnd) {
-		this.hourEnd = hourEnd;
-	}
+    public int getHourStart() {
+        return hourStart;
+    }
 
-	public int getMinuteEnd() {
-		return minuteEnd;
-	}
+    public void setHourStart(int hourStart) {
+        this.hourStart = hourStart;
+    }
 
-	public void setMinuteEnd(int minuteEnd) {
-		this.minuteEnd = minuteEnd;
-	}
+    public int getHourEnd() {
+        return hourEnd;
+    }
 
-	public int getMinuteStart() {
-		return minuteStart;
-	}
+    public void setHourEnd(int hourEnd) {
+        this.hourEnd = hourEnd;
+    }
 
-	public void setMinuteStart(int minuteStart) {
-		this.minuteStart = minuteStart;
-	}
+    public int getMinuteEnd() {
+        return minuteEnd;
+    }
 
-	public int getPersonid() {
-		return personid;
-	}
+    public void setMinuteEnd(int minuteEnd) {
+        this.minuteEnd = minuteEnd;
+    }
 
-	public void setPersonid(int personid) {
-		this.personid = personid;
-	}
+    public int getMinuteStart() {
+        return minuteStart;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public void setMinuteStart(int minuteStart) {
+        this.minuteStart = minuteStart;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public int getPersonid() {
+        return personid;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public void setPersonid(int personid) {
+        this.personid = personid;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public String getDate() {
-		return date.toString();
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
-	public String getHourStartFull(){
-		return this.getHourStart()+":"+this.getMinuteStart();
-	}
-	public String getHourEndFull(){
-		return this.getHourEnd()+":"+this.getMinuteEnd();
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getDate() {
+        return date.toString();
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getHourStartFull() {
+        return this.getHourStart() + ":" + this.getMinuteStart();
+    }
+
+    public String getHourEndFull() {
+        return this.getHourEnd() + ":" + this.getMinuteEnd();
+    }
 
 
 }

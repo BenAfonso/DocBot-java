@@ -1,8 +1,8 @@
 package dao;
 
-import java.sql.Connection;
 import models.Appointment;
-import java.util.*;
+
+import java.util.List;
 
 /**
  * @author BenAfonso
@@ -18,7 +18,7 @@ public abstract class AppointmentDAO {
     /**
      * @param appointment
      */
-    public abstract void update(Appointment appointment) ;
+    public abstract void update(Appointment appointment);
 
     /**
      * @param appointment

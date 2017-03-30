@@ -1,10 +1,9 @@
 package dao;
 
-import models.Disponibility;
 import models.RequestAppointment;
-import java.sql.Connection;
 
-import java.util.*;
+import java.sql.Connection;
+import java.util.List;
 
 /**
  * @author BenAfonso
@@ -13,7 +12,7 @@ public abstract class RequestAppointmentDAO {
 
 
     /**
-     * 
+     *
      */
     public Connection connect;
 
@@ -30,13 +29,13 @@ public abstract class RequestAppointmentDAO {
     /**
      * @param requestAppointment
      */
-    public abstract void find(RequestAppointment requestAppointment) ;
+    public abstract void find(RequestAppointment requestAppointment);
 
     /**
      * @param requestAppointment
      */
-    public abstract void delete(RequestAppointment requestAppointment) ;
+    public abstract void delete(RequestAppointment requestAppointment);
 
-	public abstract List<RequestAppointment> findAll(int id);
+    public abstract List<RequestAppointment> findAll(int id);
 
 }

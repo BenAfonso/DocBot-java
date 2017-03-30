@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
@@ -13,51 +8,56 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.*?>
-
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.RegisterPatientController">
-   <children>
-      <Pane prefHeight="700.0" prefWidth="1000.0">
-         <children>
-            <Label layoutX="422.0" layoutY="182.0" text="First name" />
-            <Label layoutX="422.0" layoutY="233.0" text="Last name" />
-            <Label layoutX="422.0" layoutY="285.0" text="Email adress" />
-            <Label layoutX="422.0" layoutY="330.0" text="Phone number" />
-            <Label layoutX="422.0" layoutY="379.0" text="Birthday" />
-            <DatePicker fx:id="birthdayField" layoutX="422.0" layoutY="396.0" />
-            <PasswordField fx:id="passwordField" layoutX="422.0" layoutY="447.0" />
-            <Label layoutX="422.0" layoutY="430.0" text="Password" />
-            <TextField fx:id="fnameField" layoutX="422.0" layoutY="199.0" />
-            <TextField fx:id="lnameField" layoutX="422.0" layoutY="250.0" />
-            <TextField fx:id="mailField" layoutX="422.0" layoutY="302.0" />
-            <TextField fx:id="phoneField" layoutX="422.0" layoutY="347.0" />
-            <Button fx:id="btnValidate" layoutX="466.0" layoutY="516.0" mnemonicParsing="false" onAction="#register" text="Validate" />
-            <Label layoutX="391.0" layoutY="114.0" text="Register as a patient" textFill="#78909c">
-               <font>
-                  <Font size="24.0" />
-               </font></Label>
-            <Button fx:id="btnBack" layoutX="73.0" layoutY="115.0" mnemonicParsing="false" onAction="#back" text="Back" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#78909c" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1000.0">
-               <rotationAxis>
-                  <Point3D />
-               </rotationAxis>
-            </Rectangle>
-            <Text layoutX="541.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOT">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text layoutX="434.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOC">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="482.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/logoDocbot.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="errorField" layoutX="199.0" layoutY="204.0" text="" />
-         </children>
-      </Pane>
-   </children>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
+            fx:controller="ui.RegisterPatientController">
+    <children>
+        <Pane prefHeight="700.0" prefWidth="1000.0">
+            <children>
+                <Label layoutX="422.0" layoutY="182.0" text="First name"/>
+                <Label layoutX="422.0" layoutY="233.0" text="Last name"/>
+                <Label layoutX="422.0" layoutY="285.0" text="Email adress"/>
+                <Label layoutX="422.0" layoutY="330.0" text="Phone number"/>
+                <Label layoutX="422.0" layoutY="379.0" text="Birthday"/>
+                <DatePicker fx:id="birthdayField" layoutX="422.0" layoutY="396.0"/>
+                <PasswordField fx:id="passwordField" layoutX="422.0" layoutY="447.0"/>
+                <Label layoutX="422.0" layoutY="430.0" text="Password"/>
+                <TextField fx:id="fnameField" layoutX="422.0" layoutY="199.0"/>
+                <TextField fx:id="lnameField" layoutX="422.0" layoutY="250.0"/>
+                <TextField fx:id="mailField" layoutX="422.0" layoutY="302.0"/>
+                <TextField fx:id="phoneField" layoutX="422.0" layoutY="347.0"/>
+                <Button fx:id="btnValidate" layoutX="466.0" layoutY="516.0" mnemonicParsing="false" onAction="#register"
+                        text="Validate"/>
+                <Label layoutX="391.0" layoutY="114.0" text="Register as a patient" textFill="#78909c">
+                    <font>
+                        <Font size="24.0"/>
+                    </font>
+                </Label>
+                <Button fx:id="btnBack" layoutX="73.0" layoutY="115.0" mnemonicParsing="false" onAction="#back"
+                        text="Back"/>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#78909c" height="80.0" stroke="BLACK"
+                           strokeType="INSIDE" strokeWidth="0.0" width="1000.0">
+                    <rotationAxis>
+                        <Point3D/>
+                    </rotationAxis>
+                </Rectangle>
+                <Text layoutX="541.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOT">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Text>
+                <Text layoutX="434.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOC">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Text>
+                <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="482.0" layoutY="5.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@../img/logoDocbot.png"/>
+                    </image>
+                </ImageView>
+                <Label fx:id="errorField" layoutX="199.0" layoutY="204.0" text=""/>
+            </children>
+        </Pane>
+    </children>
 </AnchorPane>
