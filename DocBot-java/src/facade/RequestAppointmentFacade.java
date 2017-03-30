@@ -1,5 +1,8 @@
 package facade;
 import models.*;
+
+import java.util.List;
+
 import dao.*;
 import dao.pg.PgDisponibilityDAO;
 import dao.pg.PgRequestAppointmentDAO;
@@ -107,5 +110,9 @@ public class RequestAppointmentFacade {
         // TODO implement here
         return null;
     }
+	public List<RequestAppointment> getRequestAppointment(Doctor doctor) {
+		// TODO Auto-generated method stub
+		return requestAppointmentDao.findAll(doctor.getId());
+	}
 
 }

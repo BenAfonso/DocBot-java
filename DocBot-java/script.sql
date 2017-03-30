@@ -87,7 +87,7 @@ CREATE TABLE RequestAppointment (
     id SERIAL UNIQUE,
     patient_id integer REFERENCES Patient (id),
     disponibility_id integer REFERENCES Disponibility (id),
-    accept boolean DEFAULT false,
+    rejected boolean DEFAULT false,
     PRIMARY KEY (patient_id, disponibility_id)
 );
 

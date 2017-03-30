@@ -1,5 +1,6 @@
 package dao;
 
+import models.Disponibility;
 import models.RequestAppointment;
 import java.sql.Connection;
 
@@ -35,5 +36,7 @@ public abstract class RequestAppointmentDAO {
      * @param requestAppointment
      */
     public abstract void delete(RequestAppointment requestAppointment) ;
+
+	public abstract List<RequestAppointment> findAll(int id);
 
 }

@@ -23,7 +23,7 @@ public abstract class AppointmentDAO {
     /**
      * @param appointment
      */
-    public abstract void find(Appointment appointment);
+    public abstract List<Appointment> findDoctorAppointment(int idDoctor);
 
     /**
      * @param appointment

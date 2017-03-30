@@ -1,14 +1,10 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDate;
-
 import models.Patient;
 import models.Person;
 
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @author BenAfonso
@@ -51,5 +47,5 @@ public abstract class PatientDAO {
 	public abstract boolean create(int id) ;
 
 
-
+    public abstract List<Person> getAllPatients();
 }

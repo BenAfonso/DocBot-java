@@ -1,7 +1,11 @@
 package dao.pg;
 import dao.AppointmentDAO;
 import models.Appointment;
+import models.RequestAppointment;
+
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
 
 /**
@@ -37,9 +41,24 @@ public class PgAppointmentDAO extends AppointmentDAO {
 	}
 
 	@Override
-	public void find(Appointment appointment) {
-		// TODO Auto-generated method stub
+	public List<Appointment> findDoctorAppointment(int idDoctor) {
+		String query = "SELECT a.id as id, s.date as date,d.hourStart as hourStart,d.minuteStart as minuteStart,d.hourEnd as hourEnd,d.minuteEnd as minuteEnd,p.lastName as lastName, p.firstName as firstName, p.id as personId FROM appointment a,requestappointment r, disponibility d, schedule s, personne p WHERE a.requestAppointment_id=r.id AND r.disponibility_id = d.id AND d.schedule_id=s.id AND r.patient_id = p.id AND r.rejected=false AND s.doctor_id = "+idDoctor;
+		List<Appointment> appointments = new ArrayList<Appointment>();
+		try {
+			ResultSet result = ConnectDB.getInstance().createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery(query);
+			
+			while (result.next()) {
+
+				Appointment app = new Appointment(result.getInt("id"),result.getDate("date"),result.getInt("hourStart"),result.getInt("minuteStart"),result.getInt("hourEnd"),result.getInt("minuteEnd"),result.getString("lastName"),result.getString("firstName"),result.getInt("personId"));
+				appointments.add(app);
+			}		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
+		return appointments;
 	}
 
 	@Override
