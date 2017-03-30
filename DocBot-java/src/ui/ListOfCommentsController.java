@@ -46,13 +46,6 @@ public class ListOfCommentsController implements javafx.fxml.Initializable {
 	}
 	
 	
-	/**
-	 * Set the main application
-	 * @param main
-	 */
-	public void setMainApp(Main main){
-	}
-
 	
     /**
      * Default constructor
