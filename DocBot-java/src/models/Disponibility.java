@@ -20,8 +20,9 @@ public class Disponibility {
     this.setMinuteEnd(minuteEnd);;
     this.setDescription(description);
     }
-    public Disponibility(Schedule schedule, int hourStart, int minuteStart, int hourEnd, int minuteEnd, String description, boolean isBooked) {
+    public Disponibility(Schedule schedule,int id, int hourStart, int minuteStart, int hourEnd, int minuteEnd, String description, boolean isBooked) {
     this.setSchedule(schedule);
+    this.setId(id);
     this.setHourStart(hourStart);
     this.setMinuteStart(minuteStart);
     this.setHourEnd(hourEnd);
