@@ -18,6 +18,7 @@ public class RequestAppointment {
     private String firstName;
     private String lastName;
     private Date date;
+    private int dispoId;
 
 
     /**
@@ -28,7 +29,7 @@ public class RequestAppointment {
         this.setPerson(p);
     }
 
-    public RequestAppointment(int id, Date date, int hourStart, int minuteStart, int hourEnd, int minuteEnd, String firstName,
+    public RequestAppointment(int id, int dispoId, Date date, int hourStart, int minuteStart, int hourEnd, int minuteEnd, String firstName,
                               String lastName, int personId) {
         this.setId(id);
         this.setDate(date);
@@ -39,6 +40,7 @@ public class RequestAppointment {
         this.setFirstName(firstName);
         this.setLastName(lastName);
         this.setPersonid(personId);
+        this.setDispoId(dispoId);
     }
 
     public Disponibility getDisponibility() {
@@ -136,6 +138,14 @@ public class RequestAppointment {
     public String getHourEndFull() {
         return this.getHourEnd() + ":" + this.getMinuteEnd();
     }
+
+	public int getDispoId() {
+		return dispoId;
+	}
+
+	public void setDispoId(int dispoId) {
+		this.dispoId = dispoId;
+	}
 
 
 }

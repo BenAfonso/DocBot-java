@@ -35,8 +35,8 @@
                   <TableColumn fx:id="hourEndColumn" prefWidth="90.0" text="HourEnd" />
                   <TableColumn fx:id="fnameColumn" minWidth="8.0" prefWidth="222.0" text="First Name" />
                   <TableColumn fx:id="lnameColumn" minWidth="0.0" prefWidth="153.0" text="Last Name" />
-                  <TableColumn fx:id="lnameColumn1" minWidth="0.0" text="Accept" />
-                  <TableColumn fx:id="lnameColumn11" minWidth="0.0" prefWidth="79.0" text="Reject" />
+                  <TableColumn fx:id="acceptColumn" minWidth="0.0"/>
+                  <TableColumn fx:id="rejectColumn" minWidth="0.0" prefWidth="79.0"/>
               </columns>
             </TableView>
             <Label layoutX="362.0" layoutY="114.0" text="My request appointment" textFill="#78909c">

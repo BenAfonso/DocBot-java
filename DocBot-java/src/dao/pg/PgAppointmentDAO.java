@@ -29,10 +29,18 @@ public class PgAppointmentDAO extends AppointmentDAO {
     }
 
     @Override
-    public void create(Appointment appointment) {
-        // TODO Auto-generated method stub
-
+    public boolean create(Appointment appointment) {
+        try {
+            ConnectDB.getInstance().createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Appointment (requestAppointment_id) VALUES ('" + appointment.getRequest_appointmentId() + "')");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
+
 
     @Override
     public void update(Appointment appointment) {

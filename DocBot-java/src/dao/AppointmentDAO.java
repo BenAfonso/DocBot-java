@@ -13,7 +13,7 @@ public abstract class AppointmentDAO {
     /**
      * @param appointment
      */
-    public abstract void create(Appointment appointment);
+    public abstract boolean create(Appointment appointment);
 
     /**
      * @param appointment

@@ -2,8 +2,10 @@ package facade;
 
 import dao.AbstractDAOFactory;
 import dao.AnswerRequestDAO;
+import dao.AppointmentDAO;
 import dao.DisponibilityDAO;
 import dao.RequestAppointmentDAO;
+import dao.pg.PgAppointmentDAO;
 import dao.pg.PgDisponibilityDAO;
 import dao.pg.PgRequestAppointmentDAO;
 import models.*;
@@ -20,6 +22,8 @@ public class RequestAppointmentFacade {
      */
     public RequestAppointmentDAO requestAppointmentDao;
     public DisponibilityDAO disponibilityDao;
+    public AppointmentDAO appointmentDao;
+
     /**
      *
      */
@@ -35,6 +39,7 @@ public class RequestAppointmentFacade {
     public RequestAppointmentFacade() {
         this.requestAppointmentDao = PgRequestAppointmentDAO.getPgRequestAppointmentDAO();
         this.disponibilityDao = PgDisponibilityDAO.getPgDisponibilityDAO();
+        this.appointmentDao=PgAppointmentDAO.getPgAppointmentDAO();
     }
 
     /**
@@ -73,9 +78,18 @@ public class RequestAppointmentFacade {
      *
      * @return the appointment generated
      */
-    public AppointmentFacade generateAppointment() {
-        // TODO implement here
-        return null;
+    public boolean accept(RequestAppointment request_appointment) {
+    	
+    	Appointment appointment= new Appointment(request_appointment.getId());
+    	System.out.println(appointment.getRequest_appointmentId());
+    	appointmentDao.create(appointment);
+    	requestAppointmentDao.reject(request_appointment.getDispoId(),request_appointment.getPersonid());
+    	return true;
+    	
+    }
+    public boolean reject(int requestAppointment){
+    	requestAppointmentDao.reject(requestAppointment);
+    	return true;
     }
 
     /**

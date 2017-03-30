@@ -19,8 +19,10 @@ public class Appointment {
     private String firstName;
     private String lastName;
     private Date date;
+    private int request_appointmentId;
 
-    public Appointment() {
+    public Appointment(int idRequest) {
+    	this.setRequest_appointmentId(idRequest);
     }
 
     public Appointment(int id, Date date, int hourStart, int minuteStart, int hourEnd, int minuteEnd, String firstName, String lastName,
@@ -115,6 +117,15 @@ public class Appointment {
     public String getHourEndFull() {
         return this.getHourEnd() + ":" + this.getMinuteEnd();
     }
+
+	public int getRequest_appointmentId() {
+		// TODO Auto-generated method stub
+		return request_appointmentId;
+	}
+
+	public void setRequest_appointmentId(int request_appointmentId) {
+		this.request_appointmentId = request_appointmentId;
+	}
 
 
 }

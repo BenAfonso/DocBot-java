@@ -38,4 +38,8 @@ public abstract class RequestAppointmentDAO {
 
     public abstract List<RequestAppointment> findAll(int id);
 
+	public abstract void reject(int dispoId, int personid);
+	public abstract void reject(int requestAppointment);
+
+
 }
