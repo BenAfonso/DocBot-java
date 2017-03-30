@@ -38,6 +38,7 @@ public class RequestAppointment {
     	this.setMinuteStart(minuteStart);
     	this.setFirstName(firstName);
     	this.setLastName(lastName);
+    	this.setPersonid(personId);
 	}
 
 	public Disponibility getDisponibility() {
@@ -117,12 +118,18 @@ public class RequestAppointment {
 		this.lastName = lastName;
 	}
 
-	public Date getDate() {
-		return date;
+	public String getDate() {
+		return date.toString();
 	}
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	public String getHourStartFull(){
+		return this.getHourStart()+":"+this.getMinuteStart();
+	}
+	public String getHourEndFull(){
+		return this.getHourEnd()+":"+this.getMinuteEnd();
 	}
 
 

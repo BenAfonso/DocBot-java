@@ -3,15 +3,24 @@ import models.*;
 
 import java.util.*;
 
+import dao.AppointmentDAO;
+import dao.RequestAppointmentDAO;
+import dao.pg.PgAppointmentDAO;
+import dao.pg.PgRequestAppointmentDAO;
+
 /**
  * @author BenAfonso
  */
 public class AppointmentFacade {
 
+    public AppointmentDAO appointmentDao;
+
     /**
      * Default constructor
      */
     public AppointmentFacade() {
+    	this.appointmentDao = PgAppointmentDAO.getPgAppointmentDAO();
+
     }
 
 
@@ -63,5 +72,9 @@ public class AppointmentFacade {
     public void createAnswer(AnswerRequest answer) {
         // TODO implement here
     }
+	public List<Appointment> getAppointment(Doctor doctor) {
+		// TODO Auto-generated method stub
+		return appointmentDao.findDoctorAppointment(doctor.getId());
+	}
 
 }
