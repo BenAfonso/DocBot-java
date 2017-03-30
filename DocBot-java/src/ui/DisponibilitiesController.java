@@ -34,7 +34,6 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
 	@FXML TableColumn<Disponibility, String> hourStartCol;
 	@FXML TableColumn<Disponibility, String> descriptionCol;
 	@FXML TableColumn<Disponibility, Disponibility> makeAnAppointmentCol;
-	@FXML Button addDisponibility;
 	
 	/**
      * Default constructor
@@ -49,9 +48,6 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
     public RequestAppointmentFacade requestAppointmentFacade;
     
 	public void initialize(URL location, ResourceBundle resources) {
-		if(!Authentification.isDoctor()){
-			addDisponibility.setVisible(false);
-		}
 		dayCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("date"));
 		hourEndCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("hourEndFull"));
 		hourStartCol.setCellValueFactory(new PropertyValueFactory<Disponibility, String>("hourStartFull"));
@@ -85,9 +81,6 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
                                             	
                                     } );
                                     setGraphic( btn );
-                                    if (Authentification.isDoctor()){
-                                    	btn.setVisible(false);
-                                    }
                                     setText( null );
                                 }
                             }
