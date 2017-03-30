@@ -110,9 +110,9 @@ public class RequestAppointmentFacade {
         // TODO implement here
         return null;
     }
-	public List<RequestAppointment> getRequestAppointment(Doctor doctor) {
+	public List<RequestAppointment> getRequestAppointment(Person person) {
 		// TODO Auto-generated method stub
-		return requestAppointmentDao.findAll(doctor.getId());
+		return requestAppointmentDao.findAll(person.getId());
 	}
 
 }
