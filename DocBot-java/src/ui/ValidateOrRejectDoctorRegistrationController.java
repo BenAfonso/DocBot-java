@@ -1,23 +1,23 @@
 package ui;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.*;
-
 import application.Main;
-import facade.*;
-import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.collections.*;
-import javafx.fxml.*;
-import javafx.scene.*;
+import facade.DoctorFacade;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.*;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.*;
-import javafx.scene.layout.*;
-import javafx.stage.*;
-import models.*;
-import services.NavigationService;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import models.Doctor;
+
+import java.io.IOException;
+import java.util.List;
 
 public class ValidateOrRejectDoctorRegistrationController {
 
@@ -122,7 +122,7 @@ public class ValidateOrRejectDoctorRegistrationController {
 		//Initilisation of the view
 		StackPane page;
 		try {
-			page = (StackPane) FXMLLoader.load(Main.class.getResource("./ValidateOrRejectDoctorRegistration.fxml"));
+            page = FXMLLoader.load(Main.class.getResource("./ValidateOrRejectDoctorRegistration.fxml"));
 
 			Scene scene = new Scene(page);
 			primaryStage.setScene(scene);

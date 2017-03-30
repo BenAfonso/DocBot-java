@@ -1,11 +1,10 @@
 package dao.pg;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import dao.PersonDAO;
 import models.Person;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 
@@ -76,12 +75,8 @@ public class PgPersonDAO extends PersonDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		if (user != null) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+        return user != null;
+    }
 
 
 	/**

@@ -1,7 +1,6 @@
  package models;
 
-import java.util.Date;
-import java.util.function.Predicate;
+ import java.util.Date;
 
 public class Person {
 
@@ -55,14 +54,12 @@ public class Person {
 		this.setBirthday(birthday);
 		this.setPhoneNumber(phoneNumber);
 	}
-	
-	public Person(){};
+
+    public Person() {
+    }
 
 
-
-
-	
-	/********************************************************
+    /********************************************************
 	 * 
 	 * 						Getters and setters
 	 * 
