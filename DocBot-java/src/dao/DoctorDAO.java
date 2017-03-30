@@ -68,5 +68,7 @@ public abstract class DoctorDAO extends PersonDAO {
 	public abstract List<Doctor> findActive(boolean b);
 
 	public abstract void delete(int id);
+	
+	public abstract boolean isValidated(int id);
 
 }

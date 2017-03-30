@@ -116,5 +116,13 @@ public class PersonFacade {
 		}
 		return result;
 	}
+	
+	public boolean isValidated(Person person){
+		boolean result=false;
+		if(docDao.isValidated(person.getId())){
+			result=true;
+		}
+		return result;
+	}
 
 }

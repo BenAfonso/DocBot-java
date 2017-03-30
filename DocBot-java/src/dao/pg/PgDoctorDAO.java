@@ -242,5 +242,21 @@ public class PgDoctorDAO extends DoctorDAO {
 		return true;
 	}
 
+	@Override
+	public boolean isValidated(int id) {
+		boolean validated = false;      
+		try {
+			ResultSet result = ConnectDB.getInstance().createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT isvalidated FROM doctor d, person p WHERE d.id=p.id AND p.id='"+id+"'");
+
+			if(result.first())
+				validated = result.getBoolean("isvalidated");   
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return validated;
+	}
+
 
 }
