@@ -201,12 +201,10 @@ public class PgDoctorDAO extends DoctorDAO {
 
 	@Override
 	public void accept(Doctor doctor) {
-		Doctor docToAccept = find(doctor.getEmail());
-		docToAccept.setValidated(true);;
 		try {
 			ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeUpdate("UPDATE doctor SET isValidated = true WHERE email ='"+doctor.getEmail()+"'");
+					ResultSet.CONCUR_READ_ONLY).executeUpdate("UPDATE doctor SET isValidated = true WHERE id ='"+doctor.getId()+"'");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
