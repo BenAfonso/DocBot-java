@@ -27,7 +27,7 @@ public class ListOfDoctorsController implements javafx.fxml.Initializable {
     @FXML TableColumn<Doctor, String> firstNameCol;
     @FXML TableColumn<Doctor, String> lastNameCol;
     @FXML TableColumn<Doctor, String> activeCol;
-    @FXML TableColumn<Doctor, Doctor> seeDisponibilitiesCol;
+    @FXML TableColumn<Doctor, Doctor> actionCol;
     
     @FXML Button pendingDoctorsButton;
     @FXML Button allDoctorsButton;
@@ -59,7 +59,7 @@ public class ListOfDoctorsController implements javafx.fxml.Initializable {
                         final TableCell<Doctor, Doctor> cell = new TableCell<Doctor, Doctor>()
                         {
 
-                            final Button btn = new Button( "See disponibilities" );
+                            final Button btn = new Button( "Go to profile" );
 
                             public void updateItem( Doctor item, boolean empty )
                             {
@@ -74,8 +74,7 @@ public class ListOfDoctorsController implements javafx.fxml.Initializable {
                                     btn.setOnAction( ( ActionEvent event ) ->
                                             {
                                             	Doctor doctor = getTableView().getItems().get( getIndex() );
-                                            	System.out.println(doctor.getId());
-                                            	nav.goToDisponibilitiesOf(doctor); // TEMPORARY
+                                            	nav.goToProfileOf(doctor);
                                             	
                                     } );
                                     setGraphic( btn );
@@ -87,7 +86,7 @@ public class ListOfDoctorsController implements javafx.fxml.Initializable {
                     }
                 };
                 
-        seeDisponibilitiesCol.setCellFactory(cellFactory);
+                actionCol.setCellFactory(cellFactory);
 		
 		/*
 		seeDisponibilitiesCol.setCellFactory(param -> new TableCell<Doctor, Doctor>() {

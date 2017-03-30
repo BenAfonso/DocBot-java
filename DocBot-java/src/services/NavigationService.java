@@ -17,7 +17,6 @@ import ui.ProfileDoctorController;
 
 public class NavigationService {
 
-	  private Main mainApp;
 	  private static BorderPane root = new BorderPane();
 	  private static Stage primaryStage;
 	  private static MenuBar menuView;
@@ -247,6 +246,22 @@ public class NavigationService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void goToProfileOf(Doctor doctor){
+		try {
+			FXMLLoader loader=new FXMLLoader();
+			loader.setLocation(Main.class.getResource("../ui/ProfileDoctorView.fxml"));
+			AnchorPane profileDocView;
+			profileDocView = loader.load();
+			ProfileDoctorController docController = loader.getController();
+			docController.displayInfo(doctor.getEmail());
+			changeView(profileDocView);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
 	}
 	public static void changeView(AnchorPane pane){
 		BorderPane rootTest = new BorderPane();

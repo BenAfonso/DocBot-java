@@ -1,15 +1,10 @@
 package ui;
 
-import java.net.URL;
-import java.util.*;
-
-import application.Main;
 import facade.DoctorFacade;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 import models.Doctor;
-import services.Authentification;
 import services.NavigationService;
 
 public class ProfileDoctorController {
@@ -22,6 +17,7 @@ public class ProfileDoctorController {
 	@FXML private Label label_siret;
 	@FXML private Label label_adress;
 	@FXML private Label label_error;
+	@FXML private Button seeDisponibilitiesButton;
 	
 	/**
 	 * Navigation tools
@@ -30,6 +26,7 @@ public class ProfileDoctorController {
 
 	
 	private DoctorFacade docf;
+	private Doctor doctor;
 	
 	/**
      * Default constructor
@@ -46,6 +43,7 @@ public class ProfileDoctorController {
      */
     public Doctor loadInfo(String mail) {
         Doctor doctor = docf.loadInfo(mail);
+        this.doctor = doctor;
         return doctor;
     }
 
@@ -91,6 +89,10 @@ public class ProfileDoctorController {
 
 	public void goUpdateProfile(){
 		nav.goUpdateProfile();
+	}
+	
+	public void seeDisponibilities() {
+		nav.goToDisponibilitiesOf(doctor);
 	}
 	
 	

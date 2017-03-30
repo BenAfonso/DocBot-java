@@ -19,7 +19,7 @@
                 <TableColumn fx:id="lastNameCol" prefWidth="75.0" text="Nom" />
                   <TableColumn fx:id="cityCol" prefWidth="75.0" text="Ville" />
                   <TableColumn fx:id="activeCol" prefWidth="75.0" text="Active" />
-                  <TableColumn fx:id="seeDisponibilitiesCol" prefWidth="75.0" />
+                  <TableColumn fx:id="actionCol" prefWidth="75.0" />
               </columns>
             </TableView>
             <Label layoutX="214.0" layoutY="24.0" prefHeight="16.0" prefWidth="114.0" text="Liste des docteurs" />
