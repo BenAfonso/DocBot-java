@@ -55,7 +55,7 @@ public class CommentFacade {
      */
     public Boolean isCommentValide(Comment comment) {
         // TODO implement here
-        return null;
+        return (!(comment.getRate() > 5) || !(comment.getRate() < 0));
     }
 
     /**
