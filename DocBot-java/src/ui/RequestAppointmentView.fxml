@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.RequestAppointmentController">
+   <children>
+      <Pane prefHeight="700.0" prefWidth="1000.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#78909c" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1000.0" />
+            <Text layoutX="531.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOT">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="432.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOC">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="477.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logoDocbot.png" />
+               </image>
+            </ImageView>
+            <TableView fx:id="requestTableView" layoutX="93.0" layoutY="164.0" prefHeight="427.0" prefWidth="815.0">
+              <columns>
+                <TableColumn fx:id="dateColumn" prefWidth="114.0" text="Date" />
+                <TableColumn fx:id="hourStartColumn" prefWidth="112.0" text="HourStart" />
+                  <TableColumn fx:id="hourEndColumn" prefWidth="140.0" text="HourEnd" />
+                  <TableColumn fx:id="fnameColumn" minWidth="8.0" prefWidth="231.0" text="First Name" />
+                  <TableColumn fx:id="lnameColumn" minWidth="0.0" prefWidth="215.0" text="Last Name" />
+              </columns>
+            </TableView>
+            <Label layoutX="362.0" layoutY="114.0" text="My request appointment" textFill="#78909c">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
