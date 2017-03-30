@@ -36,7 +36,7 @@ public class PgPatientDAO extends PatientDAO {
 					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM patient pa, person p WHERE pa.id=p.id AND p.id='"+id+"'");
 
 			if(result.first())
-				patient = new Patient(result.getString("firstname"),result.getString("lastname"),result.getString("password"),result.getDate("birthday"),result.getString("phone"),result.getString("email"));         
+				patient = new Patient(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("password"),result.getDate("birthday"),result.getString("phone"),result.getString("email"),result.getBoolean("isBlocked"));         
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -52,7 +52,7 @@ public class PgPatientDAO extends PatientDAO {
 					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM patient pa, person p WHERE pa.id=p.id AND p.email='"+mail+"'");
 
 			if(result.first())
-				patient = new Patient(result.getString("firstname"),result.getString("lastname"),result.getString("password"),result.getDate("birthday"),result.getString("phone"),result.getString("email"));         
+				patient = new Patient(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("password"),result.getDate("birthday"),result.getString("phone"),result.getString("email"),result.getBoolean("isBlocked"));         
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -40,7 +40,7 @@ public class PgAdministratorDAO extends AdministratorDAO {
 					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM administrator a, person p WHERE a.id=p.id AND p.id='"+id+"'");
 
 			if(result.first())
-				admin = new Administrator(result.getString("firstname"),result.getString("lastname"),result.getString("password"),result.getDate("birthday"),result.getString("phone"),result.getString("email"));         
+				admin = new Administrator(result.getInt(id),result.getString("firstname"),result.getString("lastname"),result.getString("password"),result.getDate("birthday"),result.getString("phone"),result.getString("email"));         
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

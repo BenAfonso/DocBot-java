@@ -13,6 +13,10 @@ public class Patient extends Person {
     public Patient(String fname, String lname, String password, Date birthday, String phoneNumber, String mail) {
     	super(fname,lname,password,birthday,phoneNumber,mail);
     }
+    
+    public Patient(int id,String fname, String lname, String password, Date birthday, String phoneNumber, String mail,boolean isValidated) {
+    	super(id,fname,lname,password,birthday,phoneNumber,mail,isValidated);
+    }
 
 
 

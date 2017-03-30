@@ -10,8 +10,8 @@ public class Administrator extends Person {
 	/**
      * Default constructor
      */
-    public Administrator(String fname, String lname, String password, Date birthday, String phoneNumber, String mail) {
-    	super(fname,lname,password,birthday,phoneNumber,mail);
+    public Administrator(int id,String fname, String lname, String password, Date birthday, String phoneNumber, String mail) {
+    	super(id,fname,lname,password,birthday,phoneNumber,mail);
     }
 
 }

@@ -73,7 +73,7 @@ public class PgDisponibilityDAO extends DisponibilityDAO {
 			
 			while (result.next()) {
 				Schedule sche=new Schedule(result.getInt("doctor_id"),result.getDate("date"));
-				Disponibility disp = new Disponibility(sche,result.getInt("hourStart"),result.getInt("minuteStart"),result.getInt("hourEnd"),result.getInt("minuteEnd"),result.getString("description"),result.getBoolean("isBooked"));
+				Disponibility disp = new Disponibility(sche,result.getInt("id"),result.getInt("hourStart"),result.getInt("minuteStart"),result.getInt("hourEnd"),result.getInt("minuteEnd"),result.getString("description"),result.getBoolean("isBooked"));
 				disponibilities.add(disp);
 			}		
 		} catch (SQLException e) {
