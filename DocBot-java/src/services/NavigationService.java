@@ -101,6 +101,7 @@ public class NavigationService {
 	
 		
 	}
+	
 	public void goToListOfWaitingDoctors() {
 		FXMLLoader loader=new FXMLLoader();
 		loader.setLocation(Main.class.getResource("../ui/ValidateOrRejectDoctorRegistration.fxml"));
@@ -115,6 +116,7 @@ public class NavigationService {
 			e.printStackTrace();
 		}
 	}
+	
 	public void goToAddDisponibility() {
 		FXMLLoader loader=new FXMLLoader();
 		loader.setLocation(Main.class.getResource("../ui/AddDisponibilityView.fxml"));

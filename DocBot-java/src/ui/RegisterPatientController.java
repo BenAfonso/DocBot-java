@@ -39,7 +39,7 @@ public class RegisterPatientController {
 		if(registerGood){
 			goLogin();
 		}else{
-			errorField.setText("An error occurred please try again");
+			displayError("An error occurred please try again");
 		}
 	}
 
@@ -59,8 +59,8 @@ public class RegisterPatientController {
 	/**
 	 * 
 	 */
-	public void displayError() {
-		// TODO implement here
+	public void displayError(String message) {
+		errorField.setText(message);
 	}
 
 	/**

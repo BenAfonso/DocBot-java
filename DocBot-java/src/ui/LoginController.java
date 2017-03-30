@@ -84,7 +84,7 @@ public class LoginController implements javafx.fxml.Initializable {
 				loaderMenu.setLocation(Main.class.getResource("../services/AdministratorMenu.fxml"));
 				MenuBar menuBar=loaderMenu.load();
 				NavigationService.setMenuView(menuBar);
-				goProfile();
+				goListDoctorWaiting();
 			}else{
 				
 				
@@ -114,4 +114,7 @@ public class LoginController implements javafx.fxml.Initializable {
 		nav.goToProfile();
 	}
 	
+	public void goListDoctorWaiting(){
+		nav.goToListOfWaitingDoctors();
+	}
 }
