@@ -111,15 +111,29 @@ public class Appointment {
     }
 
     public String getHourStartFull() {
-        return this.getHourStart() + ":" + this.getMinuteStart();
+    	String minString="";
+		int min = this.getMinuteStart();
+		if(min<10){
+			minString="0"+min;
+		}
+    	else{
+    		minString=""+min;
+    	}
+		return this.getHourStart() + ":" + minString;
     }
 
     public String getHourEndFull() {
-        return this.getHourEnd() + ":" + this.getMinuteEnd();
+    	String minString="";
+		int min = this.getMinuteEnd();
+		if(min<10){
+			minString="0"+min;
+		}else{
+			minString=""+min;
+		}
+		return this.getHourEnd() + ":" + minString;
     }
 
 	public int getRequest_appointmentId() {
-		// TODO Auto-generated method stub
 		return request_appointmentId;
 	}
 

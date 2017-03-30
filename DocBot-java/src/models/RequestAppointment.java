@@ -59,11 +59,11 @@ public class RequestAppointment {
 		this.minuteStart = minuteStart;
 		this.minuteEnd = minuteEnd;
 		if(rejected){
-			this.status = "Refusé";
+			this.status = "Refusï¿½";
 		}else{
 			RequestAppointmentFacade raFacade = new RequestAppointmentFacade();
 			if (raFacade.hasAnAppointment(this)){
-				this.status = "Accepté";
+				this.status = "Acceptï¿½";
 			}else{
 				this.status = "En attente de confirmation";
 			}
@@ -176,11 +176,26 @@ public class RequestAppointment {
 	}
 
 	public String getHourStartFull() {
-		return this.getHourStart() + ":" + this.getMinuteStart();
+		String minString="";
+		int min = this.getMinuteStart();
+		if(min<10){
+			minString="0"+min;
+		}
+    	else{
+    		minString=""+min;
+    	}
+		return this.getHourStart() + ":" + minString;
 	}
 
 	public String getHourEndFull() {
-		return this.getHourEnd() + ":" + this.getMinuteEnd();
+		String minString="";
+		int min = this.getMinuteEnd();
+		if(min<10){
+			minString="0"+min;
+		}else{
+			minString=""+min;
+		}
+		return this.getHourEnd() + ":" + minString;
 	}
 
 	public int getDispoId() {
