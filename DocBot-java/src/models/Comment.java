@@ -15,7 +15,8 @@ public class Comment {
     /**
      * Default constructor
      */
-    public Comment(String content, String title, int rate, Date datePost, int appointment_id) {
+    public Comment(int id, String content, String title, int rate, Date datePost, int appointment_id) {
+    	this.id = id;
     	this.content=content;
     	this.title=title;
     	this.rate=rate;

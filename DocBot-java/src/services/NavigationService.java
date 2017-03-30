@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import ui.DisponibilitiesController;
+import ui.ListOfCommentsController;
 import ui.ProfileController;
 import ui.ProfileDoctorController;
 import ui.UpdateDoctorProfileController;
@@ -279,6 +280,24 @@ public class NavigationService {
 		}
 			
 	}
+	
+	public void goToCommentsOf(Doctor doctor){
+		try {
+		FXMLLoader loader=new FXMLLoader();
+		loader.setLocation(Main.class.getResource("../ui/ListOfComments.fxml"));
+		AnchorPane listOfCommentsView;
+		
+		listOfCommentsView = (AnchorPane) loader.load();
+		ListOfCommentsController listController = loader.getController();
+		listController.displayComments(doctor);
+
+		changeView(listOfCommentsView);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public static void changeView(AnchorPane pane){
 		BorderPane rootTest = new BorderPane();
 		rootTest.setTop(menuView);

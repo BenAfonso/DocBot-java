@@ -18,6 +18,7 @@ public class ProfileDoctorController {
 	@FXML private Label label_adress;
 	@FXML private Label label_error;
 	@FXML private Button seeDisponibilitiesButton;
+	@FXML private Button seeCommentsButton;
 	
 	/**
 	 * Navigation tools
@@ -93,6 +94,10 @@ public class ProfileDoctorController {
 	
 	public void seeDisponibilities() {
 		nav.goToDisponibilitiesOf(doctor);
+	}
+	
+	public void seeComments() {
+		nav.goToCommentsOf(doctor);
 	}
 	
 	

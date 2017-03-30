@@ -1,12 +1,8 @@
 package dao.pg;
 
 import java.util.*;
-
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-
 import dao.DoctorDAO;
 import models.Doctor;
 import models.Person;
@@ -92,7 +88,7 @@ public class PgDoctorDAO extends DoctorDAO {
 	}
 	public boolean create(int id, String siret, String number, String street, String city, String zip_code) {
 		try {
-			int result = ConnectDB.getInstance().createStatement(
+			ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeUpdate("INSERT INTO Doctor (id,siret,number,street,city,zip_code) VALUES ('"+id+"','"+siret+"','"+number+"','"+street+"','"+city+"','"+zip_code+"')");
 
@@ -122,10 +118,10 @@ public class PgDoctorDAO extends DoctorDAO {
 	@Override
 	public boolean update(String mail,String fname, String lname, Date birthday, String phoneNumber, String streetNumber, String street, String city, String zipCode, int id){
 		try {
-			int result = ConnectDB.getInstance().createStatement(
+			ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeUpdate("UPDATE person SET firstname='"+fname+"' ,lastname='"+lname+"' ,birthday='"+birthday+"' ,phone='"+phoneNumber+"' WHERE email='"+mail+"'");
-			int result2 = ConnectDB.getInstance().createStatement(
+			ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeUpdate("UPDATE doctor SET number='"+streetNumber+"' , street='"+street+"' , city='"+city+"' , zip_code='"+zipCode+"'WHERE id='"+id+"'");
 			return true;
@@ -176,10 +172,10 @@ public class PgDoctorDAO extends DoctorDAO {
 	@Override
 	public void delete(Doctor doctor) {
 		try {
-			int result = ConnectDB.getInstance().createStatement(
+			ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeUpdate("DELETE FROM doctor WHERE id ='"+doctor.getId()+"'");
-			result = ConnectDB.getInstance().createStatement(
+			ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeUpdate("DELETE FROM person WHERE email ='"+doctor.getEmail()+"'");
 		} catch (SQLException e) {
@@ -189,10 +185,10 @@ public class PgDoctorDAO extends DoctorDAO {
 	@Override
 	public void delete(int id) {
 		try {
-			int result = ConnectDB.getInstance().createStatement(
+			ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeUpdate("DELETE FROM doctor WHERE id ='"+id+"'");
-			result = ConnectDB.getInstance().createStatement(
+			ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeUpdate("DELETE FROM person WHERE id ='"+id+"'");
 		} catch (SQLException e) {
@@ -208,7 +204,7 @@ public class PgDoctorDAO extends DoctorDAO {
 		Doctor docToAccept = find(doctor.getEmail());
 		docToAccept.setIsValidated(true);
 		try {
-			int result = ConnectDB.getInstance().createStatement(
+			ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeUpdate("UPDATE person SET isValidated = true WHERE email ='"+doctor.getEmail()+"'");
 		} catch (SQLException e) {

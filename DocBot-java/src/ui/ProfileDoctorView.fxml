@@ -50,7 +50,8 @@
                </font>
             </Text>
             <Button layoutX="818.0" layoutY="157.0" mnemonicParsing="false" onAction="#goUpdateProfile" text="Update his profile" />
-            <Button fx:id="seeDisponibilitiesButton" layoutX="448.0" layoutY="591.0" mnemonicParsing="false" onAction="#seeDisponibilities" text="See disponibilities" />
+            <Button fx:id="seeDisponibilitiesButton" layoutX="816.0" layoutY="199.0" mnemonicParsing="false" onAction="#seeDisponibilities" text="See disponibilities" />
+            <Button fx:id="seeCommentsButton" layoutX="835.0" layoutY="242.0" mnemonicParsing="false" onAction="#seeComments" text="See comments" />
          </children>
       </Pane>
    </children>

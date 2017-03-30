@@ -60,8 +60,14 @@ public class CommentFacade {
      * @return boolean
      */
     public Boolean addComment(String content, String title, int rate, Date datePost, int appointment_id) {
-        Comment commentToPost=new Comment(content,title,rate,datePost,appointment_id);
+        Comment commentToPost=new Comment(0,content,title,rate,datePost,appointment_id);
         return (dao.create(commentToPost));
     }
+
+	public List<Comment> getCommentsOf(Doctor doctor) {
+		// TODO Auto-generated method stub
+		
+		return dao.findAll(doctor);
+	}
 
 }

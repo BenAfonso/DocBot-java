@@ -1,11 +1,6 @@
 package dao;
 import models.Comment;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
- 
-import javax.swing.JOptionPane;
-
+import models.Doctor;
 import java.util.*;
 
 /**
@@ -32,5 +27,7 @@ public abstract class CommentDAO {
      * @param id
      */
     public abstract void find(int id) ;
+
+	public abstract List<Comment> findAll(Doctor doctor);
 
 }
