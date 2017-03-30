@@ -1,11 +1,14 @@
 package dao.pg;
 
-import java.util.*;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import dao.DoctorDAO;
 import models.Doctor;
 import models.Person;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @author BenAfonso
@@ -255,6 +258,29 @@ public class PgDoctorDAO extends DoctorDAO {
 		}
 		return validated;
 	}
+
+    @Override
+    public List<Person> getPatients(Doctor doctor) {
+        List<Person> patients = new ArrayList<Person>();
+
+        String query = "SELECT p.id as id, firstname, lastname, password, email " +
+                " FROM doctor d, person p WHERE " +
+                "d.id = p.doctor_id";
+        try {
+            ResultSet result = ConnectDB.getInstance().createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY).executeQuery(query);
+
+            while (result.next()) {
+                Person person = new Person(result.getInt("id"), result.getString("firstname"), result.getString("lastname"), result.getString("email"), result.getString("password"));
+                patients.add(person);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return patients;
+    }
 
 
 }

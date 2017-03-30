@@ -1,15 +1,38 @@
 package facade;
-import models.*;
+
 import dao.*;
+import models.Comment;
+import models.Doctor;
+import models.Person;
+import models.Schedule;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @author BenAfonso
  */
 public class DoctorFacade extends PersonFacade {
+
+    /**
+     *
+     */
+    public DoctorDAO dao;
+    public PersonDAO daoPerson;
+    /**
+     *
+     */
+    public AbstractDAOFactory adf;
+    /**
+     *
+     */
+    public ScheduleDAO scheduleDao;
+    /**
+     *
+     */
+    public CommentDAO commentDAO;
 
     /**
      * Default constructor
@@ -20,30 +43,6 @@ public class DoctorFacade extends PersonFacade {
 		dao = adf.getDoctorDAO();
 		daoPerson=adf.getPersonDAO();
     }
-
-    /**
-     * 
-     */
-    public DoctorDAO dao;
-    public PersonDAO daoPerson;
-
-
-    /**
-     * 
-     */
-    public AbstractDAOFactory adf;
-
-    /**
-     * 
-     */
-    public ScheduleDAO scheduleDao;
-
-    /**
-     * 
-     */
-    public CommentDAO commentDAO;
-
-
 
     /**
      * return the schedule of the  doctor
@@ -98,7 +97,7 @@ public class DoctorFacade extends PersonFacade {
     
     /**
      * Accept the registration of a doctor
-     * @param doctor a Doctor object who will be registered
+     * @param Doctor a Doctor object who will be registered
      */
 	public boolean register(String fname, String lname, String password, LocalDate birthday, String phoneNumber, String mail, String siret, String streetNumber, String street, String city, String zipCode ) {
 		boolean result=false;
@@ -117,7 +116,7 @@ public class DoctorFacade extends PersonFacade {
 
 	/**
      * Update a profile doctor
-     * @param doctor a Doctor object who will be updated
+     * @param Doctor a Doctor object who will be updated
      */
 	public boolean update(String mail, String fname, String lname, LocalDate birthday, String phoneNumber, String streetNumber, String street, String city, String zipCode, int id){
 		boolean result=false;
@@ -149,5 +148,9 @@ public class DoctorFacade extends PersonFacade {
 		// TODO Auto-generated method stub
 		return dao.findActive(false);
 	}
+
+    public List<Person> getPatients(Doctor doctor) {
+        return dao.getPatients(doctor);
+    }
 
 }

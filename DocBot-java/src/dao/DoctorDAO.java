@@ -1,15 +1,11 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDate;
-
 import models.Doctor;
-import models.Patient;
 import models.Person;
 
-import java.util.*;
+import java.sql.Connection;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @author BenAfonso
@@ -70,5 +66,7 @@ public abstract class DoctorDAO extends PersonDAO {
 	public abstract void delete(int id);
 	
 	public abstract boolean isValidated(int id);
+
+    public abstract List<Person> getPatients(Doctor doctor);
 
 }

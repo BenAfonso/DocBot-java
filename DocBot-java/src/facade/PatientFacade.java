@@ -1,11 +1,15 @@
 package facade;
-import models.*;
-import models.*;
-import dao.*;
+
+import dao.AbstractDAOFactory;
+import dao.PatientDAO;
+import dao.PersonDAO;
+import models.Patient;
+import models.Person;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @author BenAfonso
@@ -79,4 +83,7 @@ public class PatientFacade {
 		return result;
 	}
 
+	public List<Person> getAllPatients() {
+		return dao.getAllPatients();
+	}
 }
