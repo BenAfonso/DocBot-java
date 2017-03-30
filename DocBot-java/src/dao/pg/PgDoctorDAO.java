@@ -70,8 +70,8 @@ public class PgDoctorDAO extends DoctorDAO {
 					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT p.id as id, firstname, lastname, password, email, siret, number, street, city, zip_code, isvalidated FROM doctor d, person p WHERE d.id = p.id");
 
 			while (result.next()) {
-				Person person = new Person(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"),result.getBoolean("isvalidated"));         
-				Doctor doc = new Doctor(person, result.getString("siret"), result.getString("number"), result.getString("street"), result.getString("city"), result.getString("zip_code"));
+				Person person = new Person(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"));         
+				Doctor doc = new Doctor(person, result.getString("siret"), result.getString("number"), result.getString("street"), result.getString("city"), result.getString("zip_code"),result.getBoolean("isvalidated"));
 
 				doctors.add(doc);
 			}
@@ -142,7 +142,7 @@ public class PgDoctorDAO extends DoctorDAO {
 
 			while (result.next()) {
 				Person person = new Person(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"));         
-				Doctor doc = new Doctor(person, result.getString("siret"), result.getString("number"), result.getString("street"), result.getString("city"), result.getString("zip_code"));
+				Doctor doc = new Doctor(person, result.getString("siret"), result.getString("number"), result.getString("street"), result.getString("city"), result.getString("zip_code"),result.getBoolean("isvalidated"));
 
 				doctors.add(doc);
 			}       
@@ -202,7 +202,7 @@ public class PgDoctorDAO extends DoctorDAO {
 	@Override
 	public void accept(Doctor doctor) {
 		Doctor docToAccept = find(doctor.getEmail());
-		docToAccept.setIsValidated(true);
+		docToAccept.setValidated(true);;
 		try {
 			ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -224,8 +224,8 @@ public class PgDoctorDAO extends DoctorDAO {
 					ResultSet.CONCUR_READ_ONLY).executeQuery(query);
 
 			while (result.next()) {
-				Person person = new Person(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"),result.getBoolean("isvalidated"));         
-				Doctor doc = new Doctor(person, result.getString("siret"), result.getString("number"), result.getString("street"), result.getString("city"), result.getString("zip_code"));
+				Person person = new Person(result.getInt("id"),result.getString("firstname"),result.getString("lastname"),result.getString("email"),result.getString("password"));         
+				Doctor doc = new Doctor(person, result.getString("siret"), result.getString("number"), result.getString("street"), result.getString("city"), result.getString("zip_code"),result.getBoolean("isvalidated"));
 
 				doctors.add(doc);
 			}		

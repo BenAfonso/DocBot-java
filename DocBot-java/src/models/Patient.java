@@ -7,6 +7,8 @@ import java.util.*;
  */
 public class Patient extends Person {
 
+	private boolean isBlocked = false;
+	
     /**
      * Default constructor
      */
@@ -14,10 +16,19 @@ public class Patient extends Person {
     	super(fname,lname,password,birthday,phoneNumber,mail);
     }
     
-    public Patient(int id,String fname, String lname, String password, Date birthday, String phoneNumber, String mail,boolean isValidated) {
-    	super(id,fname,lname,password,birthday,phoneNumber,mail,isValidated);
+    public Patient(int id,String fname, String lname, String password, Date birthday, String phoneNumber, String mail,boolean isBlocked) {
+    	super(id,fname,lname,password,birthday,phoneNumber,mail);
+    	this.setBlocked(isBlocked);
     }
 
+	public boolean isBlocked() {
+		return this.isBlocked;
+	}
 
+	public void setBlocked(boolean isBlocked) {
+		this.isBlocked = isBlocked;
+	}
+
+    
 
 }

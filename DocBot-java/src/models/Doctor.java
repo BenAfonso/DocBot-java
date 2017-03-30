@@ -20,6 +20,8 @@ public class Doctor extends Person {
 	private Person person;
 	private String siret;
 	private String adress;
+	private boolean isValidated = false;
+	
 
 	/********************************************************
 	 * 
@@ -29,7 +31,7 @@ public class Doctor extends Person {
     public Doctor() {
     }
     
-    public Doctor(Person person, String siret, String number, String street, String city, String zip_code) {
+    public Doctor(Person person, String siret, String number, String street, String city, String zip_code,boolean isValidated) {
     	this.setPerson(person);
     	this.setId(person.getId());
     	this.setFirstName(person.getFirstName());
@@ -42,7 +44,7 @@ public class Doctor extends Person {
     	this.setStreet(street);
     	this.setCity(city);
     	this.setZipCode(zip_code);
-    	this.setIsValidated(person.getIsValidated());
+    	this.isValidated=isValidated;
     }
     
     public Doctor(String fname, String lname, String password, Date birthday, String phoneNumber, String mail, String siret, String streetNumber, String street, String city, String zipcode) {
@@ -55,21 +57,23 @@ public class Doctor extends Person {
     }
     
     public Doctor(String fname, String lname, String password, Date birthday, String phoneNumber, String mail, String siret, String streetNumber, String street, String city, String zipcode,boolean isValidated) {
-    	super(fname,lname,password,birthday,phoneNumber,mail,isValidated);
+    	super(fname,lname,password,birthday,phoneNumber,mail);
     	this.setSiret(siret);
     	this.setStreetNumber(streetNumber);
     	this.setStreet(street);
     	this.setCity(city);
     	this.setZipCode(zipcode);
+    	this.isValidated=isValidated;
     }
     
     public Doctor(int id,String fname, String lname, String password, Date birthday, String phoneNumber, String mail, String siret, String streetNumber, String street, String city, String zipcode,boolean isValidated) {
-    	super(id,fname,lname,password,birthday,phoneNumber,mail,isValidated);
+    	super(id,fname,lname,password,birthday,phoneNumber,mail);
     	this.setSiret(siret);
     	this.setStreetNumber(streetNumber);
     	this.setStreet(street);
     	this.setCity(city);
     	this.setZipCode(zipcode);
+    	this.isValidated = isValidated;
     }
     
     
@@ -133,6 +137,14 @@ public class Doctor extends Person {
 
 	public void setAdress(String adress) {
 		this.adress = adress;
+	}
+	
+	public boolean isValidated(){
+		return this.isValidated;
+	}
+	
+	public void setValidated(boolean val){
+		this.isValidated=val;
 	}
 	
 	

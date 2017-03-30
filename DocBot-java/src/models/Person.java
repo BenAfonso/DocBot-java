@@ -19,7 +19,6 @@ public class Person {
 	private String password = "";
 	private Date birthday;
 	private String phoneNumber;
-	private boolean isValidated = false;
 	
 	
 	
@@ -37,14 +36,6 @@ public class Person {
 		this.password = password;
 	}
 	
-	public Person(int id, String fn, String ln, String email, String password, boolean isValidated) {
-		this.id = id;
-		this.firstName = fn;
-		this.lastName = ln;
-		this.email = email;
-		this.password = password;
-		this.isValidated = isValidated;
-	}
 	
 	public Person(String fname, String lname, String password, Date birthday, String phoneNumber, String mail) {
 		this.firstName = fname;
@@ -54,25 +45,7 @@ public class Person {
 		this.setBirthday(birthday);
 		this.setPhoneNumber(phoneNumber);
 	}
-	public Person(String fname, String lname, String password, Date birthday, String phoneNumber, String mail,boolean isValidated) {
-		this.firstName = fname;
-		this.lastName = lname;
-		this.email = mail;
-		this.password = password;
-		this.setBirthday(birthday);
-		this.setPhoneNumber(phoneNumber);
-		this.setIsValidated(isValidated);
-	}
-	public Person(int id,String fname, String lname, String password, Date birthday, String phoneNumber, String mail,boolean isValidated) {
-		this.id=id;
-		this.firstName = fname;
-		this.lastName = lname;
-		this.email = mail;
-		this.password = password;
-		this.setBirthday(birthday);
-		this.setPhoneNumber(phoneNumber);
-		this.setIsValidated(isValidated);
-	}
+
 	public Person(int id,String fname, String lname, String password, Date birthday, String phoneNumber, String mail) {
 		this.id=id;
 		this.firstName = fname;
@@ -137,12 +110,5 @@ public class Person {
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
-	public boolean getIsValidated() {
-		return isValidated;
-	}
-	public void setIsValidated(boolean isValidated) {
-		this.isValidated = isValidated;
-	}
-
 
 }
