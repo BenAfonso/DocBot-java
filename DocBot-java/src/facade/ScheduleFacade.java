@@ -68,9 +68,13 @@ public class ScheduleFacade {
 
     /**
      * Create a disponibility with a hour and a schedule in parameter
-     *
-     * @param withSchedule
-     * @param withHour
+     * @param doctor_id
+     * @param date
+     * @param hourStart
+     * @param minuteStart
+     * @param hourEnd
+     * @param minuteEnd
+     * @param description
      * @return the disponibility added
      */
     public boolean createDisponibility(int doctor_id, Date date, int hourStart, int minuteStart, int hourEnd, int minuteEnd, String description) {
@@ -79,14 +83,32 @@ public class ScheduleFacade {
         return dispoDao.create(dispoToInsert);
     }
 
+    /**
+     * Returns true if a patient can make a request on a disponbility
+     *
+     * @param disponibilities_id
+     * @param patient_id
+     * @return true or false
+     */
     public boolean canMakeRequest(int disponibilities_id, int patient_id) {
         return dispoDao.canMakeRequest(disponibilities_id, patient_id);
     }
 
+    /**
+     * Get all the disponibilities of the given doctor
+     * @param doctor
+     * @return a list of disponibilities
+     */
     public List<Disponibility> getAllDoctorDisponibilities(Doctor doctor) {
         // TODO Auto-generated method stub
         return dispoDao.findAllDoctorDisponibilities(doctor.getId());
     }
+
+    /**
+     * Get all the available disponibilities of the given doctor
+     * @param doctor
+     * @return a list of disponibilities
+     */
     public List<Disponibility> getDoctorDisponibilitiesAvalaible(Doctor doctor) {
         // TODO Auto-generated method stub
         return dispoDao.findDoctorDisponibilitiesAvailable(doctor.getId());

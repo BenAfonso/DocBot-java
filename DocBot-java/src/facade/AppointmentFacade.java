@@ -79,6 +79,12 @@ public class AppointmentFacade {
         // TODO implement here
     }
 
+    /**
+     * Get all the appointment of a doctor
+     *
+     * @param doctor
+     * @return a list of appointments
+     */
     public List<Appointment> getAppointment(Person doctor) {
         // TODO Auto-generated method stub
         return appointmentDao.findDoctorAppointment(doctor.getId());

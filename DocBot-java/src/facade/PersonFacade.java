@@ -98,9 +98,10 @@ public class PersonFacade {
     }
 
     /**
-     * Update a profile doctor
-     *
-     * @param doctor a Doctor object who will be updated
+     * Updates a doctor's password given his email
+     * @param mail
+     * @param newPassword
+     * @return
      */
     public boolean updatePassword(String mail, String newPassword) {
         boolean result = false;
@@ -110,6 +111,12 @@ public class PersonFacade {
         return result;
     }
 
+    /**
+     * Returns true if the person's account is validated
+     *
+     * @param person
+     * @return
+     */
     public boolean isValidated(Person person) {
         boolean result = false;
         if (docDao.isValidated(person.getId())) {
@@ -118,6 +125,11 @@ public class PersonFacade {
         return result;
     }
 
+    /**
+     * Returns true if the person is blocked by the administrator
+     * @param person
+     * @return
+     */
     public boolean isBlocked(Person person) {
         boolean result = false;
         if (!patientDao.isBlocked(person.getId())) {
