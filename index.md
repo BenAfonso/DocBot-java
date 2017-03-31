@@ -9,4 +9,6 @@
 - [Nicolas Zambrano report](/DocBot-java/Personal_report_Nicolas_Zambrano)
 - [Ben Afonso report](/DocBot-java/personReport_Afonso)
 - [Bastien Ricoeur report](/DocBot-java/PersonalReportBastien)
+- [Yoann Masson report](/DocBot-java/YoannMassonPersonalReport)
+
 
