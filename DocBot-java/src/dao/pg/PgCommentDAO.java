@@ -31,10 +31,8 @@ public class PgCommentDAO extends CommentDAO {
 
 
     /**
-     * Create a Comment
-     *
-     * @param Comment
-     * @return boolean
+     * Create a comment in the DB
+     * @param comment the comment to create
      */
     public boolean create(Comment obj) {
         try {
@@ -49,26 +47,42 @@ public class PgCommentDAO extends CommentDAO {
     }
 
 
+    /**
+     * Update an comment in the DB
+     * @param comment the comment to Update
+     */
     @Override
     public void update(Comment comment) {
         // TODO Auto-generated method stub
 
     }
 
-
+    /**
+     * delete a comment from the DB
+     * @param comment the comment to delete
+     */
     @Override
     public void delete(Comment comment) {
         // TODO Auto-generated method stub
 
     }
 
-
+    /**
+     * find an appointment with the id
+     * @param id the id of the comment
+     */
     @Override
     public void find(int id) {
         // TODO Auto-generated method stub
 
     }
 
+    /**
+     * Check if a patient can add a comment on the doctor
+     * @param doctor_id the doctor to add the comment
+     * @param patient_id the patient that could post the comment
+     * @return true if the patient can post the comment on the doctor, false otherwise
+     */
     public boolean canAddAComment(int doctor_id, int patient_id) {
         boolean getARequest = false;
         try {
@@ -89,6 +103,11 @@ public class PgCommentDAO extends CommentDAO {
         return getARequest;
     }
 
+    /**
+     * Find all the comment of a given doctor
+     * @param doctor the doctor which we want the comment from
+     * @return the list of comment
+     */
     public List<Comment> findAll(Doctor doctor) {
         System.out.println(doctor.getId());
         // TODO Auto-generated method stub

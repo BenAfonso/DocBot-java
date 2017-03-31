@@ -11,23 +11,18 @@ public abstract class AppointmentDAO {
 
 
     /**
-     * @param appointment
+     * Create An appointment in the DB
+     * @param appointment the appointment to create
      */
     public abstract boolean create(Appointment appointment);
 
-    /**
-     * @param appointment
-     */
-    public abstract void update(Appointment appointment);
 
     /**
-     * @param appointment
+     * Return the list of Appoitment of the doctor given in parameters
+     * @param appointment the list of appointment
      */
     public abstract List<Appointment> findDoctorAppointment(int idDoctor);
 
-    /**
-     * @param appointment
-     */
-    public abstract void delete(Appointment appointment);
+  
 
 }
