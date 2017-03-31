@@ -101,7 +101,7 @@ public class PersonFacade {
      * Updates a doctor's password given his email
      * @param mail
      * @param newPassword
-     * @return
+     * @return true if the password has been updated, false either
      */
     public boolean updatePassword(String mail, String newPassword) {
         boolean result = false;
@@ -115,7 +115,7 @@ public class PersonFacade {
      * Returns true if the person's account is validated
      *
      * @param person
-     * @return
+     * @return true if the person is validated, false either
      */
     public boolean isValidated(Person person) {
         boolean result = false;
@@ -128,7 +128,7 @@ public class PersonFacade {
     /**
      * Returns true if the person is blocked by the administrator
      * @param person
-     * @return
+     * @return true if the person is blocked, false either
      */
     public boolean isBlocked(Person person) {
         boolean result = false;

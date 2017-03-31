@@ -50,10 +50,6 @@ public class PgRequestAppointmentDAO extends RequestAppointmentDAO {
 	}
 
 
-    /**
-     * Create a request appointment in the DB
-     * @param requestAppointment the request to add
-     */
 	@Override
 	public void create(RequestAppointment requestAppointment) {
 
@@ -74,11 +70,6 @@ public class PgRequestAppointmentDAO extends RequestAppointmentDAO {
 	}
 
 
-    /**
-     * Get all the request appointment of a given doctor that are not appointment yet
-     * @param id the id of the doctor
-     * @return the list of request appointment
-     */
 	@Override
 	public List<RequestAppointment> findAll(int id) {
 
@@ -103,12 +94,6 @@ public class PgRequestAppointmentDAO extends RequestAppointmentDAO {
 		return requestAppointments;
 	}
 
-    /**
-     * Reject the appointment in the disponibilities by the person with the given id
-     * @param dispoId the id of the disponibility
-     * @param personid the id of the person
-     */
-	@Override
 	public void reject(int dispoId,int patientId){
 		String query = "UPDATE RequestAppointment SET rejected = true WHERE disponibility_id="+dispoId+" AND patient_id!="+patientId;
 		try {
@@ -120,10 +105,6 @@ public class PgRequestAppointmentDAO extends RequestAppointmentDAO {
 		}
 	}
 
-	/**
-	 * Reject the request Appointment
-	 * @param requestAppointment the request to reject
-	 */
 	@Override
 	public void delete(RequestAppointment requestAppointment) {
 		// TODO Auto-generated method stub
@@ -131,11 +112,6 @@ public class PgRequestAppointmentDAO extends RequestAppointmentDAO {
 	}
 
 
-	/**
-	 * Get all the request Appointment made by a patient 
-	 * @param user the user to get the request from
-	 * @return list of request appointments
-	 */
 	@Override
 	public List<RequestAppointment> getAppointmentsFrom(Patient user) {
 		List<RequestAppointment> requestAppointments = new ArrayList<RequestAppointment>();
@@ -159,10 +135,6 @@ public class PgRequestAppointmentDAO extends RequestAppointmentDAO {
 		return requestAppointments;
 	}
 
-    /**
-     * check if the request appointment became an appointment
-     * @param requestAppointment the request to check
-     */
 	@Override
 	public boolean hasAnAppointment(RequestAppointment requestAppointment) {
 		String query = "SELECT * FROM requestAppointment ra, Appointment a WHERE ra.id = a.requestappointment_id";
@@ -181,10 +153,6 @@ public class PgRequestAppointmentDAO extends RequestAppointmentDAO {
 		return (compteur > 0);
 	}
 
-	/**
-	 * Reject the request Appointment
-	 * @param requestAppointment the request to reject
-	 */
 	public void reject(int requestAppointment) {
 		String query = "UPDATE RequestAppointment SET rejected = true WHERE id="+requestAppointment;
 		try {

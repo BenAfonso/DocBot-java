@@ -104,18 +104,18 @@ public class PgPersonDAO extends PersonDAO {
 
 
 	/**
-	 * Find an user with his mail
+	 * Find an user with his username
 	 *
 	 * @param String
 	 * @return User
 	 */
-	public Person find(String mail) {
+	public Person find(String username) {
 		Person user = null;
 		System.out.println(ConnectDB.getInstance());
 		try {
 			ResultSet result = ConnectDB.getInstance().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM person WHERE email='" + mail + "'");
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM person WHERE email='" + username + "'");
 
 			if (result.first())
 				user = new Person(result.getInt("id"), result.getString("firstname"), result.getString("lastname"), result.getString("email"), result.getString("password"));
@@ -125,12 +125,6 @@ public class PgPersonDAO extends PersonDAO {
 		return user;
 	}
 
-    /**
-     * update the password of a person
-     * @param mail the mail of the person
-     * @param newPassword the  new pass word
-     * @return true if the updated went right, false otherwise
-     */
 	@Override
 	public boolean updatePassword(String mail, String newPassword) {
 		try {

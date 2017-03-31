@@ -4,12 +4,9 @@ import models.Administrator;
 
 public abstract class AdministratorDAO {
 
+    public abstract void find(Administrator admin);
 
-    /**
-     * Return the administrator connected to the id given in parameters
-     * @param id the id of the administrator
-     * @return the administrator
-     */
     public abstract Administrator find(int id);
 
+    public abstract Administrator find(String mail);
 }

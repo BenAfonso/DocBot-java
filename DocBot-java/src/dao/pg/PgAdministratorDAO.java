@@ -25,6 +25,12 @@ public class PgAdministratorDAO extends AdministratorDAO {
 
 
     @Override
+    public void find(Administrator admin) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
     public Administrator find(int id) {
         Administrator admin = null;
         try {
@@ -38,6 +44,12 @@ public class PgAdministratorDAO extends AdministratorDAO {
             e.printStackTrace();
         }
         return admin;
+    }
+
+    @Override
+    public Administrator find(String mail) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

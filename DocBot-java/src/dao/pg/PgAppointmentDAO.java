@@ -28,10 +28,6 @@ public class PgAppointmentDAO extends AppointmentDAO {
         return pgAppointmentDAO;
     }
 
-    /**
-     * Create An appointment in the DB
-     * @param appointment the appointment to create
-     */
     @Override
     public boolean create(Appointment appointment) {
         try {
@@ -45,10 +41,13 @@ public class PgAppointmentDAO extends AppointmentDAO {
         return false;
     }
 
-    /**
-     * Return the list of Appoitment of the doctor given in parameters
-     * @param appointment the list of appointment
-     */
+
+    @Override
+    public void update(Appointment appointment) {
+        // TODO Auto-generated method stub
+
+    }
+
     @Override
     public List<Appointment> findDoctorAppointment(int idDoctor) {
         String query = "SELECT a.id as id, s.date as date,d.hourStart as hourStart,d.minuteStart as minuteStart,d.hourEnd as hourEnd,d.minuteEnd as minuteEnd,p.lastName as lastName, p.firstName as firstName, p.id as personId FROM appointment a,requestappointment r, disponibility d, schedule s, person p WHERE a.requestAppointment_id=r.id AND r.disponibility_id = d.id AND d.schedule_id=s.id AND r.patient_id = p.id AND r.rejected=false AND s.doctor_id = " + idDoctor;
@@ -70,5 +69,10 @@ public class PgAppointmentDAO extends AppointmentDAO {
         return appointments;
     }
 
+    @Override
+    public void delete(Appointment appointment) {
+        // TODO Auto-generated method stub
+
+    }
 
 }

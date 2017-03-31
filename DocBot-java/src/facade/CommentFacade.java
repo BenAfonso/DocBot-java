@@ -51,7 +51,7 @@ public class CommentFacade {
      * @param comment
      * @return
      */
-    public Boolean isCommentValide(Comment comment) {
+    public boolean isCommentValide(Comment comment) {
         // TODO implement here
         return (!(comment.getRate() > 5) || !(comment.getRate() < 0));
     }
@@ -64,9 +64,9 @@ public class CommentFacade {
      * @param datePost
      * @param doctor_id
      * @param patient_id
-     * @return
+     * @return true if the comment has been added, false either
      */
-    public Boolean addComment(String content, String title, int rate, Date datePost, int doctor_id, int patient_id) {
+    public boolean addComment(String content, String title, int rate, Date datePost, int doctor_id, int patient_id) {
         Comment commentToPost = new Comment(0, content, title, rate, datePost, doctor_id, patient_id);
         return (dao.create(commentToPost));
     }
@@ -76,16 +76,16 @@ public class CommentFacade {
      *
      * @param doctor_id
      * @param patient_id
-     * @return
+     * @return true if the patient can add a comment for this doctor, else either
      */
-    public Boolean canAddComment(int doctor_id, int patient_id) {
+    public boolean canAddComment(int doctor_id, int patient_id) {
         return (dao.canAddAComment(doctor_id, patient_id));
     }
 
     /**
-     *
+     * Returns all comments of a doctor
      * @param doctor
-     * @return
+     * @return a list of a doctor's comments
      */
     public List<Comment> getCommentsOf(Doctor doctor) {
         // TODO Auto-generated method stub

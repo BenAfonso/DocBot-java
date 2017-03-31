@@ -7,11 +7,7 @@ public abstract class AbstractDAOFactory {
     public static final int PG_DAOFACTORY = 0;
     public static final int OTHER_DAOFACTORY = 1;
 
-    /**
-     * Methode that allows us to get the different factory
-     * @param type the type of the factory, 0 for pgDAOFactory, 1 for other
-     * @return the factory
-     */
+    //Méthode permettant de récupérer les Factory
     public static AbstractDAOFactory getFactory(int type) {
 
         switch (type) {
@@ -25,62 +21,52 @@ public abstract class AbstractDAOFactory {
     }
 
     /**
-     * get the personDAO
-     * @return the personDAO
+     * @return
      */
     public abstract PersonDAO getPersonDAO();
 
     /**
-     * get the DoctorDAO
-     * @return the DoctorDAO
+     * @return
      */
     public abstract DoctorDAO getDoctorDAO();
 
     /**
-     * get the PatientDAO
-     * @return the PatientDAO
+     * @return
      */
     public abstract PatientDAO getPatientDAO();
 
     /**
-     * get the AdministratorDAO
-     * @return the AdministratorDAO
+     * @return
      */
     public abstract AdministratorDAO getAdministratorDAO();
 
     /**
-     * get the ScheduleDAO
-     * @return the ScheduleDAO
+     * @return
      */
     public abstract ScheduleDAO getScheduleDAO();
 
     /**
-     * get the DisponibilityDAO
-     * @return the DisponibilityDAO
+     * @return
      */
     public abstract DisponibilityDAO getDisponibilityDAO();
 
     /**
-     * get the RequestAppointmentDAO
-     * @return the RequestAppointmentDAO
+     * @return
      */
     public abstract RequestAppointmentDAO getRequestAppointmentDAO();
 
     /**
-     * get the AnswerRequestDAO
-     * @return the AnswerRequestDAO
+     * @return
      */
     public abstract AnswerRequestDAO getAnswerRequestDAO();
 
     /**
-     * get the AppointmentDAO
-     * @return the AppointmentDAO
+     * @return
      */
     public abstract AppointmentDAO getAppointmentDAO();
 
     /**
-     * get the CommentDAO
-     * @return the CommentDAO
+     * @return
      */
     public abstract CommentDAO getCommentDAO();
 }

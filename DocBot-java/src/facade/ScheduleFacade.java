@@ -88,7 +88,7 @@ public class ScheduleFacade {
      *
      * @param disponibilities_id
      * @param patient_id
-     * @return true or false
+     * @return true if a patient can make a request, false either
      */
     public boolean canMakeRequest(int disponibilities_id, int patient_id) {
         return dispoDao.canMakeRequest(disponibilities_id, patient_id);
