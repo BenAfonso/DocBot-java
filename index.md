@@ -5,4 +5,5 @@
 - [Design phase](/DocBot-java/Design-Phase)
 - [Design specifications](/DocBot-java/doc)
 - [Design report](/DocBot-java/Design_report)
+- [Development report](/DocBot-java/development_report)
 
