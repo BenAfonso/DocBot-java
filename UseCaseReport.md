@@ -10,34 +10,34 @@ Use Case Report
 About the management of the use cases analysis, each of us had to make 4 to 5 use cases. We tried to regroup the use case by actor.
 
 <b>Benjamin Afonso</b>
-Validate or reject doctor’s registration
-Login (for all)
-Sign in as a doctor
-Accept appointment
-Reject appointment
-see doctors’ comments
-leave a comment
-edit or delete a comment
+Validate or reject doctor’s registration<br>
+Login (for all)<br>
+Sign in as a doctor<br>
+Accept appointment<br>
+Reject appointment<br>
+see doctors’ comments<br>
+leave a comment<br>
+edit or delete a comment<br>
 
 <b>Yoann Masson</b>
-See list of doctors</br>
-See a doctor’s page</br>
-See appointments</br>
-Make an appointment</br>
-Cancel appointment</br>
+See list of doctors<br>
+See a doctor’s page<br>
+See appointments<br>
+Make an appointment<br>
+Cancel appointment<br>
 
 <b>Bastien Ricoeur</b>
-Create disponibilities</br>
-Block a patient</br>
-See disponibilities</br>
-Update disponibility</br>
-Delete disponibility</br>
+Create disponibilities<br>
+Block a patient<br>
+See disponibilities<br>
+Update disponibility<br>
+Delete disponibility<br>
 
 <b>Nicolas Zambrano</b>
-See his profile</br>
-Update his profile</br>
-Delete his profile</br>
-Reset password</br>
+See his profile<br>
+Update his profile<br>
+Delete his profile<br>
+Reset password<br>
 
 <b>Time management:</b>
 First Week: Each one of the team member made theirs use cases
