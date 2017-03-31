@@ -1,13 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
 <?import java.lang.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.*?>
 
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.SeeHisAppointmentsController">
+               <children>
+               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#78909c" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1000.0" />
+            <Text layoutX="531.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOT">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="432.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOC">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="477.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logoDocbot.png" />
+               </image>
+            </ImageView>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.SeeHisAppointmentsController">
-   <children>
-      <TableView fx:id="table" layoutY="77.0" prefHeight="321.0" prefWidth="600.0">
+      <TableView fx:id="table" layoutX="140.0" layoutY="173.0" prefHeight="423.0" prefWidth="719.0">
         <columns>
           <TableColumn fx:id="firstNameColumn" prefWidth="75.0" text="First Name" />
           <TableColumn fx:id="lastNameColumn" prefWidth="75.0" text="Last Name" />

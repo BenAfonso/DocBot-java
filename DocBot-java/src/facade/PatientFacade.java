@@ -57,6 +57,17 @@ public class PatientFacade {
         return patient;
     }
 
+    /**
+     * Create a new account for a person
+     *
+     * @param fname
+     * @param lname
+     * @param password
+     * @param birthday
+     * @param phoneNumber
+     * @param mail
+     * @return
+     */
     public boolean register(String fname, String lname, String password, LocalDate birthday, String phoneNumber, String mail) {
         boolean result = false;
         Date date = Date.from(birthday.atStartOfDay(ZoneId.systemDefault()).toInstant());
@@ -72,9 +83,13 @@ public class PatientFacade {
     }
 
     /**
-     * Update a profile patient
-     *
-     * @param patient a Patient object who will be updated
+     * Updates a patient's profile
+     * @param mail
+     * @param fname
+     * @param lname
+     * @param birthday
+     * @param phoneNumber
+     * @return
      */
     public boolean update(String mail, String fname, String lname, LocalDate birthday, String phoneNumber) {
         boolean result = false;
