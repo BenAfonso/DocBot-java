@@ -1,4 +1,4 @@
-<center><img src="./DocBot.png" height="200px"/></center>
+<center><img src="img/DocBot.png" height="200px"/></center>
 <center><h1>Personal report</h1></center>
 ***AFONSO Benjamin***
 
