@@ -38,7 +38,18 @@ public abstract class PersonDAO {
      */
     public abstract Person find(int id);
 
-    public abstract Person find(String username);
+    /**
+     * find a person with his given mail
+     * @param mail the mail of the person
+     * @return the Person
+     */
+    public abstract Person find(String mail);
 
+    /**
+     * update the password of a person
+     * @param mail the mail of the person
+     * @param newPassword the  new pass word
+     * @return true if the updated went right, false otherwise
+     */
     public abstract boolean updatePassword(String mail, String newPassword);
 }
