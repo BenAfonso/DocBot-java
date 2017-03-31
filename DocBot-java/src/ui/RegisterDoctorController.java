@@ -66,12 +66,7 @@ public class RegisterDoctorController {
 		goLogin();
 	}
 
-    /**
-     * Displays an error message if the form isn't valid
-     */
-    public void formIsValid() {
-        // TODO implement here
-    }
+    
 
     /**
 	 *
@@ -80,12 +75,7 @@ public class RegisterDoctorController {
 		errorField.setText(message);
 	}
 
-    /**
-	 *
-	 */
-    public void displaySuccess() {
-        // TODO implement here
-    }
+    
 
 	public void goLogin() {
 		nav.goToLogin();

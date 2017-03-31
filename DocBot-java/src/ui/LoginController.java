@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 
 
 public class LoginController implements javafx.fxml.Initializable {
-    NavigationService nav = new NavigationService();
+	
     @FXML
     private TextField usernameField;
     @FXML
@@ -31,25 +31,19 @@ public class LoginController implements javafx.fxml.Initializable {
     private PersonFacade userFacade;
     private Person user;
 
-
+    /**
+     * Default constructor
+     */
     public LoginController() {
         userFacade = new PersonFacade();
     }
 
-    /**
-     * Inializer for the current view
-     */
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-    /**
-     * Set the main application
-     *
-     * @param main
-     */
-    public void setMainApp(Main main) {
-    }
+    
 
     /**
      * Checks if the fields are correctly set, displays an error message
@@ -105,10 +99,22 @@ public class LoginController implements javafx.fxml.Initializable {
 
     } // Login
 
+    
+    /**
+     * Display the error on the view
+     */
     public void displayError(String message) {
         invalidCredential.setText(message);
     }
 
+    
+    /********************************************************
+    *
+    * 						Navigation
+    *
+    ********************************************************/
+    NavigationService nav = new NavigationService();
+    
     public void goRegisterDoctor() {
         nav.goToRegisterDoctorPage();
     }

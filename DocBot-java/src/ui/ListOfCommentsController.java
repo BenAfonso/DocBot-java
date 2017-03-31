@@ -73,7 +73,6 @@ public class ListOfCommentsController implements javafx.fxml.Initializable {
      * @return a list of comment object, the list of the doctor comments
      */
     public List<Comment> getCommentsOf(Doctor doctor) {
-        // TODO implement here
         this.doc = doctor;
         this.comments = this.commentsFacade.getCommentsOf(doctor);
         return this.comments;
@@ -84,8 +83,7 @@ public class ListOfCommentsController implements javafx.fxml.Initializable {
     /**
      * Display the comment of a doctor in the tableView
      */
-    public void displayComments(Doctor doctor) {
-        // TODO implement here 	
+    public void displayComments(Doctor doctor) { 	
         doctorNameLabel.setText(doctor.getFirstName() + " " + doctor.getLastName());
         commentsTable.getItems().setAll(this.getCommentsOf(doctor));
         addCommentButton.setVisible(this.commentsFacade.canAddComment(doctor.getId(), Authentification.getUser().getId()));

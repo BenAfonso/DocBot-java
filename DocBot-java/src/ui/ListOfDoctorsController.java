@@ -19,9 +19,18 @@ import java.util.ResourceBundle;
  */
 public class ListOfDoctorsController implements javafx.fxml.Initializable {
 
-    /**
-     *
-     */
+	/********************************************************
+    *
+    * 						DAO & Facade
+    *
+    ********************************************************/
+	 private DoctorFacade doctorFacade;
+	
+	/********************************************************
+	*
+	* 						Variables
+	*
+	********************************************************/ 
     public List<Doctor> doctors;
     @FXML
     TableView<Doctor> doctorsTable;
@@ -39,25 +48,19 @@ public class ListOfDoctorsController implements javafx.fxml.Initializable {
     Button allDoctorsButton;
     @FXML
     TextField cityFilterTextField;
-    private DoctorFacade doctorFacade;
+   
     private List<Doctor> list;
-    private NavigationService nav;
 
 
     /**
      * Default constructor
      */
     public ListOfDoctorsController() {
-        NavigationService nav = new NavigationService();
-
         this.doctorFacade = new DoctorFacade();
-        this.nav = new NavigationService();
         this.getDoctors();
     }
 
-    /**
-     * Inializer for the current view
-     */
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         firstNameCol.setCellValueFactory(new PropertyValueFactory<Doctor, String>("firstName"));
@@ -96,23 +99,6 @@ public class ListOfDoctorsController implements javafx.fxml.Initializable {
 
         actionCol.setCellFactory(cellFactory);
 
-		/*
-        seeDisponibilitiesCol.setCellFactory(param -> new TableCell<Doctor, Doctor>() {
-            private final Button seeDisponibilitiesButton = new Button("See disponibilities");
-
-            protected void seeDisponibilities(Doctor doctor) {
-
-                if (doctor == null) {
-                    return;
-                }
-
-                setGraphic(seeDisponibilitiesButton);
-                seeDisponibilitiesButton.setOnAction(event -> nav.goToMyDisponibilities());
-
-            }
-        });
-		*/
-
 
         doctorsTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         doctorsTable.getColumns().get(0).prefWidthProperty().bind(doctorsTable.widthProperty().multiply(0.3));
@@ -124,60 +110,32 @@ public class ListOfDoctorsController implements javafx.fxml.Initializable {
 
     }
 
-    /**
-     * Set the main application
-     *
-     * @param main
-     */
-    public void setMainApp(Main main) {
-    }
+
+   
 
     /**
-     * @return
-     */
-    public List<Doctor> getPendingDoctors() {
-        // TODO implement here
-        this.list = this.doctorFacade.getPendingDoctors();
-        return this.list;
-
-    }
-
-    /**
-     * @return
+	 * Get the doctors of the application
+     * @return a list of doctor object, the list of the doctor 
      */
     public List<Doctor> getDoctors() {
-        // TODO implement here
         this.list = this.doctorFacade.getDoctors();
         return this.list;
 
     }
 
     /**
-     * @param speciality
+     * Display the comment of a doctor in the tableView
      */
-    public void getDoctorsBySpeciality(String speciality) {
-        // TODO implement here
-    }
-
-    /**
-     * @param city
-     */
-    public void getDoctorsByCity(String city) {
-        // TODO implement here
-    }
-
-    /**
-     *
-     */
-    public void displayDoctors() {
-        // TODO implement here 	
+    public void displayDoctors() {	
         doctorsTable.getItems().setAll(this.getDoctors());
     }
 
 
-    public void displayPendingDoctors() {
-        doctorsTable.getItems().setAll(this.getPendingDoctors());
-    }
-
+    /********************************************************
+    *
+    * 						Navigation
+    *
+    ********************************************************/
+    NavigationService nav = new NavigationService();
 
 }

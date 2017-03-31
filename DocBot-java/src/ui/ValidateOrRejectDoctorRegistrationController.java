@@ -160,8 +160,6 @@ public class ValidateOrRejectDoctorRegistrationController {
 	}
 
 	public void getUncheckedDoctors() {
-
-		//REAL DATA
 		DoctorFacade docFacade = new DoctorFacade();
 		this.doc = docFacade.getPendingDoctors();
 	}

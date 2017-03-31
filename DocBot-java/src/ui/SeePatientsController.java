@@ -84,20 +84,12 @@ public class SeePatientsController implements javafx.fxml.Initializable {
 
     }
 
-    /**
-     * Set the main application
-     *
-     * @param main
-     */
-    public void setMainApp(Main main) {
-    }
+    
 
     /**
      * @return
      */
     public List<Person> getPatients() {
-        // TODO implement here
-
         this.patients = this.patientFacade.getAllPatients();
         return this.patients;
 
@@ -108,7 +100,6 @@ public class SeePatientsController implements javafx.fxml.Initializable {
      *
      */
     public void displayPatients() {
-        // TODO implement here
         patientsTable.getItems().setAll(this.getPatients());
     }
 
