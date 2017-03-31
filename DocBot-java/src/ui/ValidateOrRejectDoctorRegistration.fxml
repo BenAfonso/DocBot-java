@@ -1,49 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8"
-            fx:controller="ui.ValidateOrRejectDoctorRegistrationController">
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ValidateOrRejectDoctorRegistrationController">
     <children>
         <TableView id="table" fx:id="table" layoutX="171.0" layoutY="150.0" prefHeight="386.0" prefWidth="672.0">
             <columns>
-                <TableColumn id="lastNameColumn" fx:id="lastNameColumn" prefWidth="75.0" text="Last Name"/>
-                <TableColumn id="firstNameColumn" fx:id="firstNameColumn" prefWidth="75.0" text="First Name"/>
-                <TableColumn id="siretColumn" fx:id="siretColumn" prefWidth="75.0" text="Siret"/>
-                <TableColumn id="cityColumn" fx:id="cityColumn" prefWidth="75.0" text="City"/>
-                <TableColumn id="zipColumn" fx:id="zipColumn" prefWidth="75.0" text="zip_code"/>
+                <TableColumn id="lastNameColumn" fx:id="lastNameColumn" prefWidth="75.0" text="Last Name" />
+                <TableColumn id="firstNameColumn" fx:id="firstNameColumn" prefWidth="75.0" text="First Name" />
+                <TableColumn id="siretColumn" fx:id="siretColumn" prefWidth="75.0" text="Siret" />
+                <TableColumn id="cityColumn" fx:id="cityColumn" prefWidth="75.0" text="City" />
+                <TableColumn id="zipColumn" fx:id="zipColumn" prefWidth="75.0" text="zip_code" />
             </columns>
         </TableView>
-        <Button layoutX="563.0" layoutY="561.0" mnemonicParsing="false" onAction="#acceptDoctor" text="Accepter"/>
-        <Button layoutX="183.0" layoutY="561.0" mnemonicParsing="false" onAction="#goToDoctorProfil"
-                text="Voir le profil" textAlignment="CENTER"/>
-        <Button layoutX="667.0" layoutY="561.0" mnemonicParsing="false" onAction="#rejectDoctor" text="Refuser"/>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#78909c" height="80.0" stroke="BLACK" strokeType="INSIDE"
-                   strokeWidth="0.0" width="1000.0"/>
-        <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="487.0" layoutY="5.0" pickOnBounds="true"
-                   preserveRatio="true">
+        <Button layoutX="563.0" layoutY="561.0" mnemonicParsing="false" onAction="#acceptDoctor" text="Accepter" />
+        <Button layoutX="667.0" layoutY="561.0" mnemonicParsing="false" onAction="#rejectDoctor" text="Refuser" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#78909c" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1000.0" />
+        <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="487.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../img/logoDocbot.png"/>
+                <Image url="@../img/logoDocbot.png" />
             </image>
         </ImageView>
         <Text layoutX="442.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOC">
             <font>
-                <Font size="18.0"/>
+                <Font size="18.0" />
             </font>
         </Text>
         <Text layoutX="541.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOT">
             <font>
-                <Font size="18.0"/>
+                <Font size="18.0" />
             </font>
         </Text>
-        <Text fill="#78909c" layoutX="388.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              text="Unechecked Doctors">
+        <Text fill="#78909c" layoutX="388.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unechecked Doctors">
             <font>
-                <Font size="24.0"/>
+                <Font size="24.0" />
             </font>
         </Text>
     </children>

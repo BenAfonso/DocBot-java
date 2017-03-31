@@ -32,8 +32,6 @@ public class ListOfDoctorsController implements javafx.fxml.Initializable {
     @FXML
     TableColumn<Doctor, String> lastNameCol;
     @FXML
-    TableColumn<Doctor, String> activeCol;
-    @FXML
     TableColumn<Doctor, Doctor> actionCol;
     @FXML
     Button pendingDoctorsButton;
@@ -65,7 +63,6 @@ public class ListOfDoctorsController implements javafx.fxml.Initializable {
         firstNameCol.setCellValueFactory(new PropertyValueFactory<Doctor, String>("firstName"));
         lastNameCol.setCellValueFactory(new PropertyValueFactory<Doctor, String>("lastName"));
         cityCol.setCellValueFactory(new PropertyValueFactory<Doctor, String>("city"));
-        activeCol.setCellValueFactory(new PropertyValueFactory<Doctor, String>("isValidated"));
 
 
         Callback<TableColumn<Doctor, Doctor>, TableCell<Doctor, Doctor>> cellFactory = //
@@ -118,11 +115,10 @@ public class ListOfDoctorsController implements javafx.fxml.Initializable {
 
 
         doctorsTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        doctorsTable.getColumns().get(0).prefWidthProperty().bind(doctorsTable.widthProperty().multiply(0.2));
-        doctorsTable.getColumns().get(1).prefWidthProperty().bind(doctorsTable.widthProperty().multiply(0.3));
-        doctorsTable.getColumns().get(2).prefWidthProperty().bind(doctorsTable.widthProperty().multiply(0.2));
-        doctorsTable.getColumns().get(3).prefWidthProperty().bind(doctorsTable.widthProperty().multiply(0.1));
-        doctorsTable.getColumns().get(4).prefWidthProperty().bind(doctorsTable.widthProperty().multiply(0.2));
+        doctorsTable.getColumns().get(0).prefWidthProperty().bind(doctorsTable.widthProperty().multiply(0.3));
+        doctorsTable.getColumns().get(1).prefWidthProperty().bind(doctorsTable.widthProperty().multiply(0.25));
+        doctorsTable.getColumns().get(2).prefWidthProperty().bind(doctorsTable.widthProperty().multiply(0.25));
+        doctorsTable.getColumns().get(3).prefWidthProperty().bind(doctorsTable.widthProperty().multiply(0.25));
 
         this.displayDoctors();
 
