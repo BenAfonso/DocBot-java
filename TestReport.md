@@ -1,7 +1,7 @@
 <center><img src="img/DocBot.png" height="200px"/></center>
 <center><h1>Test Phase report</h1></center>
 <center><h2>Yoann Masson</h2></center>
-*03/17/2017*
+*30/03/2017*
 **This is an objective report about the test phase.**
 
 At the beginning of the project, we were told that we had to make unit test during the development phase.
