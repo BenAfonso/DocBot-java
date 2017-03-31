@@ -14,6 +14,18 @@ import services.Authentification;
 
 public class AppointmentDoctorController implements javafx.fxml.Initializable {
 
+	/********************************************************
+    *
+    * 						DAO & Facade
+    *
+    ********************************************************/
+	private AppointmentFacade appointmentFacade;
+	
+	/********************************************************
+    *
+    * 						Variables
+    *
+    ********************************************************/
 	@FXML
     TableView<Appointment> appointmentTableView;
     @FXML
@@ -27,8 +39,10 @@ public class AppointmentDoctorController implements javafx.fxml.Initializable {
     @FXML
     TableColumn<Appointment, String> lnameColumn;
  
-    private AppointmentFacade appointmentFacade;
+    
     private List<Appointment> appointments;
+    
+    
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -40,12 +54,16 @@ public class AppointmentDoctorController implements javafx.fxml.Initializable {
 		
 	}
 
+	/**
+     * Default constructor
+     */
 	public AppointmentDoctorController(){
 		appointmentFacade = new AppointmentFacade();
 	}
 	
 	/**
-     * @return
+	 * Get the appointments of a doctor
+     * @return a list of appointment object, the list of the doctor appointments
      */
     public List<Appointment> getAppointmentOf() {
         this.appointments = appointmentFacade.getAppointment(Authentification.getUser());
@@ -53,7 +71,7 @@ public class AppointmentDoctorController implements javafx.fxml.Initializable {
     }
 
     /**
-     *
+     * Display the appointment of a doctor in the tableView
      */
     public void displayAppointments() {
     	appointmentTableView.getItems().setAll(this.getAppointmentOf());

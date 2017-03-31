@@ -21,6 +21,18 @@ import java.util.ResourceBundle;
  */
 public class ListOfCommentsController implements javafx.fxml.Initializable {
 
+	/********************************************************
+    *
+    * 						DAO & Facade
+    *
+    ********************************************************/
+	private CommentFacade commentsFacade;
+	
+	/********************************************************
+    *
+    * 						Variables
+    *
+    ********************************************************/
     @FXML
     TableView<Comment> commentsTable;
     @FXML
@@ -33,8 +45,7 @@ public class ListOfCommentsController implements javafx.fxml.Initializable {
     Label doctorNameLabel;
     @FXML
     Button addCommentButton;
-    NavigationService nav = new NavigationService();
-    private CommentFacade commentsFacade;
+   
     private List<Comment> comments;
     private Doctor doc;
 
@@ -47,9 +58,7 @@ public class ListOfCommentsController implements javafx.fxml.Initializable {
         this.commentsFacade = new CommentFacade();
     }
 
-    /**
-     * Inializer for the current view
-     */
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
         dateCol.setCellValueFactory(new PropertyValueFactory<Comment, String>("date"));
         titleCol.setCellValueFactory(new PropertyValueFactory<Comment, String>("title"));
@@ -57,13 +66,11 @@ public class ListOfCommentsController implements javafx.fxml.Initializable {
 
     }
 
-    public void goToAddComment() {
-        nav.goToAddComments(doc);
-    }
 
 
     /**
-     * @return
+	 * Get the comments of a doctor
+     * @return a list of comment object, the list of the doctor comments
      */
     public List<Comment> getCommentsOf(Doctor doctor) {
         // TODO implement here
@@ -75,7 +82,7 @@ public class ListOfCommentsController implements javafx.fxml.Initializable {
 
 
     /**
-     *
+     * Display the comment of a doctor in the tableView
      */
     public void displayComments(Doctor doctor) {
         // TODO implement here 	
@@ -84,6 +91,16 @@ public class ListOfCommentsController implements javafx.fxml.Initializable {
         addCommentButton.setVisible(this.commentsFacade.canAddComment(doctor.getId(), Authentification.getUser().getId()));
 
     }
-
-
+    
+    
+    /********************************************************
+    *
+    * 						Navigation
+    *
+    ********************************************************/
+    NavigationService nav = new NavigationService();
+    
+    public void goToAddComment() {
+        nav.goToAddComments(doc);
+    }
 }

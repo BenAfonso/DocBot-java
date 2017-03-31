@@ -23,8 +23,20 @@ import java.util.ResourceBundle;
  */
 public class DisponibilitiesController implements javafx.fxml.Initializable {
 
+	/********************************************************
+    *
+    * 						DAO & Facade
+    *
+    ********************************************************/
     public ScheduleFacade scheduleFa;
     public RequestAppointmentFacade requestAppointmentFacade;
+    
+    
+    /********************************************************
+    *
+    * 						Variables
+    *
+    ********************************************************/
     @FXML
     Label doctorNameLabel;
     @FXML
@@ -43,12 +55,8 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
     TableColumn<Disponibility, Disponibility> makeAnAppointmentCol;
     @FXML
     Button addDisponibility;
-    /********************************************************
-     *
-     * 						Navigation
-     *
-     ********************************************************/
-    NavigationService nav = new NavigationService();
+    
+    public Doctor doc;
 
     /**
      * Default constructor
@@ -58,6 +66,7 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
         requestAppointmentFacade = new RequestAppointmentFacade();
     }
 
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
         if (!Authentification.isDoctor()) {
             addDisponibility.setVisible(false);
@@ -104,6 +113,10 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
 
     }
 
+    /**
+	 * Get the disponibilities of a doctor
+     * @return a list of disponibility object, the list of the doctor disponibilities
+     */
     public List<Disponibility> getDisponibilities(Doctor doctor) {
     	if(Authentification.isPatient()){
             return scheduleFa.getDoctorDisponibilitiesAvalaible(doctor);
@@ -114,16 +127,9 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
     }
 
     /**
-     * Get a schedule for the current doctor
-     *
-     * @return Schedule
+     * Make a appointment on a disponibility
+     * @param disp disponibility that will be added
      */
-    public Schedule getHisSchedule() {
-        // TODO implement here
-
-        return null;
-    }
-
     public void makeRequestAppointment(Disponibility disp) {
         boolean result = this.requestAppointmentFacade.createNewRequest(disp, Authentification.getUser());
         if (!result) {
@@ -131,18 +137,23 @@ public class DisponibilitiesController implements javafx.fxml.Initializable {
         }
     }
 
+  
     /**
-     * Delete a schedule (Event with button) documentation later
+     * Display the disponibilities of a doctor in the tableView
      */
-    public void deleteSchedule() {
-        // TODO implement here
-    }
-    public Doctor doc;
     public void displayDisponibilities(Doctor doctor) {
     	doc = doctor;
         doctorNameLabel.setText(doctor.getLastName());
         disponibilitiesTable.getItems().setAll(this.getDisponibilities(doctor));
     }
+    
+    
+    /********************************************************
+    *
+    * 						Navigation
+    *
+    ********************************************************/
+   NavigationService nav = new NavigationService();
 
     public void goAddDisponibility() {
         nav.goToAddDisponibility();

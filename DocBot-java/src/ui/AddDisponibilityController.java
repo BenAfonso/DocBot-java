@@ -12,25 +12,23 @@ import services.NavigationService;
 import java.time.ZoneId;
 import java.util.Date;
 
-/**
- * @author BenAfonso
- */
+
 public class AddDisponibilityController {
 
-    /**
-     *
-     */
+	/********************************************************
+    *
+    * 						DAO & Facade
+    *
+    ********************************************************/
     public DoctorFacade doctorFa;
-    /**
-     *
-     */
     public ScheduleFacade scheduleFa;
+    
+    
     /********************************************************
-     *
-     * 						Navigation
-     *
-     ********************************************************/
-    NavigationService nav = new NavigationService();
+    *
+    * 						Variables
+    *
+    ********************************************************/
     @FXML
     private TextField hourStartField;
     @FXML
@@ -54,12 +52,6 @@ public class AddDisponibilityController {
         scheduleFa = new ScheduleFacade();
     }
 
-    /**
-     * Creates a new schedule
-     */
-    public void createSchedule() {
-        // TODO implement here
-    }
 
     /**
      * Creates a new Disponibility
@@ -71,20 +63,13 @@ public class AddDisponibilityController {
         }
     }
 
-    /**
-     * Display an success message into the view
-     */
-    public void displayValid() {
-        // TODO implement here
-    }
 
-    /**
-     * Display an error message into the view
-     */
-    public void displayError() {
-        // TODO implement here
-    }
-
+    /********************************************************
+    *
+    * 						Navigation
+    *
+    ********************************************************/
+   NavigationService nav = new NavigationService();
     public void back() {
         goDisponibilities();
     }

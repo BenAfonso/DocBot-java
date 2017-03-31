@@ -13,25 +13,24 @@ import services.NavigationService;
 
 import java.util.Date;
 
-/**
- * @author BenAfonso
- */
+
 public class AddCommentController {
 
-    /**
-     *
-     */
+
+	/********************************************************
+    *
+    * 						DAO & Facade
+    *
+    ********************************************************/
     public DoctorFacade doctorFa;
-    /**
-     *
-     */
     public CommentFacade commentFacade;
+    
+    
     /********************************************************
-     *
-     * 						Navigation
-     *
-     ********************************************************/
-    NavigationService nav = new NavigationService();
+    *
+    * 						Variables
+    *
+    ********************************************************/
     @FXML
     private TextField titleField;
     @FXML
@@ -42,6 +41,7 @@ public class AddCommentController {
     private DatePicker dateField;
     private Doctor doc;
 
+    
     /**
      * Default constructor
      */
@@ -49,15 +49,9 @@ public class AddCommentController {
         commentFacade = new CommentFacade();
     }
 
-    /**
-     * Creates a new schedule
-     */
-    public void createSchedule() {
-        // TODO implement here
-    }
 
     /**
-     * Creates a new Disponibility
+     * Create a new comment
      */
     public void addComment() {
         Date date = new Date();
@@ -66,28 +60,31 @@ public class AddCommentController {
         }
     }
 
+  
     /**
-     * Display an success message into the view
+     * Get the doctor of the controller
+     * @return object Doctor, the doctor of the controller
      */
-    public void displayValid() {
-        // TODO implement here
-    }
-
     public Doctor getDoctor() {
         return this.doc;
     }
 
+    /**
+     * Set the doctor of the controller
+     * @param doc doctor Object
+     */
     public void setDoctor(Doctor doc) {
         this.doc = doc;
     }
 
-    /**
-     * Display an error message into the view
-     */
-    public void displayError() {
-        // TODO implement here
-    }
+    
 
+    /********************************************************
+    *
+    * 						Navigation
+    *
+    ********************************************************/
+   NavigationService nav = new NavigationService();
     public void goComments(Doctor doctor) {
         nav.goToCommentsOf(doctor);
     }
