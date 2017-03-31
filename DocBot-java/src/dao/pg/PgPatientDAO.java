@@ -30,11 +30,6 @@ public class PgPatientDAO extends PatientDAO {
         return pgPatientDAO;
     }
 
-    /**
-     * Find a patient
-     * @param id the id of the patient
-     * @return the Patient
-     */
     public Patient find(int id) {
         Patient patient = null;
         try {
@@ -50,11 +45,6 @@ public class PgPatientDAO extends PatientDAO {
         return patient;
     }
 
-    /**
-     * The patient to find
-     * @param mail the mail of the patient
-     * @return the patient
-     */
     @Override
     public Patient find(String mail) {
         Patient patient = null;
@@ -71,15 +61,6 @@ public class PgPatientDAO extends PatientDAO {
         return patient;
     }
 
-    /**
-     * Update the patient
-     * @param mail the mail of the patient
-     * @param fname the new first name of the patient
-     * @param lname the new last name of the patient
-     * @param birthday the new birthday of the patient
-     * @param phoneNumber the new phone number of the patient
-     * @return true if the update went right, false otherwise
-     */
     @Override
     public boolean update(String mail, String fname, String lname, Date birthday, String phoneNumber) {
         try {
@@ -93,11 +74,6 @@ public class PgPatientDAO extends PatientDAO {
         return false;
     }
 
-    /**
-     * Create a new Patient
-     * @param id the id of the patient
-     * @return true if the creation went right, false otherwise
-     */
     public boolean create(int id) {
         try {
             int result = ConnectDB.getInstance().createStatement(
@@ -112,10 +88,6 @@ public class PgPatientDAO extends PatientDAO {
 
     }
 
-    /**
-     * Return all the patient
-     * @return the patients
-     */
     @Override
     public List<Person> getAllPatients() {
         List<Person> patients = new ArrayList<Person>();
@@ -139,41 +111,24 @@ public class PgPatientDAO extends PatientDAO {
         return patients;
     }
 
-    /**
-     * Create a patient
-     * @param patient the patient to add in the DB
-     */
     @Override
     public void create(Patient patient) {
         // TODO Auto-generated method stub
 
     }
 
-    /**
-     * Update a patient
-     * @param patient the patient to update in the DB
-     */
     @Override
     public void update(Patient patient) {
         // TODO Auto-generated method stub
 
     }
 
-    /**
-     * find a patient
-     * @param patient the patient to find
-     */
     @Override
     public void find(Patient patient) {
         // TODO Auto-generated method stub
 
     }
 
-    /**
-     * Check if a patient is blocked
-     * @param id the id of the patient
-     * @return true if the patient is blocked, false otherwise
-     */
     @Override
     public boolean isBlocked(int id) {
         boolean blocked = false;
@@ -189,15 +144,5 @@ public class PgPatientDAO extends PatientDAO {
         }
         return blocked;
     }
-
-    /**
-     * delete a patient
-     * @param patient the patient to delete
-     */
-	@Override
-	public void delete(Patient patient) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

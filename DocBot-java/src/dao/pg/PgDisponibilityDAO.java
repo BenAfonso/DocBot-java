@@ -33,7 +33,7 @@ public class PgDisponibilityDAO extends DisponibilityDAO {
     /**
      * Create an user
      *
-     * @param Person the 
+     * @param Person
      * @return boolean
      */
     public boolean create(Disponibility obj) {
@@ -67,11 +67,6 @@ public class PgDisponibilityDAO extends DisponibilityDAO {
     }
 
 
-    /**
-     *  Find all the disponibilities of a given doctor
-     * @param id the id of the doctor
-     * @return the lsit of disponibilities
-     */
     public List<Disponibility> findAllDoctorDisponibilities(int id) {
 
         List<Disponibility> disponibilities = new ArrayList<Disponibility>();
@@ -93,12 +88,6 @@ public class PgDisponibilityDAO extends DisponibilityDAO {
 
         return disponibilities;
     }
-    
-    /**
-     *  Find all the disponibilities of a given doctor that are availables
-     * @param id the id of the doctor
-     * @return the lsit of disponibilities
-     */
     public List<Disponibility> findDoctorDisponibilitiesAvailable(int id) {
 
         List<Disponibility> disponibilities = new ArrayList<Disponibility>();
@@ -121,12 +110,6 @@ public class PgDisponibilityDAO extends DisponibilityDAO {
         return disponibilities;
     }
 
-    /**
-     * Check if a patient can make a request
-     * @param dispo_id the id of the disponibilities
-     * @param patient_id the id of the patient
-     * @return true if the patient can make a request, false otherwise
-     */
     public boolean canMakeRequest(int dispo_id, int patient_id) {
         boolean can = false;
         try {
@@ -147,10 +130,6 @@ public class PgDisponibilityDAO extends DisponibilityDAO {
 
     }
 
-    /**
-     * Set a disponibility to booked
-     * @param dispoId the id of the disponibility
-     */
 	@Override
 	public void setBooked(int dispoId) {
 		String query = "UPDATE Disponibility SET isbooked = true WHERE id="+dispoId;

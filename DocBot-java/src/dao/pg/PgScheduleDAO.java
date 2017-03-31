@@ -43,12 +43,6 @@ public class PgScheduleDAO extends ScheduleDAO {
         }
     }
 
-    /**
-     * Find the schedule of the doctor in a given date
-     * @param doctor_id the id of the doctor
-     * @param date the date of the schedule
-     * @return the Schedule of the doctor
-     */
     public Schedule find(int doctor_id, Date date) {
         Schedule schedule = null;
         try {
