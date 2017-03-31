@@ -1,6 +1,6 @@
 <center><img src="img/DocBot.png" height="200px"/></center>
 <center><h1>Personal report</h1></center>
-***AFONSO Benjamin***
+<center><b><i>AFONSO Benjamin</i></b></center>
 
 ## Introduction
 
