@@ -1,20 +1,12 @@
 package facade;
 
-import models.*;
-import services.Authentification;
-
-import java.util.List;
-
-
-
-import dao.AbstractDAOFactory;
-import dao.AnswerRequestDAO;
-import dao.AppointmentDAO;
-import dao.DisponibilityDAO;
-import dao.RequestAppointmentDAO;
+import dao.*;
 import dao.pg.PgAppointmentDAO;
 import dao.pg.PgDisponibilityDAO;
 import dao.pg.PgRequestAppointmentDAO;
+import models.*;
+
+import java.util.List;
 
 
 /**
@@ -93,9 +85,16 @@ public class RequestAppointmentFacade {
     	return true;
     	
     }
+
+    /**
+     * Rejects a request appointment
+     *
+     * @param requestAppointment
+     * @return
+     */
     public boolean reject(int requestAppointment){
-    	requestAppointmentDao.reject(requestAppointment);
-    	return true;
+        requestAppointmentDao.reject(requestAppointment);
+        return true;
     }
 
     /**
@@ -138,17 +137,32 @@ public class RequestAppointmentFacade {
         return null;
     }
 
+    /**
+     * Returns all the request appointments of a person
+     * @param person
+     * @return list of requestAppointments
+     */
     public List<RequestAppointment> getRequestAppointment(Person person) {
         // TODO Auto-generated method stub
         return requestAppointmentDao.findAll(person.getId());
     }
 
-	public List<RequestAppointment> getAppointmentsFrom(Patient user) {
-		return requestAppointmentDao.getAppointmentsFrom(user);
-	}
+    /**
+     * Returns al lthe appointments of a user
+     * @param user
+     * @return list of requestAppointments
+     */
+    public List<RequestAppointment> getAppointmentsFrom(Patient user) {
+        return requestAppointmentDao.getAppointmentsFrom(user);
+    }
 
-	public boolean hasAnAppointment(RequestAppointment requestAppointment) {
-		return requestAppointmentDao.hasAnAppointment(requestAppointment);
-	}
+    /**
+     * Return true if the request appointment corresponds to an accepted appointment
+     * @param requestAppointment
+     * @return true or false
+     */
+    public boolean hasAnAppointment(RequestAppointment requestAppointment) {
+        return requestAppointmentDao.hasAnAppointment(requestAppointment);
+    }
 
 }

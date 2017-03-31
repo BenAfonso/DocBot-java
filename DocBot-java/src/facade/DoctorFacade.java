@@ -151,11 +151,21 @@ public class DoctorFacade extends PersonFacade {
         dao.accept(doctor);
     }
 
+    /**
+     * Get the list of pending doctors
+     *
+     * @return doctors
+     */
     public List<Doctor> getPendingDoctors() {
         // TODO Auto-generated method stub
         return dao.findActive(false);
     }
 
+    /**
+     * Returns the list of all doctor's patient
+     * @param doctor
+     * @return
+     */
     public List<Person> getPatients(Doctor doctor) {
         return dao.getPatients(doctor);
     }
