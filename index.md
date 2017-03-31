@@ -6,4 +6,5 @@
 - [Design specifications](/DocBot-java/doc)
 - [Design report](/DocBot-java/Design_report)
 - [Development report](/DocBot-java/development_report)
+- [Nicolas Zambrano report](/DocBot-java/Personal_report_Nicolas_Zambrano)
 
