@@ -8,3 +8,8 @@ This phase was very hard. We need to developp the whole application in less than
 But the application is working and we developp the principal fonctionnality of the application : make an appointment.
 
 During the development phase we need to redesign some methods to adapt to our code.
+
+**Documentation report**
+
+We produce the documentation during the development phase. Everyone need, if he had the time, to write the documentation of his method.
+
