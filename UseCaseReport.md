@@ -20,31 +20,31 @@ leave a comment
 edit or delete a comment
 
 <b>Yoann Masson</b>
-See list of doctors
-See a doctor’s page
-See appointments
-Make an appointment
-Cancel appointment
+See list of doctors</br>
+See a doctor’s page</br>
+See appointments</br>
+Make an appointment</br>
+Cancel appointment</br>
 
 <b>Bastien Ricoeur</b>
-Create disponibilities
-Block a patient
-See disponibilities
-Update disponibility
-Delete disponibility
+Create disponibilities</br>
+Block a patient</br>
+See disponibilities</br>
+Update disponibility</br>
+Delete disponibility</br>
 
 <b>Nicolas Zambrano</b>
-See his profile
-Update his profile
-Delete his profile
-Reset password
+See his profile</br>
+Update his profile</br>
+Delete his profile</br>
+Reset password</br>
 
 <b>Time management:</b>
-	First Week: Each one of the team member made theirs use cases
+First Week: Each one of the team member made theirs use cases
 
-	Second Week: Meeting to clarify some part of the application, in order to clarify the use cases. We all verify each use case to make sure we had the same idea about how the application works, some clarifications were made.
+Second Week: Meeting to clarify some part of the application, in order to clarify the use cases. We all verify each use case to make sure we had the same idea about how the application works, some clarifications were made.
 
-	Third week: Meeting with the tutor, and at the end of the meeting the following things were brought up:
+Third week: Meeting with the tutor, and at the end of the meeting the following things were brought up:
 Use cases were too descriptive and should be more about what the system actually does
 Uses cases were added about the management of comments, Benjamin Afonso made them in addition of his previous work.
 
