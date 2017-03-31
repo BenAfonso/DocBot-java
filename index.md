@@ -6,7 +6,7 @@
 - [Design specifications](/DocBot-java/doc)
 - [Design report](/DocBot-java/Design_report)
 - [Test report](/DocBot-java/TestReport)
-- [Use Case report](/DocBot-java/UseCaseReport.md)
+- [Use Case report](/DocBot-java/UseCaseReport)
 - [Development report](/DocBot-java/development_report)
 - [Nicolas Zambrano report](/DocBot-java/Personal_report_Nicolas_Zambrano)
 - [Ben Afonso report](/DocBot-java/personReport_Afonso)
