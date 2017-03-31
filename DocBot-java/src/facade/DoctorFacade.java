@@ -62,7 +62,7 @@ public class DoctorFacade extends PersonFacade {
     /**
      * return the doctor's comments
      *
-     * @return the comment of the doctors
+     * @return the comments of the doctors
      */
     public Comment[] getComments() {
         // TODO implement here
@@ -90,7 +90,7 @@ public class DoctorFacade extends PersonFacade {
     /**
      * get all the doctor that are not checked yet
      *
-     * @return an array of unchecked doctors
+     * @return a list of unchecked doctors
      */
     public List<Doctor> getUncheckedDoctors() {
 
@@ -99,9 +99,19 @@ public class DoctorFacade extends PersonFacade {
 
 
     /**
-     * Accept the registration of a doctor
-     *
-     * @param Doctor a Doctor object who will be registered
+     * Register a new doctor's account
+     * @param fname
+     * @param lname
+     * @param password
+     * @param birthday
+     * @param phoneNumber
+     * @param mail
+     * @param siret
+     * @param streetNumber
+     * @param street
+     * @param city
+     * @param zipCode
+     * @return true if register went right, false if register went wrong
      */
     public boolean register(String fname, String lname, String password, LocalDate birthday, String phoneNumber, String mail, String siret, String streetNumber, String street, String city, String zipCode) {
         boolean result = false;
@@ -119,9 +129,18 @@ public class DoctorFacade extends PersonFacade {
 
 
     /**
-     * Update a profile doctor
-     *
-     * @param Doctor a Doctor object who will be updated
+     * Update a doctor
+     * @param mail
+     * @param fname
+     * @param lname
+     * @param birthday
+     * @param phoneNumber
+     * @param streetNumber
+     * @param street
+     * @param city
+     * @param zipCode
+     * @param id
+     * @return true if register went right, false if register went wrong
      */
     public boolean update(String mail, String fname, String lname, LocalDate birthday, String phoneNumber, String streetNumber, String street, String city, String zipCode, int id) {
         boolean result = false;
@@ -164,7 +183,7 @@ public class DoctorFacade extends PersonFacade {
     /**
      * Returns the list of all doctor's patient
      * @param doctor
-     * @return
+     * @return a list of all the patients of the given doctor
      */
     public List<Person> getPatients(Doctor doctor) {
         return dao.getPatients(doctor);

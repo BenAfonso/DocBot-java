@@ -90,7 +90,7 @@ public class RequestAppointmentFacade {
      * Rejects a request appointment
      *
      * @param requestAppointment
-     * @return
+     * @return true if the request appointment has been rejected, false either
      */
     public boolean reject(int requestAppointment){
         requestAppointmentDao.reject(requestAppointment);
@@ -159,7 +159,7 @@ public class RequestAppointmentFacade {
     /**
      * Return true if the request appointment corresponds to an accepted appointment
      * @param requestAppointment
-     * @return true or false
+     * @return true if the request appointment corresponds to an appointment, false either
      */
     public boolean hasAnAppointment(RequestAppointment requestAppointment) {
         return requestAppointmentDao.hasAnAppointment(requestAppointment);

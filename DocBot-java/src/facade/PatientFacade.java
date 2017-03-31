@@ -66,7 +66,7 @@ public class PatientFacade {
      * @param birthday
      * @param phoneNumber
      * @param mail
-     * @return
+     * @return true if register went right, false if register went wrong
      */
     public boolean register(String fname, String lname, String password, LocalDate birthday, String phoneNumber, String mail) {
         boolean result = false;
@@ -89,7 +89,7 @@ public class PatientFacade {
      * @param lname
      * @param birthday
      * @param phoneNumber
-     * @return
+     * @return true if register went right, false if register went wrong
      */
     public boolean update(String mail, String fname, String lname, LocalDate birthday, String phoneNumber) {
         boolean result = false;
@@ -100,6 +100,11 @@ public class PatientFacade {
         return result;
     }
 
+    /**
+     * Get all the patients
+     *
+     * @return a list of persons
+     */
     public List<Person> getAllPatients() {
         return dao.getAllPatients();
     }
